@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="./css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <title>Edit Recipe</title>
+        
+
+    </head>
+    <body>
+
+      <div>
+	        <nav>
+	            <div class="nav-wrapper color-green left-padding-20">
+	              <a href="#" class="brand-logo">MoreRecipes</a>
+	              <ul id="nav-mobile" class="right hide-on-med-and-down">
+	                <li><a href="index.html">Home</a></li>
+	                <li><a href="signin.html">Sing In</a></li>
+	                <li><a href="signup.html">Sign Up</a></li>
+	              </ul>
+	            </div>
+	        </nav>
+
+	        <div class="container">
+		        <div class="row">
+		        	<h4 class="top-margin">Edit Recipe</h4><hr>
+		        	<div class="col s12 m4 l4 ">
+		        		<div class="input-field col s12">
+                          <input id="title" type="text" >
+                          <label for="title">Name of Recipe</label>
+                        </div>
+                        <div class="input-field col s12">
+                          <input id="description" type="text" >
+                          <label for="description">Description</label>
+                        </div>
+                        <div class="input-field col s12">
+                          <textarea id="ingridience" class="materialize-textarea" ></textarea>
+                          <label for="ingridience">Ingrdience</label>
+                        </div>
+                        <div class="input-field col s12">
+                          <textarea id="direction" class="materialize-textarea" ></textarea>
+                          <label for="direction">Direction</label>
+                        </div>
+
+                        <div class="file-field input-field col s12">
+                        	<div class="btn color-dark-gray">
+                        		<span>Image</span>
+                        		<input id="img" type="file" multiple>
+                        	</div>
+                        	<div class="file-path-wrapper">
+                        		<input type="text" placeholder="Change Recipe Image" class="file-path validate" name="">
+                        	</div>
+                          
+                        </div><br><br>
+
+                        <div class="input-field col s12">
+                          <a class="waves-effect waves-light btn">Udate Recipe</a><br><br>
+                        </div>
+	                        
+		        	</div>
+		        	<div class="col s12 m4 l4">
+                  <div class="img2 top-margin-40">
+                  <img style="color: #fff; width: 300px; height: 400px; max-width: 300px; max-height: 300px;" src="./images/8.jpg" id="img3" alt=".">
+                </div>   
+              </div>
+		        </div>
+	      	</div>
+      </div>
+      
+      <div class="foot">
+          <p class="foo">Copyright &copy; 2017, More Recipes, All rights reserved.</p>
+      </div>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="./js/materialize.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("#img").change(function(e){
+            var img1 = $("#img").val();
+            var arr = img1.split("\\");
+            // alert(arr[(arr.length - 1)]);
+            if(img1){
+              $("#img3").attr('src', "C:\\Users\\wukman2\\Pictures\\OTI\\camera\\" + arr[(arr.length - 1)]);
+            }
+            
+          });
+        });
+      </script>
+    </body>
+</html>
