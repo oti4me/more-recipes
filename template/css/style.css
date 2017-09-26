@@ -1,0 +1,160 @@
+
+/* headings*/
+h2, h3, h4, h5{
+	 color: #999;
+}
+
+h5{
+	 font-size: 16px;
+}
+
+.card_title{
+	font-size: 16px;
+	font-weight: bold;
+	color: #999;
+}
+
+.h-title{
+	font-size: 38px;
+	padding-top: 20px;
+	/*text-transform: uppercase;*/
+}
+/* end of headings*/
+
+/* margin and padding*/
+.top-margin-20{
+	margin-top: 20px;
+}
+.top-margin-30{
+	margin-top: 30px;
+}
+.top-margin-40{
+	margin-top: 40px;
+}
+.top-margin-50{
+	margin-top: 50px;
+}
+.left-padding-15{
+	padding-left: 15px;
+}
+.left-padding-20{
+	padding-left: 20px;
+}
+.left-padding-30{
+	padding-left: 30px;
+}
+.left-padding-40{
+	padding-left: 40px;
+}
+
+/* end of margin anf padding*/
+
+/* alignments*/
+.center{
+	text-align: center;
+}
+
+.align-right{
+	text-align: right;
+}
+/* end of alignments*/
+
+.card-p{
+	font-size: 14px;
+}
+
+/*  background colors*/
+.color-green{
+	background-color: #26a69a;
+}
+
+.color-green-transparent{
+	background-color: rgba(38,166,154, 10);
+}
+
+.color-dark-gray{
+	background-color: #999;
+}
+
+.text-white{
+	color: white;
+}
+.text-gray{
+	color: #999;
+}
+
+.text-green{
+	color: #26a69a;
+}
+
+/* end of background colors*/
+
+.circle{
+	border-radius: 50%;
+	padding: 20px;
+	min-width: 70px;
+	min-height: 70px;
+	max-width: 90px;
+	max-height: 90px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+/* font weight */
+.bold{
+	font-weight: bold;
+}
+
+.bolder{
+	font-weight: bolder;
+}
+/* end of font weight */
+
+.circle{
+	border-radius: 50%;
+	padding: 20px;
+	min-width: 70px;
+	min-height: 70px;
+	max-width: 90px;
+	max-height: 90px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+
+/* footer */
+.foot{
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 70px;
+	background-color: #26a69a;
+	position: relative;
+	overflow: hidden;
+}
+
+.foot > p{
+	color: #fff;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	/*text-align: right;*/
+}
+
+/* end of footer */
+
+.fixed{
+	position: fixed;
+}
+
+
+.clr{
+	clear: both;
+	width: 100%;
+	height: 2px;
+	margin-top: 10px;
+}
+
