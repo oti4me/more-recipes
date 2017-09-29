@@ -2,19 +2,32 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 const should = chai.should();
-chai.use(chai);
+chai.use(chaiHttp);
 
 describe("", () => {
 
-  it('fails, as expected', (done) => { // <= Pass in done callback
+  it('', (done) => { // <= Pass in done callback
 	  chai.request(app)
-	  .get('/api/vi/recipes')
-	  .then( (res) => {
+	  .get('/api/v1/recipes')
+	  .end( (err, res) => {
 	     res.should.have.status(200);
-	  })
-	  .catch( (err)=>  {
-	     throw err;
-	  })
+	     res.should.be.json;
+	     res.should.be.a('object');
+	     done();
+	  });
+	  
+	});
+
+  it('', (done) => { // <= Pass in done callback
+	  chai.request(app)
+	  .get('/api/v1/recipes/1')
+	  .end( (err, res) => {
+	     res.should.have.status(200);
+	     res.should.be.json;
+	     res.should.be.a('object');
+	     done();
+	  });
+	  
 	});
 
 })

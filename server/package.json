@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www --exec babel-node",
     "build": "nodemon  --watch more-recipe --exec babel-node  -- ./bin/www",
-    "test": "mocha ./test/test.js --compilers js:babel-register"
+    "test": "mocha ./test/* --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
@@ -26,6 +26,8 @@
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.1"
   }
