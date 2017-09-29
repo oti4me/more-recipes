@@ -4,14 +4,27 @@ import data from "../models/data";
 
 class Recipes{
 
-	constructor(recipes){
+	/*
+	* recipes constructor function with @params recipes and reviews
+	*
+	*/
+	constructor(recipes, reviews){
 		this.recipes = recipes;
+		this.reviews = reviews;
 	}
 
+	/*
+	* getAllRecipes function with no @params and a return type of array
+	*
+	*/
 	getAllRecipes(){
 		return this.recipes;
 	}
 
+	/*
+	* getSingleRecipes function with @params id, and a return type of array
+	*
+	*/
 	getSingleRecipe(id = 1){
 
 		let single = {};
@@ -31,6 +44,10 @@ class Recipes{
 
 	}
 
+	/*
+	* getAllRecipes function with no @params and a return type of array
+	*
+	*/
 	addRecipe(data){
 		if(this.recipes.push(data)){
 			return true;
@@ -60,24 +77,25 @@ class Recipes{
 		return this.recipesrecipes;
 	}
 
-	reviewRecipe(data, id = 1){
-		for(let i = 0; i < this.recipes.length; i++){
-			if(this.recipes[i].id == id){
-				this.recipes[i].reviews.push(data);
-			}
-		}
-
-		return this.recipes;
+	reviewRecipe(data1, id = 1){
+		data1.recipeId = id;
+		this.reviews.push(data1);
+		
+		return this.reviews;
 	}
 
 	search(sort, order){
+
+		let sorted = [];
+
 		for(let i = 0; i < this.recipes.length; i++){
-			if(this.recipes[i].upvote){
-				this.recipes[i].reviews.push(data);
-			}
+			unSorted.push(this.recipes[i].upvote);
 		}
+
+		sorted = Array.sort(unSorted);
+
 		return this.recipes;
 	}
 }
 
-export default (new Recipes(data.recipes));
+export default (new Recipes(data.recipes, data.reviews));

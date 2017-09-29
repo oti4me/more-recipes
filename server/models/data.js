@@ -39,5 +39,25 @@ export default {
 			downvotes : 0,
 			reviews: []
 		}
+	],
+
+	"reviews" : [
+		{
+			id : 1,
+			description : "he extension uses the ESLint library installed in the opened workspace folder. If the folder doesn't provide one the extension looks for a global install version. If you haven't installed ESLint either locally or globally do so by running ",
+			recipeId : 1,
+			userId : 2
+			
+		},
+		{
+			id : 2,
+			description : "he extension uses the ESLint library installed in the opened workspace folder. If the folder doesn't provide one the extension looks for a global install version. If you haven't installed ESLint either locally or globally do so by running ",
+			recipeId : 2,
+			userId : 2
+			
+		},
+		
 	]
+
+
 }
