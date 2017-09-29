@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="./css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <title>User Profile</title>
+        <style type="text/css">
+             
+        </style>
+
+    </head>
+    <body>
+
+    <div>
+        <nav>
+            <div class="nav-wrapper color-green left-padding-20">
+              <a href="#" class="brand-logo">MoreRecipes</a>
+              <a href="#" data-activates="mobile2" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signin.html">Sing In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+              </ul>
+              <ul id="mobile2" class="side-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signin.html">Sing In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+              </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+        	<h4 class="top-margin">User Profile</h4><hr style="border-top: 1px solid #26a69a;">
+	        <div class="row">
+		        <!-- content -->
+		        <div class="col s12 m3 l3 top-margin-50">
+		            <div class="row">
+				        <div class="col s12 m12 l12">
+				            <div id="row">
+				             	<div class="col s8 m10 l10" style="height: 200px;">
+				             		<img style="width: 100%; height: 100%;" class="top-margin" src="./images/oti.jpg">
+				             		<!-- <h5 style="width: 100%">Henry Otighe</h5> -->
+				             	</div>
+				            </div>
+		         		</div>
+				    </div>  
+		        </div><!-- end of content -->
+		          
+	          <!-- middle bar -->
+	          <div class="col s12 m5 l5 text-gray top-margin-50">
+	          	<h4 class="bold " style="font-size: 18px;">USER BIO</h4>
+	          	<p><span class="bold">Name:</span> Henry Otighe</p>
+	          	<p><span class="bold">Email:</span> oti4me@gmail.com</p>
+	          	<p><span class="bold">Phone:</span> 07067143161</p>
+	          	<p><span class="bold">Gender:</span> Male</p>
+	          </div>
+	          <!-- right side bar -->
+	          <div class="col s12 m4 l4">
+	          	<div class="top-margin-50">
+			      	<a href="add-recipe.html" class="waves-effect waves-light btn" style="width: 200px; margin-bottom: 5px;">Add Recipe</a>
+			        <a href="my-recipes.html" class="waves-effect waves-light btn" style="width: 200px; margin-bottom: 5px;">My Recipes</a>
+			        <a href="favourite-recipes.html" class="waves-effect waves-light btn" style="width: 200px; margin-bottom: 5px;">Favourites</a>
+			        <a class="waves-effect waves-light btn" style="width: 200px; margin-bottom: 5px;">Edit Profile</a>
+			      	
+	          	</div>
+	          </div>
+	        </div>
+        
+			<div class="clr"></div><br><br>
+	        <div class="row top-padding-30">
+	          <div class="col s3 m3 l3">
+	          	 <!-- <h5>Posts</h5>
+	             <div class="circle text-white color-green">
+	             	135
+	             </div> -->
+	             <a href=""><i class="material-icons prefix text-green">error</i></a><br><span class="bold text-green" >135</span>
+	  		  </div>	
+			  <div class="col s3 m3 l3">
+	             <!-- <h5>Likes</h5>
+	             <div class="circle text-white color-green ">
+	             	246
+	             </div> -->
+	             <a href=""><i class="material-icons prefix text-green">thumb_up</i></a><br><span class="bold text-green">135</span>
+	  		  </div>
+	  		  <div class="col s3 m3 l3">
+	             <div class="">
+	             	<a href=""><i class="material-icons small text-green">favorite</i></a><br><span class="bold text-green">135</span>
+	             </div>
+	             
+	  		  </div>  
+	  		  <div class="col s3 m3 l3">
+	             <!-- <h5>Reviews</h5>
+	             <div class="circle text-white color-green">
+	             	32943
+	             </div> -->
+	             <a href=""><i class="material-icons prefix text-green" >rate_review</i></a><br><span class="bold text-green">135</span>
+	  		  </div>   
+			</div> 
+      </div>
+
+      <br><br>
+    </div>
+      <div class="foot">
+          <p class="foo">Copyright &copy; 2017, More Recipes, All rights reserved.</p>
+      </div>
+      
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src=".js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src=".js/materialize.min.js"></script>
+      <script type="text/javascript">
+      	$(document).ready(function(){
+      		$(".button-collapse").sideNav();
+      	});
+      </script>
+    </body>
+</html>
