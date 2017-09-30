@@ -1,25 +1,33 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
+const should = chai.should();
+chai.use(chaiHttp);
 
-chai.use(chai);
+describe("", () => {
 
-describe("", function() {
-
-  it('fails, as expected', function(done) { // <= Pass in done callback
+  it('', (done) => { // <= Pass in done callback
 	  chai.request(app)
-	  .get('/')
-	  .then(function (res) {
-	     expect(res).to.have.status(200);
-	  })
-	  .catch(function (err) {
-	     throw err;
-	  })
+	  .get('/api/v1/recipes')
+	  .end( (err, res) => {
+	     res.should.have.status(200);
+	     res.should.be.json;
+	     res.should.be.a('object');
+	     done();
+	  });
+	  
 	});
 
-  it("", function() {
-  	chai.request(app)
-  		.get('/');
-    assert.equal(aritGeo([1,2,3,4,5]), "Arithmetic");
-  }); 
+  it('', (done) => { // <= Pass in done callback
+	  chai.request(app)
+	  .get('/api/v1/recipes/1')
+	  .end( (err, res) => {
+	     res.should.have.status(200);
+	     res.should.be.json;
+	     res.should.be.a('object');
+	     done();
+	  });
+	  
+	});
+
 })

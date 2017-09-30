@@ -8,13 +8,6 @@ router.get('/', index);
 
 export default router;
 
-
-// /* GET users */
-// router.get('/', (req, res, next) => {
-// 	res.json({ message: 'Users page' });
-// }
-
-// router.get('/', (req, res, next) => {
-// 	res.json({ message: 'Users page' });
-// }
-
+// /* GET users */ router.get('/', (req, res, next) => { 	res.json({ message:
+// 'Users page' }); } router.get('/', (req, res, next) => { 	res.json({ message:
+// 'Users page' }); }
