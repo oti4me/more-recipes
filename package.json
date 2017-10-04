@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./server/bin/www --exec babel-node",
+    "start": "nodemon ./server/server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
   "dependencies": {
