@@ -1,5 +1,5 @@
 import express from 'express';
-import users from '../controllers/users';
+import Users from '../controllers/users';
 
 const router = express.Router();
 
@@ -7,9 +7,14 @@ router.get('/', (req, res) => {
 	res.json({message : "users route"});
 });
 
-router.get('/:id/profile', (req, res) => {
-	res.json({message : users.getUserProfile(req.params.id)});
-});
+router.get('/:id/profile', Users.profile);
 
+router.get('/signin', Users.signup);
+router.post('/signin', Users.signin);
+
+router.get('/signup', Users.signup);
+router.post('/signup', Users.signup);
+
+// router.get('/:id/review', users.review(req, res));
 
 export default router;

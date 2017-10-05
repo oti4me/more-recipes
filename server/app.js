@@ -1,10 +1,14 @@
+// Import dependencies
+
 import express from 'express';
 import path from 'path';
 import logger from 'morgan'
 import bodyParser from 'body-parser';
 
+// import routes
 import api from './routes/api';
 
+// create express app
 const app = express();
 
 app.use(logger('dev'));
@@ -14,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', api);
 
-app.use('/', (req, res) => {
+app.use('/*', (req, res) => {
 		res.end('Home page');
 });
 
