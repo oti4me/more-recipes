@@ -1,101 +1,220 @@
 "use strict"
 
-import data from "../models/data";
+// import Helpers from "../middlemare/jwtMiddleware";
+import db from '../models';
 
-class Recipes{
+class Recipes {
 
-	/*
-	* recipes constructor function with @params recipes and reviews
+		/*
+	* getAllRecipes function with params @req, @res
 	*
 	*/
-	constructor(recipes, reviews){
-		this.recipes = recipes;
-		this.reviews = reviews;
-	}
+		getAllRecipes(req, res) {
+				// Get recipes based or query strings to return the most voted recipes
+				if(req.query.sort && req.query.order){
+					let order = req.query.order;
 
-	/*
-	* getAllRecipes function with no @params and a return type of array
-	*
-	*/
-	getAllRecipes(){
-		return this.recipes;
-	}
+					if(req.query.sort = "upvotes"){
+						if(order == "desc"){
+							order = 'DESC';
+						}else if(order == "asc"){
+							order = 'ASC';
+						}
+						db.Recipes.findAll({ limit: 10, order: [['upvotes', order]]})
+							.then((recipes) => {
+									res.status(200).json({status: 200, data: recipes});
+							})
+							.catch(error => {
+									res.status(500).json(error);
+							})
+					}else{
+						// Get recipes based or query strings to return the least voted recipes
+						if(order == "desc"){
+							order = 'DESC';
+						}else if(order == "asc"){
+							order = 'ASC';
+						}
 
-	/*
+						db.Recipes.findAll({ limit: 10, order: [['upvotes', order]]})
+						.then((recipes) => {
+								res.status(200).json({status: 200, data: recipes});
+						})
+						.catch(error => {
+								res.status(500).json(error);
+						})
+					}
+					
+				// }
+				
+			}
+
+				//get all recipes
+				db.Recipes.findAll()
+						.then((recipes) => {
+								res.status(200).json({status: 200, data: recipes});
+						})
+						.catch(error => {
+								res.status(500).json(error);
+						})
+		}
+
+		/*
 	* getSingleRecipes function with @params id, and a return type of array
 	*
 	*/
-	getSingleRecipe(id = 1){
-
-		let single = {};
-		for(let i = 0; i < this.recipes.length; i++){
-			if(this.recipes[i].id == id){
-				single = this.recipes[i];
-			}
+		getSingleRecipe(req, res) {
+				db.Recipes.findById(req.params.id)
+						.then((recipe) => {
+								res.status(200).json({status: 200, data: recipe});
+						})
+						.catch(error => {
+								res.status(500).json({status: 500, message: error.message});
+						})
 		}
 
-		console.log(single);
-		return single;
-
-		// this.recipes.filter( value => {
-		// 	if(value.id == id) //return this.recipes[i];
-		// 		console.log(value)
-		// });
-
-	}
-
-	/*
-	* getAllRecipes function with no @params and a return type of array
+		/*
+	* addRecipe function with params @req, @res
 	*
 	*/
-	addRecipe(data){
-		if(this.recipes.push(data)){
-			return true;
-		}else return false;
-	}
+		addRecipe(req, res) {
+				db
+						.Recipes
+						.create(req.body)
+						.then((result) => {
+								if (result) {
+										res
+												.status(201)
+												.json({status: 201, message: "Recipe added"});
+								} else {
+										console.log("I cannot get anything");
+										res
+												.status(400)
+												.json({status: 400, message: "no result returned"});
+								}
+						})
+						.catch(error => {
+								console.log("error geting into the database");
+								res
+										.status(500)
+										.json({status: 500, message: error.message});
+						})
 
-	deleteRecipe(id){
-		for(let i = 0; i < this.recipes.length; i++){
-			if(this.recipes[i].id == id){
-				this.recipes.splice(i, 1);
-			}
 		}
 
-		return this.recipes;
-	}
+		/*
+	* addRecipe function with params @req, @res
+	*
+	*/
+		deleteRecipe(req, res) {
 
-	updateRecipe(data, id = 1){
-		let { title, description, image } = data;
-		for(let i = 0; i < this.recipes.length; i++){
-			if(this.recipes[i].id == id){
-				this.recipes[i].title = title;
-				this.recipes[i].description = description;
-				this.recipes[i].image = image;
-			}
+				db
+						.Recipes
+						.destroy({
+								where: {
+										id: req.params.id
+								}
+						})
+						.then((result) => {
+								if (result) {
+										res
+												.status(200)
+												.json({message: "Data deleted"});
+								}
+						})
+						.catch(err => {
+								res
+										.status(400)
+										.json({message: err.message});
+						});
+
 		}
 
-		return this.recipesrecipes;
-	}
+		updateRecipe(req, res) {
 
-	reviewRecipe(data1, id = 1){
-		data1.recipeId = id;
-		this.reviews.push(data1);
-		
-		return this.reviews;
-	}
+				db
+						.Recipes
+						.update(req.body, {
+								where: {
+										id: req.params.id
+								}
+						})
+						.then((result) => {
+								if (result) {
+										res
+												.status(200)
+												.json({message: "Data Updated"});
+								}
+						})
+						.catch(err => {
+								res
+										.status(400)
+										.json({message: err.message});
+						});
 
-	search(sort, order){
-
-		let sorted = [];
-
-		for(let i = 0; i < this.recipes.length; i++){
-			unSorted.push(this.recipes[i].upvote);
 		}
 
-		sorted = Array.sort(unSorted);
+		reviewRecipe(req, res) {
 
-		return this.recipes;
-	}
+				db
+						.Reviews
+						.create(req.body)
+						.then((result) => {
+								res
+										.status(200)
+										.json({status: 200, data: result});
+						})
+						.catch(error => {
+								res.json(error);
+						})
+
+		}
+
+		getReviews(req, res) {
+
+				db
+						.Reviews
+						.findAll({
+								where: {
+										recipeId: req.params.id
+								}
+						})
+						.then((result) => {
+								if (result) {
+										res
+												.status(200)
+												.json({status: 200, data: result});
+								}
+
+						})
+						.catch(error => {
+								res.json(error);
+						})
+
+		}
+
+		search(req, res) {
+
+				db
+						.Recipes
+						.findAll({
+								where: {
+										id: req.params.id
+								}
+						})
+						.then((result) => {
+								if (result) {
+										res
+												.status(200)
+												.json({message: "Data deleted"});
+								}
+						})
+						.catch(err => {
+								res
+										.status(400)
+										.json({message: err.message});
+						});
+		}
 }
 
-export default (new Recipes(data.recipes, data.reviews));
+export default new Recipes();
+//export default (new Recipes(db));
