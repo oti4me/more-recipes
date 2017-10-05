@@ -1,6 +1,6 @@
 "use strict"
 
-// import Helpers from "../middlemare/jwtMiddleware";
+import validate from '../middleware/validate';
 import db from '../models';
 
 class Recipes {
@@ -11,50 +11,77 @@ class Recipes {
 	*/
 		getAllRecipes(req, res) {
 				// Get recipes based or query strings to return the most voted recipes
-				if(req.query.sort && req.query.order){
-					let order = req.query.order;
+				if (req.query.sort && req.query.order) {
+						let order = req.query.order;
+						if (req.query.sort === "upvotes") {
+								if (order === "desc") {
+										order = 'DESC';
+								} else if (order === "asc") {
+										order = 'ASC';
+								}
+								db
+										.Recipes
+										.findAll({
+												limit: 10,
+												order: [
+														['upvotes', order]
+												]
+										})
+										.then((recipes) => {
+												res
+														.status(200)
+														.json({status: 200, data: recipes});
+										})
+										.catch(error => {
+												res
+														.status(500)
+														.json(error);
+										})
+						} else {
+								// Get recipes based or query strings to return the least voted recipes
+								if (order === "desc") {
+										order = 'DESC';
+								} else if (order === "asc") {
+										order = 'ASC';
+								}
 
-					if(req.query.sort = "upvotes"){
-						if(order == "desc"){
-							order = 'DESC';
-						}else if(order == "asc"){
-							order = 'ASC';
-						}
-						db.Recipes.findAll({ limit: 10, order: [['upvotes', order]]})
-							.then((recipes) => {
-									res.status(200).json({status: 200, data: recipes});
-							})
-							.catch(error => {
-									res.status(500).json(error);
-							})
-					}else{
-						// Get recipes based or query strings to return the least voted recipes
-						if(order == "desc"){
-							order = 'DESC';
-						}else if(order == "asc"){
-							order = 'ASC';
+								db
+										.Recipes
+										.findAll({
+												limit: 10,
+												order: [
+														['upvotes', order]
+												]
+										})
+										.then((recipes) => {
+												res
+														.status(200)
+														.json({status: 200, data: recipes});
+										})
+										.catch(error => {
+												res
+														.status(500)
+														.json(error);
+										})
 						}
 
-						db.Recipes.findAll({ limit: 10, order: [['upvotes', order]]})
-						.then((recipes) => {
-								res.status(200).json({status: 200, data: recipes});
-						})
-						.catch(error => {
-								res.status(500).json(error);
-						})
-					}
-					
-				// }
-				
-			}
+						// }
+
+				}
 
 				//get all recipes
-				db.Recipes.findAll()
+				db
+						.Recipes
+						.findAll()
 						.then((recipes) => {
-								res.status(200).json({status: 200, data: recipes});
+								res
+										.status(200)
+										.json({status: 200, data: recipes});
 						})
 						.catch(error => {
-								res.status(500).json(error);
+								res
+										.status(500)
+										.json(error);
 						})
 		}
 
@@ -63,12 +90,18 @@ class Recipes {
 	*
 	*/
 		getSingleRecipe(req, res) {
-				db.Recipes.findById(req.params.id)
+				db
+						.Recipes
+						.findById(req.params.id)
 						.then((recipe) => {
-								res.status(200).json({status: 200, data: recipe});
+								res
+										.status(200)
+										.json({status: 200, data: recipe});
 						})
 						.catch(error => {
-								res.status(500).json({status: 500, message: error.message});
+								res
+										.status(500)
+										.json({status: 500, message: error.message});
 						})
 		}
 
@@ -77,32 +110,36 @@ class Recipes {
 	*
 	*/
 		addRecipe(req, res) {
-				db
-						.Recipes
-						.create(req.body)
-						.then((result) => {
-								if (result) {
+				validate.validateAddRecipes(req, res);
+				var errors = req.validationErrors();
+				if (errors) {
+						res.send(errors);
+				} else {
+						db
+								.Recipes
+								.create(req.body)
+								.then((result) => {
+										if (result) {
+												res
+														.status(201)
+														.json({status: 201, message: "Recipe added"});
+										} else {
+												res
+														.status(400)
+														.json({status: 400, message: "no result returned"});
+										}
+								})
+								.catch(error => {
 										res
-												.status(201)
-												.json({status: 201, message: "Recipe added"});
-								} else {
-										console.log("I cannot get anything");
-										res
-												.status(400)
-												.json({status: 400, message: "no result returned"});
-								}
-						})
-						.catch(error => {
-								console.log("error geting into the database");
-								res
-										.status(500)
-										.json({status: 500, message: error.message});
-						})
+												.status(500)
+												.json({status: 500, message: error.message});
+								})
+				}
 
 		}
 
 		/*
-	* addRecipe function with params @req, @res
+	* Delete recipe function with params @req, @res
 	*
 	*/
 		deleteRecipe(req, res) {
@@ -191,6 +228,59 @@ class Recipes {
 						})
 
 		}
+
+		addUpvote(req, res) {
+			
+			db.Recipes.fine({}, where: {
+				recipeId: req.params.id
+			})
+				.then(user => {
+					db
+					.Recipes
+					.update({ upvote : ++recipe.upvote}, {
+							where: {
+									recipeId: req.params.id
+							}
+					})
+					.then((result) => {
+							if (result) {
+									res
+											.status(200)
+											.json({status: 200, data: result});
+							}
+					})
+					.catch(error => {
+							res.json(error);
+					})
+				})
+				.catch();
+				
+
+		}
+
+		addDownvote(req, res) {
+			
+				db
+						.Recipes
+						.update({
+								where: {
+										recipeId: req.params.id
+								}
+						})
+						.then((result) => {
+								if (result) {
+										res
+												.status(200)
+												.json({status: 200, Message: "Your vote has been recieved"});
+								}
+
+						})
+						.catch(error => {
+								res.json(error);
+						})
+
+		}
+
 
 		search(req, res) {
 

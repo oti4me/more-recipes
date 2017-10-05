@@ -70,12 +70,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       hooks: {
         beforeCreate(user) {
-          const salt = bcrypt.genSaltSync();
+          const salt = bcrypt.genSaltSync(8);
           user.password = bcrypt.hashSync(user.password, salt);
         },
         beforeUpdate(user) {
           if (user.password) {
-            const salt = bcrypt.genSaltSync();
+            const salt = bcrypt.genSaltSync(8);
             user.password = bcrypt.hashSync(user.password, salt);
             user.updateAt = Date.now();
           }

@@ -23,14 +23,42 @@
               <a href="#" class="brand-logo">MoreRecipes</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="signin.html">Sing In</a></li>
+                <li><a href="signin.html">Sign In</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
               </ul>
             </div>
         </nav>
 
         <div class="container">
-        
+				
+					<div class="top-margin-40" style="height: 450px; width: 100%; background-color:#26a69a; position:relative ">
+						<!-- <img style="width:100%; height:100%;" src="./images/4.jpg"> -->
+						<div style="width:100%; height:450px%; top:0; text-align: center; color:#fff; bottom:0; position:absolute; background-color:rgba(0,0,0, 0.6);">
+								<!-- <h1 class="margin-top:40">More Recipes</h1> -->
+								<!-- <p>The fantastic recipe sharing application</p> -->
+								<div class="carousel carousel-slider center" data-indicators="true">
+										<div class="carousel-fixed-item center">
+											<a class="btn waves-effect white grey-text darken-text-2">button</a>
+										</div>
+										<div class="carousel-item red white-text" href="#one!">
+											<h2>Welcome the biggest Recipe sharing app</h2>
+											<p class="white-text">This is your first panel</p>
+										</div>
+										<div class="carousel-item amber white-text" href="#two!">
+											<h2>Second Panel</h2>
+											<p class="white-text">This is your second panel</p>
+										</div>
+										<div class="carousel-item green white-text" href="#three!">
+											<h2>Third Panel</h2>
+											<p class="white-text">This is your third panel</p>
+										</div>
+										<div class="carousel-item blue white-text" href="#four!">
+											<h2>Fourth Panel</h2>
+											<p class="white-text">This is your fourth panel</p>
+										</div>
+									</div>
+						</div>
+					</div>
         <div class="row">
 
           <!-- content -->
@@ -150,7 +178,7 @@
           		  
 		        </div>
 
-		        <ul class="pagination">
+		        <ul class="pagination" style="text-align:right;">
 				    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 				    <li class="active"><a href="#!" class="color-green">1</a></li>
 				    <li class="waves-effect disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
@@ -171,7 +199,7 @@
 				          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons color-green">favorite</i></a>
 				        </div>
 				        <div class="card-content">
-				          <p class="card-p">I am convenient because I require little markup to use effectively.</p>
+				          <p class="card-p">Title</p>
 				        </div>
 				     </div>
 				     <div class="card">
@@ -180,7 +208,7 @@
 				          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons color-green">favorite</i></a>
 				        </div>
 				        <div class="card-content">
-				          <p class="card-p">I am convenient because I require little markup to use effectively.</p>
+				          <p class="card-p">Titlet</p>
 				        </div>
 				     </div>
 				     <div class="card">
@@ -189,13 +217,13 @@
 				          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons color-green">favorite</i></a>
 				        </div>
 				        <div class="card-content">
-				          <p class="card-p">I am convenient because I require little markup to use effectively.</p>
+				          <p class="card-p">Title</p>
 				        </div>
 				     </div>
               	</div>
               </div>  
               
-              <a class="waves-effect waves-light btn">View All</a>   
+              <a class="waves-effect waves-light btn">Title</a>   
           </div>
         </div>
 
@@ -210,6 +238,11 @@
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="./js/materialize.min.js"></script>
+			<script type="text/javascript" src="./js/materialize.min.js"></script>
+			<script>
+				$(document).ready(function(){
+					$('.carousel.carousel-slider').carousel({fullWidth: true});
+				});
+			</script>
     </body>
 </html>

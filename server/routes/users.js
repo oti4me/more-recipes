@@ -15,6 +15,6 @@ router.post('/signin', Users.signin);
 router.get('/signup', Users.signup);
 router.post('/signup', Users.signup);
 
-// router.get('/:id/review', users.review(req, res));
+router.get('/:id/recipes', Users.favourites);
 
 export default router;
