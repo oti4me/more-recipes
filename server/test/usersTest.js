@@ -4,11 +4,11 @@ import app from '../app';
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe("", () => {
+describe("Users Athorization", () => {
 
-  it('All recipes test', (done) => { // <= Pass in done callback
+  it('Signin Test', (done) => { // <= Pass in done callback
 	  chai.request(app)
-	  .get('/api/v1/recipes')
+	  .get('/api/v1/users/signin')
 	  .end( (err, res) => {
 	     res.should.have.status(200);
 	     res.should.be.json;
@@ -18,9 +18,9 @@ describe("", () => {
 	  
 	});
 
-  it('Single recipe test', (done) => { // <= Pass in done callback
+  it('Signup test', (done) => { // <= Pass in done callback
 	  chai.request(app)
-	  .get('/api/v1/recipes/1')
+	  .get('/api/v1/users/signup')
 	  .end( (err, res) => {
 	     res.should.have.status(200);
 	     res.should.be.json;

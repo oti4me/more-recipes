@@ -1,10 +1,9 @@
+// imort express module
 import express from 'express'
 
+//import indivdual routes
 import users from './users';
 import recipes from './recipes';
-// import index from './index';
-
-// import users from './routes/api';
 
 const router = express.Router();
 /* GET home page. */
