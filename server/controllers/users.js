@@ -109,13 +109,26 @@ class Users{
 		db.Favourites.findAll({ where : { userId : req.params.id}})
 		.then((favourites) => {			
       if (favourites ) {
-         res.status(200).json({ status: 200, token, expiresIn: 86400, favourites });
+         res.status(200).json({ status: 200, token, favourites });
 			}  
 		})
 		.catch(err => {
 			res.status(200).json({ status: 200, token, favourites });
 		});
 	}
+
+	addFavourites(req, res) {
+		db.Favourites.create()
+		.then((favourites) => {			
+      if (favourites ) {
+         res.status(201).json({ status: 20, token, favourites });
+			}  
+		})
+		.catch(err => {
+			res.status(200).json({ status: 200, token, favourites });
+		});
+	}
+
 
 }
 

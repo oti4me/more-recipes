@@ -16,5 +16,6 @@ router.get('/signup', Users.signup);
 router.post('/signup', Users.signup);
 
 router.get('/:id/recipes', Users.favourites);
+router.post('/:id/recipes', Users.favourites);
 
 export default router;
