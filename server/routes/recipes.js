@@ -24,9 +24,9 @@ router.put('/:id', Auth.verifyToken, recipes.updateRecipe);
 router.post('/:id/reviews', Auth.verifyToken, recipes.reviewRecipe);
 
 // Upvote up a recipe
-router.post('/:id/upvote', Auth.verifyToken, recipes.upvote);
+router.post('/:id/upvotes', Auth.verifyToken, recipes.addUpvote);
 
 // Downvote up a recipe
-router.post('/:id/downvote', Auth.verifyToken, recipes.downvote);
+router.post('/:id/downvotes', Auth.verifyToken, recipes.addDownvote);
 
 export default router;

@@ -231,13 +231,14 @@ class Recipes {
 
 		addUpvote(req, res) {
 			
-			db.Recipes.fine({}, where: {
+			db.Recipes.fineOne({ where: {
 				recipeId: req.params.id
-			})
+			}})
 				.then(user => {
+					const newVote = user.upvotes + 1;
 					db
 					.Recipes
-					.update({ upvote : ++recipe.upvote}, {
+					.update({ upvotes : newVote}, {
 							where: {
 									recipeId: req.params.id
 							}
@@ -246,38 +247,46 @@ class Recipes {
 							if (result) {
 									res
 											.status(200)
-											.json({status: 200, data: result});
+											.json({status: 200, data: "Vote added"});
+							}
+					})
+					.catch(error => {
+						res.status(500).json({ status: 500, message: err.message});
+					})
+				})
+				.catch(err =>{
+					res.status(500).json({ status: 500, message: err.message});
+				});
+				
+		}
+
+		addDownvote(req, res) {
+			
+			db.Recipes.fineOne({ where: {
+				recipeId: req.params.id
+			}})
+				.then(user => {
+					db
+					.Recipes
+					.update({ downvotes : recipe.upvote + 1}, {
+							where: {
+									recipeId: req.params.id
+							}
+					})
+					.then((result) => {
+							if (result) {
+									res
+											.status(200)
+											.json({status: 200, data: "Vote added"});
 							}
 					})
 					.catch(error => {
 							res.json(error);
 					})
 				})
-				.catch();
-				
-
-		}
-
-		addDownvote(req, res) {
-			
-				db
-						.Recipes
-						.update({
-								where: {
-										recipeId: req.params.id
-								}
-						})
-						.then((result) => {
-								if (result) {
-										res
-												.status(200)
-												.json({status: 200, Message: "Your vote has been recieved"});
-								}
-
-						})
-						.catch(error => {
-								res.json(error);
-						})
+				.catch(err =>{
+					res.status(500).json({ status: 500, message: err.message});
+				});
 
 		}
 
@@ -291,11 +300,11 @@ class Recipes {
 										id: req.params.id
 								}
 						})
-						.then((result) => {
-								if (result) {
+						.then((items) => {
+								if (items) {
 										res
 												.status(200)
-												.json({message: "Data deleted"});
+												.json({ status : 200, data: items});
 								}
 						})
 						.catch(err => {
