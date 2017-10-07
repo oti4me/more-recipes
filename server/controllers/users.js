@@ -34,7 +34,6 @@ class Users{
 				} else {
 					
 					db.Users.create(req.body).then((user) => {
-						console.log("got here before create");
 						if (user) {
 							const jwtData = {
 								firstname: user.firstname.trim(),

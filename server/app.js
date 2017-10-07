@@ -4,7 +4,7 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan'
 import bodyParser from 'body-parser';
-var validator = require('express-validator');
+import validator from 'express-validator';
 
 
 // import routes
