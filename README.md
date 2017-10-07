@@ -1,6 +1,6 @@
 # More-Recipes
 
-A simple App that allows users create and recipes
+A simple App that allows users create manage and recipes
 
 It provides restful APIs for users to create recipes, review recipes and favourite a recipe based on userId and managing authentication of users with JsonWebToken.
 

@@ -316,4 +316,3 @@ class Recipes {
 }
 
 export default new Recipes();
-//export default (new Recipes(db));

@@ -6,13 +6,7 @@ import bcrypt from 'bcrypt-nodejs';
 dotenv.config();
 const secretKey = process.env.JWT_SECRET_KEY;
 const Authenticate = {
-  /**
-   * Verify auth middleware
-   *
-   * @param {Object} req request object payload
-   * @param {Object} res response object
-   * @param {Function} next callback function
-   */
+
   verifyToken(req, res, next) {
     const token = req.headers.authorization || req.headers['x-access-token'];
     if (!token) {
