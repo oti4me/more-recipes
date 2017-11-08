@@ -23,33 +23,33 @@ const validate = {
       .notEmpty();
     req
       .checkBody("password", "Password can't be empty.")
-      .notEmpty();
+      .notEmpty();      
   },
 
   validateAddRecipes(req, res) {
     req
-      .checkBody("title", "Title name cannot be empty.")
+      .checkBody("title", "Title can't be empty.")
       .notEmpty();
     req
-      .checkBody("image", "Please, Select an image.")
+      .checkBody("image", "Please, select an image.")
       .notEmpty();
-    req
-      .checkBody("userId", "User ID canot ber empty.")
-      .notEmpty();
-    // req.checkBody("userId", "User ID must be a valid number.").isNAN();
     req
       .checkBody("description", "Description can't be empty.")
       .notEmpty();
     req
       .checkBody("ingredients", "Ingredients can't be empty.")
       .notEmpty();
+    req
+      .checkBody("direction", "Direction can't be empty.")
+      .notEmpty();
   },
 
-  validateId(req, res, id) {
-      if (typeof id !== "number") {
-        res.json({Message: "Id is a valid number"});
-      } else 
-      return id;
+  validateId(id, req, res) {
+      if (isNaN(id)) {
+        return false
+      } else { 
+        return true; 
+      }
   }
 
 };

@@ -34,6 +34,7 @@ const Authenticate = {
     newUser.email = user.email;
     newUser.phone = user.phone;
     newUser.image = user.image;
+    newUser.userId = user.id;
    
     return newUser;
   },
