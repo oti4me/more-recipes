@@ -1,4 +1,4 @@
-import path from 'path';
+const path = require('path');
 
 exports default {
   "config": path.resolve('./server/config', 'config.json'),

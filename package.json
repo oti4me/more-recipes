@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    
     "start-dev": "nodemon ./server/server --exec babel-node",
     "start": "sequelize db:migrate && node ./dist/app.js",
-    "build" : "babel ./server -d ./dist",
+    "build": "babel ./server -d ./dist",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
   "dependencies": {
@@ -29,7 +28,7 @@
     "jsonwebtoken": "^8.0.1",
     "mocha": "^3.5.3",
     "morgan": "~1.7.0",
-    "pg": "^7.3.0",
+    "pg": "^7.4.0",
     "sequelize": "^4.13.2",
     "serve-favicon": "~2.3.2",
     "validator": "^9.0.0"
