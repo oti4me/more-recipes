@@ -43,7 +43,12 @@ module.exports = (sequelize, DataTypes) => {
           User.hasMany(models.Reviews, {
             foreignKey: 'userId'
           });
+
           User.hasMany(models.Favorites, {
+            foreignKey: 'userId'
+          });
+
+          User.hasMany(models.Votes, {
             foreignKey: 'userId'
           });
         }
@@ -64,8 +69,8 @@ module.exports = (sequelize, DataTypes) => {
          * @param {String} password
          * @returns {void} no return
          */
-        hashPassword() {
-          this.password = bcrypt.hashSync(this.password.trim(), bcrypt.genSaltSync(10));
+        hashPassword(password) {
+          this.password = bcrypt.hashSync(this.password.trim(), bcrypt.genSaltSync(8));
         }
       },
       hooks: {

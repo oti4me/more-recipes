@@ -1,27 +1,36 @@
 // Import dependencies
-
 import express from 'express';
 import path from 'path';
 import logger from 'morgan'
 import bodyParser from 'body-parser';
 import validator from 'express-validator';
 
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+// import webpackHotMiddleware from 'webpack-hot-middleware';
 
-// import routes
+import webpackConfig from '../webpack.config.js';
+
 import api from './routes/api';
 
 // create express app
 const app = express();
+app.disable('x-powered-by');
+app.use(webpackMiddleware(webpack(webpackConfig)));
+// app.use(webpackHotMiddleware(webpack(webpackConfig), {
+// 	log: console.log
+// }))
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(validator());
+
 app.use('/api/v1', api);
 
 app.use('/*', (req, res) => {
-		res.end('Home page');
+		res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 // catch 404 and forward to error handler
@@ -42,8 +51,7 @@ app.use((err, req, res, next) => {
 				: {};
 
 		// render the error page
-		res.status(err.status || 500);
-		res.send('error');
+		res.status(err.status || 500).send({ status : err.status || 500, message : err.message});
 });
 
 export default app;

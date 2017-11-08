@@ -1,13 +1,20 @@
 'use strict';
-import fs from 'fs';
-import path from 'path';
-import Sequelize from 'sequelize';
-import configFile from '../config/config.json';
+// import fs from 'fs';
+// import path from 'path';
+// import Sequelize from 'sequelize';
+// import configFile from '../config/config.js';
+const path = require('path');
+const fs = require('fs');
+const sequlize = require('sequlize');
+const configFile = require('../config/config.j');
+
+
 const basename  = path.basename(__filename);
 const env       = process.env.NODE_ENV || 'development';
 const config    = configFile[env];
 const db        = {};
-let sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+let sequelize;
 
 if (config.use_env_variable) {
  sequelize = new Sequelize(process.env[config.use_env_variable]);

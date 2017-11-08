@@ -16,8 +16,9 @@ class Users{
 		
 		validate.validateSignup(req, res);
 		var errors = req.validationErrors();
+
 		if (errors) {
-			res.send(errors);
+			res.status(400).json({ message : errors });
 			return;
 		} else {
 			
@@ -32,15 +33,24 @@ class Users{
 						 status: 409
 						});
 				} else {
-					
-					db.Users.create(req.body).then((user) => {
+					const data ={
+						firstname : req.body.firstname,
+						lastname : req.body.lastname,
+						email : req.body.email,
+						password : req.body.password,
+						phone : req.body.phone,
+						image : ''
+					};
+
+					db.Users.create(data).then((user) => {
 						if (user) {
 							const jwtData = {
 								firstname: user.firstname.trim(),
 								lastname:  user.lastname.trim(),
 								email: user.email.trim(),
 								userId: user.id,
-								phone: user.phone
+								phone: user.phone,
+								image: user.image
 							};
 	
 							const token = jwt.sign(jwtData, secretKey, { expiresIn: 86400 });
@@ -57,7 +67,7 @@ class Users{
 				}
 			})
 				.catch((error) => {
-					 res.status(500).json(error);
+					 res.status(500).json({ message : error });
 				});
 		}		
 	}
@@ -66,68 +76,50 @@ class Users{
 		validate.validateLogin(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.send(errors);
+			res.status(400).json({ status : 400, message : errors });
 			return;
 		} else {
-			db.Users.findOne({ where: { email: req.body.email } }).then((user) => {			
+			db.Users.findOne({ where: { email: req.body.email } })
+			.then((user) => {	
       if (user && req.body.password && Auth.comparePassword(req.body.password, user.password)) {
         const token = jwt.sign({
 					firstname: user.firstname,
 					lastname: user.lastname,
-          email: user.email,
-          userId: user.id,
+					email: user.email,
+					phone: user.phone,
+					userId: user.id,
+					image: user.image
         }, secretKey, { expiresIn: 86400 });
-
-        user = Auth.filterUser(user);
-         res.status(200).json({ status: 200, token, user });
-      }
+				
+				user = Auth.filterUser(user);
+        res.status(200).json({ status: 200, token, user });
+      }else{
+				 res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });
+			}
       
-       res.status(401).json({ errors: { message: 'Failed to authenticate user' } });
     })
 			.catch(error => {
-				res.status(500).json({ error });
-
+				res.status(500).json({ status : 500,  message : error.message });
 			});
 		}
 		
 	}
 
 	profile(req, res) {
-		db.Users.findById()
+
+		let id = req.body.id;
+		id = validate.validateId(id);
+
+		db.Users.findById(id)
 		.then((user) => {			
       if (user ) {
-        res.json(user);
+        res.status(200).json({ status: 200, user : user });
 			}  
 		})
 		.catch(err =>{
-			res.status(500).json({ error });
+			res.status(500).json({ status : 500, message : error.message });
 		});
 	}
-
-	favourites(req, res) {
-		db.Favourites.findAll({ where : { userId : req.params.id}})
-		.then((favourites) => {			
-      if (favourites ) {
-         res.status(200).json({ status: 200, token, favourites });
-			}  
-		})
-		.catch(err => {
-			res.status(200).json({ status: 200, token, favourites });
-		});
-	}
-
-	addFavourites(req, res) {
-		db.Favourites.create()
-		.then((favourites) => {			
-      if (favourites ) {
-         res.status(201).json({ status: 20, token, favourites });
-			}  
-		})
-		.catch(err => {
-			res.status(200).json({ status: 200, token, favourites });
-		});
-	}
-
 
 }
 
