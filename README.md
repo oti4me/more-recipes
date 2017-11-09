@@ -8,7 +8,7 @@ It provides restful APIs for users to create recipes, review recipes and favouri
 
 ##### Hosted App on Heroku 
 
-[Heroku hosted](more-recipe-otighe.heroku.com)
+[Heroku hosted](http://more-recipe-otighe.heroku.com)
 
 ### Key Application Features
 
