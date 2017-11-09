@@ -4,3 +4,5 @@ node_modules
 server/npm-debug.log
 npm-debug.log
 .DS_Store
+server/.DS_Store
+
