@@ -7,7 +7,7 @@ import validator from 'express-validator';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import webpackConfig from '../webpack.config.js';
 
