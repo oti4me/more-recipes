@@ -45,6 +45,7 @@
     "redux-persist-store": "^0.2.4",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.13.2",
+    "sequelize-cli": "^3.0.0",
     "serve-favicon": "~2.3.2",
     "validator": "^9.0.0",
     "webpack": "^3.8.1",
