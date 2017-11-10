@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/server --exec babel-node",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prod": "NODE_ENV=production node ./server/server",
+    "postinstall": "webpack -p",
     "start-dev": "nodemon  ./server/server --watch ./server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
