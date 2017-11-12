@@ -9,14 +9,12 @@ const upload = multer({
 	dest : '../public'
 })
 
-
 class Recipes {
 
   /*
 	* getAllRecipes function with params @req, @res
 	*
   */
-  
   getAllRecipes(req, res) {
     // Get recipes based or query strings to return the most voted recipes
     if (req.query.sort && req.query.order) {
@@ -68,7 +66,6 @@ class Recipes {
     db.Recipes.findAndCountAll()
     .then((data) => {
       let page = req.body.page ? req.body.page : 2;      // page number
-      console.log(req.body);
       let pages = Math.ceil(data.count / limit);
       offset = limit * (page - 1);
 
@@ -81,7 +78,6 @@ class Recipes {
       })
       .then((recipes) => {
         if(recipes){
-          // console.log(recipes)
           res.status(200).json({status: 200, data: recipes, pages : pages });
         }else{
           res.status(401).json({status: 401, message: "No recipe found"});
@@ -117,7 +113,7 @@ class Recipes {
     }
   }
 
-    /*
+  /*
 	* getSingleRecipes function with @params id, and a return type of array
 	*
 	*/
@@ -173,8 +169,7 @@ class Recipes {
 	* addRecipe function with params @req, @res
 	*
 	*/
-  addRecipe(req, res) {
-    
+  addRecipe(req, res) { 
     validate.validateAddRecipes(req, res);
     var errors = req.validationErrors();
     if (errors) {

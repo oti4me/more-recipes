@@ -1,0 +1,1 @@
+<h1>Hello from react</h1>

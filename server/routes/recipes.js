@@ -18,22 +18,23 @@ router.post('/',  Auth.verifyToken, recipes.addRecipe );
 // remove recipe from the database
 router.delete('/:id', Auth.verifyToken, recipes.deleteRecipe);
 
-// update recipe route Auth.verifyToken,
+// update recipe route
 router.put('/:id', Auth.verifyToken, recipes.updateRecipe);
 
-// Add a review to a recipe Auth.verifyToken,
+// Add a review to a recipe 
 router.post('/:id/reviews', Auth.verifyToken, recipes.reviewRecipe);
-// Add a review to a recipe Auth.verifyToken,
+// Add a review to a recipe 
 // router.get('/:id/reviews', Auth.verifyToken, recipes.getRecipeReciews);
 
-// Upvote up a recipe Auth.verifyToken,
+// Upvote up a recipe 
 router.post('/:id/upvotes', Auth.verifyToken, recipes.addUpvote);
+
+// Downvote up a recipe 
+router.post('/:id/downvotes', Auth.verifyToken,  recipes.addDownvote);
+
 // Get top upvoted recipe 
 router.get('/?sort=upvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
-
-// Downvote up a recipe Auth.verifyToken,
-router.post('/:id/downvotes', Auth.verifyToken,  recipes.addDownvote);
-// Get top upvoted recipe 
+// Get top downvotes recipe 
 router.get('/?sort=downvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
 
 export default router;

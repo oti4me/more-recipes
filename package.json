@@ -1,12 +1,11 @@
 {
   "name": "more-recipe",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "NODE_ENV=production node ./server/server",
+    "start": "node ./server/server.js",
     "postinstall": "webpack -p",
-    "start-dev": "nodemon  ./server/server --watch ./server --exec babel-node",
+    "dev": "nodemon  ./server/server --watch ./server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
   "dependencies": {
@@ -23,6 +22,7 @@
     "body-parser": "~1.16.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "cloudinary": "^1.9.1",
     "cookie-parser": "~1.4.3",
     "cross-env": "^5.0.5",
     "debug": "~2.6.0",
