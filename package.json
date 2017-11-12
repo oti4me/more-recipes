@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./server/server --exec babel-node",
+    "start" : "node",
+    "start-dev": "nodemon ./server/server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
   "dependencies": {
