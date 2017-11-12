@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start" : "node ./server/server --exec babel-node",
+    "start": "sequelize db:migrate && node ./dist/server.js",
+    "build": "babel ./server -d ./dist",
     "start-dev": "nodemon ./server/server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
   },
@@ -28,7 +29,8 @@
     "mocha": "^3.5.3",
     "morgan": "~1.7.0",
     "pg": "^7.3.0",
-    "sequelize": "^4.13.2",
+    "sequelize": "^4.22.6",
+    "sequelize-cli": "^3.0.0",
     "serve-favicon": "~2.3.2",
     "validator": "^9.0.0"
   },

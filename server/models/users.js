@@ -36,14 +36,14 @@ module.exports = (sequelize, DataTypes) => {
       classMethods: {
         associate: function (models) {
           //associations can be defined here
-          User.hasMany(models.Recipes, {
+          Users.hasMany(models.Recipes, {
             foreignKey: 'userId',
           });
 
-          User.hasMany(models.Reviews, {
+          Users.hasMany(models.Reviews, {
             foreignKey: 'userId'
           });
-          User.hasMany(models.Favorites, {
+          Users.hasMany(models.Favourites, {
             foreignKey: 'userId'
           });
         }
