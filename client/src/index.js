@@ -8,7 +8,22 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import jwt from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
 
+import Routes from './routes';
+import reducers from './reducers';
+
+const initialState = {
+  recipes : null,
+  auth : null
+}
+
+// const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(thunk)));
+
 ReactDOM.render(
-  <h1>Hi!</h1>
-  , document.getElementById('app')
+  <Provider>
+    <BrowserRouter>
+      { Routes }
+    </BrowserRouter>
+  </Provider>
+  // <h1>hello there</h1>
+    , document.getElementById('app')
 );  
