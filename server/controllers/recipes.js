@@ -1,13 +1,8 @@
 "use strict"
-import multer from 'multer';
 import path from 'path';
-
 import validate from '../middleware/validate';
 import db from '../models';
 
-const upload = multer({
-	dest : '../public'
-})
 
 class Recipes {
 
