@@ -203,7 +203,7 @@ var Recipes = function () {
     value: function deleteRecipe(req, res) {
       var id = req.params.id;
       var userId = req.body.userId;
-      if (_validate2.default.validateId(id)) {
+      if (_validate2.default.validateId(id) && _validate2.default.validateId(userId)) {
         _models2.default.Recipes.findOne({
           where: {
             id: id,
@@ -223,11 +223,11 @@ var Recipes = function () {
               res.status(400).json({ message: err.message });
             });
           } else {
-            res.status(400).json({ message: "you do not have a recipe with id " + id });
+            res.status(400).json({ message: 'User with id ' + userId + ' has no recipe with id ' + id });
           }
         });
       } else {
-        res.status(400).json({ message: 'Id "' + id + '" is not a valid integer' });
+        res.status(400).json({ message: 'User ID and recipe ID must be a valid integer' });
       }
     }
   }, {
@@ -235,14 +235,16 @@ var Recipes = function () {
     value: function updateRecipe(req, res) {
       var id = req.params.id;
       var userId = req.body.userId;
-      _validate2.default.validateAUpdateRecipes(req, res);
       var errors = req.validationErrors();
       if (errors) {
-        res.status(400).json({ status: 400, message: errors });
-        return;
+        return res.status(400).json({ status: 400, message: errors });
       } else {
-        if (_validate2.default.validateId(id)) {
-          _models2.default.Recipes.findById(id).then(function (result) {
+        if (_validate2.default.validateId(id) && _validate2.default.validateId(userId)) {
+          _models2.default.Recipes.findOne({
+            where: {
+              id: id, userId: userId
+            }
+          }).then(function (result) {
             if (result) {
               _models2.default.Recipes.update(req.body, {
                 where: {
@@ -260,7 +262,7 @@ var Recipes = function () {
             }
           });
         } else {
-          res.status(400).json({ message: 'Id "' + id + '" is not a valid integer' });
+          res.status(400).json({ status: 400, message: 'user ID and recipe ID must be a valid integer' });
         }
       }
     }
@@ -275,8 +277,7 @@ var Recipes = function () {
       _validate2.default.validateReview(req, res);
       var errors = req.validationErrors();
       if (errors) {
-        res.status(400).json({ status: 400, message: errors });
-        return;
+        return res.status(400).json({ status: 400, message: errors });
       }
       _models2.default.Reviews.create({
         recipeId: recipeId, userId: userId, comment: comment
@@ -295,7 +296,7 @@ var Recipes = function () {
       }
       _models2.default.Reviews.findAll({
         where: {
-          recipeId: id
+          ecipeId: id
         }
       }).then(function (result) {
         if (result) {
@@ -313,15 +314,12 @@ var Recipes = function () {
       var userId = req.body.userId;
       var id = req.params.id;
       var vote = req.body.vote;
-
       if (_validate2.default.validateId(userId) && _validate2.default.validateId(id)) {
         return res.status(400).json({ status: 400, message: 'user ID or Recipe ID is invalid' });
       }
-
       if (_validate2.default.validateId(userId) && _validate2.default.validateId(id)) {
         return res.status(400).json({ status: 400, message: 'user ID or Recipe ID is invalid' });
       }
-
       _models2.default.Votes.findOne({
         where: {
           recipeId: recipeId,
@@ -381,11 +379,11 @@ var Recipes = function () {
   }, {
     key: 'getFavourites',
     value: function getFavourites(req, res) {
-      var id = req.params.id;
+      var userId = req.params.id;
       if (!_validate2.default.validateId(id)) {
         req.status(400).json({ status: 400, message: "Id is not a valid integer" });
       }
-      _models2.default.Favourites.findAll({ attributes: ['recipeId'] }, { where: { userId: id } }).then(function (favourite) {
+      _models2.default.Favourites.findAll({ attributes: ['recipeId'] }, { where: { userId: userId } }).then(function (favourite) {
         if (favourite) {
           var _ids = [];
           result.map(function (favourite) {
@@ -411,14 +409,15 @@ var Recipes = function () {
     value: function addFavourites(req, res) {
       var userId = req.params.id;
       var recipeId = req.body.recipeId;
-      console.log(userId, recipeId);
+      if (_validate2.default.validateId(userId) && _validate2.default.validateId(recipeId)) {
+        res.status(400).json({ status: 400, message: "User Id and Recipe ID must be a valid not integer" });
+      }
       var data = {
-        userId: userId,
-        recipeId: recipeId
+        userId: userId, recipeId: recipeId
       };
-      _models2.default.Favourites.create(data).then(function (favourites) {
-        if (favourites) {
-          res.status(201).json({ status: 201, data: favourites });
+      _models2.default.Favourites.create(data).then(function (favourite) {
+        if (favourite) {
+          res.status(201).json({ status: 201, data: favourite });
         }
       }).catch(function (err) {
         res.status(500).json({ status: 500, message: err.message });
@@ -427,9 +426,10 @@ var Recipes = function () {
   }, {
     key: 'removeFavourites',
     value: function removeFavourites(req, res) {
-      console.log(req.body.recipeId);
-      if (_validate2.default.validateId(req.body.recipeId)) {
-        _models2.default.Favourites.findOne({ where: { userId: req.params.id, recipeId: req.body.recipeId } }).then(function (result) {
+      var recipeId = req.body.recipeId;
+      var userId = req.params.id;
+      if (_validate2.default.validateId(recipeId)) {
+        _models2.default.Favourites.findOne({ where: { userId: userId, recipeId: recipeId } }).then(function (result) {
           if (result) {
             _models2.default.Favourites.destroy({
               where: {
@@ -439,13 +439,13 @@ var Recipes = function () {
               if (result) {
                 res.status(200).json({ message: "Favourite recipe removed" });
               } else {
-                res.status(400).json({ status: 400, message: "Recipe with id " + req.params.id + " not found" });
+                res.status(400).json({ status: 400, message: "Recipe with id " + recipeId + " not found" });
               }
             }).catch(function (err) {
               res.status(400).json({ status: 400, message: "cannot find recipes" });
             });
           } else {
-            res.status(400).json({ status: 400, message: "Recipe with id " + req.params.id + " not found" });
+            res.status(400).json({ status: 400, message: "Recipe with id " + recipeId + " not found" });
           }
         });
       } else {

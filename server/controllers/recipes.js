@@ -187,7 +187,7 @@ class Recipes {
   deleteRecipe(req, res) {
     const id = req.params.id;
     const userId = req.body.userId;
-    if(validate.validateId(id)){ 
+    if(validate.validateId(id) && validate.validateId(userId)){ 
       db.Recipes.findOne({
         where : {
           id : id,
@@ -210,25 +210,27 @@ class Recipes {
             res.status(400).json({message: err.message});
           });
         } else{
-          res.status(400).json({message: "you do not have a recipe with id "+ id });
+          res.status(400).json({message: 'User with id ' + userId + ' has no recipe with id '+ id });
         }  
       }); 
     }else{
-      res.status(400).json({message: `Id "${id}" is not a valid integer` });
+      res.status(400).json({message: `User ID and recipe ID must be a valid integer` });
     }
   }
 
   updateRecipe(req, res) {
     const id = req.params.id;
-    const userId = req.body.userId;
-    validate.validateAUpdateRecipes(req, res);
+    const userId = req.body.userId;   
     var errors = req.validationErrors();
     if (errors) {
-      res.status(400).json({ status : 400, message : errors });
-      return;
+      return res.status(400).json({ status : 400, message : errors });
     } else {
-      if(validate.validateId(id)){ 
-        db.Recipes.findById(id)
+      if(validate.validateId(id) && validate.validateId(userId)){ 
+        db.Recipes.findOne({
+          where : {
+            id, userId 
+          }
+        })
         .then(result => {
           if(result){
             db.Recipes.update(req.body, {
@@ -250,9 +252,9 @@ class Recipes {
           }
         })
       }else{
-        res.status(400).json({message: `Id "${id}" is not a valid integer` });
+        res.status(400).json({ status : 400, message : 'user ID and recipe ID must be a valid integer' });
       }
-    }
+      }
     
   }
 
@@ -261,18 +263,17 @@ class Recipes {
     validate.validateReview(req, res);
     var errors = req.validationErrors();
     if (errors) {
-      res.status(400).json({ status : 400, message : errors });
-      return;
+      return res.status(400).json({ status : 400, message : errors });
     }
     db.Reviews.create({
       recipeId, userId, comment
     })
-      .then((result) => {
-        res.status(200).json({ status: 200, data: result});
-      })
-      .catch(error => {
-        res.status(500).json({ status : 500, message : error.message });
-      })
+    .then((result) => {
+      res.status(200).json({ status: 200, data: result});
+    })
+    .catch(error => {
+      res.status(500).json({ status : 500, message : error.message });
+    })
   }
 
   getReviews(req, res) {
@@ -281,36 +282,33 @@ class Recipes {
       req.status(400).json({ status : 400, message : "Id is not a valid integer"});
     }
     db.Reviews.findAll({
-        where: {
-          recipeId: id
-        }
-      })
-      .then((result) => {
-        if (result) {
-          res.status(200).json({ status: 200, data: result});
-        }
-        else{
-          res.status(400).json({ status: 400, message: 'No review found for this recipe'});
-        }
-      })
-      .catch(error => {
-        res.status(500).json({ status : 500, message : error.message });
-      })
+      where: {
+        ecipeId: id
+      }
+    })
+    .then((result) => {
+      if (result) {
+        res.status(200).json({ status: 200, data: result});
+      }
+      else{
+        res.status(400).json({ status: 400, message: 'No review found for this recipe'});
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ status : 500, message : error.message });
+    })
   }
 
   addUpvote(req, res) {
     const userId = req.body.userId;
     const id = req.params.id;
     const vote = req.body.vote;
-
     if(validate.validateId(userId) && validate.validateId(id)) {
       return res.status(400).json({ status : 400, message : 'user ID or Recipe ID is invalid' });
     }
-
     if(validate.validateId(userId) && validate.validateId(id)) {
       return res.status(400).json({ status : 400, message : 'user ID or Recipe ID is invalid' });
     }
-
     db.Votes.findOne({
       where: {
         recipeId: recipeId,
@@ -324,7 +322,8 @@ class Recipes {
         where: {
           recipeId: recipeId
         }
-      }).then(recipe =>{
+      })
+      .then(recipe =>{
         if(recipe){
           const newVote = recipe.upvote + 1;
           db.Recipes.update({ upvote : newVote }, {
@@ -374,11 +373,11 @@ class Recipes {
   }
 
   getFavourites(req, res) {
-    const id = req.params.id;
+    const userId = req.params.id;
     if(!validate.validateId(id)){
       req.status(400).json({ status : 400, message : "Id is not a valid integer"});
     }
-		db.Favourites.findAll({ attributes : ['recipeId']}, { where : { userId : id}})
+		db.Favourites.findAll({ attributes : ['recipeId']}, { where : { userId  }})
 		.then((favourite) => {
       if(favourite){
         let ids = [];
@@ -406,15 +405,16 @@ class Recipes {
 	addFavourites(req, res) {
     const userId = req.params.id;
     const recipeId = req.body.recipeId;
-    console.log(userId, recipeId);
+    if(validate.validateId(userId) && validate.validateId(recipeId)){
+      res.status(400).json({ status : 400, message: "User Id and Recipe ID must be a valid not integer"});
+    }
     const data = {
-      userId : userId,
-      recipeId : recipeId
+      userId, recipeId
     }
 		db.Favourites.create(data)
-		.then((favourites) => {			
-      if (favourites ) {
-         res.status(201).json({ status: 201, data : favourites });
+		.then((favourite) => {			
+      if (favourite) {
+         res.status(201).json({ status: 201, data : favourite });
 			}  
 		})
 		.catch(err => {
@@ -423,9 +423,10 @@ class Recipes {
   }
   
   removeFavourites(req, res) {
-    console.log(req.body.recipeId)
-    if(validate.validateId(req.body.recipeId)){ 
-      db.Favourites.findOne({ where : { userId : req.params.id, recipeId : req.body.recipeId}})
+    const recipeId = req.body.recipeId;
+    const userId = req.params.id;
+    if(validate.validateId(recipeId)){ 
+      db.Favourites.findOne({ where : { userId, recipeId }})
       .then(result => {
         if(result){
           db.Favourites.destroy({
@@ -437,14 +438,14 @@ class Recipes {
             if (result) {
               res.status(200).json({message: "Favourite recipe removed"});
             }else{
-              res.status(400).json({ status : 400, message: "Recipe with id "+ req.params.id +" not found"});
+              res.status(400).json({ status : 400, message: "Recipe with id "+ recipeId +" not found"});
             }
           })
           .catch(err => {
             res.status(400).json({ status : 400, message: "cannot find recipes"});
           });
         } else{
-          res.status(400).json({ status : 400, message: "Recipe with id "+ req.params.id +" not found"});
+          res.status(400).json({ status : 400, message: "Recipe with id "+ recipeId +" not found"});
         }  
       }); 
     }else{
@@ -457,15 +458,15 @@ class Recipes {
         where: {
           id: req.params.id
         }
-      })
-      .then((items) => {
-        if (items) {
-          res.status(200).json({status: 200, data: items});
-        }
-      })
-      .catch(err => {
-        res.status(400).json({message: err.message});
-      });
+    })
+    .then((items) => {
+      if (items) {
+        res.status(200).json({status: 200, data: items});
+      }
+    })
+    .catch(err => {
+      res.status(400).json({message: err.message});
+    });
   }
 }
 

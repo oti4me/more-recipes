@@ -19,7 +19,7 @@ var _config2 = _interopRequireDefault(_config);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var basename = _path2.default.basename(__filename);
-var env = 'production'; //process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 var config = _config2.default[env];
 var db = {};
 var sequelize = void 0;
