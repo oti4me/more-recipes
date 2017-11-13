@@ -13,12 +13,11 @@ import http from 'http';
  */
 
 const port = process.env.PORT || '3000';
-app.set('port', port);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 app.listen(port, () => {
-  console.log('Server running in localhost 3000');
+  console.log('Server running at port' + port);
 });

@@ -20,7 +20,7 @@ const config = {
     logging: false
   },
   production: {
-    url : process.env.use_env_variable
+    url : process.env.DATABASE_URL,
   }
 };
 

@@ -22,6 +22,9 @@ router.put('/:id', Auth.verifyToken, recipes.updateRecipe);
 
 // Add a review to a recipe
 router.post('/:id/reviews', Auth.verifyToken, recipes.reviewRecipe);
+// Add a review to a recipe
+router.get('/:id/reviews', Auth.verifyToken, recipes.getReviews);
+
 
 // Upvote up a recipe
 router.post('/:id/upvotes', Auth.verifyToken, recipes.addUpvote);

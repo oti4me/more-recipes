@@ -17,23 +17,26 @@ class Users{
 		validate.validateSignup(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.send(errors);
+			res.json(400).send({ errors: errors });
 			return;
 		} else {
 			
+			const { firstname, lastname, email, phone, password } = req.body;
 			db.Users.find({
 				where: {
-						email: req.body.email
+						email: email
 				}
 			}).then((user) => {
 				if (user) {
 						 res.status(409).json({
-						 message: "User with email '" + req.body.email + "' already exists", 
+						 message: "User with email '" + email + "' already exists", 
 						 status: 409
 						});
 				} else {
 					
-					db.Users.create(req.body).then((user) => {
+					db.Users.create({
+						firstname, lastname, email, phone, password
+					}).then((user) => {
 						if (user) {
 							const jwtData = {
 								firstname: user.firstname.trim(),
@@ -50,7 +53,7 @@ class Users{
 					})
 						.catch(error => {
 							 res.status(400).json({
-								message: 'Bad request sent to the server',
+								message: 'Bad request',
 								errors: error
 							});
 						});
@@ -66,11 +69,12 @@ class Users{
 		validate.validateLogin(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.send(errors);
+			res.json(400).send({ errors: errors });
 			return;
 		} else {
-			db.Users.findOne({ where: { email: req.body.email } }).then((user) => {			
-      if (user && req.body.password && Auth.comparePassword(req.body.password, user.password)) {
+			const { email, password } = req.body;
+			db.Users.findOne({ where: { email } }).then((user) => {			
+      if (user && password && Auth.comparePassword(password, user.password)) {
         const token = jwt.sign({
 					firstname: user.firstname,
 					lastname: user.lastname,
