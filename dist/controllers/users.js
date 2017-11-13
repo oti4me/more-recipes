@@ -51,23 +51,31 @@ var Users = function () {
 			_validate2.default.validateSignup(req, res);
 			var errors = req.validationErrors();
 			if (errors) {
-				res.send(errors);
+				res.json(400).send({ errors: errors });
 				return;
 			} else {
+				var _req$body = req.body,
+				    firstname = _req$body.firstname,
+				    lastname = _req$body.lastname,
+				    email = _req$body.email,
+				    phone = _req$body.phone,
+				    password = _req$body.password;
 
 				_models2.default.Users.find({
 					where: {
-						email: req.body.email
+						email: email
 					}
 				}).then(function (user) {
 					if (user) {
 						res.status(409).json({
-							message: "User with email '" + req.body.email + "' already exists",
+							message: "User with email '" + email + "' already exists",
 							status: 409
 						});
 					} else {
 
-						_models2.default.Users.create(req.body).then(function (user) {
+						_models2.default.Users.create({
+							firstname: firstname, lastname: lastname, email: email, phone: phone, password: password
+						}).then(function (user) {
 							if (user) {
 								var jwtData = {
 									firstname: user.firstname.trim(),
@@ -83,7 +91,7 @@ var Users = function () {
 							}
 						}).catch(function (error) {
 							res.status(400).json({
-								message: 'Bad request sent to the server',
+								message: 'Bad request',
 								errors: error
 							});
 						});
@@ -99,11 +107,15 @@ var Users = function () {
 			_validate2.default.validateLogin(req, res);
 			var errors = req.validationErrors();
 			if (errors) {
-				res.send(errors);
+				res.json(400).send({ errors: errors });
 				return;
 			} else {
-				_models2.default.Users.findOne({ where: { email: req.body.email } }).then(function (user) {
-					if (user && req.body.password && _jwtMiddleware2.default.comparePassword(req.body.password, user.password)) {
+				var _req$body2 = req.body,
+				    email = _req$body2.email,
+				    password = _req$body2.password;
+
+				_models2.default.Users.findOne({ where: { email: email } }).then(function (user) {
+					if (user && password && _jwtMiddleware2.default.comparePassword(password, user.password)) {
 						var _token2 = _jsonwebtoken2.default.sign({
 							firstname: user.firstname,
 							lastname: user.lastname,

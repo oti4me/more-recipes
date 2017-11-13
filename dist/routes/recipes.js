@@ -37,6 +37,8 @@ router.put('/:id', _jwtMiddleware2.default.verifyToken, _recipes2.default.update
 
 // Add a review to a recipe
 router.post('/:id/reviews', _jwtMiddleware2.default.verifyToken, _recipes2.default.reviewRecipe);
+// Add a review to a recipe
+router.get('/:id/reviews', _jwtMiddleware2.default.verifyToken, _recipes2.default.getReviews);
 
 // Upvote up a recipe
 router.post('/:id/upvotes', _jwtMiddleware2.default.verifyToken, _recipes2.default.addUpvote);

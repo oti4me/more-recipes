@@ -20,12 +20,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 var port = process.env.PORT || '3000';
-_app2.default.set('port', port);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 _app2.default.listen(port, function () {
-  console.log('Server running in localhost 3000');
+  console.log('Server running at port' + port);
 });

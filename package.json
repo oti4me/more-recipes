@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sequelize db:migrate && node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "build": "babel ./server -d ./dist",
     "start-dev": "nodemon ./server/server --exec babel-node",
     "test": "mocha ./server/test/* --compilers js:babel-register"
