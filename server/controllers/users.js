@@ -17,11 +17,11 @@ class Users{
 		validate.validateSignup(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.json(400).send({ errors: errors });
+			res.status(400).json({ status: 400, errors: errors });
 			return;
 		} else {
 			
-			const { firstname, lastname, email, phone, password } = req.body;
+			let { firstname, lastname, email, phone, password } = req.body;
 			db.Users.find({
 				where: {
 						email: email
@@ -33,10 +33,17 @@ class Users{
 						 status: 409
 						});
 				} else {
-					
-					db.Users.create({
+
+					fistname = firstname.trim();
+					lastname = lastname.trim();
+					email = email.trim();
+					phone = phone.trim();
+					password = password.trim();
+
+					const data = {
 						firstname, lastname, email, phone, password
-					}).then((user) => {
+					}
+					db.Users.create(data).then((user) => {
 						if (user) {
 							const jwtData = {
 								firstname: user.firstname.trim(),
@@ -69,7 +76,7 @@ class Users{
 		validate.validateLogin(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.json(400).send({ errors: errors });
+			res.status(400).json({ status: 400, errors: errors });
 			return;
 		} else {
 			const { email, password } = req.body;

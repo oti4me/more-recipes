@@ -6,11 +6,6 @@ import db from '../models';
 
 class Recipes {
 
-  /*
-	* getAllRecipes function with params @req, @res
-	*
-  */
-  
   getAllRecipes(req, res) {
     // Get recipes based or query strings to return the most voted recipes
     let limit = 6;   // number of records per page
@@ -88,10 +83,6 @@ class Recipes {
    
   }
 
-  /*
-	* getSingleRecipes function with @params id, and a return type of array
-	*
-	*/
   getSingleRecipe(req, res) {
     const id = req.params.id;
     if(validate.validateId(id)){ 
@@ -111,10 +102,6 @@ class Recipes {
     }
   }
 
-    /*
-	* getSingleRecipes function with @params id, and a return type of array
-	*
-	*/
   getMyRecipes(req, res) {
     const id = req.params.id;
     if(validate.validateId(id)){ 
@@ -156,10 +143,6 @@ class Recipes {
     }
   }
 
-  /*
-	* addRecipe function with params @req, @res
-	*
-	*/
   addRecipe(req, res) {
     validate.validateAddRecipes(req, res);
     var errors = req.validationErrors();
@@ -180,10 +163,6 @@ class Recipes {
     }
   }
 
-  /*
-	* Delete recipe function with params @req, @res
-	*
-	*/
   deleteRecipe(req, res) {
     const id = req.params.id;
     const userId = req.body.userId;
