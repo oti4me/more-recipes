@@ -13,7 +13,7 @@ const secretKey = process.env.JWT_SECRET_KEY;
 class Users{
 	
 	signup(req, res) {
-		
+		 
 		validate.validateSignup(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
@@ -21,28 +21,29 @@ class Users{
 			return;
 		} else {
 			
-			let { firstname, lastname, email, phone, password } = req.body;
-			db.Users.find({
+			let { firstname, lastname, email, phone, password, image } = req.body;
+
+			const data = {
+				firstname : firstname.trim(),
+				lastname : lastname.trim(),
+				email : email.trim(),
+				phone : phone.trim(),
+				password : password.trim(),
+				image : image
+			}
+
+			db.Users.findOne({
 				where: {
-						email: email
+						email: data.email
 				}
 			}).then((user) => {
+				console.log('data values ',data);
 				if (user) {
 						 res.status(409).json({
-						 message: "User with email '" + email + "' already exists", 
+						 message: "User with email '" + data.email + "' already exists", 
 						 status: 409
 						});
-				} else {
-
-					fistname = firstname.trim();
-					lastname = lastname.trim();
-					email = email.trim();
-					phone = phone.trim();
-					password = password.trim();
-
-					const data = {
-						firstname, lastname, email, phone, password
-					}
+				} else {					
 					db.Users.create(data).then((user) => {
 						if (user) {
 							const jwtData = {
@@ -91,13 +92,12 @@ class Users{
 
         user = Auth.filterUser(user);
          res.status(200).json({ status: 200, token, user });
-      }
-      
-       res.status(401).json({ errors: { message: 'Failed to authenticate user' } });
+      }else{
+				res.status(401).json({ errors: { message: 'Failed to authenticate user' } });
+			}
     })
 			.catch(error => {
 				res.status(500).json({ error });
-
 			});
 		}
 		
