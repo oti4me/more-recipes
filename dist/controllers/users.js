@@ -59,29 +59,31 @@ var Users = function () {
 				    lastname = _req$body.lastname,
 				    email = _req$body.email,
 				    phone = _req$body.phone,
-				    password = _req$body.password;
+				    password = _req$body.password,
+				    image = _req$body.image;
 
-				_models2.default.Users.find({
+
+				var data = {
+					firstname: firstname.trim(),
+					lastname: lastname.trim(),
+					email: email.trim(),
+					phone: phone.trim(),
+					password: password.trim(),
+					image: image
+				};
+
+				_models2.default.Users.findOne({
 					where: {
-						email: email
+						email: data.email
 					}
 				}).then(function (user) {
+					console.log('data values ', data);
 					if (user) {
 						res.status(409).json({
-							message: "User with email '" + email + "' already exists",
+							message: "User with email '" + data.email + "' already exists",
 							status: 409
 						});
 					} else {
-
-						fistname = firstname.trim();
-						lastname = lastname.trim();
-						email = email.trim();
-						phone = phone.trim();
-						password = password.trim();
-
-						var data = {
-							firstname: firstname, lastname: lastname, email: email, phone: phone, password: password
-						};
 						_models2.default.Users.create(data).then(function (user) {
 							if (user) {
 								var jwtData = {
@@ -132,9 +134,9 @@ var Users = function () {
 
 						user = _jwtMiddleware2.default.filterUser(user);
 						res.status(200).json({ status: 200, token: _token2, user: user });
+					} else {
+						res.status(401).json({ errors: { message: 'Failed to authenticate user' } });
 					}
-
-					res.status(401).json({ errors: { message: 'Failed to authenticate user' } });
 				}).catch(function (error) {
 					res.status(500).json({ error: error });
 				});
