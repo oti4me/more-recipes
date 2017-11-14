@@ -262,7 +262,7 @@ class Recipes {
     }
     db.Reviews.findAll({
       where: {
-        ecipeId: id
+        recipeId: id
       }
     })
     .then((result) => {
