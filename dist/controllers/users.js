@@ -51,7 +51,7 @@ var Users = function () {
 			_validate2.default.validateSignup(req, res);
 			var errors = req.validationErrors();
 			if (errors) {
-				res.json(400).send({ errors: errors });
+				res.status(400).json({ status: 400, errors: errors });
 				return;
 			} else {
 				var _req$body = req.body,
@@ -73,9 +73,16 @@ var Users = function () {
 						});
 					} else {
 
-						_models2.default.Users.create({
+						fistname = firstname.trim();
+						lastname = lastname.trim();
+						email = email.trim();
+						phone = phone.trim();
+						password = password.trim();
+
+						var data = {
 							firstname: firstname, lastname: lastname, email: email, phone: phone, password: password
-						}).then(function (user) {
+						};
+						_models2.default.Users.create(data).then(function (user) {
 							if (user) {
 								var jwtData = {
 									firstname: user.firstname.trim(),
@@ -107,7 +114,7 @@ var Users = function () {
 			_validate2.default.validateLogin(req, res);
 			var errors = req.validationErrors();
 			if (errors) {
-				res.json(400).send({ errors: errors });
+				res.status(400).json({ status: 400, errors: errors });
 				return;
 			} else {
 				var _req$body2 = req.body,

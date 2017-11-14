@@ -31,13 +31,6 @@ var Recipes = function () {
 
   _createClass(Recipes, [{
     key: 'getAllRecipes',
-
-
-    /*
-    * getAllRecipes function with params @req, @res
-    *
-    */
-
     value: function getAllRecipes(req, res) {
       // Get recipes based or query strings to return the most voted recipes
       var limit = 6; // number of records per page
@@ -100,12 +93,6 @@ var Recipes = function () {
         });
       });
     }
-
-    /*
-    * getSingleRecipes function with @params id, and a return type of array
-    *
-    */
-
   }, {
     key: 'getSingleRecipe',
     value: function getSingleRecipe(req, res) {
@@ -124,12 +111,6 @@ var Recipes = function () {
         res.status(400).json({ message: 'Id "' + id + '" is not a valid integer' });
       }
     }
-
-    /*
-    * getSingleRecipes function with @params id, and a return type of array
-    *
-    */
-
   }, {
     key: 'getMyRecipes',
     value: function getMyRecipes(req, res) {
@@ -167,12 +148,6 @@ var Recipes = function () {
         res.status(400).json({ message: 'Id "' + req.params.id + '" is not a valid integer' });
       }
     }
-
-    /*
-    * addRecipe function with params @req, @res
-    *
-    */
-
   }, {
     key: 'addRecipe',
     value: function addRecipe(req, res) {
@@ -192,12 +167,6 @@ var Recipes = function () {
         });
       }
     }
-
-    /*
-    * Delete recipe function with params @req, @res
-    *
-    */
-
   }, {
     key: 'deleteRecipe',
     value: function deleteRecipe(req, res) {
