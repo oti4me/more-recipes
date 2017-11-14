@@ -265,7 +265,7 @@ var Recipes = function () {
       }
       _models2.default.Reviews.findAll({
         where: {
-          ecipeId: id
+          recipeId: id
         }
       }).then(function (result) {
         if (result) {
