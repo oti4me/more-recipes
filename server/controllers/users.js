@@ -1,7 +1,6 @@
 "use strict"
 import jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import validator from 'validator';
 import db from '../models';
 import Auth from '../middleware/jwtMiddleware';
 import validate from '../middleware/validate';
@@ -9,9 +8,20 @@ import validate from '../middleware/validate';
 
 dotenv.config();
 const secretKey = process.env.JWT_SECRET_KEY;
-
+/**
+ * 
+ * 
+ * @class Users
+ */
 class Users{
-	
+	/**
+	 * 
+	 * 
+	 * @param {any} req 
+	 * @param {any} res 
+	 * @returns 
+	 * @memberof Users
+	 */
 	signup(req, res) {
 		validate.validateSignup(req, res);
 		var errors = req.validationErrors();
@@ -19,18 +29,19 @@ class Users{
 			res.status(400).json({ message : errors });
 			return;
 		} else {
+			const {	firstname, lastname, email,	password,	phone	} = req.body;
 			db.Users.find({
 				where: {
 					email: req.body.email
 				}
-			}).then((user) => {
-				if (user) {
+			}).then((existingUser) => {
+				if (existingUser) {
 					res.status(409).json({
-						message: "User with email '" + req.body.email + "' already exists", 
+						message: "User with email '" + email + "' already exists", 
 						status: 409
 					});
 				} else {
-					const {	firstname, lastname, email,	password,	phone	} = req.body;
+					
 					const data ={
 						firstname : firstname,
 						lastname : lastname,
@@ -56,7 +67,7 @@ class Users{
 						}
 					})
 						.catch(error => {
-							 res.status(400).json({
+							res.status(400).json({
 								message: error.message,
 								errors: error
 							});
@@ -64,11 +75,18 @@ class Users{
 				}
 			})
 				.catch((error) => {
-					 res.status(500).json({ message : error });
-				});
+					res.status(500).json({ message : error });
+			  });
 		}		
 	}
-	
+	/**
+	 * 
+	 * 
+	 * @param {any} req 
+	 * @param {any} res 
+	 * @returns 
+	 * @memberof Users
+	 */
 	signin(req, res){
 		validate.validateLogin(req, res);
 		var errors = req.validationErrors();
@@ -90,7 +108,7 @@ class Users{
 				user = Auth.filterUser(user);
         res.status(200).json({ status: 200, token, user });
       }else{
-				 res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });
+				res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });
 			}
       
     })
@@ -99,8 +117,14 @@ class Users{
 			});
 		}
 	}
-
-	profile(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Users
+ */
+profile(req, res) {
 		let id = req.body.id;
 		// id = validate.validateId(id);
 		db.Users.findById(id)
@@ -115,7 +139,7 @@ class Users{
 			}  
 		})
 		.catch(err =>{
-			res.status(500).json({ status : 500, message : error.message });
+			res.status(500).json({ status : 500, message : err.message });
 		});
 	}
 }

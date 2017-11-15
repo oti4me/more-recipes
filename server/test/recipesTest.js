@@ -1,46 +1,38 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import supertest from 'supertest';
 import app from '../app';
-const should = chai.should();
-chai.use(chaiHttp);
+import fakerObj from './helpers/user.helper';
 
+const expect = chai.expect;
+const request = supertest(app);
 describe("", () => {
 
-	const data = {
-		title : "Cassava cake",
-		description : "Cassava cake",
-		ingredients : "Cassava cake",
-		image : "Cassava cake",
-		direction : "Cassava cake",
-		userId : 3
-	}
-
-	const data2 = {
-		title : "Cassava cake",
-		description : "Cassava cake",
-		ingredients : "Cassava cake",
-		image : "Cassava cake",
-		direction : "Cassava cake",
-		userId : 3
-	}
-
-  it('Add recipes test', (done) => { // <= Pass in done callback
-	  chai.request(app)
-		.post('/api/v1/recipes')
-		.send(data)
-	  .end( (err, res) => {
-	     res.should.have.status(201);
-	     res.should.be.json;
-	     res.should.be.a('object');
-	     done();
-	  });
-	  
+	it('should successfully create a new user on successful registration', (done) => {
+		request
+			.post('/api/v1/users/signup')
+			.send(fakerObj.users)
+			.expect(201)
+			.end((err, res) => {
+				expect(res.body.user.email).to.equal(fakerObj.users.email);
+				done();
+			});
 	});
 
-  it('Update recipes test', (done) => { // <= Pass in done callback
+  it('All recipes test', (done) => { // <= Pass in done callback
 	  chai.request(app)
-		.post('/api/v1/recipes')
-		.send(data)
+	    .get('/api/v1/recipes')
+	    .end( (err, res) => {
+	      res.should.have.status(200);
+	      res.should.be.json;
+	      res.should.be.a('object');
+	     done();
+	    });
+	});
+
+  it('Single recipe test', (done) => { // <= Pass in done callback
+	  chai.request(app)
+	  .get('/api/v1/recipes/1') 
 	  .end( (err, res) => {
 	     res.should.have.status(200);
 	     res.should.be.json;
