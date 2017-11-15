@@ -6,7 +6,7 @@
     "start": "node ./server/server.js",
     "postinstall": "webpack -p",
     "dev": "nodemon  ./server/server --watch ./server --exec babel-node",
-    "test": "mocha ./server/test/* --compilers js:babel-register"
+    "test": "cross-env NODE_ENV=test mocha ./server/test/* --compilers js:babel-register"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -20,8 +20,6 @@
     "babel-register": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.16.0",
-    "chai": "^4.1.2",
-    "chai-http": "^3.0.0",
     "cloudinary": "^1.9.1",
     "cookie-parser": "~1.4.3",
     "cross-env": "^5.0.5",
@@ -37,6 +35,7 @@
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
     "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -49,18 +48,18 @@
     "sequelize": "^4.13.2",
     "sequelize-cli": "^3.0.0",
     "serve-favicon": "~2.3.2",
+    "supertest": "^3.0.0",
     "validator": "^9.0.0",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^6.4.1",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "faker": "^4.1.0",
     "jsdoc": "^3.5.5",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.1",

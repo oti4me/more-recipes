@@ -4,13 +4,20 @@ import path from 'path';
 import validate from '../middleware/validate';
 import db from '../models';
 
+/**
+ * 
+ * 
+ * @class Recipes
+ */
 class Recipes {
 
-  /*
-	* getAllRecipes function with params @req, @res
-	*
-  */
-  
+  /**
+   * 
+   * 
+   * @param {any} req 
+   * @param {any} res 
+   * @memberof Recipes
+   */
   getAllRecipes(req, res) {
     // Get recipes based or query strings to return the most voted recipes
     let limit = 6;   // number of records per page
@@ -88,11 +95,14 @@ class Recipes {
    
   }
 
-  /*
-	* getSingleRecipes function with @params id, and a return type of array
-	*
-	*/
-  getSingleRecipe(req, res) {
+ /**
+  * 
+  * 
+  * @param {any} req 
+  * @param {any} res 
+  * @memberof Recipes
+  */
+ getSingleRecipe(req, res) {
     const id = req.params.id;
     if(validate.validateId(id)){ 
       db.Recipes.findById(id)
@@ -111,11 +121,14 @@ class Recipes {
     }
   }
 
-  /*
-	* getSingleRecipes function with @params id, and a return type of array
-	*
-	*/
-  getMyRecipes(req, res) {
+ /**
+  * 
+  * 
+  * @param {any} req 
+  * @param {any} res 
+  * @memberof Recipes
+  */
+ getMyRecipes(req, res) {
     const id = req.params.id;
     if(validate.validateId(id)){ 
       let limit = 6;   // number of records per page
@@ -142,9 +155,9 @@ class Recipes {
         })
           .then((recipes) => {
             if(recipes){
-              res.status(200).json({status: 200, data: recipes});
+              res.status(200).json({status: 200, data: recipes, pages});
             }else{
-              res.status(400).json({status: 400, message: "User with id '" + rid + "' not found"});
+              res.status(400).json({status: 400, message: "User with id '" + id + "' not found"});
             }          
           })
         })
@@ -156,11 +169,15 @@ class Recipes {
     }
   }
 
-  /*
-	* addRecipe function with params @req, @res
-	*
-	*/
-  addRecipe(req, res) {
+ /**
+  * 
+  * 
+  * @param {any} req 
+  * @param {any} res 
+  * @returns 
+  * @memberof Recipes
+  */
+ addRecipe(req, res) {
     validate.validateAddRecipes(req, res);
     var errors = req.validationErrors();
     if (errors) {
@@ -180,11 +197,14 @@ class Recipes {
     }
   }
 
-  /*
-	* Delete recipe function with params @req, @res
-	*
-	*/
-  deleteRecipe(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+deleteRecipe(req, res) {
     const id = req.params.id;
     const userId = req.body.userId;
     if(validate.validateId(id) && validate.validateId(userId)){ 
@@ -217,8 +237,15 @@ class Recipes {
       res.status(400).json({message: `User ID and recipe ID must be a valid integer` });
     }
   }
-
-  updateRecipe(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @returns 
+ * @memberof Recipes
+ */
+updateRecipe(req, res) {
     const id = req.params.id;
     const userId = req.body.userId;   
     var errors = req.validationErrors();
@@ -257,8 +284,15 @@ class Recipes {
       }
     
   }
-
-  reviewRecipe(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @returns 
+ * @memberof Recipes
+ */
+reviewRecipe(req, res) {
     const { recipeId, userId, comment } = req.body;
     validate.validateReview(req, res);
     var errors = req.validationErrors();
@@ -275,8 +309,14 @@ class Recipes {
       res.status(500).json({ status : 500, message : error.message });
     })
   }
-
-  getReviews(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+getReviews(req, res) {
     const id = req.params.id;
     if(!validate.validateId(id)){
       req.status(400).json({ status : 400, message : "Id is not a valid integer"});
@@ -298,8 +338,15 @@ class Recipes {
       res.status(500).json({ status : 500, message : error.message });
     })
   }
-
-  addUpvote(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @returns 
+ * @memberof Recipes
+ */
+addUpvote(req, res) {
     const userId = req.body.userId;
     const id = req.params.id;
     const vote = req.body.vote;
@@ -343,8 +390,14 @@ class Recipes {
       })
     })
   }
-
-  addDownvote(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+addDownvote(req, res) {
     db.Recipes.fineOne({
         where: {
           recipeId: req.params.id
@@ -371,27 +424,32 @@ class Recipes {
         res.status(500).json({status: 500, message: err.message});
       });
   }
-
-  getFavourites(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+getFavourites(req, res) {
     const userId = req.params.id;
     if(!validate.validateId(id)){
       req.status(400).json({ status : 400, message : "Id is not a valid integer"});
     }
 		db.Favourites.findAll({ attributes : ['recipeId']}, { where : { userId  }})
-		.then((favourite) => {
-      if(favourite){
+		.then((favourites) => {
+      if(favourites){
         let ids = [];
-        result.map(favourite => {
+        favourites.map(favourite => {
           ids.push(favourite.recipeId);
         });
       }	
-      console.log(ids);
       db.Recipes.findAll({ 
         where : { id : [...ids]}
       })
-      .then(favourites => {
-        if (favourites ) {
-         res.status(200).json({ status: 200, data : favourites });
+      .then(favouriteRecioes => {
+        if (favouriteRecioes ) {
+         res.status(200).json({ status: 200, data : favouriteRecioes });
         }else{
           res.status(401).json({ status: 401, message : "No recipe found!!" });
         } 
@@ -401,8 +459,14 @@ class Recipes {
 			res.status(500).json({ status: 500, message : err.message });
 		});
 	}
-
-	addFavourites(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+addFavourites(req, res) {
     const userId = req.params.id;
     const recipeId = req.body.recipeId;
     if(validate.validateId(userId) && validate.validateId(recipeId)){
@@ -421,7 +485,13 @@ class Recipes {
 			res.status(500).json({ status: 500, message : err.message });
 		});
   }
-  
+  /**
+   * 
+   * 
+   * @param {any} req 
+   * @param {any} res 
+   * @memberof Recipes
+   */
   removeFavourites(req, res) {
     const recipeId = req.body.recipeId;
     const userId = req.params.id;
@@ -452,12 +522,18 @@ class Recipes {
       res.status(400).json({message: `Id "${req.params.id}" is not a valid integer` });
     }
 	}
-
-  search(req, res) {
+/**
+ * 
+ * 
+ * @param {any} req 
+ * @param {any} res 
+ * @memberof Recipes
+ */
+search(req, res) {
     db.Recipes.findAll({
-        where: {
-          id: req.params.id
-        }
+      where: {
+        id: req.params.id
+      }
     })
     .then((items) => {
       if (items) {
