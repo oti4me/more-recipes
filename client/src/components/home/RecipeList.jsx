@@ -3,6 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
+import shortId from 'shortid';
 
 import Data from '../../../../server/mockapi/data';
 import { getAllRecipe } from '../../actions/RecipeAction';
@@ -47,19 +48,13 @@ class RecipeList extends React.Component {
       .then(res => {
         console.log(res);
         this.setState({
-          recipes : res.data.data,
+          recipes : res.data.recipes,
           pages : res.data.pages
         });
+      })
+      .catch(error => {
+         
       });
-      //  .catch(error => {
-      //    console.log(error.message);
-        //  if(error.response.status === 400){
-        //    console.log(error);
-        //  }else if(error.response.status === 401){
-        //    console.log(error);
-        //  }else{
-        //    console.log(error);
-        //  }
   }
 
   handlePagination(e){
@@ -96,10 +91,10 @@ class RecipeList extends React.Component {
     const i = 1;
      const Row = recipeChunk.map( chunk => {
       return (
-      <div className="row" key={i+1}>
+      <div className="row" key={shortId.generate()}>
         { chunk.map(recipe => {
           return (
-            <div className="col s12 m4 l4" key={recipe.id}>
+            <div className="col s12 m4 l4" key={shortId.generate()}>
               <div className="card">
                 <div className="card-image">
                   <Link to={`/recipe/${recipe.id}`}>
@@ -130,7 +125,8 @@ class RecipeList extends React.Component {
     return Row;
   }
 
-  render() {   
+  render() {  
+    console.log('current state', this.state); 
     return (
       <div className = "col s12 m10 l10" > <div className="row">
         <div className="col s12 m8 l8">

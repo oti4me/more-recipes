@@ -17,8 +17,8 @@ class HomePage extends React.Component {
     return (
       <div>
         <Header { ...this.props } />
+        <HomeBanner />
         <div className="container">
-          <HomeBanner />
           <div className="row">
             <RecipeList { ...this.props }/>
             <TopRecipeList />

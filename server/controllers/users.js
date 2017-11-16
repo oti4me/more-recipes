@@ -29,7 +29,13 @@ class Users{
 			res.status(400).json({ message : errors });
 			return;
 		} else {
-			const {	firstname, lastname, email,	password,	phone	} = req.body;
+			const {	firstname, lastname, email,	password,	phone, comfirmPassword	} = req.body;
+			if(validate.confirmPassword(password, comfirmPassword)){
+				res.status(400).json({
+					message: "Password did not match", 
+					status: 400
+				});
+			}
 			db.Users.find({
 				where: {
 					email: req.body.email
@@ -106,6 +112,7 @@ class Users{
 					image: user.image
         }, secretKey, { expiresIn: 86400 });
 				user = Auth.filterUser(user);
+				console.log(res);
         res.status(200).json({ status: 200, token, user });
       }else{
 				res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });
@@ -126,22 +133,26 @@ class Users{
  */
 profile(req, res) {
 		let id = req.body.id;
-		// id = validate.validateId(id);
-		db.Users.findById(id)
-		.then((user) => {			
-      if (user) {
-        res.status(200).json({ status: 200, user : user });
-			}else{
-				res.status(409).json({
-					message: "User with ID '" + id + "' doesn't exists", 
-					status: 409
-				});
-			}  
-		})
-		.catch(err =>{
-			res.status(500).json({ status : 500, message : err.message });
-		});
-	}
+		if(validate.validateId(id)){
+			db.Users.findById(id)
+			.then((user) => {			
+				if (user) {
+					res.status(200).json({ status: 200, user : user });
+				}else{
+					res.status(409).json({
+						message: "User with ID '" + id + "' doesn't exists", 
+						status: 409
+					});
+				}  
+			})
+			.catch(err =>{
+				res.status(500).json({ status : 500, message : err.message });
+			});
+		}else{
+			res.status(400).json({ status : 400, message : 'ID is not a valid integer' });
+		}
+		}
+		
 }
 
 export default new Users();

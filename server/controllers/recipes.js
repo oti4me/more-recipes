@@ -32,14 +32,14 @@ class Recipes {
           order = 'ASC';
         }
         db.Recipes.findAll({
-            limit: 10,
-            offset: offset,
+            imit,
+            offset,
             order: [
               ['upvotes', order]
             ]
           })
           .then((recipes) => {
-            res.status(200).json({status: 200, data: recipes});
+            res.status(200).json({status: 200, recipes: recipes});
           })
           .catch(error => {
             res.status(500).json(error);
@@ -52,14 +52,14 @@ class Recipes {
           order = 'ASC';
         }
         db.Recipes.findAll({
-            limit : limit,
-            offset: offset,
+            limit,
+            offset,
             order: [
               ['upvotes', order]
             ]
           })
           .then((recipes) => {
-            res.status(200).json({status: 200, data: recipes});
+            res.status(200).json({status: 200, recipes: recipes});
           })
           .catch(error => {
             res.status(500).json(error);
@@ -75,24 +75,23 @@ class Recipes {
       offset = limit * (page - 1);
 
       db.Recipes.findAll({
-        limit: limit,
-        offset: offset,
+        limit,
+        offset,
         order: [
               ['id', 'DESC']
             ]
       })
       .then((recipes) => {
         if(recipes){
-          res.status(200).json({status: 200, data: recipes, pages : pages });
+          res.status(200).json({status: 200, recipes: recipes, pages : pages });
         }else{
-          res.status(401).json({status: 400, message: "No recipe found"});
+          res.status(404).json({status: 404, message: "No recipe found"});
         }
       })
       .catch(error => {
         res.status(500).json(error);
       })
     })
-   
   }
 
  /**
@@ -108,9 +107,9 @@ class Recipes {
       db.Recipes.findById(id)
         .then((recipe) => {
           if(recipe){
-            res.status(200).json({status: 200, data: recipe});
+            res.status(200).json({status: 200, recipe: recipe});
           }else{
-            res.status(400).json({status: 400, message: "Recipe with id '" + id + "' not found"});
+            res.status(400).json({status: 404, message: "Recipe with id '" + id + "' not found"});
           }          
         })
         .catch(error => {
@@ -138,9 +137,12 @@ class Recipes {
             userId : id
           }
         })
-      .then((data) => {
-        let page = req.body.page ? req.body.page : 1;      // page number
-        let pages = Math.ceil(data.count / limit);
+      .then((recipesCount) => {
+        if(!recipesCount){
+          return res.status(400).json({status: 400, message: "No recipe return for this user"});
+        }
+        let page = req.body.page ? req.body.page : 1; // page number
+        let pages = Math.ceil(recipesCount.count / limit);
         offset = limit * (page - 1);
 
         db.Recipes.findAll({ 
@@ -156,16 +158,14 @@ class Recipes {
           .then((recipes) => {
             if(recipes){
               res.status(200).json({status: 200, data: recipes, pages});
-            }else{
-              res.status(400).json({status: 400, message: "User with id '" + id + "' not found"});
-            }          
+            }        
           })
         })
         .catch(err =>{
           res.status(500).json({status: 500, message: err.message});
         });
     }else{
-      res.status(400).json({message: `Id "${req.params.id}" is not a valid integer` });
+      res.status(400).json({message: `Id "${id}" is not a valid integer` });
     }
   }
 
@@ -186,9 +186,7 @@ class Recipes {
       db.Recipes.create(req.body)
         .then((result) => {
           if (result) {
-            return res.status(201).json({status: 201, message: "Recipe added"});
-          } else {
-            return res.status(400).json({status: 400, message: "Error Adding recipe, try again later"});
+            return res.status(201).json({status: 201, message: "New recipe added"});
           }
         })
         .catch(error => {
@@ -221,16 +219,16 @@ deleteRecipe(req, res) {
               id: result.id
             }
           })
-          .then((result) => {
-            if (result) {
-              res.status(200).json({message: "Data deleted"});
+          .then((response) => {
+            if (response) {
+              res.status(200).json({ status : 200, message: "Recipe deleted"});
             }
           })
           .catch(err => {
-            res.status(400).json({message: err.message});
+            res.status(500).json({message: err.message});
           });
         } else{
-          res.status(400).json({message: 'User with id ' + userId + ' has no recipe with id '+ id });
+          res.status(400).json({message: 'You is not authorised to delete this recipe'});
         }  
       }); 
     }else{
@@ -258,24 +256,24 @@ updateRecipe(req, res) {
             id, userId 
           }
         })
-        .then(result => {
-          if(result){
+        .then(recipe => {
+          if(recipe){
             db.Recipes.update(req.body, {
               where: {
-                id: result.id
+                id: recipe.id
               }
             })
-            .then((result) => {
-              if (result) {
-                res.status(200).json({message: "Data Updated"});
+            .then((response) => {
+              if (response) {
+                res.status(200).json({message: "Recipe Updated"});
               }
             })
             .catch(err => {
-              res.status(400).json({message: err.message});
+              res.status(500).json({message: err.message});
             });
           }
           else{
-            res.status(400).json({message: "Recipe with id "+ id +" not found"});
+            res.status(401).json({ status : 401, message: "you are not authorised to update this recipe"});
           }
         })
       }else{
@@ -467,24 +465,24 @@ getFavourites(req, res) {
  * @memberof Recipes
  */
 addFavourites(req, res) {
-    const userId = req.params.id;
-    const recipeId = req.body.recipeId;
-    if(validate.validateId(userId) && validate.validateId(recipeId)){
-      res.status(400).json({ status : 400, message: "User Id and Recipe ID must be a valid not integer"});
-    }
-    const data = {
-      userId, recipeId
-    }
-		db.Favourites.create(data)
-		.then((favourite) => {			
-      if (favourite) {
-         res.status(201).json({ status: 201, data : favourite });
-			}  
-		})
-		.catch(err => {
-			res.status(500).json({ status: 500, message : err.message });
-		});
+  const userId = req.params.id;
+  const recipeId = req.body.recipeId;
+  if(validate.validateId(userId) && validate.validateId(recipeId)){
+    res.status(400).json({ status : 400, message: "User Id and Recipe ID must be a valid not integer"});
   }
+  const data = {
+    userId, recipeId
+  }
+  db.Favourites.create(data)
+  .then((favourite) => {			
+    if (favourite) {
+        res.status(201).json({ status: 201, data : favourite });
+    }  
+  })
+  .catch(err => {
+    res.status(500).json({ status: 500, message : err.message });
+  });
+}
   /**
    * 
    * 
@@ -497,31 +495,29 @@ addFavourites(req, res) {
     const userId = req.params.id;
     if(validate.validateId(recipeId)){ 
       db.Favourites.findOne({ where : { userId, recipeId }})
-      .then(result => {
-        if(result){
+      .then(favourite => {
+        if(favourite){
           db.Favourites.destroy({
             where: {
-              id: result.id
+              id: favourite.id
             }
           })
           .then((result) => {
             if (result) {
-              res.status(200).json({message: "Favourite recipe removed"});
-            }else{
-              res.status(400).json({ status : 400, message: "Recipe with id "+ recipeId +" not found"});
+              res.status(200).json({ status : 200, message: "Favourite recipe removed"});
             }
           })
           .catch(err => {
-            res.status(400).json({ status : 400, message: "cannot find recipes"});
+            res.status(400).json({ status : 400, message : err.message});
           });
-        } else{
-          res.status(400).json({ status : 400, message: "Recipe with id "+ recipeId +" not found"});
-        }  
+        }else{
+          res.status(401).json({message: `You dont have this recipe as a favourite` });
+        } 
       }); 
     }else{
-      res.status(400).json({message: `Id "${req.params.id}" is not a valid integer` });
+      res.status(400).json({message: `Id "${recipeId}" is not a valid integer` });
     }
-	}
+  }
 /**
  * 
  * 
@@ -541,7 +537,7 @@ search(req, res) {
       }
     })
     .catch(err => {
-      res.status(400).json({message: err.message});
+      res.status(500).json({message: err.message});
     });
   }
 }

@@ -132,8 +132,7 @@ h5{
  right: 0;
  height: 70px;
  background-color: #26a69a;
- position: relative;
- overflow: hidden;
+ position: 'rixed';
 }
 
 .foot > p{
