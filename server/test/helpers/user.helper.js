@@ -9,7 +9,8 @@ const fakerObj = {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(6),  
+    password: 'henryotighe',
+    confirmPassword : 'hernyotighe',  
     phone: faker.phone.phoneNumber(),
     image : 'image/img.jpg'
   },
@@ -18,6 +19,7 @@ const fakerObj = {
     lastname: 'testmister',
     email: 'factory@email.com',
     password: 'password',
+    confirmPassword : 'password',
     phone: '2344566777',
     image : 'image/img.jpg'
   },
@@ -45,17 +47,17 @@ const fakerObj = {
     image : 'image/img.jpg'
   },
   wrongUser: {
-    firstname: undefined,
+    firstname: 'testuserone',
     lastname: 'testmister',
     email: 'test@email.com',
-    password: 'password',
+    password: '',
     phone: '2344566777',
     image : 'image/img.jpg'
   },
   wrongUser2: {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
-    email: undefined,
+    email: '',
     password: faker.internet.password(6),  
     phone: faker.phone.phoneNumber(),
     image : 'image/img.jpg'

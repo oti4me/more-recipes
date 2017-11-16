@@ -6,7 +6,9 @@
     "start": "node ./server/server.js",
     "postinstall": "webpack -p",
     "dev": "nodemon  ./server/server --watch ./server --exec babel-node",
-    "test": "cross-env NODE_ENV=test mocha ./server/test/* --compilers js:babel-register"
+    "test-dev": "cross-env NODE_ENV=test mocha ./server/test/* --compilers js:babel-register",
+    "test": "nyc --reporter=html --reporter=text mocha --timeout 500000 --compilers js:babel-core/register server/test/*",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -22,6 +24,7 @@
     "body-parser": "~1.16.0",
     "cloudinary": "^1.9.1",
     "cookie-parser": "~1.4.3",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
     "debug": "~2.6.0",
     "dotenv": "^4.0.0",
@@ -34,6 +37,7 @@
     "mocha": "^3.5.3",
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
+    "nyc": "^11.3.0",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "react": "^16.0.0",
@@ -50,6 +54,7 @@
     "serve-favicon": "~2.3.2",
     "shortid": "^2.2.8",
     "supertest": "^3.0.0",
+    "validate-password": "^1.0.4",
     "validator": "^9.0.0",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",

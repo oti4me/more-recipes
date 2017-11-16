@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode';
+
 const validate = {
   validateLogin(req, res) {
     req
@@ -7,8 +9,8 @@ const validate = {
       .checkBody("password", "Password can't be empty.")
       .notEmpty();
     req
-      .checkBody("password", "Password must be at least 8 characters long.")
-      .isLength({ min : 8});
+      .checkBody("password", "Password must be at least 8 characters long and must not contain space.")
+      .matches(/^[a-zA-Z0-9.]{8,32}$/);
   },
 
   validateSignup(req, res) {
@@ -16,14 +18,14 @@ const validate = {
       .checkBody("firstname", "First name cannot be empty.")
       .notEmpty();
     req
-      .checkBody("firstname", "First name be less than 3 characters.")
-      .isLength({ min : 3});
+      .checkBody("firstname", "First name be less than 3 characters and must not contain numbers.")
+      .matches(/^[a-zA-Z.]{3,25}$/);
     req
       .checkBody("lastname", "Last name cannot be empty.")
       .notEmpty();
     req
       .checkBody("lastname", "Last name cannot be less than 3 characters.")
-      .isLength({ min : 3});
+      .matches(/^[a-zA-Z.]{3,25}$/);
     req
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
@@ -34,14 +36,17 @@ const validate = {
       .checkBody("phone", "Phone number can't be empty.")
       .notEmpty();
     req
-      .checkBody("phone", "Phone number is not a valid phone number.")
-      .isNumeric();
+      .checkBody("phone", "Phone number must be a valid phone number and must not contain spaces.")
+      .matches(/^[0-9.]{10,15}$/);
     req
       .checkBody("password", "Password can't be empty.")
       .notEmpty(); 
     req
-      .checkBody("password", "Password can't be less than 8 characters.")
-      .isLength({ min : 8});  
+      .checkBody("password", "Password can't be less than 8 characters and mnust not contain spaces.")
+      .matches(/^[a-zA-Z0-9.]{8,32}$/);
+    req
+      .checkBody("confirmPassword", "Password confirmation field can't be empty.")
+      .notEmpty();   
   },
 
   validateAddRecipes(req, res) {
@@ -50,7 +55,7 @@ const validate = {
       .notEmpty();
     req
       .checkBody("title", "title can't be less than 5 characters.")
-      .isLength({ min : 5}); 
+      .isLength({ min : 5});      
     req
       .checkBody("image", "Please, select an image.")
       .notEmpty();
@@ -71,9 +76,22 @@ const validate = {
       .notEmpty();
     req
       .checkBody("direction", "Direction ccan't be less than 10 characters.")
-      .isLength({ min : 10});
+      .isLength({ min : 10});    
+  },
 
-      
+  validateudateRecipes(req, res) {
+    req
+      .checkBody("title", "title can't be less than 5 characters.")
+      .isLength({ min : 5});      
+    req
+      .checkBody("description", "description can't be less than 10 characters.")
+      .isLength({ min : 10}); 
+    req
+      .checkBody("ingredients", "ingredients can't be less than 10 characters.")
+      .isLength({ min : 10}); 
+    req
+      .checkBody("direction", "Direction ccan't be less than 10 characters.")
+      .isLength({ min : 10});    
   },
 
   validateReviewRecipe(req, res) {
@@ -82,13 +100,7 @@ const validate = {
       .notEmpty();
     req
       .checkBody("comment", "Comment can't be less than 10 characters long.")
-      .isLength({ min : 10 });
-    req
-      .checkBody("userId", "User ID  cannot be empty.")
-      .notEmpty();
-    req
-      .checkBody("recipeId", "Recipe ID can't be empty.")
-      .notEmpty();
+      .isLength({ min : 5 });
   },
 
   validateId(id, req, res) {
@@ -97,6 +109,12 @@ const validate = {
       } else { 
         return true; 
       }
+  },
+
+  getUserId(req, res){
+    const user = jwt_decode(req.headers['x-access-token']);
+    const { userId } = user;
+    return userId;
   },
 
   confirmPassword(password1, password2, req, res) {
