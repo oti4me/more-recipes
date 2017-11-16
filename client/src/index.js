@@ -41,6 +41,5 @@ ReactDOM.render(
       { Routes }
     </BrowserRouter>
   </Provider>
-  // <h1>hello there</h1>
     , document.getElementById('app')
 );  

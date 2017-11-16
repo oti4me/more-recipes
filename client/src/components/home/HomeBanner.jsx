@@ -8,12 +8,18 @@ class HomeBanner extends React.Component {
     super(props);
   }
 
-  render() {
+  componentDidMount(){
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+  }
 
+  render() {
     const style1 = {
       height: "450px", 
       width: "100%",
       backgroundColor: "#26a69a",
+      backgroundImage : "url('./images/23.jpg')",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "100%",
       position: "relative"
     };
 
@@ -24,40 +30,28 @@ class HomeBanner extends React.Component {
     
     const style3 = {
       width:"100%",
-      height: "450px", 
+      height: "100%", 
       top: 0, 
       textAlign: "center", 
       color: "#ccc", 
       bottom: 0, 
       position: "absolute", 
-      backgroundColor: "rgba(0,0,0, 0.6)"
+      backgroundColor: "rgba(0,0,0, 0.5)"
     };
 
   return (
-    <div className="top-margin-40" style={style1}>
-      <img style={style2} src="./images/4.jpg"/>
+    <div className="" style={style1}>
       <div style={style3}>
-        <h1 className="margin-top:40">More Recipes</h1>
-        <p>The fantastic recipe sharing application</p>
         <div className="carousel carousel-slider center" data-indicators="true">
           <div className="carousel-fixed-item center">
-            {/* <a className="btn waves-effect white grey-text darken-text-2">button</a> */}
           </div>
-          <div className="carousel-item red white-text" href="#one!">
+          <div className="carousel-item red white-text" style={style1} href="#one!">
             <h2>Welcome the biggest Recipe sharing app</h2>
             <p className="white-text">This is your first panel</p>
           </div>
           <div className="carousel-item amber white-text" href="#two!">
             <h2>Second Panel</h2>
             <p className="white-text">This is your second panel</p>
-          </div>
-          <div className="carousel-item green white-text" href="#three!">
-            <h2>Third Panel</h2>
-            <p className="white-text">This is your third panel</p>
-          </div>
-          <div className="carousel-item blue white-text" href="#four!">
-            <h2>Fourth Panel</h2>
-            <p className="white-text">This is your fourth panel</p>
           </div>
         </div>
       </div>
