@@ -6,7 +6,7 @@ import Auth from '../middleware/jwtMiddleware';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.json({message : "users route"});
+	res.json({message : "Please consult the API document"});
 });
 
 router.get('/:id/profile', Auth.verifyToken, Users.profile);

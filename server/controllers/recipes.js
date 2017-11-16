@@ -1,5 +1,6 @@
 "use strict"
 import path from 'path';
+import jwt_decode from 'jwt-decode';
 
 import validate from '../middleware/validate';
 import db from '../models';
@@ -8,24 +9,25 @@ import db from '../models';
  * 
  * 
  * @class Recipes
- */
+*/
 class Recipes {
 
   /**
+   * A method for a user to get all recipes in the collection
    * 
-   * 
-   * @param {any} req 
-   * @param {any} res 
+   * @returns {object} insertion error messages object or success message object
+   * @param {object} request 
+   * @param {object} reponse 
    * @memberof Recipes
-   */
-  getAllRecipes(req, res) {
+  */
+  getAllRecipes(request, reponse) {
     // Get recipes based or query strings to return the most voted recipes
     let limit = 6;   // number of records per page
     let offset = 0;
 
-    if (req.query.sort && req.query.order) {
-      let order = req.query.order;
-      if (req.query.sort === 'upvotes') {
+    if (request.query.sort && request.query.order) {
+      let order = request.query.order;
+      if (request.query.sort === 'upvotes') {
         if (order === 'desc') {
           order = 'DESC';
         } else if (order === 'asc') {
@@ -39,10 +41,10 @@ class Recipes {
             ]
           })
           .then((recipes) => {
-            res.status(200).json({status: 200, recipes: recipes});
+            reponse.status(200).json({status: 200, recipes: recipes});
           })
           .catch(error => {
-            res.status(500).json(error);
+            reponse.status(500).json(error);
           })
       } else {
         // Get recipes based or query strings to return the least voted recipes
@@ -59,10 +61,10 @@ class Recipes {
             ]
           })
           .then((recipes) => {
-            res.status(200).json({status: 200, recipes: recipes});
+            reponse.status(200).json({status: 200, recipes: recipes});
           })
           .catch(error => {
-            res.status(500).json(error);
+            reponse.status(500).json(error);
           })
       }
     }
@@ -70,7 +72,7 @@ class Recipes {
     //get all recipes
     db.Recipes.findAndCountAll()
     .then((data) => {
-      let page = req.body.page ? req.body.page : 1;      // page number
+      let page = request.body.page ? request.body.page : 1;      // page number
       let pages = Math.ceil(data.count / limit);
       offset = limit * (page - 1);
 
@@ -83,53 +85,54 @@ class Recipes {
       })
       .then((recipes) => {
         if(recipes){
-          res.status(200).json({status: 200, recipes: recipes, pages : pages });
+          reponse.status(200).json({status: 200, recipes, pages });
         }else{
-          res.status(404).json({status: 404, message: "No recipe found"});
+          reponse.status(404).json({status: 404, message: "No recipe found"});
         }
       })
       .catch(error => {
-        res.status(500).json(error);
+        reponse.status(500).json(error);
       })
     })
   }
 
  /**
-  * 
-  * 
-  * @param {any} req 
-  * @param {any} res 
+  * A method get a single recipe base on recipe ID
+  * @returns {object} insertion error messages object or success message object
+  * @param {object} request 
+  * @param {object} reponse 
   * @memberof Recipes
-  */
- getSingleRecipe(req, res) {
-    const id = req.params.id;
+*/
+ getSingleRecipe(request, reponse) {
+    const id = request.params.id;
     if(validate.validateId(id)){ 
       db.Recipes.findById(id)
         .then((recipe) => {
           if(recipe){
-            res.status(200).json({status: 200, recipe: recipe});
+            reponse.status(200).json({status: 200, recipe });
           }else{
-            res.status(400).json({status: 404, message: "Recipe with id '" + id + "' not found"});
+            reponse.status(400).json({status: 404, message: "Recipe with id '" + id + "' not found"});
           }          
         })
         .catch(error => {
-          res.status(500).json({status: 500, message: error.message});
+          reponse.status(500).json({status: 500, message: error.message});
         })
     }else{
-      res.status(400).json({message: `Id "${id}" is not a valid integer` });
+      reponse.status(400).json({message: `Id "${id}" is not a valid integer` });
     }
   }
 
  /**
+  * A method to get recipes added by a user based on user ID
   * 
-  * 
-  * @param {any} req 
-  * @param {any} res 
-  * @memberof Recipes
-  */
- getMyRecipes(req, res) {
-    const id = req.params.id;
-    if(validate.validateId(id)){ 
+  * @returns {object} insertion error messages object or success message object
+  * @param {object} request 
+  * @param {object} reponse 
+*/
+ getMyRecipes(request, reponse) {
+    const id = request.params.id;
+    const userId = validate.getUserId(request, reponse);
+    if(validate.validateId(id) && validate.validateId(userId)){ 
       let limit = 6;   // number of records per page
       let offset = 0;
       db.Recipes.findAndCountAll({ 
@@ -139,9 +142,9 @@ class Recipes {
         })
       .then((recipesCount) => {
         if(!recipesCount){
-          return res.status(400).json({status: 400, message: "No recipe return for this user"});
+          return reponse.status(400).json({status: 400, message: "No recipe return for this user"});
         }
-        let page = req.body.page ? req.body.page : 1; // page number
+        let page = request.body.page ? request.body.page : 1; // page number
         let pages = Math.ceil(recipesCount.count / limit);
         offset = limit * (page - 1);
 
@@ -157,98 +160,112 @@ class Recipes {
         })
           .then((recipes) => {
             if(recipes){
-              res.status(200).json({status: 200, data: recipes, pages});
+              reponse.status(200).json({status: 200, recipes, pages});
             }        
           })
         })
         .catch(err =>{
-          res.status(500).json({status: 500, message: err.message});
+          reponse.status(500).json({status: 500, message: err.message});
         });
     }else{
-      res.status(400).json({message: `Id "${id}" is not a valid integer` });
+      reponse.status(400).json({message: `Recipe Id and User ID must be a valid integer` });
     }
   }
 
  /**
-  * 
-  * 
-  * @param {any} req 
-  * @param {any} res 
-  * @returns 
+  * A method add recipe to the collection
+  *
+  * @returns {object} insertion error messages object or success message object
+  * @param {object} request 
+  * @param {object} reponse 
   * @memberof Recipes
-  */
- addRecipe(req, res) {
-    validate.validateAddRecipes(req, res);
-    var errors = req.validationErrors();
+*/
+  addRecipe(request, reponse) {
+    const userId = validate.getUserId(request, reponse);
+    const { title, direction, description, image, ingredients } = request.body;
+    if(!validate.validateId(userId)){
+      return reponse.status(400).json({ status : 400, message : 'User Id is invalid' });
+    }
+    validate.validateAddRecipes(request, reponse);
+    var errors = request.validationErrors();
     if (errors) {
-      return res.status(400).json({ status : 400, message : errors });
+      return reponse.status(400).json({ status : 400, message : errors });
     } else {
-      db.Recipes.create(req.body)
-        .then((result) => {
-          if (result) {
-            return res.status(201).json({status: 201, message: "New recipe added"});
+      let data = {
+        title,
+        direction,
+        description,
+        image,
+        ingredients,
+        userId
+      }
+      db.Recipes.create(data)
+        .then((reponseult) => {
+          if (reponseult) {
+            return reponse.status(201).json({status: 201, message: "New recipe added"});
           }
         })
         .catch(error => {
-          return res.status(500).json({status: 500, message: error.message});
+          return reponse.status(500).json({status: 500, message: error.message});
         })
     }
   }
 
 /**
+ * A method that allows a user to delete recipes he or she added to the recipe collection
  * 
- * 
- * @param {any} req 
- * @param {any} res 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-deleteRecipe(req, res) {
-    const id = req.params.id;
-    const userId = req.body.userId;
-    if(validate.validateId(id) && validate.validateId(userId)){ 
-      db.Recipes.findOne({
-        where : {
-          id : id,
-          userId : userId
-        }
-      })
-      .then(result => {
-        if(result){
-          db.Recipes.destroy({
-            where: {
-              id: result.id
-            }
-          })
-          .then((response) => {
-            if (response) {
-              res.status(200).json({ status : 200, message: "Recipe deleted"});
-            }
-          })
-          .catch(err => {
-            res.status(500).json({message: err.message});
-          });
+*/
+deleteRecipe(request, reponse) {
+  const userId = validate.getUserId(request, reponse);
+  const id = request.params.id;
+  if(validate.validateId(id) && validate.validateId(userId)){ 
+    db.Recipes.findOne({
+      where : {
+        id,
+        userId
+      }
+    })
+    .then(recipe => {
+      if(recipe){
+        db.Recipes.destroy({
+          where: {
+            id: recipe.id
+          }
+        })
+        .then((reponseponse) => {
+          if (reponseponse) {
+            reponse.status(200).json({ status : 200, message: "Recipe deleted"});
+          }
+        })
+        .catch(err => {
+          reponse.status(500).json({message: err.message});
+        });
         } else{
-          res.status(400).json({message: 'You is not authorised to delete this recipe'});
+          reponse.status(400).json({ status : 401, message: 'You is not authorised to delete this recipe'});
         }  
       }); 
     }else{
-      res.status(400).json({message: `User ID and recipe ID must be a valid integer` });
+      reponse.status(400).json({message: `User ID and recipe ID must be a valid integer` });
     }
   }
 /**
+ * A method that allows a user to update recipes he added to the collection
  * 
- * 
- * @param {any} req 
- * @param {any} res 
- * @returns 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-updateRecipe(req, res) {
-    const id = req.params.id;
-    const userId = req.body.userId;   
-    var errors = req.validationErrors();
+*/
+updateRecipe(request, reponse) {
+    const id = request.params.id;
+    const userId = validate.getUserId(request, reponse);   
+    var errors = request.validationErrors();
     if (errors) {
-      return res.status(400).json({ status : 400, message : errors });
+      return reponse.status(400).json({ status : 400, message : errors });
     } else {
       if(validate.validateId(id) && validate.validateId(userId)){ 
         db.Recipes.findOne({
@@ -258,114 +275,114 @@ updateRecipe(req, res) {
         })
         .then(recipe => {
           if(recipe){
-            db.Recipes.update(req.body, {
+            db.Recipes.update(request.body, {
               where: {
                 id: recipe.id
               }
             })
-            .then((response) => {
-              if (response) {
-                res.status(200).json({message: "Recipe Updated"});
+            .then((reponseponse) => {
+              if (reponseponse) {
+                reponse.status(200).json({message: "Recipe Updated"});
               }
             })
             .catch(err => {
-              res.status(500).json({message: err.message});
+              reponse.status(500).json({message: err.message});
             });
           }
           else{
-            res.status(401).json({ status : 401, message: "you are not authorised to update this recipe"});
+            reponse.status(401).json({ status : 401, message: "you are not authorised to update this recipe"});
           }
         })
       }else{
-        res.status(400).json({ status : 400, message : 'user ID and recipe ID must be a valid integer' });
+        reponse.status(400).json({ status : 400, message : 'user ID and recipe ID must be a valid integer' });
       }
       }
     
   }
 /**
+ * A method that allows a user to review recipes on the collection
  * 
- * 
- * @param {any} req 
- * @param {any} res 
- * @returns 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-reviewRecipe(req, res) {
-    const { recipeId, userId, comment } = req.body;
-    validate.validateReview(req, res);
-    var errors = req.validationErrors();
+*/
+reviewRecipe(request, reponse) {
+    const recipeId = request.params.id
+    const { comment } = request.body;
+    const userId = validate.getUserId(request, reponse);  
+    validate.validateReview(request, reponse);
+    var errors = request.validationErrors();
     if (errors) {
-      return res.status(400).json({ status : 400, message : errors });
+      return reponse.status(400).json({ status : 400, message : errors });
     }
     db.Reviews.create({
       recipeId, userId, comment
     })
-    .then((result) => {
-      res.status(200).json({ status: 200, data: result});
+    .then((reponseult) => {
+      reponse.status(200).json({ status: 200, data: reponseult});
     })
     .catch(error => {
-      res.status(500).json({ status : 500, message : error.message });
+      reponse.status(500).json({ status : 500, message : error.message });
     })
   }
 /**
+ * A method that allows the user to get list of reviews for a particular recipe
  * 
- * 
- * @param {any} req 
- * @param {any} res 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-getReviews(req, res) {
-    const id = req.params.id;
+*/
+getReviews(request, reponse) {
+    const id = request.params.id;
     if(!validate.validateId(id)){
-      req.status(400).json({ status : 400, message : "Id is not a valid integer"});
+      request.status(400).json({ status : 400, message : "Id is not a valid integer"});
     }
     db.Reviews.findAll({
       where: {
         ecipeId: id
       }
     })
-    .then((result) => {
-      if (result) {
-        res.status(200).json({ status: 200, data: result});
+    .then((reviews) => {
+      if (reviews) {
+        reponse.status(200).json({ status: 200, reviews});
       }
       else{
-        res.status(400).json({ status: 400, message: 'No review found for this recipe'});
+        reponse.status(404).json({ status: 404, message: 'No review found for this recipe'});
       }
     })
     .catch(error => {
-      res.status(500).json({ status : 500, message : error.message });
+      reponse.status(500).json({ status : 500, message : error.message });
     })
   }
 /**
+ * A method that allows the user to upvote/like a recipe
  * 
- * 
- * @param {any} req 
- * @param {any} res 
- * @returns 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-addUpvote(req, res) {
-    const userId = req.body.userId;
-    const id = req.params.id;
-    const vote = req.body.vote;
-    if(validate.validateId(userId) && validate.validateId(id)) {
-      return res.status(400).json({ status : 400, message : 'user ID or Recipe ID is invalid' });
-    }
-    if(validate.validateId(userId) && validate.validateId(id)) {
-      return res.status(400).json({ status : 400, message : 'user ID or Recipe ID is invalid' });
+*/
+addUpvote(request, reponse) {
+    const userId = validate.getUserId(request, reponse);  
+    const recipeId = request.params.id;
+    const vote = request.body.vote;
+    if(validate.validateId(userId) && validate.validateId(recipeId)) {
+      return reponse.status(400).json({ status : 400, message : 'user ID or Recipe ID is invalid' });
     }
     db.Votes.findOne({
       where: {
-        recipeId: recipeId,
-        userId : userId
+        recipeId,
+        userId
       }
-    }).then(res => {
-      if(res){
-        return res.status(400).json({ status : 400, message : 'Already Votted' });
+    }).then(result => {
+      if(result){
+        return reponse.status(400).json({ status : 400, message : 'Already Votted' });
       }
       db.Recipes.findOne({
         where: {
-          recipeId: recipeId
+          recipeId
         }
       })
       .then(recipe =>{
@@ -376,63 +393,72 @@ addUpvote(req, res) {
               id: recipe.id
             }
           })
-          .then(res => {
-            db.Votes.create({
-              recipeId: recipeId,
-              userId : userId,
-              voteType : vote
-            }).then( res => {
-            }) 
+          .then(updateResponse => {
+            if(updateResponse){
+              db.Votes.create({
+                recipeId: recipeId,
+                userId : userId,
+                voteType : vote
+              }).then( voteResponse => {
+                if(voteResponse){
+                  return true;
+                }
+              }) 
+            }
+            
           })
         }
       })
     })
   }
+
 /**
+ * A method that allows the user to downvote/dislike a recipe
  * 
- * 
- * @param {any} req 
- * @param {any} res 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse 
  * @memberof Recipes
- */
-addDownvote(req, res) {
+*/
+addDownvote(request, reponse) {
     db.Recipes.fineOne({
         where: {
-          recipeId: req.params.id
+          recipeId: request.params.id
         }
       })
-      .then(user => {
+      .then(recipe => {
         db.Recipes.update({
             downvotes: recipe.upvote + 1
           }, {
             where: {
-              recipeId: req.params.id
+              recipeId: request.params.id
             }
           })
-          .then((result) => {
-            if (result) {
-              res.status(200).json({status: 200, data: "Vote added"});
+          .then((updateResponse) => {
+            if (updateResponse) {
+              reponse.status(200).json({status: 200, data: "Vote added"});
             }
           })
           .catch(error => {
-            res.json(error);
+            reponse.json(error);
           })
       })
       .catch(err => {
-        res.status(500).json({status: 500, message: err.message});
+        reponse.status(500).json({status: 500, message: err.message});
       });
   }
 /**
+ * A method that allows the user to get his favourite recipe
  * 
- * 
- * @param {any} req 
- * @param {any} res 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse
  * @memberof Recipes
- */
-getFavourites(req, res) {
-    const userId = req.params.id;
-    if(!validate.validateId(id)){
-      req.status(400).json({ status : 400, message : "Id is not a valid integer"});
+*/
+getFavourites(request, reponse) {
+    const userId = request.params.id;
+    if(!validate.validateId(userId)){
+      request.status(400).json({ status : 400, message : "Id is not a valid integer"});
     }
 		db.Favourites.findAll({ attributes : ['recipeId']}, { where : { userId  }})
 		.then((favourites) => {
@@ -441,58 +467,60 @@ getFavourites(req, res) {
         favourites.map(favourite => {
           ids.push(favourite.recipeId);
         });
+        db.Recipes.findAll({ 
+          where : { id : [...ids]}
+        })
+        .then(favouriteRecipes => {
+          if (favouriteRecipes ) {
+           reponse.status(200).json({ status: 200, data : favouriteRecipes });
+          }else{
+            reponse.status(404).json({ status: 404, message : "No recipe found!!" });
+          } 
+        })
       }	
-      db.Recipes.findAll({ 
-        where : { id : [...ids]}
-      })
-      .then(favouriteRecioes => {
-        if (favouriteRecioes ) {
-         res.status(200).json({ status: 200, data : favouriteRecioes });
-        }else{
-          res.status(401).json({ status: 401, message : "No recipe found!!" });
-        } 
-      })
 		})
 		.catch(err => {
-			res.status(500).json({ status: 500, message : err.message });
+			reponse.status(500).json({ status: 500, message : err.message });
 		});
 	}
-/**
- * 
- * 
- * @param {any} req 
- * @param {any} res 
- * @memberof Recipes
- */
-addFavourites(req, res) {
-  const userId = req.params.id;
-  const recipeId = req.body.recipeId;
-  if(validate.validateId(userId) && validate.validateId(recipeId)){
-    res.status(400).json({ status : 400, message: "User Id and Recipe ID must be a valid not integer"});
-  }
-  const data = {
-    userId, recipeId
-  }
-  db.Favourites.create(data)
-  .then((favourite) => {			
-    if (favourite) {
-        res.status(201).json({ status: 201, data : favourite });
-    }  
-  })
-  .catch(err => {
-    res.status(500).json({ status: 500, message : err.message });
-  });
-}
   /**
+   * A method that allows the user to add a recipe to his favourite list recipes
    * 
-   * 
-   * @param {any} req 
-   * @param {any} res 
+   * @returns {object} insertion error messages object or success message object
+   * @param {object} request 
+   * @param {object} reponse 
    * @memberof Recipes
-   */
-  removeFavourites(req, res) {
-    const recipeId = req.body.recipeId;
-    const userId = req.params.id;
+  */
+  addFavourites(request, reponse) {
+    const userId = request.params.id;
+    const recipeId = request.body.recipeId;
+    if(validate.validateId(userId) && validate.validateId(recipeId)){
+      reponse.status(400).json({ status : 400, message: "User Id and Recipe ID must be a valid not integer"});
+    }
+    const data = {
+      userId, recipeId
+    }
+    db.Favourites.create(data)
+    .then((favourite) => {			
+      if (favourite) {
+          reponse.status(201).json({ status: 201, favourite });
+      }  
+    })
+    .catch(err => {
+      reponse.status(500).json({ status: 500, message : err.message });
+    });
+  }
+  /**
+   * A method that allows the user to remove a recipe from his favourite recipes
+   * 
+   * @returns {object} insertion error messages object or success message object
+   * @param {object} request 
+   * @param {object} reponse
+   * @memberof Recipes
+  */
+  removeFavourites(request, reponse) {
+    const recipeId = request.body.recipeId;
+    const userId = validate.getUserId(request, reponse); 
     if(validate.validateId(recipeId)){ 
       db.Favourites.findOne({ where : { userId, recipeId }})
       .then(favourite => {
@@ -502,42 +530,43 @@ addFavourites(req, res) {
               id: favourite.id
             }
           })
-          .then((result) => {
-            if (result) {
-              res.status(200).json({ status : 200, message: "Favourite recipe removed"});
+          .then((reponseult) => {
+            if (reponseult) {
+              reponse.status(200).json({ status : 200, message: "Favourite recipe removed"});
             }
           })
           .catch(err => {
-            res.status(400).json({ status : 400, message : err.message});
+            reponse.status(400).json({ status : 400, message : err.message});
           });
         }else{
-          res.status(401).json({message: `You dont have this recipe as a favourite` });
+          reponse.status(401).json({message: `You dont have this recipe as a favourite` });
         } 
       }); 
     }else{
-      res.status(400).json({message: `Id "${recipeId}" is not a valid integer` });
+      reponse.status(400).json({message: `Id "${recipeId}" is not a valid integer` });
     }
   }
 /**
+ * A method that allows the user to search for recipes on the collection
  * 
- * 
- * @param {any} req 
- * @param {any} res 
+ * @returns {object} insertion error messages object or success message object
+ * @param {object} request 
+ * @param {object} reponse
  * @memberof Recipes
- */
-search(req, res) {
+*/
+search(request, reponse) {
     db.Recipes.findAll({
       where: {
-        id: req.params.id
+        id: request.params.id
       }
     })
     .then((items) => {
       if (items) {
-        res.status(200).json({status: 200, data: items});
+        reponse.status(200).json({status: 200, data: items});
       }
     })
     .catch(err => {
-      res.status(500).json({message: err.message});
+      reponse.status(500).json({message: err.message});
     });
   }
 }

@@ -29,9 +29,9 @@ class Users{
 			res.status(400).json({ message : errors });
 			return;
 		} else {
-			const {	firstname, lastname, email,	password,	phone, comfirmPassword	} = req.body;
-			if(validate.confirmPassword(password, comfirmPassword)){
-				res.status(400).json({
+			const {	firstname, lastname, email,	password,	phone, confirmPassword	} = req.body;
+			if(password !== confirmPassword){
+				return res.status(400).json({
 					message: "Password did not match", 
 					status: 400
 				});
@@ -112,7 +112,6 @@ class Users{
 					image: user.image
         }, secretKey, { expiresIn: 86400 });
 				user = Auth.filterUser(user);
-				console.log(res);
         res.status(200).json({ status: 200, token, user });
       }else{
 				res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });

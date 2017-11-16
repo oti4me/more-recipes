@@ -6,4 +6,7 @@ npm-debug.log
 .DS_Store
 server/.DS_Store
 dist
+.coveralls.yml
+coverage
+.nyc_output
 

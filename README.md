@@ -5,7 +5,7 @@ A simple App that allows users create and manage recipes
 It provides restful APIs for users to create recipes, review recipes and favourite a recipe based on userId and managing authentication of users with JsonWebToken.
 
 [![Build Status](https://travis-ci.org/oti4me/More-Recipes.svg?branch=development)](https://travis-ci.org/oti4me/More-Recipes)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/4dfcbf4bb224fdab4624/maintainability)](https://codeclimate.com/github/oti4me/More-Recipes/maintainability)
 ##### Hosted App on Heroku 
 
 [Heroku hosted](http://more-recipes-otighe.heroku.com)
