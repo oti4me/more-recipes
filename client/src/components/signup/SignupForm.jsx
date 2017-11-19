@@ -24,6 +24,7 @@ class SignupForm extends React.Component {
     if(this.state.password !== this.state.confirmPassword){
       return Materialize.toast("Password Didn't Match", 5000, 'red');
     }
+    console.log(this.state);
     this.props.signup(this.state, this.props, Materialize)
     .catch(error => {
       if(error.response.status === 400){
@@ -84,7 +85,7 @@ class SignupForm extends React.Component {
           <div className="row">
             <div className="input-field col s12">
               <input id="confirmPassword" name="confirmPassword" value={ this.state.confirmPassword } type="password" className="validate" onChange={ this.handleChange.bind(this) } />
-              <label htmlFor="confirmPassword">Conform Password</label>
+              <label htmlFor="confirmPassword">Confirm Password</label>
             </div>
           </div>
           <div className="row">
