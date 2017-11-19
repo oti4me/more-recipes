@@ -37,17 +37,18 @@ export const signup = (userData, prop, Materialize) =>{
   return dispatch => {
 
     if(userData.password !== userData.confirmPassword){
-      console.log("password didnt match");
+
     }
 
     dispatch(requestSignup(userData.email));
 
     const data = { 
-      firstname : userData.firstname,
-      lastname : userData.lastname,
-      email : userData.email,
-      phone : userData.phone,
-      password : userData.password
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      email: userData.email,
+      phone: userData.phone,
+      password: userData.password,
+      confirmPassword: userData.confirmPassword
     }
 
     return axios.post('/api/v1/users/signup', data)
