@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import supertest from 'supertest';
 import app from '../app';
-import fakerObj from './helpers/user.helper';
+import fakerObj from './helpers/userHelper';
 
 import models from '../models';
 const { Users } = models;

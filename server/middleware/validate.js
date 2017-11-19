@@ -1,129 +1,154 @@
 import jwt_decode from 'jwt-decode';
+import ValidatePassword from 'validate-password';
+
+const options = {
+  enforce: {
+    lowercase: true,
+    uppercase: true,
+    specialCharacters: true,
+    numbers: true
+  }
+};
+
+const validator = new ValidatePassword(options);
 
 const validate = {
-  validateLogin(req, res) {
-    req
+  validateLogin(request, response) {
+    request
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
-    req
+    request
       .checkBody("password", "Password can't be empty.")
       .notEmpty();
-    req
-      .checkBody("password", "Password must be at least 8 characters long and must not contain space.")
-      .matches(/^[a-zA-Z0-9.]{8,32}$/);
+    request
+      .checkBody("password", "Password must be at least 8 characters long and must not contain spaces.")
+      .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
   },
 
-  validateSignup(req, res) {
-    req
+  validateSignup(request, response) {
+    request
       .checkBody("firstname", "First name cannot be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("firstname", "First name be less than 3 characters and must not contain numbers.")
       .matches(/^[a-zA-Z.]{3,25}$/);
-    req
+    request
       .checkBody("lastname", "Last name cannot be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("lastname", "Last name cannot be less than 3 characters.")
       .matches(/^[a-zA-Z.]{3,25}$/);
-    req
+    request
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
-      req
+      request
       .checkBody("email", "Enter a valid email address.")
       .isLength({ min : 3});
-    req
+    request
       .checkBody("phone", "Phone number can't be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("phone", "Phone number must be a valid phone number and must not contain spaces.")
-      .matches(/^[0-9.]{10,15}$/);
-    req
+      .matches(/^[0-9\-.]{10,15}$/);
+    request
       .checkBody("password", "Password can't be empty.")
       .notEmpty(); 
-    req
+    request
       .checkBody("password", "Password can't be less than 8 characters and mnust not contain spaces.")
-      .matches(/^[a-zA-Z0-9.]{8,32}$/);
-    req
+      .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
+    request
       .checkBody("confirmPassword", "Password confirmation field can't be empty.")
       .notEmpty();   
   },
 
-  validateAddRecipes(req, res) {
-    req
+  validateAddRecipes(request, response) {
+    request
       .checkBody("title", "Title can't be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("title", "title can't be less than 5 characters.")
       .isLength({ min : 5});      
-    req
+    request
       .checkBody("image", "Please, select an image.")
       .notEmpty();
-    req
+    request
       .checkBody("description", "Description can't be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("description", "description can't be less than 10 characters.")
       .isLength({ min : 10}); 
-    req
+    request
       .checkBody("ingredients", "Ingredients can't be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("ingredients", "ingredients can't be less than 10 characters.")
       .isLength({ min : 10}); 
-    req
+    request
       .checkBody("direction", "Direction can't be empty.")
       .notEmpty();
-    req
+    request
       .checkBody("direction", "Direction ccan't be less than 10 characters.")
       .isLength({ min : 10});    
   },
 
-  validateudateRecipes(req, res) {
-    req
+  validateUdateRecipes(request, response) {
+    request
       .checkBody("title", "title can't be less than 5 characters.")
-      .isLength({ min : 5});      
-    req
+      .notEmpty();     
+    request
       .checkBody("description", "description can't be less than 10 characters.")
-      .isLength({ min : 10}); 
-    req
+      .notEmpty(); 
+    request
       .checkBody("ingredients", "ingredients can't be less than 10 characters.")
-      .isLength({ min : 10}); 
-    req
+      .notEmpty(); 
+    request
       .checkBody("direction", "Direction ccan't be less than 10 characters.")
-      .isLength({ min : 10});    
+      .notEmpty();   
+  },
+  validatevaVotes(request, response) {
+    request
+      .checkBody("voteType", "Vote type is required.")
+      .notEmpty();     
+    request
+      .checkBody("voteType", "Vote type must either be upvotes or downvotes.")
+      .matches(/upvotes|downvotes/);   
   },
 
-  validateReviewRecipe(req, res) {
-    req
+  validateReviewRecipe(request, response) {
+    request
       .checkBody("comment", "Comment can't be empty.")
       .notEmpty();
-    req
-      .checkBody("comment", "Comment can't be less than 10 characters long.")
+    request
+      .checkBody("comment", "Review comment too short.")
       .isLength({ min : 5 });
   },
 
-  validateId(id, req, res) {
-      if (isNaN(id)) {
-        return false
-      } else { 
-        return true; 
-      }
+  validateId(id, request, response) {
+    if (isNaN(id)) {
+      return false
+    } else { 
+      return true; 
+    }
   },
 
-  getUserId(req, res){
-    const user = jwt_decode(req.headers['x-access-token']);
+  validateStrengthPasswrod(password, request, response){
+    const passwordData = validator.checkPassword(password);
+    return passwordData;
+  },
+
+  confirmPassword(password, confirmPassword, req, res){
+    if(password !== confirmPassword){
+      return false;
+    }else{
+      return true;
+    }
+  },
+
+  getUserId(request, response){
+    const user = jwt_decode(request.headers['x-access-token']);
     const { userId } = user;
     return userId;
   },
-
-  confirmPassword(password1, password2, req, res) {
-    if (password1 === password2) {
-      return true;
-    } else { 
-      return false; 
-    }
-  }
 };
 
 export default validate;

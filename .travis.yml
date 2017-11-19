@@ -1,3 +1,23 @@
-language : node_js
-after_success: 
-
+language: node_js
+node_js:
+ - "6.10.3" 
+env:
+ - NODE_ENV=test                   
+before_script:
+ - npm install
+ - npm install -g codeclimate-test-reporter
+ - psql -c 'create database travis_test_db;' -U postgres
+ - ./node_modules/.bin/sequelize db:migrate
+cache:
+ directories:
+   - "node_modules"     
+script:
+ - npm test  
+after_success:
+ - npm run coveralls
+ - codeclimate-test-reporter < ./coverage/lcov.info
+addons:
+ postgresql: "9.6"
+ code_climate:
+   repo_token:
+     secure: 29b82e272b143de5e8d4b448182d4386bb3f8ac609dcd4642014d383

@@ -3,9 +3,8 @@
 /**
  * Module dependencies.
  */
-
 import app from './app';
-import http from 'http';
+
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -21,6 +20,4 @@ app.set('port', port);
  * Listen on provided port, on all network interfaces.
  */
 
-app.listen(port, () => {
-  console.log('Server running in localhost 3000');
-});
+app.listen(port);
