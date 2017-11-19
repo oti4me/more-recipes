@@ -14,40 +14,49 @@ const secretKey = process.env.JWT_SECRET_KEY;
  * @class Users
  */
 class Users{
+	
 	/**
+	 * A method that allows a user to create an app in the application
 	 * 
-	 * 
-	 * @param {any} req 
-	 * @param {any} res 
-	 * @returns 
-	 * @memberof Users
-	 */
-	signup(req, res) {
-		validate.validateSignup(req, res);
-		var errors = req.validationErrors();
+	 * @returns {object} insertion error messages object or success message object
+	 * @param {object} request 
+	 * @param {object} response 
+	 * @memberof Recipes
+	*/
+	signup(request, response) {
+		validate.validateSignup(request, response);
+		var errors = request.validationErrors();
 		if (errors) {
-			res.status(400).json({ message : errors });
+			response.status(400).json({ succes: false, message : errors });
 			return;
 		} else {
-			const {	firstname, lastname, email,	password,	phone, confirmPassword	} = req.body;
-			if(password !== confirmPassword){
-				return res.status(400).json({
+			const {	firstname, lastname, email,	password,	phone, confirmPassword	} = request.body;
+			const passwordMatch = validate.confirmPassword(password, confirmPassword);
+			if(!passwordMatch){
+				return response.status(400).json({
 					message: "Password did not match", 
-					status: 400
+					succes: false
+				}); 
+			}
+			const passwordStrength = validate.validateStrengthPasswrod(password, request, response);
+			if(!passwordStrength.isValid){
+				return response.status(400).json({
+					message: "Password must contain one uppercase and a special character", 
+					succes: false
 				});
 			}
 			db.Users.find({
 				where: {
-					email: req.body.email
+					email: request.body.email
 				}
 			}).then((existingUser) => {
 				if (existingUser) {
-					res.status(409).json({
+					response.status(409).json({
 						message: "User with email '" + email + "' already exists", 
-						status: 409
+						succes: false
 					});
-				} else {
-					
+				} 
+				else {
 					const data ={
 						firstname : firstname,
 						lastname : lastname,
@@ -69,35 +78,30 @@ class Users{
 							};
 							const token = jwt.sign(jwtData, secretKey, { expiresIn: 86400 });
 							user = Auth.filterUser(user);
-							res.status(201).json({ status : 201, token, user });
+							response.status(201).json({ succes: true, token, user });
 						}
 					})
-						.catch(error => {
-							res.status(400).json({
-								message: error.message,
-								errors: error
-							});
-						});
 				}
 			})
-				.catch((error) => {
-					res.status(500).json({ message : error });
-			  });
+			.catch((error) => {
+				response.status(500).json({ succes: false, message : error });
+			});
 		}		
 	}
+
 	/**
-	 * 
-	 * 
-	 * @param {any} req 
-	 * @param {any} res 
-	 * @returns 
-	 * @memberof Users
-	 */
+   * A method that allows a user to login to his account
+   * 
+   * @returns {object} insertion error messages object or success message object
+   * @param {object} req 
+   * @param {object} res 
+   * @memberof Recipes
+  */
 	signin(req, res){
 		validate.validateLogin(req, res);
 		var errors = req.validationErrors();
 		if (errors) {
-			res.status(400).json({ status : 400, message : errors });
+			res.status(400).json({ succes: false, message : errors });
 			return;
 		} else {
 			db.Users.findOne({ where: { email: req.body.email } })
@@ -112,45 +116,46 @@ class Users{
 					image: user.image
         }, secretKey, { expiresIn: 86400 });
 				user = Auth.filterUser(user);
-        res.status(200).json({ status: 200, token, user });
+        res.status(200).json({ succes: true, token, user });
       }else{
-				res.status(401).json({ status : 401, errors: { message: 'Email or Password Incorrect' } });
+				res.status(401).json({ succes: false, errors: { message: 'Email or Password Incorrect' } });
 			}
       
     })
 			.catch(error => {
-				res.status(500).json({ status : 500,  message : error.message });
+				res.status(500).json({ succes: false,  message : error.message });
 			});
 		}
 	}
-/**
- * 
- * 
- * @param {any} req 
- * @param {any} res 
- * @memberof Users
- */
-profile(req, res) {
+	/**
+	 * A method that allows a user to view his profile details
+	 * 
+	 * @returns {object} insertion error messages object or success message object
+	 * @param {object} req 
+	 * @param {object} res 
+	 * @memberof Recipes
+	*/
+	profile(req, res) {
 		let id = req.body.id;
 		if(validate.validateId(id)){
 			db.Users.findById(id)
 			.then((user) => {			
 				if (user) {
-					res.status(200).json({ status: 200, user : user });
+					res.status(200).json({ succes: true, user });
 				}else{
-					res.status(409).json({
+					res.status(404).json({
 						message: "User with ID '" + id + "' doesn't exists", 
-						status: 409
+						succes: false
 					});
 				}  
 			})
 			.catch(err =>{
-				res.status(500).json({ status : 500, message : err.message });
+				res.status(500).json({ succes: false, message : err.message });
 			});
 		}else{
-			res.status(400).json({ status : 400, message : 'ID is not a valid integer' });
+			res.status(400).json({ succes: false, message : 'ID is not a valid integer' });
 		}
-		}
+	}
 		
 }
 

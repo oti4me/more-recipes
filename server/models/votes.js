@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         as: 'userId',
       }
     },
+    voted: {
+      type: DataTypes.STRING
+    },
     recipeId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
@@ -22,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Recipes.belongsTo(models.Users, {
+        Votes.belongsTo(models.Users, {
           foreignKey: 'userId',
         });
 
-        Recipes.belongsTo(models.Recipes, {
+        Votes.belongsTo(models.Recipes, {
           foreignKey: 'recipeId',
         });
       }

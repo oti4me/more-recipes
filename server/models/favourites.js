@@ -22,12 +22,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Recipes.belongsTo(models.Users, {
+        Favourites.belongsTo(models.Users, {
           foreignKey: 'userId',
+          onDelete: 'CASCADE'
         });
 
-        Recipes.belongsTo(models.Recipes, {
+        Favourites.belongsTo(models.Recipes, {
           foreignKey: 'recipesId',
+          onDelete: 'CASCADE'
         });
       }
     }

@@ -2,44 +2,39 @@
 // import chaiHttp from 'chai-http';
 // import supertest from 'supertest';
 // import app from '../app';
-// import fakerObj from './helpers/user.helper';
+// import recipeObject from './helpers/recipesHelper';
+
+// import models from '../models';
+// const { Recipes } = models;
 
 // const expect = chai.expect;
 // const request = supertest(app);
-// describe("", () => {
 
-// 	it('should successfully create a new user on successful registration', (done) => {
-// 		request
-// 			.post('/api/v1/users/signup')
-// 			.send(fakerObj.users)
-// 			.expect(201)
-// 			.end((err, res) => {
-// 				expect(res.body.user.email).to.equal(fakerObj.users.email);
-// 				done();
-// 			});
-// 	});
+// // const should = chai.should();
+// chai.use(chaiHttp);
 
-//   it('All recipes test', (done) => { // <= Pass in done callback
-// 	  chai.request(app)
-// 	    .get('/api/v1/recipes')
-// 	    .end( (err, res) => {
-// 	      res.should.have.status(200);
-// 	      res.should.be.json;
-// 	      res.should.be.a('object');
-// 	     done();
-// 	    });
-// 	});
+// Recipes.destroy({
+//   cascade: true,
+//   truncate: true,
+//   restartIdentity: true
+// });
 
-//   it('Single recipe test', (done) => { // <= Pass in done callback
-// 	  chai.request(app)
-// 	  .get('/api/v1/recipes/1') 
-// 	  .end( (err, res) => {
-// 	     res.should.have.status(200);
-// 	     res.should.be.json;
-// 	     res.should.be.a('object');
-// 	     done();
-// 	  });
-	  
-// 	});
+// let token = 
 
-// })
+// describe('Add Recipe Suite', () => {
+//   describe('Create New Recipe POST: /api/v1/recipes', () => {
+//     it('should successfully create a new recipe on successful', (done) => {
+// 			request
+//         .post('/api/v1/recipes')
+//         .set({ 'x-access-token': token })
+//         .send(recipeObject.recipeOne)
+//         .expect(201)
+//         .end((err, res) => {
+//           expect(res.body.recipes.message).to.equal('recipe added');
+//           done();
+//         });
+//     });
+//   });
+// });
+
+

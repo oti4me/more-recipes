@@ -37,15 +37,15 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
     });
     Recipes.hasMany(models.Reviews, {
-      foreignKey: 'recipeId'
+      foreignKey: 'recipeId', onDelete: 'cascade', foreignKeyConstraint: true
     });
 
     Recipes.hasMany(models.Votes, {
-      foreignKey: 'recipeId'
+      foreignKey: 'recipeId', onDelete: 'cascade', foreignKeyConstraint: true
     });
 
     Recipes.hasMany(models.Favourites, {
-      foreignKey: 'recipeId'
+      foreignKey: 'recipeId', onDelete: 'cascade', foreignKeyConstraint: true
     });
   }
   return Recipes;

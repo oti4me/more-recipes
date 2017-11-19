@@ -32,60 +32,61 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     }
-  }, {
-      classMethods: {
-        associate: function (models) {
-          //associations can be defined here
-          User.hasMany(models.Recipes, {
-            foreignKey: 'userId',
-          });
+  }, 
+  {
+    classMethods: {
+      associate: function (models) {
+        //associations can be defined here
+        Users.hasMany(models.Recipes, {
+          foreignKey: 'userId',
+        });
 
-          User.hasMany(models.Reviews, {
-            foreignKey: 'userId'
-          });
+        Users.hasMany(models.Reviews, {
+          foreignKey: 'userId'
+        });
 
-          User.hasMany(models.Favorites, {
-            foreignKey: 'userId'
-          });
+        Users.hasMany(models.Favorites, {
+          foreignKey: 'userId'
+        });
 
-          User.hasMany(models.Votes, {
-            foreignKey: 'userId'
-          });
-        }
+        Users.hasMany(models.Votes, {
+          foreignKey: 'userId'
+        });
+      }
+    },
+    instanceMethods: {
+
+      /**
+       * compare the input password with the hashed password stored
+       * @param {String} password
+       * @returns {Boolean} true or false
+       */
+      matchPassword(password) {
+        return bcrypt.compareSync(password, this.password);
       },
-      instanceMethods: {
 
-        /**
-         * compare the input password with the hashed password stored
-         * @param {String} password
-         * @returns {Boolean} true or false
-         */
-        matchPassword(password) {
-          return bcrypt.compareSync(password, this.password);
-        },
-
-        /**
-         * hashes the password before storing
-         * @param {String} password
-         * @returns {void} no return
-         */
-        hashPassword(password) {
-          this.password = bcrypt.hashSync(this.password.trim(), bcrypt.genSaltSync(8));
-        }
+      /**
+       * hashes the password before storing
+       * @param {String} password
+       * @returns {void} no return
+       */
+      hashPassword(password) {
+        this.password = bcrypt.hashSync(password.trim(), bcrypt.genSaltSync(8));
+      }
+    },
+    hooks: {
+      beforeCreate(user) {
+        const salt = bcrypt.genSaltSync(8);
+        user.password = bcrypt.hashSync(user.password, salt);
       },
-      hooks: {
-        beforeCreate(user) {
+      beforeUpdate(user) {
+        if (user.password) {
           const salt = bcrypt.genSaltSync(8);
           user.password = bcrypt.hashSync(user.password, salt);
-        },
-        beforeUpdate(user) {
-          if (user.password) {
-            const salt = bcrypt.genSaltSync(8);
-            user.password = bcrypt.hashSync(user.password, salt);
-            user.updateAt = Date.now();
-          }
+          user.updateAt = Date.now();
         }
-      },
-    })
+      }
+    },
+  })
   return Users;
 };

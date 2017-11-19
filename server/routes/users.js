@@ -1,6 +1,7 @@
 import express from 'express';
 import Users from '../controllers/users';
 import recipes from '../controllers/recipes';
+import favourites from '../controllers/favourites';
 import Auth from '../middleware/jwtMiddleware';
 
 const router = express.Router();
@@ -17,10 +18,10 @@ router.post('/signin', Users.signin);
 router.get('/signup', Users.signup);
 router.post('/signup', Users.signup);
 
-router.get('/:id/myrecipes', recipes.getMyRecipes);
+router.get('/:id/recipes', recipes.getMyRecipes);
 
-router.delete('/:id/recipes', recipes.removeFavourites);
-router.get('/:id/recipes', Auth.verifyToken, recipes.getFavourites);
-router.post('/:id/recipes', Auth.verifyToken, recipes.addFavourites);
+router.delete('/favourites', favourites.removeFavourites);
+router.get('/favourites', Auth.verifyToken, favourites.getFavourites);
+router.post('/favourites', Auth.verifyToken, favourites.addFavourites);
 
 export default router;
