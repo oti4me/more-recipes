@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import AddRecipeForm from './AddRecipeForm.jsx'
 import Footer from '../Footer.jsx'
 import Header from '../Header.jsx'
@@ -12,13 +11,12 @@ class AddRecipePage extends React.Component {
   }
 
   render() {
-
     return (
       <div>
-        <Header { ...this.props }/>
+        <Header { ...this.props } />
         <div className="container">
-            <AddRecipeForm history={ this.props.history } />
-         </div>
+          <AddRecipeForm { ...this.props } />
+        </div>
         <Footer />
       </div>
     )

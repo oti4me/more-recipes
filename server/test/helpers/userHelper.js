@@ -10,41 +10,41 @@ const fakerObj = {
     lastname: faker.name.lastName(),
     email: faker.internet.email(),
     password: 'henryotighe',
-    confirmPassword : 'hernyotighe',  
+    confirmPassword: 'hernyotighe',
     phone: faker.phone.phoneNumber(),
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
   firstUser: {
     firstname: 'faker',
     lastname: 'testmister',
     email: 'factory@email.com',
-    password: 'password',
-    confirmPassword : 'password',
+    password: 'Password4$',
+    confirmPassword: 'Password4$',
     phone: '2344566777',
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
   secondUser: {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(6),  
+    password: faker.internet.password(6),
     phone: faker.phone.phoneNumber()
   },
   thirdUser: {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(6),  
+    password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
   fourthUser: {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password(6),  
+    password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
   wrongUser: {
     firstname: 'testuserone',
@@ -52,15 +52,15 @@ const fakerObj = {
     email: 'test@email.com',
     password: '',
     phone: '2344566777',
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
   wrongUser2: {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     email: '',
-    password: faker.internet.password(6),  
+    password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
   },
 };
 

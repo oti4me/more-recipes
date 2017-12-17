@@ -32,7 +32,6 @@ class RecipeList extends React.Component {
 
   handleAddFavourite(e){
     e.preventDefault();
-    console.log("handling adding favourite for recipe id ", e.target.dataset['id'], "for user with id ", this.props.user.userId );
     const userId = this.props.user.userId;
     const recipeId = e.target.dataset['id'];
     axios.post('/api/v1/users/'+userId+'/recipes', { recipeId : recipeId}, header)
@@ -43,10 +42,8 @@ class RecipeList extends React.Component {
 
 
   getRecipes(data={}){
-    console.log(data);
     axios.get('/api/v1/recipes', data, header)
       .then(res => {
-        console.log(res);
         this.setState({
           recipes : res.data.recipes,
           pages : res.data.pages
@@ -63,7 +60,7 @@ class RecipeList extends React.Component {
     this.setState({
       page : page
     });
-    this.getRecipes({ page : page});
+    this.getRecipes({ page : this.state.page});
   }
 
   pagination(){
@@ -98,7 +95,7 @@ class RecipeList extends React.Component {
               <div className="card">
                 <div className="card-image">
                   <Link to={`/recipe/${recipe.id}`}>
-                    <img src=""/>
+                    <img style={{ width:'100%', height: '200px' }} src={recipe.image} />
                   </Link>
                   {
                       this.props.loggedIn.loggedIn ? <a href="" onClick={this.handleAddFavourite.bind(this)}  className="btn-floating halfway-fab waves-effect waves-light red">
@@ -126,7 +123,6 @@ class RecipeList extends React.Component {
   }
 
   render() {  
-    console.log('current state', this.state); 
     return (
       <div className = "col s12 m10 l10" > <div className="row">
         <div className="col s12 m8 l8">
