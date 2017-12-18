@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import addRecipe from '../../actions/addRecipeAction';
+import MDSpinner from "react-md-spinner";
 
 class AddRecipeForm extends React.Component {
 
@@ -14,12 +15,14 @@ class AddRecipeForm extends React.Component {
       ingredients: '',
       direction: '',
       description: '',
+      imageSrc: '/images/8.jpg',
       image: '',
+
       userId: this.props.user.userId
     }
     this.handleAddRecipe = this.handleAddRecipe.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleFildChange = this.handleFildChange.bind(this);
+    this.handleFieldChange = this.handleFieldChange.bind(this);
   }
 
   handleAddRecipe(e) {
@@ -48,12 +51,21 @@ class AddRecipeForm extends React.Component {
 
   handleImageChange(e) {
     e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.files[0]
-    });
+    if (e.target.files && e.target.files[0]) {
+      this.setState({
+        [e.target.name]: e.target.files[0]
+      });
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.setState({ imageSrc: e.target.result });
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      this.setState({ imageSrc: '/images/8.jpg', imageFile: '' });
+    }
   }
 
-  handleFildChange(e) {
+  handleFieldChange(e) {
     e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
@@ -83,19 +95,19 @@ class AddRecipeForm extends React.Component {
         <hr />
         <div className="col s12 m4 l4 ">
           <div className="input-field col s12">
-            <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleFildChange} />
+            <input id="title" type="text" name="title" value={this.state.title} onChange={this.handleFieldChange} />
             <label htmlFor="title">Name of Recipe</label>
           </div>
           <div className="input-field col s12" >
-            <input id="description" name="description" type="text" value={this.state.description} onChange={this.handleFildChange} />
+            <input id="description" name="description" type="text" value={this.state.description} onChange={this.handleFieldChange} />
             <label htmlFor="description">Description</label>
           </div>
           <div className="input-field col s12" >
-            <textarea id="ingredients" className="materialize-textarea" name="ingredients" value={this.state.ingredients} onChange={this.handleFildChange}></textarea>
+            <textarea id="ingredients" className="materialize-textarea" name="ingredients" value={this.state.ingredients} onChange={this.handleFieldChange}></textarea>
             <label htmlFor="ingredients" >Ingredients</label>
           </div>
           <div className="input-field col s12">
-            <textarea id="direction" className="materialize-textarea" name="direction" value={this.state.direction} onChange={this.handleFildChange}></textarea>
+            <textarea id="direction" className="materialize-textarea" name="direction" value={this.state.direction} onChange={this.handleFieldChange}></textarea>
             <label htmlFor="direction">Direction</label>
           </div>
           <div className="file-field input-field col s12" >
@@ -110,16 +122,16 @@ class AddRecipeForm extends React.Component {
           </div>
           <br /><br />
           <div className="input-field col s12">
-            <a className="waves-effect waves-light btn" onClick={this.handleAddRecipe}>Add Recipe</a>
+            <a className="waves-effect waves-light btn" style={{ marginRight: '15px' }} onClick={this.handleAddRecipe}>Add Recipe</a>
 
-            {this.props.recipes.isRequesting ? this.indicator() : ''}
+            {this.props.recipes.isRequesting ? <MDSpinner size={40} /> : ''}
 
             <br /><br />
           </div>
         </div>
         <div className="col s12 m4 l4">
           <div className="img2 top-margin-40">
-            <img style={{ color: "#fff", width: "300px", height: "400px", maxWidth: "300px", maxHeight: "300px" }} src="/images/8.jpg" id="img3" alt="." />
+            <img style={{ color: "#fff", width: "300px", height: "400px", maxWidth: "300px", maxHeight: "300px" }} src={this.state.imageSrc} id="img3" alt="." />
           </div>
         </div>
       </div>
