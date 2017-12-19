@@ -89,6 +89,9 @@ class Recipes {
             offset,
             order: [
               ['id', 'DESC']
+            ],
+            include: [
+              { model: db.Users, attributes: ['firstname', 'lastname'] }
             ]
           })
             .then((recipes) => {

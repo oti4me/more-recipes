@@ -107,9 +107,9 @@ class RecipeList extends React.Component {
                     <Link to={`/recipe/${recipe.id}`}>
                       <span className="card_title">{recipe.title}</span>
                     </Link>
-                    <p className="card-p">{recipe.description}</p>
+                    <p className="card-p">{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
                     <hr />
-                    <span className="bold text-gray">By: {recipe.userId}</span>
+                    <span className="bold text-gray">By: {recipe.User.firstname} {recipe.User.lastname}</span>
                   </div>
                 </div>
               </div>
