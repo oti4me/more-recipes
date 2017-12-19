@@ -1,20 +1,24 @@
- 
+import { USER_LOGIN, LOGIN_ERRORS, USER_LOGGEDIN, USER_PROFILE, USER_SIGNUP } from '../actions/types';
 const userReducer = (state = {}, action) => {
-  switch(action.type){
-    case 'USER_LOGIN' :
-      return Object.assign({}, state, { user : action.payload});
+  switch (action.type) {
+    case USER_LOGIN:
+      return { ...state, user: action.payload };
       break;
-      
-    case 'USER_LOGOUT' :
-      return Object.assign({}, state, { loggedIn : action.payload});
+
+    case USER_SIGNUP:
+      return { ...state, user: action.payload };
       break;
-    
-    case 'USER_LOGGEDIN' :
-      return Object.assign({}, state, { loggedIn : action.payload});
+
+    case LOGIN_ERRORS:
+      return { ...state, error: action.payload };
       break;
-      
-    case 'USER_PROFILE' :
-      return action.payload;
+
+    case USER_LOGGEDIN:
+      return { ...state, ...action.payload };
+      break;
+
+    case USER_PROFILE:
+      return { ...state, user: action.payload };
       break;
   }
   return state;

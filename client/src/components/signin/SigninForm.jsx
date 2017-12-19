@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import { signin } from '../../actions/SigninAction.js'
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import { signin } from '../../actions/SigninAction.js';
 
 class SigninForm extends React.Component {
 
@@ -13,27 +13,32 @@ class SigninForm extends React.Component {
       password: ""
     }
   }
-  
+
   handleSignin(e) {
     e.preventDefault();
-    this.props.signin(this.state, this.props.history, this.props.dispatch)
-    .catch(error => {
-      if(error.response.status === 400){
-        error.response.data.message.map(err =>{
-          return Materialize.toast(err.msg, 5000, 'red');
-        });
-      }else if(error.response.status === 401){
-        Materialize.toast(error.response.data.errors.message, 5000, 'red');
-      }else{
-        Materialize.toast(error.response.data.errors, 5000);
+    this.props.signin(this.state, () => {
+      const { error } = this.props;
+      if (error) {
+        if (error.status === 400) {
+          error.message.map(err => {
+            Materialize.toast(err.msg, 4000, 'red');
+          });
+        } else if (error.status === 401) {
+          Materialize.toast('Email or password incorrect', 4000, 'red');
+        } else {
+          Materialize.toast(error, 4000);
+        }
       }
-    });
+      else {
+        return this.props.history.push('/profile');
+      }
+    })
   }
 
-  handleChange(e){
+  handleChange(e) {
     e.preventDefault();
     this.setState({
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -43,13 +48,13 @@ class SigninForm extends React.Component {
         <form className="col s12">
           <div className="row">
             <div className="input-field col s12">
-              <input id="email" name="email" type="text" value={ this.state.email } onChange={ this.handleChange.bind(this)} />
+              <input id="email" name="email" type="text" value={this.state.email} onChange={this.handleChange.bind(this)} />
               <label htmlFor="email">Email</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
-              <input id="password" name="password" type="password" value={ this.state.password } onChange={ this.handleChange.bind(this)}/>
+              <input id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
               <label htmlFor="password">Password</label>
             </div>
           </div>
@@ -59,7 +64,7 @@ class SigninForm extends React.Component {
           <div className="row">
             <p className="">Don't have an account?
               <a href="/signup"> Sign Up</a>
-              <br/>Forget Password? click
+              <br />Forget Password? click
               <a href="forget_password.html">Here</a>
             </p>
           </div>
@@ -69,8 +74,17 @@ class SigninForm extends React.Component {
   }
 }
 
+SigninForm.propTypes = {
+  loggedIn: PropTypes.bool,
+  error: PropTypes.object,
+  signin: PropTypes.func,
+};
+
 function mapStateToProps(state) {
-  return { state };
+  return {
+    loggedIn: state.auth.loggedIn,
+    error: state.auth.error
+  };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -58,11 +58,11 @@ class Users{
 				} 
 				else {
 					const data ={
-						firstname : firstname,
-						lastname : lastname,
-						email : email,
-						password : password,
-						phone : phone,
+						firstname,
+						lastname,
+						email,
+						password,
+						phone,
 						image : ''
 					};
 					db.Users.create(data).then((user) => {
@@ -73,8 +73,8 @@ class Users{
 								lastname:  lastname.trim(),
 								email: email.trim(),
 								userId: id,
-								phone : phone,
-								image: image
+								phone : phone.trim(),
+								image: image.trim()
 							};
 							const token = jwt.sign(jwtData, secretKey, { expiresIn: 86400 });
 							user = Auth.filterUser(user);

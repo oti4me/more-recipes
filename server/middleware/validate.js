@@ -41,9 +41,9 @@ const validate = {
     request
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
-      request
+    request
       .checkBody("email", "Enter a valid email address.")
-      .isLength({ min : 3});
+      .isLength({ min: 3 });
     request
       .checkBody("phone", "Phone number can't be empty.")
       .notEmpty();
@@ -52,13 +52,13 @@ const validate = {
       .matches(/^[0-9\-.]{10,15}$/);
     request
       .checkBody("password", "Password can't be empty.")
-      .notEmpty(); 
+      .notEmpty();
     request
       .checkBody("password", "Password can't be less than 8 characters and mnust not contain spaces.")
       .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
     request
       .checkBody("confirmPassword", "Password confirmation field can't be empty.")
-      .notEmpty();   
+      .notEmpty();
   },
 
   validateAddRecipes(request, response) {
@@ -67,7 +67,7 @@ const validate = {
       .notEmpty();
     request
       .checkBody("title", "title can't be less than 5 characters.")
-      .isLength({ min : 5});      
+      .isLength({ min: 5 });
     request
       .checkBody("image", "Please, select an image.")
       .notEmpty();
@@ -76,42 +76,42 @@ const validate = {
       .notEmpty();
     request
       .checkBody("description", "description can't be less than 10 characters.")
-      .isLength({ min : 10}); 
+      .isLength({ min: 10 });
     request
       .checkBody("ingredients", "Ingredients can't be empty.")
       .notEmpty();
     request
       .checkBody("ingredients", "ingredients can't be less than 10 characters.")
-      .isLength({ min : 10}); 
+      .isLength({ min: 10 });
     request
       .checkBody("direction", "Direction can't be empty.")
       .notEmpty();
     request
       .checkBody("direction", "Direction ccan't be less than 10 characters.")
-      .isLength({ min : 10});    
+      .isLength({ min: 10 });
   },
 
   validateUdateRecipes(request, response) {
     request
       .checkBody("title", "title can't be less than 5 characters.")
-      .notEmpty();     
+      .notEmpty();
     request
       .checkBody("description", "description can't be less than 10 characters.")
-      .notEmpty(); 
+      .notEmpty();
     request
       .checkBody("ingredients", "ingredients can't be less than 10 characters.")
-      .notEmpty(); 
+      .notEmpty();
     request
-      .checkBody("direction", "Direction ccan't be less than 10 characters.")
-      .notEmpty();   
+      .checkBody("direction", "Direction can't be less than 10 characters.")
+      .notEmpty();
   },
   validatevaVotes(request, response) {
     request
       .checkBody("voteType", "Vote type is required.")
-      .notEmpty();     
+      .notEmpty();
     request
       .checkBody("voteType", "Vote type must either be upvotes or downvotes.")
-      .matches(/upvotes|downvotes/);   
+      .matches(/upvotes|downvotes/);
   },
 
   validateReviewRecipe(request, response) {
@@ -120,32 +120,33 @@ const validate = {
       .notEmpty();
     request
       .checkBody("comment", "Review comment too short.")
-      .isLength({ min : 5 });
+      .isLength({ min: 5 });
   },
 
   validateId(id, request, response) {
     if (isNaN(id)) {
       return false
-    } else { 
-      return true; 
-    }
-  },
-
-  validateStrengthPasswrod(password, request, response){
-    const passwordData = validator.checkPassword(password);
-    return passwordData;
-  },
-
-  confirmPassword(password, confirmPassword, req, res){
-    if(password !== confirmPassword){
-      return false;
-    }else{
+    } else {
       return true;
     }
   },
 
-  getUserId(request, response){
-    const user = jwt_decode(request.headers['x-access-token']);
+  validateStrengthPasswrod(password, request, response) {
+    const passwordData = validator.checkPassword(password);
+    return passwordData;
+  },
+
+  confirmPassword(password, confirmPassword, req, res) {
+    if (password !== confirmPassword) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
+  getUserId(request, response) {
+    const token = request.headers.authorization || request.headers['x-access-token'];
+    const user = jwt_decode(token);
     const { userId } = user;
     return userId;
   },

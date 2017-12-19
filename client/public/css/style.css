@@ -1,22 +1,47 @@
-
+/* @import url('https://fonts.googleapis.com/css?family=Acme|Archivo+Narrow|Berkshire+Swash|Bree+Serif|Dancing+Script:700|Gloria+Hallelujah|Great+Vibes|Marck+Script|Open+Sans|Pacifico|Rubik|Sacramento|Satisfy|Shadows+Into+Light|Shadows+Into+Light+Two|Shrikhand|Signika|Varela+Round|Yanone+Kaffeesatz|Yellowtail');
+html h1, h2, h3, h4{
+  font-family: 'Sacramento',serif;
+} */
 /* headings*/
 h2, h3, h4, h5{
   color: #999;
 }
+/* 
+h1{
+  font-size: 32px;
+  font-weight: bold
+} h2{
+  font-size: 28px;
+  font-weight: bold
+}
+h3{
+  font-size: 26px;
+  font-weight: bold
+} 
+h4{
+  font-size: 24px;
+  font-weight: bold
+}
 
 h5{
   font-size: 16px;
-}
+  font-weight: bold
+} */
 
+.header1{
+  padding-right: 40px;
+  padding-left: 40px;
+}
 .card_title{
- font-size: 16px;
- font-weight: bold;
+ font-size: 18px;
+ font-weight: bolder;
  color: #999;
 }
 
 .h-title{
  font-size: 38px;
  padding-top: 20px;
+ font-family: 'Sacramento'
  /*text-transform: uppercase;*/
 }
 /* end of headings*/
@@ -132,13 +157,12 @@ h5{
  right: 0;
  height: 70px;
  background-color: #26a69a;
- position: 'rixed';
 }
 
 .foot > p{
  color: #fff;
- padding-left: 20px;
- padding-right: 20px;
+ padding-left: 40px;
+ padding-right: 40px;
  padding-top: 20px;
  text-align: right;
 }
@@ -156,4 +180,3 @@ h5{
  height: 2px;
  margin-top: 10px;
 }
-

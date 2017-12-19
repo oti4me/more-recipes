@@ -15,7 +15,8 @@ export default {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.scss$/, use: [ 'style-loder', 'css-loader', 'sass-loader'], include: path.join(__dirname, 'client') }
     ]
   },
 

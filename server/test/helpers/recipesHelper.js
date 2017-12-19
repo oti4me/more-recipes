@@ -5,39 +5,46 @@
 
 const recipeObject = {
   recipeOne: {
-    title: '',
-    description: '',
-    direction: '',
-    ingredients: '',
-    image : 'image/img.jpg'
+    title: 'Yam and beans and rice',
+    description: 'Yam and beans and rice',
+    direction: 'Yam and beans and rice',
+    ingredients: 'Yam and beans and rice',
+    image: 'image/img.jpg'
   },
   recipeTwo: {
     title: '',
-    description: '',
-    direction: '',
-    ingredients: '',
-    image : 'image/img.jpg'
+    description: 'Yam and beans and rice',
+    direction: 'Yam and beans and rice',
+    ingredients: 'Yam and beans and rice',
+    image: 'image/img.jpg'
   },
   recipeThree: {
-    title: '',
+    title: 'Yam and beans and rice',
     description: '',
-    direction: '',
-    ingredients: '',
-    image : 'image/img.jpg'
+    direction: 'Yam and beans and rice',
+    ingredients: 'Yam and beans and rice',
+    image: 'image/img.jpg'
   },
   recipeFour: {
-    title: '',
-    description: '',
+    title: 'Yam and beans and rice',
+    description: 'Yam and beans and rice',
     direction: '',
-    ingredients: '',
-    image : 'image/img.jpg'
+    ingredients: 'Yam and beans and rice',
+    image: 'image/img.jpg'
   },
   recipeFive: {
-    title: '',
-    description: '',
-    direction: '',
+    title: 'Yam and beans and rice',
+    description: 'Yam and beans and rice',
+    direction: 'Yam and beans and rice',
     ingredients: '',
-    image : 'image/img.jpg'
+    image: 'image/img.jpg'
+  },
+  recipeSix: {
+    title: 'Yam and beans and rice',
+    description: 'Yam and beans and rice',
+    direction: 'Yam and beans and rice',
+    ingredients: '',
+    image: 'image/img.jpg'
   },
 };
 

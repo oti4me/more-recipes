@@ -6,6 +6,7 @@ const validateUser =  (store)=>{
   if(token){
     jwt.verify(token, 'oti4me@gmail.com', (err, result) => {
       if (err) {
+        window.localStorage.removeItem('userToken');
         store.dispatch({ type : 'USER_LOGGEDIN', payload : { loggedIn : false} });
       }
       else {
