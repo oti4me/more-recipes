@@ -15,4 +15,14 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGGEDIN = 'USER_LOGGEDIN';
 export const LOGIN_ERRORS = 'LOGIN_ERRORS';
 export const USER_PROFILE = 'USER_PROFILE';
+export const MY_RECIPES = 'MY_RECIPES';
+export const MY_RECIPES_ERROR = 'MY_RECIPES_ERROR';
 export const USER_SIGNUP = 'USER_SIGNUP';
+export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
+export const PASSWORD_ERROR = 'PASSWORD_ERROR';
+export const SIGNUP_ERRORS = 'SIGNUP_ERRORS';
+
+
+
+
+
