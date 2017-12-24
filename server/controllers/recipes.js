@@ -98,7 +98,8 @@ class Recipes {
               if (recipes) {
                 response.status(200).json({
                   succes: true,
-                  recipes, pages
+                  recipes,
+                  pages
                 });
               } else {
                 response.status(404).json({
@@ -134,7 +135,7 @@ class Recipes {
               recipe
             });
           } else {
-            response.status(400).json({
+            response.status(404).json({
               succes: false,
               message: `Recipe with id '${id}'  not found`
             });
@@ -161,7 +162,7 @@ class Recipes {
     const id = request.params.id;
     const userId = validate.getUserId(request, response);
     if (validate.validateId(id) && validate.validateId(userId)) {
-      let limit = 6;   // number of records per page
+      let limit = 8;   // number of records per page
       let offset = 0;
       db.Recipes.findAndCountAll({
         where: {
@@ -230,7 +231,7 @@ class Recipes {
       });
     }
     validate.validateAddRecipes(request, response);
-    var errors = request.validationErrors();
+    const errors = request.validationErrors();
     if (errors) {
       return response.status(400).json({
         succes: false,

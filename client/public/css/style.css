@@ -29,8 +29,8 @@ h5{
 } */
 
 .header1{
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 .card_title{
  font-size: 18px;
@@ -161,8 +161,8 @@ h5{
 
 .foot > p{
  color: #fff;
- padding-left: 40px;
- padding-right: 40px;
+ padding-left: 30px;
+ padding-right: 30px;
  padding-top: 20px;
  text-align: right;
 }

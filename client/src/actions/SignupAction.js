@@ -1,48 +1,43 @@
 import axios from 'axios';
+import { USER_SIGNUP, REQUEST_SIGNUP, SIGNUP_ERRORS, USER_LOGGEDIN } from './types';
 
-export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
-export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
-export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
-export const PASSWORD_ERROR = 'PASSWORD_ERROR';
-
-export const signupSuccess = (data) => {
+export const signupAction = (data) => {
   return {
-    type : USER_SIGNUP_SUCCESS,
-    payload : data
-  }
-};
-
-export const signupFaild = (data) => {
-  return {
-    type : SIGNUP_FAILURE,
-    payload : data
+    type: USER_SIGNUP,
+    payload: data
   }
 };
 
 export const requestSignup = (data) => {
   return {
-    type : REQUEST_SIGNUP,
-    payload : data
+    type: REQUEST_SIGNUP,
+    payload: data
   }
 };
 
-export const passwordError = (data) => {
+export const loggedIn = (data) => {
   return {
-    type : PASSWORD_ERROR,
-    payload : data
+    type: USER_LOGGEDIN,
+    payload: data
   }
 };
 
-export const signup = (userData, prop, Materialize) =>{
+export const signupError = (data) => {
+  return {
+    type: SIGNUP_ERRORS,
+    payload: data
+  }
+};
+
+export const signup = (userData, callback) => {
   return dispatch => {
 
-    if(userData.password !== userData.confirmPassword){
+    dispatch(requestSignup({ isRequesting: true }));
+    dispatch(signupAction({ user: {} }));
+    dispatch(loggedIn({ loggedIn: false }));
+    dispatch(signupError({ error: {} }));
 
-    }
-
-    dispatch(requestSignup(userData.email));
-
-    const data = { 
+    const data = {
       firstname: userData.firstname,
       lastname: userData.lastname,
       email: userData.email,
@@ -52,31 +47,48 @@ export const signup = (userData, prop, Materialize) =>{
     }
 
     return axios.post('/api/v1/users/signup', data)
-    .then(res => {
-      if(res){
-        window.localStorage.setItem('userToken', res.data.token);
-        dispatch(signupSuccess({ loggedIn : true, user : res.data.user }));
-        Materialize.toast("Registration Successful!!", 2000, 'green');
-        prop.history.push('/profile');
-      }
-    })
-    // .catch(error => {
-
-    //   if(error.response.status === 400){
-    //     // console.log(error.response.data.message);
-    //     return error.response.data.message;
-    //     console.log("still got here");
-    //   }else if(error.response.status === 401){
-    //     console.log("associated with login morron");
-    //     return error.response.data.error
-    //   }else if(error.response.status === 409){
-    //     console.log("user with email already exist");
-    //     return error.response.data.error
-    //   }else{
-    //     console.log("Internal erver error");
-    //     return "Internal server error";
-    //   }
-
-    // });
+      .then(res => {
+        dispatch(requestSignup({ isRequesting: false }));
+        if (res) {
+          window.localStorage.setItem('userToken', res.data.token);
+          dispatch(loggedIn({ loggedIn: true }));
+          dispatch(signupAction(res.data.user));
+          callback(false);
+        }
+      })
+      .catch(error => {
+        if (error.response.status === 400) {
+          dispatch(requestSignup({ isRequesting: false }));
+          dispatch(signupError({ user: {} }));
+          callback(true);
+        } else if (error.response.status === 401) {
+          dispatch(requestSignup({ isRequesting: false }));
+          dispatch(signupError({
+            error: {
+              status: 401,
+              message: error.response.data.message
+            }
+          }));
+          callback(true);
+        } else if (error.response.status === 409) {
+          dispatch(requestSignup({ isRequesting: false }));
+          dispatch(signupError({
+            error: {
+              status: 409,
+              message: error.response.data.message
+            }
+          }));
+          callback(true);
+        } else {
+          dispatch(requestSignup({ isRequesting: false }));
+          dispatch(signupError({
+            error: {
+              status: 500,
+              message: error.response.data
+            }
+          }));
+          callback(true);
+        }
+      });
   }
 }

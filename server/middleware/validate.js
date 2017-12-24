@@ -20,30 +20,27 @@ const validate = {
     request
       .checkBody("password", "Password can't be empty.")
       .notEmpty();
-    request
-      .checkBody("password", "Password must be at least 8 characters long and must not contain spaces.")
-      .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
   },
 
   validateSignup(request, response) {
     request
-      .checkBody("firstname", "First name cannot be empty.")
+      .checkBody("firstname", "First name can't be empty.")
       .notEmpty();
     request
-      .checkBody("firstname", "First name be less than 3 characters and must not contain numbers.")
+      .checkBody("firstname", "First name can't be less than 3 or more than 25 characters and must not contain numbers or spaces.")
       .matches(/^[a-zA-Z.]{3,25}$/);
     request
-      .checkBody("lastname", "Last name cannot be empty.")
+      .checkBody("lastname", "Last name can't be empty.")
       .notEmpty();
     request
-      .checkBody("lastname", "Last name cannot be less than 3 characters.")
+      .checkBody("lastname", "Last name can't be less than 3 or more than 25 characters and must not contain numbers or spaces.")
       .matches(/^[a-zA-Z.]{3,25}$/);
     request
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
     request
       .checkBody("email", "Enter a valid email address.")
-      .isLength({ min: 3 });
+      .isLength({ min: 6 });
     request
       .checkBody("phone", "Phone number can't be empty.")
       .notEmpty();
@@ -54,11 +51,14 @@ const validate = {
       .checkBody("password", "Password can't be empty.")
       .notEmpty();
     request
-      .checkBody("password", "Password can't be less than 8 characters and mnust not contain spaces.")
+      .checkBody("password", "Password can't be less than 8 characters and must not contain spaces.")
       .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
     request
       .checkBody("confirmPassword", "Password confirmation field can't be empty.")
       .notEmpty();
+    request
+      .checkBody("password", "Password didn't match")
+      .equals(request.body.confirmPassword);
   },
 
   validateAddRecipes(request, response) {
@@ -134,15 +134,7 @@ const validate = {
   validateStrengthPasswrod(password, request, response) {
     const passwordData = validator.checkPassword(password);
     return passwordData;
-  },
-
-  confirmPassword(password, confirmPassword, req, res) {
-    if (password !== confirmPassword) {
-      return false;
-    } else {
-      return true;
-    }
-  },
+  }, 
 
   getUserId(request, response) {
     const token = request.headers.authorization || request.headers['x-access-token'];
