@@ -56,8 +56,8 @@ class MyRecipesList extends React.Component {
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
             return (
-              <div className="col s12 m4 l3" key={shortId.generate()}>
-                <div className="card">
+              <div className="col s12 m4 l3" key={shortId.generate()} >
+                <div className="card" style={{ minHeight: '440px' }}>
                   <div className="card-image">
                     <Link to={`/recipe/${recipe.id}`}>
                       <img style={{ height: '230px' }} src={recipe.image} />
@@ -68,28 +68,29 @@ class MyRecipesList extends React.Component {
                       <span className="card_title">{recipe.title}</span>
                     </Link>
                     <p className="card-p">{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
-                    <hr style={{ borderTop: '1px solid #ccc' }} />
+                    <hr style={{ borderTop: '1px solid #26a69a' }} />
                     <div className="row">
 
                       <div className="col s4 m4 l4">
                         <a className="tooltipped text-green" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Views">
-                          <i className="material-icons">visibility</i> {recipe.viewCount}
+                          <i className="material-icons text-green">visibility</i> {recipe.viewCount}
                         </a>
                       </div>
 
                       <div className="col s4 m4 l4">
                         <Link to={`/updaterecipe/${recipe.id}`} className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" style={{ color: '#999' }}>
-                          <i className="material-icons">edit</i>
+                          <i className="material-icons text-green">edit</i>
                         </Link>
                       </div>
 
                       <div className="col s4 m4 l4">
                         <a href="#delete" onClick={e => { this.setState({ recipeId: recipe.id }) }} className="tooltipped modal-trigger" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Delete">
-                          <i className="material-icons">delete</i>
+                          <i className="material-icons text-green">delete</i>
                         </a>
                       </div>
 
                     </div>
+                    <hr style={{ borderTop: '1px solid #26a69a' }} />
                   </div>
                 </div>
               </div>

@@ -113,14 +113,14 @@ SignupForm.propTypes = {
 };
 
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     loggedIn: state.auth.loddedIn,
     error: state.auth.error,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ signup }, dispatch);
 }
 

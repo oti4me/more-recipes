@@ -90,6 +90,7 @@ class RecipeList extends React.Component {
       return (
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
+            console.log(recipe);
             return (
               <div className="col s12 m4 l4" key={shortId.generate()}>
                 <div className="card">
@@ -98,7 +99,7 @@ class RecipeList extends React.Component {
                       <img style={{ width: '100%', height: '200px' }} src={recipe.image} />
                     </Link>
                     {
-                      this.props.loggedIn.loggedIn ? <a href="" onClick={this.handleAddFavourite.bind(this)} className="btn-floating halfway-fab waves-effect waves-light red">
+                      this.props.loggedIn ? <a href="" onClick={this.handleAddFavourite.bind(this)} className="btn-floating halfway-fab waves-effect waves-light red">
                         <i data-id={recipe.id} className="material-icons color-green">favorite</i>
                       </a> : ""
                     }
@@ -108,7 +109,32 @@ class RecipeList extends React.Component {
                       <span className="card_title">{recipe.title}</span>
                     </Link>
                     <p className="card-p">{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
-                    <hr />
+
+                    <hr style={{ borderTop: "1px solid #26a69a" }} />
+                    <div className="row">
+                      <div className="col s4 m3 l3">
+                        <a className="tooltipped text-green" style={{ color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Views">
+                          <i className="material-icons text-green">visibility</i> {recipe.viewCount}
+                        </a>
+                      </div>
+                      <div className="col s4 m3 l3">
+                        <a className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upvotes" style={{ color: '#999' }}>
+                          <i className="material-icons text-green">thumb_up</i> {recipe.upvotes}
+                        </a>
+                      </div>
+                      <div className="col s4 m3 l3">
+                        <a className="tooltipped modal-trigger" style={{ ccolor: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Downvotes">
+                          <i className="material-icons text-green">thumb_down</i> {recipe.downvotes}
+                        </a>
+                      </div>
+                      <div className="col s4 m3 l3">
+                        <a className="tooltipped modal-trigger" style={{ color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Reviews">
+                          <i className="material-icons text-green">rate_review</i> {recipe.Reviews ? recipe.Reviews.length : 0}
+                        </a>
+                      </div>
+                    </div>
+
+                    <hr style={{ borderTop: "1px solid #26a69a" }} />
                     <span className="bold text-gray">By: {recipe.User.firstname} {recipe.User.lastname}</span>
                   </div>
                 </div>
@@ -136,9 +162,9 @@ class RecipeList extends React.Component {
           </div>
         </div>
       </div> < hr style={{ borderTop: "1px solid #26a69a" }} />
-        < div className="row" >
-          {this.recipeList()}
-        </div>
+        {/* < div className="row" > */}
+        {this.recipeList()}
+        {/* </div> */}
         <ul className="pagination" style={{ textAlign: "center" }}>
           <li className="disabled">
             <a href="#!">

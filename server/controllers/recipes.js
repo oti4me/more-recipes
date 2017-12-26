@@ -91,7 +91,8 @@ class Recipes {
               ['id', 'DESC']
             ],
             include: [
-              { model: db.Users, attributes: ['firstname', 'lastname'] }
+              { model: db.Users, attributes: ['firstname', 'lastname'] },
+              { model: db.Reviews }
             ]
           })
             .then((recipes) => {
@@ -127,7 +128,16 @@ class Recipes {
   getSingleRecipe(request, response) {
     const id = request.params.id;
     if (validate.validateId(id)) {
-      db.Recipes.findById(id)
+      db.Recipes.findOne({
+        where: {
+          id
+        },
+        include: [
+          { model: db.Users, attributes: ['firstname', 'lastname'] },
+          { model: db.Reviews },
+          { model: db.Favourites }
+        ]
+      })
         .then((recipe) => {
           if (recipe) {
             response.status(200).json({
