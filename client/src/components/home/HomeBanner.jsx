@@ -14,7 +14,7 @@ class HomeBanner extends React.Component {
 
   render() {
     const style1 = {
-      height: "400px",
+      height: "430px",
       width: "100%",
       backgroundColor: "#26a69a",
       backgroundRepeat: "no-repeat",
@@ -24,7 +24,7 @@ class HomeBanner extends React.Component {
 
     const style2 = {
       width: "100%",
-      height: "100%"
+      height: "430px",
     };
 
     const style3 = {

@@ -8,6 +8,7 @@ import AddRecipePage from './components/addRecipe/AddRecipePage.jsx';
 import UpdateRecipePage from './components/updateRecipe/UpdateRecipePage.jsx';
 import UserProfilePage from './components/users/UserProfilePage.jsx';
 import MyRecipesPage from './components/myRecipes/MyRecipesPage.jsx';
+import RecipeDetailPage from './components/recipeDetail/RecipeDetailPage.jsx';
 import AuthComponent, { notAuth } from './helper/AuthComponent.jsx';
 
 
@@ -21,6 +22,7 @@ export default (
     <Route path="/updaterecipe" component={AuthComponent(UpdateRecipePage)} />
     <Route path="/profile" component={AuthComponent(UserProfilePage)} />
     <Route path="/myrecipes" component={AuthComponent(MyRecipesPage)} />
+    <Route path="/recipe/:id" component={AuthComponent(RecipeDetailPage)} />
     <Redirect to="/" />
   </Switch>
 );

@@ -80,15 +80,15 @@ SigninForm.propTypes = {
   signin: PropTypes.func,
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     loggedIn: state.auth.loggedIn,
     error: state.auth.error
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ signin: signin }, dispatch);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ signin }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

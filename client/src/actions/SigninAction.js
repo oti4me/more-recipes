@@ -15,7 +15,7 @@ export const userLogged = (data) => {
   }
 };
 
-export const loginError = (data) => {
+export const signinError = (data) => {
   return {
     type: LOGIN_ERRORS,
     payload: data
@@ -26,7 +26,7 @@ export const loginError = (data) => {
 export const signin = (userData, callback) => {
   window.localStorage.removeItem('userToken');
   return dispatch => {
-    dispatch(loginError(null));
+    dispatch(signinError(null));
     dispatch(userLogged({ loggedIn: false }));
     dispatch(userSignin({}));
 
@@ -40,13 +40,13 @@ export const signin = (userData, callback) => {
         }
       }).catch(error => {
         if (error.response.status === 400) {
-          dispatch(loginError({ status: 400, message: error.response.data.message }));
+          dispatch(signinError({ status: 400, message: error.response.data.message }));
           callback();
         } else if (error.response.status === 401) {
-          dispatch(loginError({ status: 401, message: error.message }));
+          dispatch(signinError({ status: 401, message: error.message }));
           callback();
         } else {
-          dispatch(loginError({ status: 500, message: 'There seemed to be a problem signing you in, please try again later' }));
+          dispatch(signinError({ status: 500, message: 'There seemed to be a problem signing you in, please try again later' }));
           callback();
         }
       });
