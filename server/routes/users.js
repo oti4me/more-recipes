@@ -7,7 +7,7 @@ import Auth from '../middleware/jwtMiddleware';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.json({message : "Please consult the API document"});
+	res.json({ message: "Please consult the API document" });
 });
 
 router.get('/:id/profile', Auth.verifyToken, Users.profile);
@@ -20,8 +20,8 @@ router.post('/signup', Users.signup);
 
 router.get('/:id/recipes', recipes.getMyRecipes);
 
-router.delete('/favourites', favourites.removeFavourites);
-router.get('/favourites', Auth.verifyToken, favourites.getFavourites);
-router.post('/favourites', Auth.verifyToken, favourites.addFavourites);
+router.delete('/:id/favourites', favourites.removeFavourites);
+router.get('/:id/favourites', favourites.getFavourites);
+router.post('/:id/favourites', Auth.verifyToken, favourites.addFavourites);
 
 export default router;

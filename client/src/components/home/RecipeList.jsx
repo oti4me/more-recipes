@@ -90,7 +90,6 @@ class RecipeList extends React.Component {
       return (
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
-            console.log(recipe);
             return (
               <div className="col s12 m4 l4" key={shortId.generate()}>
                 <div className="card">
@@ -106,10 +105,9 @@ class RecipeList extends React.Component {
                   </div>
                   <div className="card-content">
                     <Link to={`/recipe/${recipe.id}`}>
-                      <span className="card_title">{recipe.title}</span>
+                      <span className="card_title" style={{ wordWrap: 'break-word' }}>{recipe.title}</span>
                     </Link>
-                    <p className="card-p">{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
-
+                    <p className="card-p" style={{ wordWrap: 'break-word' }}>{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
                     <hr style={{ borderTop: "1px solid #26a69a" }} />
                     <div className="row">
                       <div className="col s4 m3 l3">
@@ -133,7 +131,6 @@ class RecipeList extends React.Component {
                         </a>
                       </div>
                     </div>
-
                     <hr style={{ borderTop: "1px solid #26a69a" }} />
                     <span className="bold text-gray">By: {recipe.User.firstname} {recipe.User.lastname}</span>
                   </div>
@@ -150,21 +147,8 @@ class RecipeList extends React.Component {
 
   render() {
     return (
-      <div className="col s12 m10 l10" > <div className="row">
-        <div className="col s12 m8 l8">
-          <h3 className="h-title">Recent Recipes</h3>
-        </div>
-        <div className="col s12 m4 l4 top-margin-30">
-          <div className="input-field col s12">
-            <i className="material-icons prefix">search</i>
-            <input id="search" type="text" />
-            <label htmlFor="search">Enter Keyword</label>
-          </div>
-        </div>
-      </div> < hr style={{ borderTop: "1px solid #26a69a" }} />
-        {/* < div className="row" > */}
+      <div>
         {this.recipeList()}
-        {/* </div> */}
         <ul className="pagination" style={{ textAlign: "center" }}>
           <li className="disabled">
             <a href="#!">

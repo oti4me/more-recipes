@@ -39,7 +39,7 @@ const addRecipe = (data, callback) => {
         ingredients,
         image: response.data.url
       }
-      axios.post('/api/v1/recipes', recipeData, header)
+      axios.post('/api/v1/recipes', recipeData, header())
         .then(res => {
           if (res) {
             dispatch(requestAddRecipe({ isRequesting: false }));

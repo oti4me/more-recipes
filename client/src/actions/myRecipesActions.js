@@ -1,11 +1,6 @@
 import axios from 'axios';
+import header from '../helper/getHeader';
 
-const header = ({
-  headers: {
-    'x-access-token': window.localStorage.userToken,
-    authorization: window.localStorage.userToken
-  }
-});
 
 const getMyRecipesAction = (data) => {
   return {
@@ -23,7 +18,7 @@ const getMyRecipesErrors = (data) => {
 
 const getMyRecipes = (id, callback) => {
   return dispatch => {
-    return axios.get(`/api/v1/users/${id}/recipes`, header)
+    return axios.get(`/api/v1/users/${id}/recipes`, header())
       .then(res => {
         dispatch(getMyRecipesAction({
           succes: true,
