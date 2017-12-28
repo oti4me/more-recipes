@@ -1,4 +1,4 @@
-import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR } from '../actions/types';
+import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR, GET_REVIEWS, ADD_REVIEW, ADD_REVIEW_ERRORS } from '../actions/types';
 
 const recipeReducer = (state = {}, action) => {
   switch (action.type) {
@@ -46,7 +46,15 @@ const recipeReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
       break;
 
-    case 'REVIEW_RECIPE':
+    case ADD_REVIEW:
+      return { ...state, ...action.payload };
+      break;
+
+    case ADD_REVIEW_ERRORS:
+      return { ...state, ...action.payload };
+      break;
+
+    case GET_REVIEWS:
       return { ...state, ...action.payload };
       break;
 

@@ -6,14 +6,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import getMyRecipes from '../../actions/myRecipesActions';
 import shortId from 'shortid';
-
-const header = ({
-  headers: {
-    'x-access-token': window.localStorage.userToken,
-    authorization: window.localStorage.userToken
-  }
-});
-
+import header from '../../helper/getHeader';
 
 class MyRecipesList extends React.Component {
 
@@ -26,8 +19,8 @@ class MyRecipesList extends React.Component {
   }
 
   componentDidMount() {
-    const userID = this.props.user.userId
-    this.props.getMyRecipes(userID, () => {
+    const { userId } = this.props.user;
+    this.props.getMyRecipes(userId, () => {
       this.setState({ myRecipes: this.props.myRecipes })
     });
     $('.modal').modal();
@@ -65,30 +58,26 @@ class MyRecipesList extends React.Component {
                   </div>
                   <div className="card-content">
                     <Link to={`/recipe/${recipe.id}`}>
-                      <span className="card_title">{recipe.title}</span>
+                      <span className="card_title" style={{ wordWrap: 'break-word' }}>{recipe.title}</span>
                     </Link>
-                    <p className="card-p">{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
+                    <p className="card-p" style={{ wordWrap: 'break-word' }}>{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
                     <hr style={{ borderTop: '1px solid #26a69a' }} />
                     <div className="row">
-
                       <div className="col s4 m4 l4">
                         <a className="tooltipped text-green" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Views">
                           <i className="material-icons text-green">visibility</i> {recipe.viewCount}
                         </a>
                       </div>
-
                       <div className="col s4 m4 l4">
                         <Link to={`/updaterecipe/${recipe.id}`} className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" style={{ color: '#999' }}>
                           <i className="material-icons text-green">edit</i>
                         </Link>
                       </div>
-
                       <div className="col s4 m4 l4">
                         <a href="#delete" onClick={e => { this.setState({ recipeId: recipe.id }) }} className="tooltipped modal-trigger" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Delete">
                           <i className="material-icons text-green">delete</i>
                         </a>
                       </div>
-
                     </div>
                     <hr style={{ borderTop: '1px solid #26a69a' }} />
                   </div>
@@ -103,58 +92,19 @@ class MyRecipesList extends React.Component {
   }
 
   render() {
-    const style = {
-      textAlign: "center",
-      color: "#ccc",
-      margin: "100px"
-    }
+
     const EmptyList = (
       <div>
-        <h3 style={style}>You have not added a recipe yet</h3>
+        <h3 style={{ textAlign: "center", color: "#ccc", margin: "100px" }}>You have not added a recipe yet</h3>
       </div>
     );
 
     return (
       <div className="row">
-        <div className="col s12 m12 l12">
-          <div className="row">
-            <div className="col s12 m5 l5">
-              <h3 className="h-title">My Recipes</h3>
-            </div>
-            <div className="col s12 m4 l4 top-margin-30">
-              <div className="input-field col s12">
-                <i className="material-icons prefix">search</i>
-                <input id="search" type="text" />
-                <label htmlFor="search">Enter Keyword</label>
-              </div>
-            </div>
-            <div className="col s12 m3 l3 top-margin-50">
-              <a href="/addrecipe" className="waves-effect waves-light btn top-margin">Add Recipe</a>
-            </div>
-          </div>
-          <hr style={{ borderTop: "1px solid #26a69a" }} />
-          <div className='row'>
-            {/* my recipe list */}
-            {this.state.myRecipes.length ? this.recipeList() : EmptyList}
-          </div>
-          {/* pagination */}
-          <ul className="pagination" style={{ textAlign: "center" }}>
-            <li className="disabled">
-              <a href="#!">
-                <i className="material-icons">chevron_left</i>
-              </a>
-            </li>
-            <li className="active">
-              <a href="#!" className="color-green">1</a>
-            </li>
-            <li className="waves-effect disabled">
-              <a href="#!">
-                <i className="material-icons">chevron_right</i>
-              </a>
-            </li>
-          </ul>
-          {/* end of pagination */}
-        </div>
+        {/* <div className='row'> */}
+        {/* my recipe list */}
+        {this.state.myRecipes.length > 0 ? this.recipeList() : EmptyList}
+        {/* </div> */}
         {/* delete modeal */}
         <div id="delete" className="modal">
           <div className="modal-content">
@@ -166,9 +116,7 @@ class MyRecipesList extends React.Component {
             <a className="modal-action modal-close waves-effect waves-green btn-flat">Cancil</a>
           </div>
         </div>
-
       </div>
-
     )
   }
 }

@@ -3,9 +3,10 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import shortId from 'shortid';
-// import ReviewModal from './ReviewModal.jsx';
-// import ReviewCommentBox from './ReviewCommentBox.jsx';
+import ReviewModal from './ReviewModal.jsx';
+import ReviewCommentBox from './ReviewCommentBox.jsx';
 import { getRecipe } from '../../actions/RecipeDetails';
+import { getReviews } from '../../actions/getReviews';
 
 class RecipeDetail extends React.Component {
 
@@ -13,23 +14,37 @@ class RecipeDetail extends React.Component {
     super(props);
     this.state = {
       recipe: {},
-      comment: ''
+      comment: '',
+      reviews: []
     };
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.getRecipe(id, (id) => {
-      const { recipe } = this.props;
-      this.setState({
-        recipe
-      });
+    this.props.getRecipe(id, () => {
+      this.props.getReviews(id, (response) => {
+        if (response) {
+          const { recipe, reviews } = this.props;
+          this.setState({
+            recipe,
+            reviews
+          });
+        }
+      })
     });
     $('.modal').modal();
   }
 
+  componentDidUpdate() {
+    if (this.props.reviews > this.state.reviews) {
+      this.setState({
+        reviews: this.props.reviews
+      });
+    }
+  }
+
   render() {
-    const { title, description, direction, ingredients, upvotes, downvotes, image, User, Favourites, Reviews } = this.state.recipe;
+    const { id, title, description, direction, ingredients, upvotes, downvotes, image, User, Favourites } = this.state.recipe;
     const style1 = {
       borderRight: "1px solid #ccc",
       color: "rgba(0,0,0,0.5)",
@@ -43,7 +58,6 @@ class RecipeDetail extends React.Component {
     const colorTransparent = {
       color: "rgba(0,0,0,0.5)"
     }
-
     return (
       <div className="col s12 m10 l10" >
         <div className="row">
@@ -54,7 +68,7 @@ class RecipeDetail extends React.Component {
               <div className="col s3 m3 l3" style={style1}>
                 <a href="#reviews" className="modal-trigger">
                   <span className="tooltipped " data-position="bottom" data-delay="50" data-tooltip="Reviews" style={{ color: "#ff7e1a" }}>
-                    {Reviews ? Reviews.length : ''} <i className="material-icons " >rate_review</i>
+                    {this.state.reviews ? this.state.reviews.length : ''} <i className="material-icons " >rate_review</i>
                   </span>
                 </a>
               </div>
@@ -80,7 +94,6 @@ class RecipeDetail extends React.Component {
                 </a>
               </div>
             </div>
-
             <hr style={{ borderTop: "1px solid #26a69a" }} />
             <div className="row">
               <div className="col s12 m3 l3">
@@ -100,7 +113,7 @@ class RecipeDetail extends React.Component {
           </div>
           <div className="col s12 m7 l7">
             <div style={{ width: "100%", height: "300px", position: "relative" }} >
-              <img style={{ width: "100%", height: "300px" }} src={image} />
+              <img className="materialboxed" data-caption={title} style={{ width: "100%", height: "300px" }} src={image} />
             </div>
           </div>
         </div>
@@ -114,8 +127,8 @@ class RecipeDetail extends React.Component {
             <p style={colorTransparent} > {this.state.recipe.direction}</p>
           </div>
         </div>
-        {/* <ReviewModal reviews={Reviews} />
-        <ReviewCommentBox { ...this.props } /> */}
+        {id ? <ReviewModal id={id} /> : ''}
+        <ReviewCommentBox { ...this.props } />
       </div >
     );
   }
@@ -125,8 +138,9 @@ class RecipeDetail extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    recipe: state.recipes.recipe
+    recipe: state.recipes.recipe,
+    reviews: state.recipes.reviews
   };
 }
 
-export default connect(mapStateToProps, { getRecipe })(RecipeDetail);
+export default connect(mapStateToProps, { getRecipe, getReviews })(RecipeDetail);

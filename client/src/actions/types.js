@@ -22,8 +22,7 @@ export const USER_SIGNUP = 'USER_SIGNUP';
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
 export const PASSWORD_ERROR = 'PASSWORD_ERROR';
 export const SIGNUP_ERRORS = 'SIGNUP_ERRORS';
-
-
-
-
-
+export const GET_REVIEWS = 'GET_REVIEWS';
+export const GET_REVIEWS_ERROR = 'GET_REVIEWS_ERROR';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const ADD_REVIEW_ERRORS = 'ADD_REVIEW_ERRORS';

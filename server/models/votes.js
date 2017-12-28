@@ -23,17 +23,17 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-    classMethods: {
-      associate: (models) => {
-        Votes.belongsTo(models.Users, {
-          foreignKey: 'userId',
-        });
+      classMethods: {
+        associate: (models) => {
+          Votes.belongsTo(models.Users, {
+            foreignKey: 'userId',
+          });
 
-        Votes.belongsTo(models.Recipes, {
-          foreignKey: 'recipeId',
-        });
+          Votes.belongsTo(models.Recipes, {
+            foreignKey: 'recipeId',
+          });
+        }
       }
-    }
-  });
+    });
   return Votes;
 };

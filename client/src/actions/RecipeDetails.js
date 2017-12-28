@@ -18,11 +18,12 @@ export const getRecipeError = (data) => {
 };
 
 export const getRecipe = (id, callback) => {
+  console.log
   return dispatch => {
     dispatch(getRecipeError(null));
     dispatch(recipeDetail({}));
 
-    return axios.get('/api/v1/recipes/' + id, {}, header)
+    return axios.get('/api/v1/recipes/' + id, {}, header())
       .then(res => {
         dispatch(recipeDetail({ recipe: res.data.recipe }));
         callback();

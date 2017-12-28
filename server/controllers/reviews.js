@@ -8,7 +8,7 @@ import db from '../models';
  * @class Reviews
 */
 class Reviews {
-   
+
   /**
    * A method that allows a user to review recipes on the collection
    * @memberof Reviews
@@ -20,59 +20,59 @@ class Reviews {
   reviewRecipe(request, response) {
     const recipeId = request.params.id
     const { comment } = request.body;
-    const userId = validate.getUserId(request, response);  
+    const userId = validate.getUserId(request, response);
     validate.validateReviewRecipe(request, response);
     var errors = request.validationErrors();
     if (errors) {
-      return response.status(400).json({ 
-        succes: false, 
-        message : errors 
+      return response.status(400).json({
+        succes: false,
+        message: errors
       });
     }
-    if(validate.validateId(recipeId) && validate.validateId(userId)){
+    if (validate.validateId(recipeId) && validate.validateId(userId)) {
       db.Recipes.findById(recipeId)
-      .then(recipe => {
-        if(recipe){
-          db.Reviews.findOne({
-            where : {
-              userId, comment, recipeId
-            }
-          }).then(foundReview => {
-            if(foundReview){
-              response.status(409).json({ 
-                succes: false, 
-                message : 'Your already have a review with same content' 
-              });
-            }else{
-              db.Reviews.create({
-                recipeId, userId, comment
-              })
-              .then((review) => {
-                response.status(201).json({ 
-                  succes: true, 
-                  review
+        .then(recipe => {
+          if (recipe) {
+            db.Reviews.findOne({
+              where: {
+                userId, comment, recipeId
+              }
+            }).then(foundReview => {
+              if (foundReview) {
+                response.status(409).json({
+                  succes: false,
+                  message: 'Your already have a review with same content'
                 });
-              })
-            }
-          })
-          
-        }else{
-          response.status(404).json({ 
-            succes: false, 
-            message: `No recipe with ID '${recipeId}' `
+              } else {
+                db.Reviews.create({
+                  recipeId, userId, comment
+                })
+                  .then((review) => {
+                    response.status(201).json({
+                      succes: true,
+                      review
+                    });
+                  })
+              }
+            })
+
+          } else {
+            response.status(404).json({
+              succes: false,
+              message: `No recipe with ID '${recipeId}' `
+            });
+          }
+        })
+        .catch(error => {
+          response.status(500).json({
+            succes: false,
+            message: error.message
           });
-        }
-      })
-      .catch(error => {
-        response.status(500).json({ 
-          succes: false, 
-          message : error.message 
-        });
-      })
-    }else{
-      response.status(400).json({ 
-        succes: true, 
-        message : 'User ID and Recipe ID must be a valid integer' 
+        })
+    } else {
+      response.status(400).json({
+        succes: true,
+        message: 'User ID and Recipe ID must be a valid integer'
       });
     }
   }
@@ -87,53 +87,59 @@ class Reviews {
   */
   getReviews(request, response) {
     const id = request.params.id;
-    if(!validate.validateId(id)){
-      request.status(400).json({ 
-        succes: false, 
-        message : 'Id is not a valid integer'
+    if (!validate.validateId(id)) {
+      request.status(400).json({
+        succes: false,
+        message: 'Id is not a valid integer'
       });
     }
     db.Recipes.findById(id)
-    .then(recipe =>{
-      if(recipe){ 
-        db.Reviews.findAll({
-          where: {
-            recipeId: id
-          }
-        })
-        .then((reviews) => {
-          if (reviews) {
-            response.status(200).json({ 
-              succes: true, 
-              reviews
-            });
-          }
-          else{
-            response.status(404).json({ 
-              succes: false, 
-              message: 'No review found for this recipe'
-            });
-          }
-        })
-        .catch(error => {
-          response.status(500).json({ 
-            succes: false, 
-            message : error.message 
+      .then(recipe => {
+        if (recipe) {
+          db.Reviews.findAll({
+            where: {
+              recipeId: id,
+            },
+            include: [
+              { model: db.Users, attributes: ['firstname', 'lastname'] },
+            ],
+            order: [
+              ['id', 'DESC']
+            ]
+          })
+            .then((reviews) => {
+              if (reviews) {
+                response.status(200).json({
+                  succes: true,
+                  reviews
+                });
+              }
+              else {
+                response.status(404).json({
+                  succes: false,
+                  message: 'No review found for this recipe'
+                });
+              }
+            })
+            .catch(error => {
+              response.status(500).json({
+                succes: false,
+                message: error.message
+              });
+            })
+        } else {
+          response.status(404).json({
+            succes: false,
+            message: `No recipe with ID '${id}' `
           });
-        })
-      }else{
-        response.status(404).json({ 
-          succes: false, 
-          message: `No recipe with ID '${id}' `
+        }
+      })
+      .catch(error => {
+        response.status(500).json({
+          succes: false,
+          message: error.message
         });
-      }
-    })
-    .catch(error =>{
-      response.status(500).json({ 
-        succes: false, 
-        message : error.message 
       });
-    });
   }
 }
 

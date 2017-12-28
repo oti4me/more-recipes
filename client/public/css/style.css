@@ -1,7 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css?family=Acme|Archivo+Narrow|Berkshire+Swash|Bree+Serif|Dancing+Script:700|Gloria+Hallelujah|Great+Vibes|Marck+Script|Open+Sans|Pacifico|Rubik|Sacramento|Satisfy|Shadows+Into+Light|Shadows+Into+Light+Two|Shrikhand|Signika|Varela+Round|Yanone+Kaffeesatz|Yellowtail');
-html h1, h2, h3, h4{
-  font-family: 'Sacramento',serif;
+@import url('https://fonts.googleapis.com/css?family=Acme|Archivo+Narrow|Berkshire+Swash|Bree+Serif|Dancing+Script:700|Gloria+Hallelujah|Great+Vibes|Marck+Script|Open+Sans|Pacifico|Rubik|Sacramento|Satisfy|Shadows+Into+Light|Shadows+Into+Light+Two|Shrikhand|Signika|Varela+Round|Yanone+Kaffeesatz|Yellowtail');
+/* html h1, h2, h3, h4{
+  font-family: Pacifico ,serif;
+  color: #999;
 } */
+
 /* headings*/
 h2, h3, h4, h5{
   color: #999;

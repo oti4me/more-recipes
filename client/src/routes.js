@@ -21,6 +21,7 @@ export default (
     <Route path="/addrecipe" component={AuthComponent(AddRecipePage)} />
     <Route path="/updaterecipe" component={AuthComponent(UpdateRecipePage)} />
     <Route path="/profile" component={AuthComponent(UserProfilePage)} />
+    <Route path="/profile/newme" component={AuthComponent(UserProfilePage)} />
     <Route path="/myrecipes" component={AuthComponent(MyRecipesPage)} />
     <Route path="/recipe/:id" component={AuthComponent(RecipeDetailPage)} />
     <Redirect to="/" />
