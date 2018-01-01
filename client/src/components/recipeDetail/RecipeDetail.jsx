@@ -7,8 +7,8 @@ import ReviewModal from './ReviewModal.jsx';
 import ReviewCommentBox from './ReviewCommentBox.jsx';
 import { getRecipe } from '../../actions/RecipeDetails';
 import { getReviews } from '../../actions/getReviews';
-import { addFavourite } from '../../actions/favouritesAction';
-import { getFavourites } from '../../actions/favouritesAction';
+import { addFavourite, getFavourites } from '../../actions/favouritesAction';
+import { upvoteRecipe } from '../../actions/votesAction';
 
 class RecipeDetail extends React.Component {
 
@@ -17,8 +17,10 @@ class RecipeDetail extends React.Component {
     this.state = {
       recipe: {},
       comment: '',
-      reviews: []
+      reviews: [],
     };
+    this.handleUpvote = this.handleUpvote.bind(this)
+    this.handleAddFavourite = this.handleAddFavourite.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +51,11 @@ class RecipeDetail extends React.Component {
         recipe: this.props.recipe
       });
     }
+    if (this.props.recipe && this.props.recipe.upvotes !== this.state.recipe.upvotes) {
+      this.setState({
+        recipe: this.props.recipe
+      });
+    }
   }
 
   handleAddFavourite(e) {
@@ -65,7 +72,6 @@ class RecipeDetail extends React.Component {
         })
       } else {
         const { errors } = this.props;
-        console.log(errors);
         if (errors.status === 400) {
           errors.message.map(err => {
             Materialize.toast(err.msg, 4000, 'red');
@@ -76,6 +82,32 @@ class RecipeDetail extends React.Component {
       }
     });
   }
+
+  handleUpvote(e) {
+    e.preventDefault();
+    const recipeId = Number(e.target.dataset['id']);
+    this.props.upvoteRecipe(recipeId, (res) => {
+      if (res) {
+        const id = this.props.match.params.id;
+        const { upVotes } = this.props;
+        this.props.getRecipe(id, (result) => {
+          if (result) {
+            upVotes.message === 'upvotes added' ? Materialize.toast(upVotes.message, 3000, 'green') : Materialize.toast(upVotes.message, 3000, 'red');
+          }
+        })
+      } else {
+        const { errors } = this.props;
+        if (errors.status === 400) {
+          errors.message.map(err => {
+            Materialize.toast(err.msg, 4000, 'red');
+          });
+        } else if (errors.status === 409) {
+          return Materialize.toast(errors.message, 3000, 'red');
+        }
+      }
+    });
+  }
+
 
   render() {
     const { id, title, description, direction, ingredients, upvotes, downvotes, image, User, Favourites } = this.state.recipe;
@@ -107,10 +139,10 @@ class RecipeDetail extends React.Component {
                   </span>
                 </a>
               </div>
-              <div className="col s3 m3 l3" style={style1}>
+              <div className="col s3 m3 l3" style={style1} onClick={this.handleUpvote}>
                 <a href="#">
                   <span className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upvotes" style={{ color: "#ff7e1a" }}>
-                    {upvotes} <i className="material-icons" >thumb_up</i>
+                    {upvotes} <i data-id={id} className="material-icons" >thumb_up</i>
                   </span>
                 </a>
               </div>
@@ -121,7 +153,7 @@ class RecipeDetail extends React.Component {
                   </span>
                 </a>
               </div>
-              <div className="col s3 m3 l3" style={colorTransparent} onClick={this.handleAddFavourite.bind(this)}>
+              <div className="col s3 m3 l3" style={colorTransparent} onClick={this.handleAddFavourite}>
                 <a href="#">
                   <span className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Favourites" style={{ color: "#ff7e1a" }}>
                     {Favourites ? Favourites.length : ''} <i data-id={id} className="material-icons">favorite</i>
@@ -176,8 +208,9 @@ function mapStateToProps(state) {
     recipe: state.recipes.recipe,
     reviews: state.recipes.reviews,
     user: state.auth.user,
-    errors: state.recipes.errors
+    errors: state.recipes.errors,
+    upVotes: state.recipes.upVotes
   };
 }
 
-export default connect(mapStateToProps, { getRecipe, getReviews, addFavourite, getReviews })(RecipeDetail);
+export default connect(mapStateToProps, { getRecipe, getReviews, addFavourite, getReviews, upvoteRecipe })(RecipeDetail);
