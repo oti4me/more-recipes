@@ -18,7 +18,6 @@ export const getRecipeError = (data) => {
 };
 
 export const getRecipe = (id, callback) => {
-  console.log
   return dispatch => {
     dispatch(getRecipeError(null));
     dispatch(recipeDetail({}));

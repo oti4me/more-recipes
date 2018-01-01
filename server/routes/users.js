@@ -20,7 +20,7 @@ router.post('/signup', Users.signup);
 
 router.get('/:id/recipes', recipes.getMyRecipes);
 
-router.delete('/:id/favourites', favourites.removeFavourites);
+router.delete('/:id/favourites/:favId', favourites.removeFavourites);
 router.get('/:id/favourites', favourites.getFavourites);
 router.post('/:id/favourites', Auth.verifyToken, favourites.addFavourites);
 

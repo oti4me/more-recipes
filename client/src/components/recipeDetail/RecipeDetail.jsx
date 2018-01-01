@@ -7,6 +7,8 @@ import ReviewModal from './ReviewModal.jsx';
 import ReviewCommentBox from './ReviewCommentBox.jsx';
 import { getRecipe } from '../../actions/RecipeDetails';
 import { getReviews } from '../../actions/getReviews';
+import { addFavourite } from '../../actions/favouritesAction';
+import { getFavourites } from '../../actions/favouritesAction';
 
 class RecipeDetail extends React.Component {
 
@@ -38,26 +40,59 @@ class RecipeDetail extends React.Component {
   componentDidUpdate() {
     if (this.props.reviews > this.state.reviews) {
       this.setState({
-        reviews: this.props.reviews
+        reviews: this.props.reviews,
+        recipe: this.props.recipe
       });
     }
+    if (this.props.recipe && this.props.recipe.Favourites > this.state.recipe.Favourites) {
+      this.setState({
+        recipe: this.props.recipe
+      });
+    }
+  }
+
+  handleAddFavourite(e) {
+    e.preventDefault();
+    const { userId } = this.props.user;
+    const recipeId = Number(e.target.dataset['id']);
+    this.props.addFavourite({ userId, recipeId }, (res) => {
+      if (res) {
+        const id = this.props.match.params.id;
+        this.props.getRecipe(id, (result) => {
+          if (result) {
+            return Materialize.toast('Added to favourites', 3000, 'green');
+          }
+        })
+      } else {
+        const { errors } = this.props;
+        console.log(errors);
+        if (errors.status === 400) {
+          errors.message.map(err => {
+            Materialize.toast(err.msg, 4000, 'red');
+          });
+        } else if (errors.status === 409) {
+          return Materialize.toast(errors.message, 3000, 'red');
+        }
+      }
+    });
   }
 
   render() {
     const { id, title, description, direction, ingredients, upvotes, downvotes, image, User, Favourites } = this.state.recipe;
     const style1 = {
-      borderRight: "1px solid #ccc",
-      color: "rgba(0,0,0,0.5)",
+      borderRight: '1px solid #ccc',
+      color: 'rgba(0,0,0,0.5)',
     }
     const style2 = {
-      fontSize: "22px",
+      fontSize: '22px',
       textTransform: 'uppercase',
       fontWeight: 'bold'
     }
 
     const colorTransparent = {
-      color: "rgba(0,0,0,0.5)"
+      color: 'rgba(0,0,0,0.5)'
     }
+
     return (
       <div className="col s12 m10 l10" >
         <div className="row">
@@ -68,28 +103,28 @@ class RecipeDetail extends React.Component {
               <div className="col s3 m3 l3" style={style1}>
                 <a href="#reviews" className="modal-trigger">
                   <span className="tooltipped " data-position="bottom" data-delay="50" data-tooltip="Reviews" style={{ color: "#ff7e1a" }}>
-                    {this.state.reviews ? this.state.reviews.length : ''} <i className="material-icons " >rate_review</i>
+                    {this.state.reviews ? this.state.reviews.length : ''} <i className="material-icons" >rate_review</i>
                   </span>
                 </a>
               </div>
               <div className="col s3 m3 l3" style={style1}>
                 <a href="#">
                   <span className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upvotes" style={{ color: "#ff7e1a" }}>
-                    {upvotes} <i className="material-icons " >thumb_up</i>
+                    {upvotes} <i className="material-icons" >thumb_up</i>
                   </span>
                 </a>
               </div>
               <div className="col s3 m3 l3" style={style1}>
-                <a href="#">
+                <a href="#" >
                   <span className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Downvotes" style={{ color: "#ff7e1a" }}>
                     {downvotes} <i className="material-icons">thumb_down</i>
                   </span>
                 </a>
               </div>
-              <div className="col s3 m3 l3" style={colorTransparent}>
+              <div className="col s3 m3 l3" style={colorTransparent} onClick={this.handleAddFavourite.bind(this)}>
                 <a href="#">
                   <span className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Favourites" style={{ color: "#ff7e1a" }}>
-                    {Favourites ? Favourites.length : ''} <i className="material-icons">favorite</i>
+                    {Favourites ? Favourites.length : ''} <i data-id={id} className="material-icons">favorite</i>
                   </span>
                 </a>
               </div>
@@ -98,11 +133,11 @@ class RecipeDetail extends React.Component {
             <div className="row">
               <div className="col s12 m3 l3">
                 <div className="" >
-                  <img style={{ position: "relative", borderRadius: "50%", maxWidth: "60px", maxHeight: "50px" }} src="/images/profile-avata.png" />
+                  <img style={{ position: 'relative', borderRadius: '50%', maxWidth: '60px', maxHeight: '50px' }} src="/images/profile-avata.png" />
                 </div>
               </div>
               <div className="col s12 m9 l9">
-                <p style={colorTransparent}><span style={{ color: "#ccc" }}>Recipe By: {User ? User.firstname : ''} {User ? User.lastname : ''}</span></p>
+                <p style={colorTransparent}><span style={{ color: '#ccc' }}>Recipe By: {User ? User.firstname : ''} {User ? User.lastname : ''}</span></p>
               </div>
             </div>
             <div className="row">
@@ -112,8 +147,8 @@ class RecipeDetail extends React.Component {
             </div>
           </div>
           <div className="col s12 m7 l7">
-            <div style={{ width: "100%", height: "300px", position: "relative" }} >
-              <img className="materialboxed" data-caption={title} style={{ width: "100%", height: "300px" }} src={image} />
+            <div style={{ width: '100%', height: '300px', position: 'relative' }} >
+              <img className="materialboxed" data-caption={title} style={{ width: '100%', height: '300px' }} src={image} />
             </div>
           </div>
         </div>
@@ -139,8 +174,10 @@ class RecipeDetail extends React.Component {
 function mapStateToProps(state) {
   return {
     recipe: state.recipes.recipe,
-    reviews: state.recipes.reviews
+    reviews: state.recipes.reviews,
+    user: state.auth.user,
+    errors: state.recipes.errors
   };
 }
 
-export default connect(mapStateToProps, { getRecipe, getReviews })(RecipeDetail);
+export default connect(mapStateToProps, { getRecipe, getReviews, addFavourite, getReviews })(RecipeDetail);
