@@ -29,7 +29,7 @@ class MyRecipesList extends React.Component {
   handleDelete(e) {
     e.preventDefault();
     const id = e.target.dataset['id']
-    axios.delete('/api/v1/recipes/' + id, header)
+    axios.delete('/api/v1/recipes/' + id, header())
       .then(res => {
         if (res) this.getMyRecipes();
       })
@@ -49,7 +49,7 @@ class MyRecipesList extends React.Component {
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
             return (
-              <div className="col s12 m4 l3" key={shortId.generate()} >
+              <div className="col s12 m3 l3" key={shortId.generate()} >
                 <div className="card" style={{ minHeight: '440px' }}>
                   <div className="card-image">
                     <Link to={`/recipe/${recipe.id}`}>

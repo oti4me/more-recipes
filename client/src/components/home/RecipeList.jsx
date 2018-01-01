@@ -6,14 +6,11 @@ import axios from 'axios';
 import shortId from 'shortid';
 
 import Data from '../../../../server/mockapi/data';
-import { getAllRecipe } from '../../actions/RecipeAction';
-
-const header = ({
-  headers: {
-    'x-access-token': window.localStorage.userToken,
-    authorization: window.localStorage.userToken
-  }
-});
+import { getAllRecipes } from '../../actions/recipes';
+import { addFavourite } from '../../actions/favouritesAction';
+import { getFavourites } from '../../actions/favouritesAction';
+import header from '../../helper/getHeader';
+import Pagination from '../pagination.jsx';
 
 class RecipeList extends React.Component {
 
@@ -22,8 +19,8 @@ class RecipeList extends React.Component {
     this.state = {
       recipes: [],
       pages: 1,
-      page: 1,
     };
+    this.handleAddFavourite = this.handleAddFavourite.bind(this);
   }
 
   componentDidMount() {
@@ -32,17 +29,27 @@ class RecipeList extends React.Component {
 
   handleAddFavourite(e) {
     e.preventDefault();
-    const userId = this.props.user.userId;
-    const recipeId = e.target.dataset['id'];
-    axios.post('/api/v1/users/' + userId + '/recipes', { recipeId: recipeId }, header)
-      .then(res => {
-        Materialize.toast("Added to favourite list", 3000, 'green');
-      });
+    const { userId } = this.props.user;
+    const recipeId = Number(e.target.dataset['id']);
+    this.props.addFavourite({ userId, recipeId }, (res) => {
+      if (res) {
+        return Materialize.toast('Added to favourites', 3000, 'green');
+      } else {
+        const { errors } = this.props;
+        console.log(errors);
+        if (errors.status === 400) {
+          errors.message.map(err => {
+            Materialize.toast(err.msg, 4000, 'red');
+          });
+        } else if (errors.status === 409) {
+          return Materialize.toast(errors.message, 3000, 'red');
+        }
+      }
+    });
   }
 
-
   getRecipes(data = {}) {
-    axios.get('/api/v1/recipes', data, header)
+    axios.get('/api/v1/recipes', data, header())
       .then(res => {
         this.setState({
           recipes: res.data.recipes,
@@ -52,31 +59,6 @@ class RecipeList extends React.Component {
       .catch(error => {
 
       });
-  }
-
-  handlePagination(e) {
-    e.preventDefault()
-    let page = e.target.dataset['page'];
-    this.setState({
-      page: page
-    });
-    this.getRecipes({ page: this.state.page });
-  }
-
-  pagination() {
-    let pages = [];
-    for (let i = 1; i <= this.state.pages; i++) {
-      pages.push(
-        <li className="" key={i}>
-          <a href="" data-page={i} onClick={this.handlePagination.bind(this)} className={this.state.page === i ? "color-green" : ''}>{i}</a>
-        </li>
-      )
-    }
-    return (
-      pages.map(list => {
-        return list;
-      })
-    )
   }
 
   recipeList() {
@@ -149,19 +131,7 @@ class RecipeList extends React.Component {
     return (
       <div>
         {this.recipeList()}
-        <ul className="pagination" style={{ textAlign: "center" }}>
-          <li className="disabled">
-            <a href="#!">
-              <i className="material-icons">chevron_left</i>
-            </a>
-          </li>
-          {this.pagination()}
-          <li className="waves-effect disabled">
-            <a href="#!">
-              <i className="material-icons">chevron_right</i>
-            </a>
-          </li>
-        </ul>
+        <Pagination pages={this.state.pages} />
       </div>
     );
   }
@@ -170,10 +140,10 @@ class RecipeList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     recipes: state.recipes,
+    errors: state.recipes.errors,
     loggedIn: state.auth.loggedIn,
     user: state.auth.user
   };
 }
 
-
-export default connect(mapStateToProps, { getAllRecipe })(RecipeList);
+export default connect(mapStateToProps, { getAllRecipes, addFavourite, getFavourites })(RecipeList);

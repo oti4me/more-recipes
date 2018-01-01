@@ -1,4 +1,4 @@
-import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR, GET_REVIEWS, ADD_REVIEW, ADD_REVIEW_ERRORS } from '../actions/types';
+import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR, GET_REVIEWS, ADD_REVIEW, ADD_REVIEW_ERRORS, ADD_FAVOURITE, ADD_FAVOURITE_ERRORS, GET_FAVOURITE, GET_FAVOURITE_ERRORS, REMOVE_FAVOURITE, REMOVE_FAVOURITE_ERRORS } from '../actions/types';
 
 const recipeReducer = (state = {}, action) => {
   switch (action.type) {
@@ -34,11 +34,27 @@ const recipeReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
       break;
 
-    case 'GET_FAVOURITE_RECIPE':
+    case GET_FAVOURITE:
       return { ...state, ...action.payload };
       break;
 
-    case 'ADD_FAVOURITE_RECIPE':
+    case GET_FAVOURITE_ERRORS:
+      return { ...state, ...action.payload };
+      break;
+
+    case REMOVE_FAVOURITE:
+      return { ...state, ...action.payload };
+      break;
+
+    case REMOVE_FAVOURITE_ERRORS:
+      return { ...state, ...action.payload };
+      break;
+
+    case ADD_FAVOURITE:
+      return { ...state, ...action.payload };
+      break;
+
+    case ADD_FAVOURITE_ERRORS:
       return { ...state, ...action.payload };
       break;
 
