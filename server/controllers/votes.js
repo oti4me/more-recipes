@@ -175,7 +175,7 @@ class Votes {
                   if(res){
                     response.status(201).json({ 
                       succes: true, 
-                      message: `${voted} Added`
+                      message: `${voted} added`
                     });
                   }
                 })
@@ -197,8 +197,6 @@ class Votes {
       }
     })
   }
-
- 
 }
 
 export default new Votes();

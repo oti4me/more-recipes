@@ -25,11 +25,11 @@ export const getRecipe = (id, callback) => {
     return axios.get('/api/v1/recipes/' + id, {}, header())
       .then(res => {
         dispatch(recipeDetail({ recipe: res.data.recipe }));
-        callback();
+        callback(true);
       })
       .catch(error => {
         dispatch(getRecipeError({ message: error.response }));
-        callback();
+        callback(false);
       })
   }
 }
