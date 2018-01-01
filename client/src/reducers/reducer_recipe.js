@@ -1,4 +1,4 @@
-import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR, GET_REVIEWS, ADD_REVIEW, ADD_REVIEW_ERRORS, ADD_FAVOURITE, ADD_FAVOURITE_ERRORS, GET_FAVOURITE, GET_FAVOURITE_ERRORS, REMOVE_FAVOURITE, REMOVE_FAVOURITE_ERRORS, UPVOTE_RECIPE, UPVOTE_RECIPE_ERRORS } from '../actions/types';
+import { ADD_RECIPE, REQUEST_ADD_RECIPE, MY_RECIPES, MY_RECIPES_ERROR, GET_REVIEWS, ADD_REVIEW, ADD_REVIEW_ERRORS, ADD_FAVOURITE, ADD_FAVOURITE_ERRORS, GET_FAVOURITE, GET_FAVOURITE_ERRORS, REMOVE_FAVOURITE, REMOVE_FAVOURITE_ERRORS, UPVOTE_RECIPE, UPVOTE_RECIPE_ERRORS, DOWNVOTE_RECIPE, DOWNVOTE_RECIPE_ERRORS } from '../actions/types';
 
 const recipeReducer = (state = {}, action) => {
   switch (action.type) {
@@ -82,7 +82,11 @@ const recipeReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
       break;
 
-    case 'DONWVOTE_RECIPE':
+    case DOWNVOTE_RECIPE:
+      return { ...state, ...action.payload };
+      break;
+
+    case DOWNVOTE_RECIPE_ERRORS:
       return { ...state, ...action.payload };
       break;
   }
