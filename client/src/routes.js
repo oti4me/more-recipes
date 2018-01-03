@@ -20,7 +20,7 @@ export default (
     <Route path="/signin" component={notAuth(SigninPage)} />
     <Route path="/signup" component={notAuth(SignupPage)} />
     <Route path="/addrecipe" component={AuthComponent(AddRecipePage)} />
-    <Route path="/updaterecipe" component={AuthComponent(UpdateRecipePage)} />
+    <Route path="/updaterecipe/:id" component={AuthComponent(UpdateRecipePage)} />
     <Route path="/profile" component={AuthComponent(UserProfilePage)} />
     <Route path="/profile/newme" component={AuthComponent(UserProfilePage)} />
     <Route path="/myrecipes" component={AuthComponent(MyRecipesPage)} />

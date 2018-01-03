@@ -73,7 +73,7 @@ class RecipeList extends React.Component {
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
             return (
-              <div className="col s12 m4 l4" key={shortId.generate()}>
+              <div className="col s12 m6 l4" key={shortId.generate()}>
                 <div className="card">
                   <div className="card-image">
                     <Link to={`/recipe/${recipe.id}`}>
@@ -114,7 +114,7 @@ class RecipeList extends React.Component {
                       </div>
                     </div>
                     <hr style={{ borderTop: "1px solid #26a69a" }} />
-                    <span className="bold text-gray">By: {recipe.User.firstname} {recipe.User.lastname}</span>
+                    <span className="bold text-gray">By: {recipe.User ? recipe.User.firstname : ''} {recipe.User ? recipe.User.lastname : ''}</span>
                   </div>
                 </div>
               </div>

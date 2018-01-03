@@ -2,7 +2,6 @@ import axios from 'axios';
 import { GET_RECIPE, GET_RECIPE_ERROR } from '../actions/types';
 import header from '../helper/getHeader';
 
-
 export const recipeDetail = (data) => {
   return {
     type: GET_RECIPE,
@@ -22,7 +21,7 @@ export const getRecipe = (id, callback) => {
     dispatch(getRecipeError(null));
     dispatch(recipeDetail({}));
 
-    return axios.get('/api/v1/recipes/' + id, {}, header())
+    return axios.get('/api/v1/recipes/' + id, header())
       .then(res => {
         dispatch(recipeDetail({ recipe: res.data.recipe }));
         callback(true);

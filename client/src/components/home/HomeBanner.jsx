@@ -10,6 +10,10 @@ class HomeBanner extends React.Component {
 
   componentDidMount() {
     $('.carousel.carousel-slider').carousel({ fullWidth: true });
+    $('.carousel').carousel();
+    setInterval(() => {
+      $('.carousel').carousel('next');
+    }, 4000);
   }
 
   render() {
