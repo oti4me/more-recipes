@@ -38,6 +38,7 @@ class RecipeDetail extends React.Component {
       })
     });
     $('.modal').modal();
+    $('.materialboxed').materialbox();
   }
 
   componentDidUpdate() {
@@ -73,6 +74,7 @@ class RecipeDetail extends React.Component {
         const id = this.props.match.params.id;
         this.props.getRecipe(id, (result) => {
           if (result) {
+            Materialize.Toast.removeAll();
             return Materialize.toast('Added to favourites', 3000, 'green');
           }
         })
@@ -83,6 +85,7 @@ class RecipeDetail extends React.Component {
             Materialize.toast(err.msg, 4000, 'red');
           });
         } else if (errors.status === 409) {
+          Materialize.Toast.removeAll();
           return Materialize.toast(errors.message, 3000, 'red');
         }
       }
@@ -98,6 +101,7 @@ class RecipeDetail extends React.Component {
         const { upVotes } = this.props;
         this.props.getRecipe(id, (result) => {
           if (result) {
+            Materialize.Toast.removeAll();
             upVotes.message === 'upvotes added' ? Materialize.toast(upVotes.message, 3000, 'green') : Materialize.toast(upVotes.message, 3000, 'red');
           }
         })
@@ -105,9 +109,11 @@ class RecipeDetail extends React.Component {
         const { errors } = this.props;
         if (errors.status === 400) {
           errors.message.map(err => {
+            Materialize.Toast.removeAll();
             Materialize.toast(err.msg, 4000, 'red');
           });
         } else if (errors.status === 409) {
+          Materialize.Toast.removeAll();
           return Materialize.toast(errors.message, 3000, 'red');
         }
       }
@@ -121,10 +127,9 @@ class RecipeDetail extends React.Component {
       if (res) {
         const id = this.props.match.params.id;
         const { downVotes } = this.props;
-        console.log(downVotes)
         this.props.getRecipe(id, (result) => {
           if (result) {
-            console.log(result)
+            Materialize.Toast.removeAll();
             downVotes.message === 'downvotes added' ? Materialize.toast(downVotes.message, 3000, 'green') : Materialize.toast(downVotes.message, 3000, 'red');
           }
         })
@@ -132,9 +137,11 @@ class RecipeDetail extends React.Component {
         const { errors } = this.props;
         if (errors.status === 400) {
           errors.message.map(err => {
+            Materialize.Toast.removeAll();
             Materialize.toast(err.msg, 4000, 'red');
           });
         } else if (errors.status === 409) {
+          Materialize.Toast.removeAll();
           return Materialize.toast(errors.message, 3000, 'red');
         }
       }

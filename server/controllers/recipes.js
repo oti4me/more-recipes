@@ -127,6 +127,7 @@ class Recipes {
   */
   getSingleRecipe(request, response) {
     const id = request.params.id;
+    const userId = validate.getUserId(request, response);
     if (validate.validateId(id)) {
       db.Recipes.findOne({
         where: {
@@ -139,16 +140,31 @@ class Recipes {
         ]
       })
         .then((recipe) => {
-          if (recipe) {
-            response.status(200).json({
+          if (recipe.userId === userId) {
+            return response.status(200).json({
               succes: true,
               recipe
             });
           } else {
-            response.status(404).json({
-              succes: false,
-              message: `Recipe with id '${id}'  not found`
-            });
+            const viewCount = recipe.viewCount + 1;
+            const query = { viewCount }
+            db.Recipes.update(query, {
+              where: { id },
+              returning: true
+            })
+              .then(updatedRecipe => {
+                if (recipe) {
+                  response.status(200).json({
+                    succes: true,
+                    recipe
+                  });
+                } else {
+                  response.status(404).json({
+                    succes: false,
+                    message: `Recipe with id '${id}'  not found`
+                  });
+                }
+              })
           }
         })
         .catch(error => {

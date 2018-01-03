@@ -45,15 +45,17 @@ class SigninForm extends React.Component {
   render() {
     return (
       <div className="row">
-        <form className="col s12">
+        <form className="col s12 z-depth-2" style={{ padding: '50px' }}>
           <div className="row">
             <div className="input-field col s12">
+              <i class="material-icons prefix">email</i>
               <input id="email" name="email" type="text" value={this.state.email} onChange={this.handleChange.bind(this)} />
               <label htmlFor="email">Email</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
+              <i class="material-icons prefix">vpn_key</i>
               <input id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
               <label htmlFor="password">Password</label>
             </div>

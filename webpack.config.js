@@ -1,14 +1,19 @@
-import webpack from 'webpack';
-import path from 'path';
+// import webpack from 'webpack';
+// import path from 'path';
+const webpack = require('webpack');
+const path = require('path');
 
-export default {
-  
-  entry:[
+// export default
+
+module.exports = {
+
+  entry: [
     './client/src/index.js'
-  ], 
-   
+  ],
+
   output: {
-    path: '/',// __dirname + './client/dist', 
+    path: path.join(__dirname, 'client'),
+    publicPath: '/',
     filename: 'bundle.js'
   },
 
@@ -16,7 +21,7 @@ export default {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, use: [ 'style-loder', 'css-loader', 'sass-loader'], include: path.join(__dirname, 'client') }
+      { test: /\.scss$/, use: ['style-loder', 'css-loader', 'sass-loader'], include: path.join(__dirname, 'client') }
     ]
   },
 

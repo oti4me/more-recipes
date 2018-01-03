@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/server.js",
-    "postinstall": "webpack -p",
-    "dev": "nodemon  ./server/server --watch ./server --exec babel-node",
+    "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
+    "start": "NODE_ENV=production babel-node server/server.js",
+    "dev": "NODE_ENV=development nodemon  ./server/server --watch ./server --exec babel-node",
     "test-dev": "cross-env NODE_ENV=test mocha ./server/test/* --compilers js:babel-register",
-    "test": "nyc --reporter=html --reporter=text mocha --timeout 500000 --compilers js:babel-core/register server/test/*",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 500000 --compilers js:babel-core/register server/test/*",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
@@ -31,6 +31,9 @@
     "eslint": "^4.7.2",
     "express": "~4.14.1",
     "express-validator": "^4.2.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-exclude-assets-plugin": "0.0.5",
+    "html-webpack-plugin": "^2.30.1",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.0.1",
     "jwt-decode": "^2.2.0",
@@ -59,7 +62,8 @@
     "validator": "^9.0.0",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.1",
+    "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -75,7 +79,6 @@
     "morgan": "^1.8.2",
     "nodemon": "^1.12.1",
     "redux-devtools-extension": "^2.13.2",
-    "webpack": "^3.6.0",
-    "webpack-hot-middleware": "^2.20.0"
+    "webpack": "^3.6.0"
   }
 }

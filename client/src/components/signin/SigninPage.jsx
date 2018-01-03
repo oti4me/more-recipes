@@ -25,7 +25,7 @@ class SigninPage extends React.Component {
         <Header { ...this.props } />
         <div className="container">
           <div className="row">
-            <div className="col s12  s2 m4 l4 offset-m4 offset-l4">
+            <div className="col s12  s2 m6 l6 offset-m3 offset-l3">
               <h2 className="top-margin-50">Sign In</h2>
               <SigninForm handleSignin={this.handleSignin} history={this.props.history} />
             </div>

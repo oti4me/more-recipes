@@ -55,50 +55,48 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="row">
-        <form className="col s12" onSubmit={this.handleSignup}>
+        <form className="col s12 z-depth-2" style={{ padding: '50px' }} onSubmit={this.handleSignup}>
           <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">account_circle</i>
               <input id="fname" name="firstname" value={this.state.firstname} type="text" className="validate" onChange={this.handleChange} />
               <label htmlFor="fname">First Name</label>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">account_circle</i>
               <input id="lname" name="lastname" value={this.state.lastname} type="text" className="validate" onChange={this.handleChange} />
               <label htmlFor="lname">Last Name</label>
             </div>
           </div>
           <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">email</i>
               <input id="email" name="email" value={this.state.email} type="text" className="validate" onChange={this.handleChange} />
               <label htmlFor="email">Email</label>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">contact_phone</i>
               <input id="phone" name="phone" value={this.state.phone} type="text" className="validate" onChange={this.handleChange} />
               <label htmlFor="phone">Phone</label>
             </div>
           </div>
           <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">vpn_key</i>
               <input id="password" name="password" value={this.state.password} type="password" className="validate" onChange={this.handleChange} />
               <label htmlFor="password">Password</label>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m6 l6">
+              <i class="material-icons prefix">vpn_key</i>
               <input id="confirmPassword" name="confirmPassword" value={this.state.confirmPassword} type="password" className="validate" onChange={this.handleChange} />
               <label htmlFor="confirmPassword">Confirm Password</label>
             </div>
           </div>
           <div className="row">
-            <a onClick={this.handleSignup} className="waves-effect waves-light btn">Sign In</a>
+            <a onClick={this.handleSignup} className="waves-effect waves-light btn" >Sign Up</a>
           </div>
           <div className="row">
-            <p className="">Already have an account?
-              <a href="/signin">Sign In</a>
-            </p>
+            <p className="">Already have an account? <a href="/signin">Sign In</a></p>
           </div>
         </form>
       </div>
