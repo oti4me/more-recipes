@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import getMyRecipes from '../../actions/myRecipesActions';
+import { deleteRecipe } from '../../actions/deleteRecipe';
 import shortId from 'shortid';
 import header from '../../helper/getHeader';
 
@@ -24,18 +25,19 @@ class MyRecipesList extends React.Component {
       this.setState({ myRecipes: this.props.myRecipes })
     });
     $('.modal').modal();
+    $('.tooltipped').tooltip();
   }
 
   handleDelete(e) {
     e.preventDefault();
     const id = e.target.dataset['id']
-    axios.delete('/api/v1/recipes/' + id, header())
+    this.props.deleteRecipe(id)
       .then(res => {
-        if (res) this.getMyRecipes();
-      })
-      .catch(error => {
-        console.log(error.message);
-      })
+        const { userId } = this.props.user;
+        if (res) this.props.getMyRecipes(userId, () => {
+          this.setState({ myRecipes: this.props.myRecipes })
+        });
+      });
   }
 
   recipeList() {
@@ -60,21 +62,27 @@ class MyRecipesList extends React.Component {
                     <Link to={`/recipe/${recipe.id}`}>
                       <span className="card_title" style={{ wordWrap: 'break-word' }}>{recipe.title}</span>
                     </Link>
-                    <p className="card-p" style={{ wordWrap: 'break-word' }}>{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
+                    <p className="card-p" style={{ wordWrap: 'break-word' }}>
+                      {recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
                     <hr style={{ borderTop: '1px solid #26a69a' }} />
                     <div className="row">
                       <div className="col s4 m4 l4">
-                        <a className="tooltipped text-green" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Views">
+                        <a className="tooltipped text-green"
+                          style={{ cursor: 'pointer', color: '#999' }}
+                          data-position="bottom" data-delay="50" data-tooltip="Views">
                           <i className="material-icons text-green">visibility</i> {recipe.viewCount}
                         </a>
                       </div>
                       <div className="col s4 m4 l4">
-                        <Link to={`/updaterecipe/${recipe.id}`} className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" style={{ color: '#999' }}>
+                        <Link to={`/updaterecipe/${recipe.id}`}
+                          className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" style={{ color: '#999' }}>
                           <i className="material-icons text-green">edit</i>
                         </Link>
                       </div>
                       <div className="col s4 m4 l4">
-                        <a href="#delete" onClick={e => { this.setState({ recipeId: recipe.id }) }} className="tooltipped modal-trigger" style={{ cursor: 'pointer', color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Delete">
+                        <a href="#delete" onClick={e => { this.setState({ recipeId: recipe.id }) }}
+                          className="tooltipped modal-trigger" style={{ cursor: 'pointer', color: '#999' }}
+                          data-position="bottom" data-delay="50" data-tooltip="Delete">
                           <i className="material-icons text-green">delete</i>
                         </a>
                       </div>
@@ -95,7 +103,9 @@ class MyRecipesList extends React.Component {
 
     const EmptyList = (
       <div>
-        <h3 style={{ textAlign: "center", color: "#ccc", margin: "100px" }}>You have not added a recipe yet</h3>
+        <h3 style={{ textAlign: "center", color: "#ccc", margin: "100px" }}>
+          You have not added a recipe yet
+        </h3>
       </div>
     );
 
@@ -112,7 +122,8 @@ class MyRecipesList extends React.Component {
             <p>Are you sure you want to delete this recipe?</p>
           </div>
           <div className="modal-footer">
-            <a href="#" data-id={this.state.recipeId} onClick={this.handleDelete.bind(this)} className="modal-action modal-close waves-effect waves-green btn-flat">Delete</a>
+            <a href="#" data-id={this.state.recipeId} onClick={this.handleDelete.bind(this)}
+              className="modal-action modal-close waves-effect waves-green btn-flat">Delete</a>
             <a className="modal-action modal-close waves-effect waves-green btn-flat">Cancil</a>
           </div>
         </div>
@@ -139,7 +150,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getMyRecipes }, dispatch);
+  return bindActionCreators({
+    getMyRecipes,
+    deleteRecipe
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyRecipesList);
