@@ -1,46 +1,99 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
-import PropTypes from 'prop-types';
-import getMyRecipes from '../../actions/myRecipesActions';
-import { deleteRecipe } from '../../actions/deleteRecipe';
 import shortId from 'shortid';
-import header from '../../helper/getHeader';
+import MDSpinner from "react-md-spinner";
+import getMyRecipes from '../../actions/getMyRecipes';
+import { deleteRecipe } from '../../actions/deleteRecipe';
 
+/**
+ * 
+ * @class MyRecipesList
+ * 
+ * @extends {React.Component}
+ */
 class MyRecipesList extends React.Component {
 
+  /**
+   * @description Creates an instance of MyRecipesList.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof MyRecipesList
+   */
   constructor(props) {
     super(props);
     this.state = {
       recipeId: null,
-      myRecipes: []
+      myRecipes: undefined
     };
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
+  /**
+   * @description
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof MyRecipesList
+   */
   componentDidMount() {
-    const { userId } = this.props.user;
-    this.props.getMyRecipes(userId, () => {
-      this.setState({ myRecipes: this.props.myRecipes })
-    });
+    const { user: { userId } } = this.props;
+    this.props.getMyRecipes(userId)
+      .then(() => {
+        this.setState({
+          myRecipes: this.props.myRecipes
+        });
+      });
     $('.modal').modal();
     $('.tooltipped').tooltip();
   }
 
-  handleDelete(e) {
-    e.preventDefault();
-    const id = e.target.dataset['id']
-    this.props.deleteRecipe(id)
-      .then(res => {
-        const { userId } = this.props.user;
-        if (res) this.props.getMyRecipes(userId, () => {
-          this.setState({ myRecipes: this.props.myRecipes })
-        });
-      });
+  /**
+   * @description
+   * 
+   * @param {object} nextProp new state object
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof MyRecipesList
+   */
+  componentWillReceiveProps(nextProp) {
+    this.setState({
+      myRecipes: nextProp.myRecipes
+    });
   }
 
+  /**
+   * @description
+   * 
+   * @param {object} event event object
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof MyRecipesList
+   */
+  handleDelete(event) {
+    event.preventDefault();
+    const id = event.target.dataset['id'];
+    this.props.deleteRecipe(id)
+  }
+
+  /**
+    * @description Render my recipe list
+    *    
+    * @returns {obect} jsx object to render my recipe list
+    * 
+    * @memberof MyRecipesList
+    */
   recipeList() {
+
+    const style = {
+      maxHeight: '350px',
+      minHeight: '350px',
+      overflow: 'hidden'
+    }
     let recipeChunk = [];
     let chunkSize = 4;
     for (let i = 0; i < this.state.myRecipes.length; i += chunkSize) {
@@ -51,43 +104,88 @@ class MyRecipesList extends React.Component {
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
             return (
-              <div className="col s12 m3 l3" key={shortId.generate()} >
-                <div className="card" style={{ minHeight: '440px' }}>
-                  <div className="card-image">
-                    <Link to={`/recipe/${recipe.id}`}>
-                      <img style={{ height: '230px' }} src={recipe.image} />
-                    </Link>
-                  </div>
-                  <div className="card-content">
-                    <Link to={`/recipe/${recipe.id}`}>
-                      <span className="card_title" style={{ wordWrap: 'break-word' }}>{recipe.title}</span>
-                    </Link>
-                    <p className="card-p" style={{ wordWrap: 'break-word' }}>
-                      {recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
-                    <hr style={{ borderTop: '1px solid #26a69a' }} />
-                    <div className="row">
+              <div className="" key={shortId.generate()}>
+                <div className="col s12 m6 l3" key={shortId.generate()} >
+                  <div className="card" style={style}>
+                    <div className="card-image">
+                      <Link to={`/recipe/${recipe.id}`}>
+                        <img
+                          style={{ height: '200px' }}
+                          src={recipe.imageUrl}
+                          alt=''
+                        />
+                      </Link>
+                    </div>
+                    <div
+                      className="card-content"
+                      style={{
+                        padding: '10px',
+                        maxHeight: '100px',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      <Link to={`/recipe/${recipe.id}`}>
+                        <span
+                          className="card_title"
+                          style={{ wordWrap: 'break-word' }}
+                        >
+                          {recipe.title}
+                        </span>
+                      </Link>
+                      <p className="card-p" style={{ wordWrap: 'break-word' }}>
+                        {recipe.description.length > 30
+                          ? `${recipe.description.slice(0, 31)}...`
+                          : recipe.description}
+                      </p>
+                    </div>
+                    <div className="card-action">
                       <div className="col s4 m4 l4">
-                        <a className="tooltipped text-green"
+                        <a
+                          className="tooltipped text-green"
                           style={{ cursor: 'pointer', color: '#999' }}
-                          data-position="bottom" data-delay="50" data-tooltip="Views">
-                          <i className="material-icons text-green">visibility</i> {recipe.viewCount}
+                          data-position="bottom"
+                          data-delay="50"
+                          data-tooltip="Views"
+                        >
+                          <i className="fa fa-eye" aria-hidden="true">
+                            {' '}{recipe.viewCount}
+                          </i>
                         </a>
                       </div>
                       <div className="col s4 m4 l4">
-                        <Link to={`/updaterecipe/${recipe.id}`}
-                          className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" style={{ color: '#999' }}>
-                          <i className="material-icons text-green">edit</i>
+                        <Link
+                          to={`/updaterecipe/${recipe.id}`}
+                          className="tooltipped"
+                          data-position="bottom"
+                          data-delay="50"
+                          data-tooltip="Edit"
+                          style={{ color: '#999' }}
+                        >
+                          <i
+                            className="fa fa-pencil-square-o"
+                            aria-hidden="true"
+                          />
                         </Link>
                       </div>
                       <div className="col s4 m4 l4">
-                        <a href="#delete" onClick={e => { this.setState({ recipeId: recipe.id }) }}
-                          className="tooltipped modal-trigger" style={{ cursor: 'pointer', color: '#999' }}
-                          data-position="bottom" data-delay="50" data-tooltip="Delete">
-                          <i className="material-icons text-green">delete</i>
+                        <a
+                          href="#delete"
+                          onClick={event => {
+                            event.preventDefault();
+                            this.setState({
+                              recipeId: recipe.id
+                            })
+                          }}
+                          className="tooltipped modal-trigger"
+                          style={{ cursor: 'pointer', color: '#999' }}
+                          data-position="bottom"
+                          data-delay="50"
+                          data-tooltip="Delete"
+                        >
+                          <i className="fa fa-trash-o" aria-hidden="true" />
                         </a>
                       </div>
                     </div>
-                    <hr style={{ borderTop: '1px solid #26a69a' }} />
                   </div>
                 </div>
               </div>
@@ -99,22 +197,35 @@ class MyRecipesList extends React.Component {
     return Row;
   }
 
+  /**
+   * @description
+   * 
+   * @returns {JSX} JSX
+   * 
+   * @memberof MyRecipesList
+   */
   render() {
-
-    const EmptyList = (
-      <div>
-        <h3 style={{ textAlign: "center", color: "#ccc", margin: "100px" }}>
-          You have not added a recipe yet
-        </h3>
-      </div>
-    );
-
     return (
       <div className="row">
-        {/* <div className='row'> */}
         {/* my recipe list */}
-        {this.state.myRecipes.length > 0 ? this.recipeList() : EmptyList}
-        {/* </div> */}
+        {
+          this.state.myRecipes === undefined ?
+            <div className="center-align"><MDSpinner size={40} /></div>
+            :
+            this.state.myRecipes && this.state.myRecipes.length > 0
+              ? this.recipeList()
+              :
+              <div>
+                <h3 style={{
+                  textAlign: "center",
+                  color: "#ccc",
+                  margin: "100px"
+                }}
+                >
+                  You have not added a recipe yet
+                </h3>
+              </div>
+        }
         {/* delete modeal */}
         <div id="delete" className="modal">
           <div className="modal-content">
@@ -122,9 +233,19 @@ class MyRecipesList extends React.Component {
             <p>Are you sure you want to delete this recipe?</p>
           </div>
           <div className="modal-footer">
-            <a href="#" data-id={this.state.recipeId} onClick={this.handleDelete.bind(this)}
-              className="modal-action modal-close waves-effect waves-green btn-flat">Delete</a>
-            <a className="modal-action modal-close waves-effect waves-green btn-flat">Cancil</a>
+            <a
+              href="!#"
+              data-id={this.state.recipeId}
+              onClick={this.handleDelete}
+              className="modal-action modal-close waves-effect waves-green btn-flat"
+            >
+              Delete
+            </a>
+            <a
+              className="modal-action modal-close waves-effect waves-green btn-flat"
+            >
+              Cancil
+            </a>
           </div>
         </div>
       </div>
@@ -132,24 +253,25 @@ class MyRecipesList extends React.Component {
   }
 }
 
-MyRecipesList.propTypes = {
-  loggedIn: PropTypes.bool,
-  myRecipesError: PropTypes.object,
-  getMyRecipes: PropTypes.func,
-  myRecipes: PropTypes.array,
-
-};
-
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
+  const { auth: {
+    loggedIn, user
+  },
+    recipes: {
+      myRecipesError,
+      myRecipes
+    }
+  }
+    = state;
   return {
-    loggedIn: state.auth.loggedIn,
-    error: state.recipes.myRecipesError,
-    myRecipes: state.recipes.myRecipes,
-    user: state.auth.user,
+    loggedIn,
+    myRecipes,
+    user,
+    error: myRecipesError,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getMyRecipes,
     deleteRecipe

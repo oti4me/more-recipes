@@ -2,34 +2,39 @@ import axios from 'axios';
 import { GET_REVIEWS, GET_REVIEWS_ERROR } from '../actions/types';
 import header from '../helper/getHeader';
 
-export const getReviewsAction = (data) => {
+export const getReviewsAction = (reviews) => {
   return {
     type: GET_REVIEWS,
-    payload: data
+    payload: reviews
   }
 };
 
-export const getReviewsError = (data) => {
+export const getReviewsError = (error) => {
   return {
     type: GET_REVIEWS_ERROR,
-    payload: data
+    payload: error
   }
 };
-export const getReviews = (id, callback) => {
+
+export const getReviews = (id) => {
   return dispatch => {
     dispatch(getReviewsError(null));
     dispatch(getReviewsAction({}));
-    return axios.get(`/api/v1/recipes/${id}/reviews`, { id }, header())
+    return axios.get(`/api/v1/recipes/${id}/reviews`, header())
       .then(res => {
         if (res) {
-          dispatch(getReviewsAction({ reviews: res.data.reviews }));
-          callback(true);
+          const { data: { reviews } } = res;
+          dispatch(getReviewsAction({
+            reviews
+          }));
         }
       })
       .catch(error => {
-        dispatch(getReviewsError({ message: error.response }));
-        callback(false);
+        const { response } = error;
+        dispatch(getReviewsError({
+          message: response
+        }));
       })
   }
-}
+};
 

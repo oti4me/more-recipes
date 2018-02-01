@@ -1,0 +1,1010 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>More Recipes API Reference</title>
+
+  <style>
+    .highlight table td {
+      padding: 5px;
+    }
+
+    .highlight table pre {
+      margin: 0;
+    }
+
+    .highlight .gh {
+      color: #999999;
+    }
+
+    .highlight .sr {
+      color: #f6aa11;
+    }
+
+    .highlight .go {
+      color: #888888;
+    }
+
+    .highlight .gp {
+      color: #555555;
+    }
+
+    .highlight .gs {}
+
+    .highlight .gu {
+      color: #aaaaaa;
+    }
+
+    .highlight .nb {
+      color: #f6aa11;
+    }
+
+    .highlight .cm {
+      color: #75715e;
+    }
+
+    .highlight .cp {
+      color: #75715e;
+    }
+
+    .highlight .c1 {
+      color: #75715e;
+    }
+
+    .highlight .cs {
+      color: #75715e;
+    }
+
+    .highlight .c,
+    .highlight .cd {
+      color: #75715e;
+    }
+
+    .highlight .err {
+      color: #960050;
+    }
+
+    .highlight .gr {
+      color: #960050;
+    }
+
+    .highlight .gt {
+      color: #960050;
+    }
+
+    .highlight .gd {
+      color: #49483e;
+    }
+
+    .highlight .gi {
+      color: #49483e;
+    }
+
+    .highlight .ge {
+      color: #49483e;
+    }
+
+    .highlight .kc {
+      color: #66d9ef;
+    }
+
+    .highlight .kd {
+      color: #66d9ef;
+    }
+
+    .highlight .kr {
+      color: #66d9ef;
+    }
+
+    .highlight .no {
+      color: #66d9ef;
+    }
+
+    .highlight .kt {
+      color: #66d9ef;
+    }
+
+    .highlight .mf {
+      color: #ae81ff;
+    }
+
+    .highlight .mh {
+      color: #ae81ff;
+    }
+
+    .highlight .il {
+      color: #ae81ff;
+    }
+
+    .highlight .mi {
+      color: #ae81ff;
+    }
+
+    .highlight .mo {
+      color: #ae81ff;
+    }
+
+    .highlight .m,
+    .highlight .mb,
+    .highlight .mx {
+      color: #ae81ff;
+    }
+
+    .highlight .sc {
+      color: #ae81ff;
+    }
+
+    .highlight .se {
+      color: #ae81ff;
+    }
+
+    .highlight .ss {
+      color: #ae81ff;
+    }
+
+    .highlight .sd {
+      color: #e6db74;
+    }
+
+    .highlight .s2 {
+      color: #e6db74;
+    }
+
+    .highlight .sb {
+      color: #e6db74;
+    }
+
+    .highlight .sh {
+      color: #e6db74;
+    }
+
+    .highlight .si {
+      color: #e6db74;
+    }
+
+    .highlight .sx {
+      color: #e6db74;
+    }
+
+    .highlight .s1 {
+      color: #e6db74;
+    }
+
+    .highlight .s {
+      color: #e6db74;
+    }
+
+    .highlight .na {
+      color: #a6e22e;
+    }
+
+    .highlight .nc {
+      color: #a6e22e;
+    }
+
+    .highlight .nd {
+      color: #a6e22e;
+    }
+
+    .highlight .ne {
+      color: #a6e22e;
+    }
+
+    .highlight .nf {
+      color: #a6e22e;
+    }
+
+    .highlight .vc {
+      color: #ffffff;
+    }
+
+    .highlight .nn {
+      color: #ffffff;
+    }
+
+    .highlight .nl {
+      color: #ffffff;
+    }
+
+    .highlight .ni {
+      color: #ffffff;
+    }
+
+    .highlight .bp {
+      color: #ffffff;
+    }
+
+    .highlight .vg {
+      color: #ffffff;
+    }
+
+    .highlight .vi {
+      color: #ffffff;
+    }
+
+    .highlight .nv {
+      color: #ffffff;
+    }
+
+    .highlight .w {
+      color: #ffffff;
+    }
+
+    .highlight {
+      color: #ffffff;
+    }
+
+    .highlight .n,
+    .highlight .py,
+    .highlight .nx {
+      color: #ffffff;
+    }
+
+    .highlight .ow {
+      color: #f92672;
+    }
+
+    .highlight .nt {
+      color: #f92672;
+    }
+
+    .highlight .k,
+    .highlight .kv {
+      color: #f92672;
+    }
+
+    .highlight .kn {
+      color: #f92672;
+    }
+
+    .highlight .kp {
+      color: #f92672;
+    }
+
+    .highlight .o {
+      color: #f92672;
+    }
+  </style>
+  <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+  <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+  <script src="javascripts/all.js"></script>
+</head>
+
+<body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <a href="#" id="nav-button">
+    <span>
+      NAV
+    </span>
+  </a>
+  <div class="toc-wrapper">
+    <div class="lang-selector">
+      <a href="#" data-language-name="javascript">javascript</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+    <div id="toc" class="toc-list-h1">
+      <li>
+        <a href="#more-recipes-api-documentation" class="toc-h1 toc-link" data-title="More Recipes API Documentation">More Recipes API Documentation</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#development" class="toc-h2 toc-link" data-title="Development">Development</a>
+          </li>
+          <li>
+            <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#signup" class="toc-h2 toc-link" data-title="Signup">Signup</a>
+          </li>
+          <li>
+            <a href="#signin" class="toc-h2 toc-link" data-title="Signin">Signin</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#recipes" class="toc-h1 toc-link" data-title="Recipes">Recipes</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#add-recipe" class="toc-h2 toc-link" data-title="Add Recipe">Add Recipe</a>
+          </li>
+          <li>
+            <a href="#update-recipe" class="toc-h2 toc-link" data-title="Update Recipe">Update Recipe</a>
+          </li>
+          <li>
+            <a href="#body-application-json" class="toc-h2 toc-link" data-title="- Body (application/json)">- Body (application/json)</a>
+          </li>
+          <li>
+            <a href="#delete-recipe" class="toc-h2 toc-link" data-title="Delete recipe">Delete recipe</a>
+          </li>
+          <li>
+            <a href="#get-all-recipes" class="toc-h2 toc-link" data-title="Get all recipes">Get all recipes</a>
+          </li>
+          <li>
+            <a href="#get-single-recipe" class="toc-h2 toc-link" data-title="Get single recipe">Get single recipe</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#reviews" class="toc-h1 toc-link" data-title="Reviews">Reviews</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#add-reviews" class="toc-h2 toc-link" data-title="Add reviews">Add reviews</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#favourites" class="toc-h1 toc-link" data-title="Favourites">Favourites</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#add-favourite" class="toc-h2 toc-link" data-title="Add favourite">Add favourite</a>
+          </li>
+          <li>
+            <a href="#remove-favourite" class="toc-h2 toc-link" data-title="Remove favourite">Remove favourite</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#votes" class="toc-h1 toc-link" data-title="Votes">Votes</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#add-upvotes" class="toc-h2 toc-link" data-title="Add upvotes">Add upvotes</a>
+          </li>
+          <li>
+            <a href="#remove-upvote" class="toc-h2 toc-link" data-title="Remove upvote">Remove upvote</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#search" class="toc-h1 toc-link" data-title="Search">Search</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#request-13" class="toc-h2 toc-link" data-title="Request">Request</a>
+          </li>
+          <li>
+            <a href="#response-13" class="toc-h2 toc-link" data-title="Response">Response</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+      </li>
+    </div>
+    <ul class="toc-footer">
+      <li>
+        <a href='#'>&copy More Recipe</a>
+      </li>
+      <li>
+        <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+      </li>
+    </ul>
+  </div>
+  <div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+      <h1 id='more-recipes-api-documentation'>More Recipes API Documentation</h1>
+      <p>Welcome to the More Recipes API! You can use our API document to access our Recipes API endpoints, which is used to
+        add and manage recipe ideas from parts of the world. These recipe collections are accessable as stated on this document.</p>
+      <h2 id='development'>Development</h2>
+      <p>The application was developed with:</p>
+
+      <ol>
+        <li>
+          <a href="https://nodejs.org">NodeJs</a>: Node.js is used as the server framework for serving the application</li>
+        <li>
+          <a href="https://expressjs.com/">Express</a>: Express is a node.js server that is used to handle routing the endpoints. </li>
+        <li>
+          <a href="https://www.postgresql.org/">Postgresql</a> database: For data persistance</li>
+        <li>
+          <a href="http://docs.sequelizejs.com/">Sequelize</a> as the ORM for interacting with posgresql database</li>
+      </ol>
+      <h2 id='installation'>Installation</h2>
+      <p>Follow the steps below to setup a local development environment. First ensure you have
+        <a href="https://www.postgresql.org/">Postgresql</a> installed, and a version of
+        <a href="https://nodejs.org">NodeJs</a> equal or greater than v6.8.0.</p>
+
+      <ol>
+        <li>Clone the repository from a terminal git clone
+          <a href="https://github.com/oti4me/More-Recipes.git">https://github.com/oti4me/More-Recipes.git</a>.</li>
+        <li>Move into the project directory using
+          <code>cd More-Recipes</code>
+        </li>
+        <li>Add .env file and add any preferred postgresql using the .env-example file.</li>
+        <li>Install project dependencies by using
+          <code>npm install</code> command on your terminal</li>
+        <li>Start the express server using
+          <code>npm run dev</code> command on your terminal.</li>
+        <li>Visit
+          <code>localhost:3000</code> to test the endpoints</li>
+      </ol>
+      <h1 id='authentication'>Authentication</h1>
+      <p>To gain full access to the platform, users have to be registered: Registered user gets a token to be be used in the
+        header as Authorization</p>
+      <h2 id='signup'>Signup</h2>
+      <p>This endpoint allows the user to create an account on the platform</p>
+      <h3 id='request'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jamesgosling@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling@2000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comfirmPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling@2000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07067143161"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/users/signup</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJKYW1lcyIsImxhc3RuYW1lIjoiR29zbGluZyIsImVtYWlsIjoiamFtZXNnb3NsaW5nQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAsInBob25lIjoiMDcwNjcxNDMxNjEiLCJpbWFnZSI6IiIsImlhdCI6MTUxNjY2MDE5NiwiZXhwIjoxNTE2NzQ2NTk2fQ.uuf0ZYDGKoCxJtCvAWG-VYLdEq8XJk-ki4HUfJc0TZs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jamesgosling@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07067143161"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='signin'>Signin</h2>
+      <p>This endpoint allows the user to log into account his account</p>
+      <h3 id='request-2'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jamesgosling@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling@2000"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/users/signin</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-2'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJKYW1lcyIsImxhc3RuYW1lIjoiR29zbGluZyIsImVtYWlsIjoiamFtZXNnb3NsaW5nQGdtYWlsLmNvbSIsInBob25lIjoiMDcwNjcxNDMxNjEiLCJ1c2VySWQiOjEwLCJpbWFnZSI6IiIsImlhdCI6MTUxNjY2MDMxOSwiZXhwIjoxNTE2NzQ2NzE5fQ.qYc0vg81aKaOZLiyDPnJHYg5IqOyiCezFaY4yqiF_E8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gosling"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jamesgosling@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07067143161"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='recipes'>Recipes</h1>
+      <h2 id='add-recipe'>Add Recipe</h2>
+      <p>This endpoint allows the user to a recipe to his collection</p>
+      <h3 id='request-3'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-3'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New recipe added"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:46:37.721Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:46:37.721Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+
+      <h2 id='update-recipe'>Update Recipe</h2>
+      <p>This endpoint allows the user to edit a recipe in his collection</p>
+      <h3 id='request-4'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"riicee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue "</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: PUT: api/v1/recipes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-4'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recipe Updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"riicee"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate "</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T11:13:04.016Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T11:13:20.165Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='delete-recipe'>Delete recipe</h2>
+      <p>This endpoint allows a user to delete a recipe in his collection</p>
+      <h3 id='request-5'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: DELETE: api/v1/recipes/:id</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-5'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recipe deleted"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='get-all-recipes'>Get all recipes</h2>
+      <p>This endpoint is to retrieve all recipes on the platform</p>
+      <h3 id='request-6'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: GET: api/v1/recipes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-6'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Egusi Soup"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Egusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi Soup"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Egusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi Soup"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upvotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downvotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/oti4me/image/upload/v1515843512/jtdl8tfzqgyhmiscbnyn.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Egusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi SoupEgusi Soup"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-13T11:38:33.211Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-14T22:38:35.928Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A about"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There’s nothing appealing about a jar of TexasThere’s nothing appealing about a jar of TexasThere’s nothing appealing about a jar of Texas"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There’s nothing appealing about a jar of TexasThere’s nothing appealing about a jar of Texas"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upvotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downvotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://res.cloudinary.com/oti4me/image/upload/v1515963217/lh8dpavcrrkl8qj1ggsi.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"There’s nothing appealing about a jar of TexasThere’s nothing appealing about a jar of Texas"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-14T20:53:38.088Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-20T09:06:56.468Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='get-single-recipe'>Get single recipe</h2>
+      <p>This endpoint is to retrieve a recipe on the platform</p>
+      <h3 id='request-7'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: GET: api/v1/recipes/25</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-7'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:45:55.934Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:45:55.934Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"User"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Favourites"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='reviews'>Reviews</h1>
+      <p>These API endpoints is to allow the user add review for a recipe</p>
+      <h2 id='add-reviews'>Add reviews</h2>
+      <p>This endpoint allows the user to add a review</p>
+      <h3 id='request-8'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the first review for this recipe"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/1/reviews</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-8'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is the first review for this recipe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12-01-2018"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='favourites'>Favourites</h1>
+      <p>These API endpoints is to allow the user add and remove favourite recipes</p>
+      <h2 id='add-favourite'>Add favourite</h2>
+      <p>This endpoint allows the user to add a recipe as favourite </p>
+      <h3 id='request-9'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/users/1/favourites</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-9'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12-01-2018"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='remove-favourite'>Remove favourite</h2>
+      <p>This endpoint allows the user to add a recipe as favourite </p>
+      <h3 id='request-10'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: DELETE: api/v1/users/1/favourites</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-10'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12-01-2018"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='votes'>Votes</h1>
+      <p>These API endpoints are to allow the users voten up or down a recipes</p>
+      <h2 id='add-upvotes'>Add upvotes</h2>
+      <p>This endpoint allows the user to vote up a recipe</p>
+      <h3 id='request-11'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/1/upvotes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-11'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your vote has been recorded"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='remove-upvote'>Remove upvote</h2>
+      <p>This endpoint allows the user to remove a user&#39;s upvote on a recipe </p>
+      <h3 id='request-12'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/1/upvotes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-12'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your vote has been removed"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='add-upvotes'>Add down votes</h2>
+      <p>This endpoint allows the user to vote down a recipe</p>
+      <h3 id='request-11'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/1/downvotes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-11'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your downvote has been recorded"</span><span class="p">,</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span></code></pre>
+      <ul>
+        <li>Status: 201: CREATED</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h2 id='remove-upvote'>Remove down upvote</h2>
+      <p>This endpoint allows the user to remove a user&#39;s down vote on a recipe </p>
+      <h3 id='request-12'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/1/downvotes</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-12'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your downvote has been removed"</span><span class="p">,</span><span class="w">
+            </span>}</span><span class="w">
+          </span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='search'>Search</h1>
+      <p>These API endpoints are to allow the users search for recipes on the application</p>
+      <h3 id='request-13'>Request</h3>
+      <blockquote>
+        <p>Request</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Endpoint: POST: api/v1/recipes/search?key=beans</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h3 id='response-13'>Response</h3>
+      <blockquote>
+        <p>Response</p>
+      </blockquote>
+      <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and rice"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and rice"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and rice"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/img.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and rice"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:25:10.067Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:25:10.401Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"User"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeromy"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"McClure"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"viewCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imgae.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It was an animate statue to the excellence of good, clean living. I was surprised by the excellence of the hotel at which I was lodged."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:45:55.934Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-31T10:45:55.934Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"User"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      <ul>
+        <li>Status: 200: OK</li>
+        <li>Body (application/json)</li>
+      </ul>
+      <h1 id='errors'>Errors</h1>
+      <p>The More Recipes API uses the following error codes:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Error Code</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>400</td>
+            <td>Bad Request -- Your request validation returned error.</td>
+          </tr>
+          <tr>
+            <td>401</td>
+            <td>Unauthorized -- Your API key is wrong.</td>
+          </tr>
+          <tr>
+            <td>404</td>
+            <td>Not Found -- The specified resource could not be found.</td>
+          </tr>
+          <tr>
+            <tr>
+              <td>500</td>
+              <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+            </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="dark-box">
+      <div class="lang-selector">
+        <a href="#" data-language-name="javascript">javascript</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

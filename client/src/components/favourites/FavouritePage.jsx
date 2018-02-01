@@ -1,50 +1,86 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FavouritesList from './FavouriteList.jsx';
-import Footer from '../Footer.jsx';
-import Header from '../Header.jsx';
-import Pagination from '../pagination.jsx';
+import { bindActionCreators } from 'redux';
+import FavouritesList from './FavouriteList';
+import { getFavourites } from '../../actions/favouritesAction';
+import Pagination from '../Pagination'
+import Footer from '../Footer';
+import Header from '../Header';
 
-class FavouritesPage extends React.Component {
+/**
+ * @description
+ * 
+ * @class FavouritesPage
+ * 
+ * @extends {React.Component}
+ */
+class FavouritesPage extends Component {
 
+  /**
+   * @description Creates an instance of FavouritesPage.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof FavouritesPage
+   */
   constructor(props) {
     super(props);
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
+  /**
+   * @description A method that allows a user to create an app in the application
+   * 
+   * @param {object} page
+   * 
+   * @returns {undefined} No returned value
+   * 
+   * @memberof FavouritesPage
+  */
+  handlePageClick(page) {
+    let selected = ++page.selected;
+    this.props.getFavourites(selected);
+  }
+
+  /**
+   * @description
+   * 
+   * @returns {object} returns favourite recipe page jsx
+   * 
+   * @memberof FavouritesPage
+   */
   render() {
     return (
-      <div>
-        <Header { ...this.props } />
-        <div className="container">
+      <div className="main">
+        <Header {...this.props} />
+        <div className="container cont">
           <div className="col s12 m12 l12">
             <div className="row">
-              <div className="col s12 m9 l9 top-margin-30">
+              <div className="col s12 m6 l9 top-margin-30">
                 <h3 className="h-title">Favourite Recipes</h3>
-              </div>
-              <div className="col s12 m3 l3 top-margin-50">
-                <div className="input-field col s12">
-                  <i className="material-icons prefix">search</i>
-                  <input id="search" type="text" />
-                  <label htmlFor="search">Enter Keyword</label>
-                </div>
               </div>
             </div>
             <hr style={{ borderTop: "1px solid #26a69a" }} />
             <FavouritesList />
-            {/* pagination */}
-            <Pagination pages={1} />
-            {/* end of pagination */}
           </div>
         </div>
+        <Pagination clickedFrom="favoirite" />
         <Footer />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return { state };
+const mapDispatchToProps = (disptach) => {
+  return bindActionCreators({
+    getFavourites
+  }, disptach);
 }
 
-export default connect(mapStateToProps)(FavouritesPage);
+const mapStateToProps = (state) => {
+  return {
+    pagination: state.recipes.pagination
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavouritesPage);

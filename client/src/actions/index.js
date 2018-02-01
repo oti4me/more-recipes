@@ -1,7 +1,7 @@
-import { signin } from './SigninAction.js';
-import { signup } from './SignupAction.js';
+import { signin } from './signinAction';
+import { signup } from './SignupAction';
 
 export default {
-  signin : signin,
-  signup : signup
+  signin: signin,
+  signup: signup
 }

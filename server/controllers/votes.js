@@ -10,192 +10,133 @@ import db from '../models';
 class Votes {
 
   /**
-   * A method that allows the user to get a recipe's upvotes
+   * @description A method that allows the user to upvote a recipe
+   * 
+   * @param {undefined} request
+   * 
+   * @param {undefined} response
+   * 
+   * @returns {object} success message on success and error message on failure
    * 
    * @memberof Votes
-   * @method
-   * @param {object} request 
-   * @param {object} response 
-   * 
-   * @returns {object} insertion error messages object or success message object 
-  */
-  getUpVotes(request, response) {
-    const userId = validate.getUserId(request, response);  
-    const recipeId = request.params.id;
-    if(!(validate.validateId(userId) && validate.validateId(Number(recipeId)))) {
-      return response.status(400).json({ 
-        succes: false, 
-        message : 'user ID or Recipe ID is invalid' 
-      });
-    }
-    db.Recipes.findOne({
-      attributes : ['upvotes']},
-       { where : { id: recipeId  }
-    })
-    .then(votes =>{
-      return response.status(200).json({ 
-        succes: true, 
-        upvotes : votes.upvotes
+   */
+  upVotes(request, response) {
+    const userId = validate.getUserId(request, response);
+    const { id } = request.params;
+
+    db.Votes
+      .findCreateFind({
+        where: {
+          userId,
+          recipeId: id,
+        }
       })
-    })
-    .catch(error =>{
-      return response.status(500).json({ 
-        succes: false, 
-        message : error.message
+      .spread((vote, created) => {
+        if (created) {
+          vote.update({ voted: 'upVote' });
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.increment('upVotes').then(() => {
+                response.status(201).json({
+                  message: 'Your vote has been recorded',
+                  recipe
+                });
+              });
+            });
+        } else if (!created && vote.voted === 'upVote') {
+          vote.destroy()
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.decrement('upVotes').then(() => {
+                response.status(200).send({
+                  message: 'Your vote has been removed',
+                  recipe
+                });
+              });
+            })
+        } else if (!created && vote.voted === 'downVote') {
+          vote.update({ voted: 'upVote' });
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.increment('upVotes')
+              recipe.decrement('downVotes').then(() => {
+                recipe.reload();
+              }).then(() => response.status(200).send({
+                message: 'Your vote has been added',
+                recipe
+              }));
+            });
+        }
       })
-    });
+      .catch(error => response.status(500).json(error.message));
   }
 
   /**
-   * A method that allows the user to get a recipe's downvotes
+   * @description A method that allows the user to vote down a recipe
    * 
-   * @memberof Votes
-   * @method
-   * @param {object} request 
-   * @param {object} response 
-   * 
-   * @returns {object} insertion error messages object or success message object 
-  */
-  getDownVotes(request, response) {
-    const userId = validate.getUserId(request, response);  
-    const recipeId = request.params.id;
-    if(!(validate.validateId(userId) && validate.validateId(Number(recipeId)))) {
-      return response.status(400).json({ 
-        succes: false, 
-        message : 'user ID or Recipe ID is invalid' 
-      });
-    }
-    db.Recipes.findOne({
-      attributes : ['downvotes']},
-       { where : { id: recipeId  }
-    })
-    .then(votes =>{
-      return response.status(200).json({ 
-        succes: true, 
-        downvotes : votes.downvotes
-      })
-    })
-    .catch(error =>{
-      return response.status(500).json({ 
-        succes: false, 
-        message : error.message
-      })
-    });
-  }
-
-  /**
-   * A method that allows the user to vote up or down a recipe
-   * 
-   * @memberof Votes
-   * @param {object} request 
+   * @param {object} request
+   *  
    * @param {object} response 
    * 
    * @returns {object} insertion error messages object or success message object
+   *
+   * @memberof Votes
   */
-  votes(request, response) {
-    const recipeId = request.params.id
+  downVotes(request, response) {
     const userId = validate.getUserId(request, response);
-    validate.validatevaVotes(request, response);
-    var errors = request.validationErrors();
-    if (errors) {
-      return response.status(400).json({ 
-        succes: false, 
-        message : errors 
-      });
-    }
-    
-    let voted = request.body.voteType;
-    if(!validate.validateId(recipeId)){
-      return response.status(404).json({ 
-        succes: false, 
-        message: `Recipe ID '${recipeId}' is not a valid integer`
-      });
-    }
-    db.Recipes.findById(recipeId)
-    .then(recipe => {
-      if(recipe){
-        db.Votes.findOne({
-          where: {
-            userId, 
-            voted, 
-            recipeId: recipe.id
-          }
-        })
-        .then(vote =>{
-          if(vote){
-            let query = {};
-            if(voted === 'upvotes'){
-              query = { upvotes : db.Sequelize.literal('upvotes - 1' ) }
-            }else{
-              query = { downvotes : db.Sequelize.literal('downvotes - 1' ) }
-            }
-            db.Recipes.update(query,{ 
-              where: {
-                id: recipeId
-              }
-            })
-            .then(res =>{
-              db.Votes.destroy({
-                where: {
-                  id: vote.id
-                }
-              })
-              .then(res => {
-                response.status(200).json({ 
-                  succes: true, 
-                  message: `${voted} removed`
+    const { id } = request.params;
+
+    db.Votes
+      .findCreateFind({
+        where: {
+          userId,
+          recipeId: id,
+        }
+      })
+      .spread((vote, created) => {
+        if (created) {
+          vote.update({ voted: 'downVote' });
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.increment('downVotes').then(() => {
+                response.status(201).json({
+                  message: 'Your downvote has been recorded',
+                  recipe
                 });
-              })
-            })
-            .catch(error =>{
-              response.status(500).json({ 
-                succes: false, 
-                message: error.message
               });
             });
-
-          }else{
-            let query = {};
-            if(voted === 'upvotes'){
-              query = { upvotes : db.Sequelize.literal('upvotes + 1' ) }
-            }else{
-              query = { downvotes : db.Sequelize.literal('downvotes + 1' ) }
-            }
-            db.Votes.create({
-              voted,
-              recipeId,
-              userId,
+        } else if (!created && vote.voted === 'downVote') {
+          vote.destroy()
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.decrement('downVotes').then(() => {
+                response.status(200).send({
+                  message: 'Your downvote has been removed',
+                  recipe
+                });
+              });
             })
-            .then(downvote =>{
-              if(downvote){
-                db.Recipes.update(query,{
-                    where: { id: recipeId }
-                })
-                .then(res => {
-                  if(res){
-                    response.status(201).json({ 
-                      succes: true, 
-                      message: `${voted} added`
-                    });
-                  }
-                })
-              }
-            })
-          }
-        })
-        .catch(error => {
-          response.status(500).json({ 
-            succes: false, 
-            message: error.message
-          });
-        })
-      }else{
-        response.status(400).json({ 
-          succes: false, 
-          message: `No recipe with ID ${recipeId}`
-        });
-      }
-    })
+        } else if (!created && vote.voted === 'upVote') {
+          vote.update({ voted: 'downVote' });
+          return db.Recipes
+            .findOne({ where: { id } })
+            .then((recipe) => {
+              recipe.increment('downVotes')
+              recipe.decrement('upVotes').then(() => {
+                recipe.reload();
+              }).then(() => response.status(200).send({
+                message: 'Your down vote has been added',
+                recipe
+              }));
+            });
+        }
+      })
+      .catch(error => response.status(500).json(error.message));
   }
 }
 

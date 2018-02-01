@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Reviews = sequelize.define('Reviews', {
+  let Reviews = sequelize.define('Reviews', {
     recipeId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'userId',
       }
     },
-    comment: DataTypes.TEXT,    
+    comment: DataTypes.TEXT,
   });
 
   Reviews.associate = (models) => {

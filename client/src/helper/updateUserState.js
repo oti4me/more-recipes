@@ -1,23 +1,23 @@
 import jwt from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
 
-const validateUser =  (store)=>{
+const updateUserState = (store) => {
   let token = window.localStorage.getItem('userToken');
-  if(token){
+  if (token) {
     jwt.verify(token, 'oti4me@gmail.com', (err, result) => {
       if (err) {
         window.localStorage.removeItem('userToken');
-        store.dispatch({ type : 'USER_LOGGEDIN', payload : { loggedIn : false} });
+        store.dispatch({ type: 'USER_LOGGEDIN', payload: { loggedIn: false } });
       }
       else {
-        store.dispatch({ type : 'USER_LOGGEDIN', payload : { loggedIn : true} });
+        store.dispatch({ type: 'USER_LOGGEDIN', payload: { loggedIn: true } });
         const user = jwt_decode(token);
-        store.dispatch({ type : 'USER_LOGIN', payload : user });
+        store.dispatch({ type: 'USER_LOGIN', payload: user });
       }
     });
-  }else{
-    store.dispatch({ type : 'USER_LOGGEDIN', payload : { loggedIn : false} });
+  } else {
+    store.dispatch({ type: 'USER_LOGGEDIN', payload: { loggedIn: false } });
   }
 }
 
-export default validateUser;
+export default updateUserState;

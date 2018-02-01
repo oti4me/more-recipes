@@ -1,6 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Votes = sequelize.define('Votes', {
+  let Votes = sequelize.define('Votes', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     userId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',

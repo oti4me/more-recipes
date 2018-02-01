@@ -3,39 +3,38 @@ import { DELETE_RECIPE, DELETE_RECIPE_ERRORS } from '../actions/types';
 import header from '../helper/getHeader';
 
 
-export const deleteRecipeAction = (data) => {
+export const deleteRecipeAction = (id) => {
   return {
     type: DELETE_RECIPE,
-    payload: data
+    id
   }
 };
 
-export const deleteRecipeError = (data) => {
+export const deleteRecipeError = (error) => {
   return {
     type: DELETE_RECIPE_ERRORS,
-    payload: data
+    error
   }
 };
 
-export const deleteRecipe = (id, callback) => {
+export const deleteRecipe = (id) => {
   return dispatch => {
     dispatch(deleteRecipeError(null));
     dispatch(deleteRecipeAction({}));
     return axios.delete(`/api/v1/recipes/${id}`, header())
       .then(res => {
         if (res) {
-          return res.data;
+          dispatch(deleteRecipeAction(id));
         }
       })
       .catch(error => {
+        const { response: { status, data: { message } } } = error;
         dispatch(deleteRecipeError({
           errors: {
-            status: error.response.status,
-            message: error.response.data.message
+            status: status,
+            message
           }
         }));
-        callback(false);
       })
   }
-}
-
+};

@@ -1,120 +1,199 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
 import shortId from 'shortid';
-
-import Data from '../../../../server/mockapi/data';
+import MDSpinner from "react-md-spinner";
 import { getAllRecipes } from '../../actions/recipes';
-import { addFavourite } from '../../actions/favouritesAction';
-import { getFavourites } from '../../actions/favouritesAction';
-import header from '../../helper/getHeader';
-import Pagination from '../pagination.jsx';
+import { addFavourite, checkFavourite } from '../../actions/favouritesAction';
 
-class RecipeList extends React.Component {
-
+/**
+ * 
+ * @class RecipeList
+ * 
+ * @extends {Component}
+ */
+class RecipeList extends Component {
+  /**
+   * @description Creates an instance of RecipeList.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof RecipeList
+   */
   constructor(props) {
     super(props);
     this.state = {
-      recipes: [],
-      pages: 1,
+      recipes: undefined,
     };
     this.handleAddFavourite = this.handleAddFavourite.bind(this);
   }
 
+  /**
+   * @description
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof RecipeList
+   */
   componentDidMount() {
-    this.getRecipes();
+    this.setState({
+      recipes: this.props.allRecipes
+    });
+    $('ul.tabs').tabs();
   }
 
-  handleAddFavourite(e) {
-    e.preventDefault();
-    const { userId } = this.props.user;
-    const recipeId = Number(e.target.dataset['id']);
-    this.props.addFavourite({ userId, recipeId }, (res) => {
-      if (res) {
-        return Materialize.toast('Added to favourites', 3000, 'green');
-      } else {
-        const { errors } = this.props;
-        console.log(errors);
-        if (errors.status === 400) {
-          errors.message.map(err => {
-            Materialize.toast(err.msg, 4000, 'red');
-          });
-        } else if (errors.status === 409) {
-          return Materialize.toast(errors.message, 3000, 'red');
-        }
-      }
+  /**
+   * @description
+   * 
+   * @param {object} nextProps updated props object
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof RecipeList
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      recipes: nextProps.allRecipes || nextProps.recipes
     });
   }
 
-  getRecipes(data = {}) {
-    axios.get('/api/v1/recipes', data, header())
-      .then(res => {
-        this.setState({
-          recipes: res.data.recipes,
-          pages: res.data.pages
-        });
-      })
-      .catch(error => {
-
-      });
+  /**
+   * @description A method to handle add favourite for the recipe listing page
+   * 
+   * @param {object} event event object
+   * 
+   * @returns {object} return error boject to display to the user or a succes message on successful completion
+   * 
+   * @memberof RecipeList
+   */
+  handleAddFavourite(event) {
+    event.preventDefault();
+    const { userId } = this.props.user;
+    const recipeId = Number(event.target.dataset['id']);
+    this.props.addFavourite({ userId, recipeId }, Materialize);
   }
 
+  /**
+   * @description
+   * 
+   * @returns {object} JSX object
+   * 
+   * @memberof RecipeList
+   */
   recipeList() {
+    const recipes = this.state.recipes || [];
     let recipeChunk = [];
-    let chunkSize = 3;
-    for (let i = 0; i < this.state.recipes.length; i += chunkSize) {
-      recipeChunk.push(this.state.recipes.slice(i, i + chunkSize));
+    let chunkSize = 4;
+    for (let i = 0; i < recipes.length; i += chunkSize) {
+      recipeChunk.push(recipes.slice(i, i + chunkSize));
     }
-    const i = 1;
-    const Row = recipeChunk.map(chunk => {
+    return recipeChunk.map(chunk => {
       return (
         <div className="row" key={shortId.generate()}>
           {chunk.map(recipe => {
             return (
-              <div className="col s12 m6 l4" key={shortId.generate()}>
-                <div className="card">
+              <div className="col s12 m6 l3" key={shortId.generate()}>
+                <div
+                  className="card"
+                  style={{
+                    maxHeight: '415px',
+                    minHeight: '415px'
+                  }}
+                >
                   <div className="card-image">
                     <Link to={`/recipe/${recipe.id}`}>
-                      <img style={{ width: '100%', height: '200px' }} src={recipe.image} />
+                      <img
+                        style={{
+                          width: '100%',
+                          height: '250px'
+                        }}
+                        src={recipe.imageUrl}
+                        alt=""
+                      />
                     </Link>
-                    {
-                      this.props.loggedIn ? <a href="" onClick={this.handleAddFavourite.bind(this)} className="btn-floating halfway-fab waves-effect waves-light red">
-                        <i data-id={recipe.id} className="material-icons color-green">favorite</i>
-                      </a> : ""
-                    }
                   </div>
-                  <div className="card-content">
+                  <div
+                    className="card-content"
+                    style={{
+                      padding: '10px',
+                      paddingTop: '20px'
+                    }}
+                  >
                     <Link to={`/recipe/${recipe.id}`}>
-                      <span className="card_title" style={{ wordWrap: 'break-word' }}>{recipe.title}</span>
+                      <span
+                        className="card_title"
+                        style={{
+                          wordWrap: 'break-word',
+                          maxHeight: '50px',
+                          overflow: 'hidden'
+                        }}
+                      >
+                        {recipe.title.length > 25
+                          ? `${recipe.title.slice(0, 26)}...`
+                          : recipe.title
+                        }
+                      </span>
                     </Link>
-                    <p className="card-p" style={{ wordWrap: 'break-word' }}>{recipe.description.length > 70 ? `${recipe.description.slice(0, 71)}...` : recipe.description}</p>
-                    <hr style={{ borderTop: "1px solid #26a69a" }} />
+                    <p
+                      className="card-p"
+                      style={{
+                        wordWrap: 'break-word'
+                      }}
+                    >
+                      {recipe.description.length > 30
+                        ? `${recipe.description.slice(0, 31)}...`
+                        : recipe.description
+                      }
+                    </p>
+                    <hr style={{ borderTop: "1px thin #1111" }} />
                     <div className="row">
-                      <div className="col s4 m3 l3">
-                        <a className="tooltipped text-green" style={{ color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Views">
-                          <i className="material-icons text-green">visibility</i> {recipe.viewCount}
-                        </a>
+                      <div
+                        className="col s3 m3 l3 tooltipped text-green"
+                        data-position="bottom"
+                        data-delay="50"
+                        data-tooltip="Views"
+                      >
+                        <i className="fa fa-eye" aria-hidden="true">
+                          {recipe.viewCount}
+                        </i>
                       </div>
-                      <div className="col s4 m3 l3">
-                        <a className="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upvotes" style={{ color: '#999' }}>
-                          <i className="material-icons text-green">thumb_up</i> {recipe.upvotes}
-                        </a>
+                      <div
+                        className="col s3 m3 l3 tooltipped text-green"
+                        data-position="bottom"
+                        data-delay="50"
+                        data-tooltip="Upvotes"
+                      >
+                        <i className="fa fa-thumbs-o-up" aria-hidden="true">
+                          {recipe.upVotes}
+                        </i>
                       </div>
-                      <div className="col s4 m3 l3">
-                        <a className="tooltipped modal-trigger" style={{ ccolor: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Downvotes">
-                          <i className="material-icons text-green">thumb_down</i> {recipe.downvotes}
-                        </a>
+                      <div
+                        className="col s3 m3 l3 tooltipped modal-trigger text-green"
+                        data-position="bottom"
+                        data-delay="50"
+                        data-tooltip="Downvotes"
+                      >
+                        <i className="fa fa-thumbs-o-down" aria-hidden="true">
+                          {recipe.downVotes}
+                        </i>
                       </div>
-                      <div className="col s4 m3 l3">
-                        <a className="tooltipped modal-trigger" style={{ color: '#999' }} data-position="bottom" data-delay="50" data-tooltip="Reviews">
-                          <i className="material-icons text-green">rate_review</i> {recipe.Reviews ? recipe.Reviews.length : 0}
-                        </a>
+                      <div
+                        className="col s3 m3 l3 tooltipped modal-trigger text-green"
+                        data-position="bottom"
+                        data-delay="50"
+                        data-tooltip="Reviews"
+                      >
+                        <i className="fa fa-comments" aria-hidden="true">
+                          {recipe.Reviews ? recipe.Reviews.length : 0}
+                        </i>
                       </div>
                     </div>
-                    <hr style={{ borderTop: "1px solid #26a69a" }} />
-                    <span className="bold text-gray">By: {recipe.User ? recipe.User.firstname : ''} {recipe.User ? recipe.User.lastname : ''}</span>
+                    {/* <hr style={{ borderTop: "1px solid #26a69a" }} /> */}
+                    <span className="text-gray">
+                      By: {recipe.User ? recipe.User.firstName : ''}{' '}
+                      {recipe.User ? recipe.User.lastName : ''}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -123,27 +202,70 @@ class RecipeList extends React.Component {
         </div>
       )
     });
-
-    return Row;
   }
 
-  render() {
+  /**
+   * @description A function to show the user a notification if no recipe is found
+   * 
+   * @returns {object} JSX object
+   * 
+   * @memberof RecipeList
+   */
+  noRecipe() {
     return (
       <div>
-        {this.recipeList()}
-        <Pagination pages={this.state.pages} />
+        <h5 className="top-margin-50" style={{ textAlign: 'center' }}>
+          No reicpe found!!!
+        </h5>
+      </div>
+    );
+  }
+
+  /**
+   * @description Renders the component to the dom
+   * 
+   * @returns {object} JSX object
+   * 
+   * @memberof RecipeList
+   */
+  render() {
+    return (
+      <div id="test-swipe-1" className="col s12 top-margin-20">
+        {
+          this.state.recipes === undefined
+            ? <div className="center-align"><MDSpinner size={40} /></div>
+            :
+            this.state.recipes && this.state.recipes.length > 0
+              ? this.recipeList(this.state.recipes)
+              : this.noRecipe()
+        }
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  const {
+    recipes: {
+      allRecipes, errors, favourites
+    },
+    auth: {
+      user, loggedIn
+    }
+  } = state;
   return {
-    recipes: state.recipes,
-    errors: state.recipes.errors,
-    loggedIn: state.auth.loggedIn,
-    user: state.auth.user
+    errors, loggedIn, user, favourites, recipes: allRecipes,
   };
 }
 
-export default connect(mapStateToProps, { getAllRecipes, addFavourite, getFavourites })(RecipeList);
+
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getAllRecipes,
+    addFavourite,
+    checkFavourite
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeList);

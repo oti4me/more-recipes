@@ -1,17 +1,29 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import { signup } from '../../actions/SignupAction.js';
+import { signup } from '../../actions/signupAction';
 
-class SignupForm extends React.Component {
+/**
+ * 
+ * @class SignupForm
+ * 
+ * @extends {Component}
+ */
+class SignupForm extends Component {
 
+  /**
+   * Creates an instance of SignupForm.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof SignupForm
+   */
   constructor(props) {
     super(props);
     this.state = {
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
       password: "",
@@ -21,8 +33,17 @@ class SignupForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSignup(e) {
-    e.preventDefault()
+  /**
+   * Handles signup action
+   * 
+   * @param {object} event 
+   * 
+   * @return {undefined} No returned value
+   * 
+   * @memberof SignupForm
+   */
+  handleSignup(event) {
+    event.preventDefault()
     this.props.signup(this.state, (isError) => {
       const { error } = this.props;
       if (isError) {
@@ -45,58 +66,125 @@ class SignupForm extends React.Component {
     })
   }
 
-  handleChange(e) {
-    e.preventDefault();
+  /**
+   * Handles form field change 
+   * 
+   * @param {Object} event 
+   * 
+   * @return {undefined} No returned value
+   * 
+   * @memberof SignupForm
+   */
+  handleChange(event) {
+    event.preventDefault();
     this.setState({
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
   }
 
+  /**
+   * Renders the form to the page
+   * 
+   * @returns {object} Signup form jsx object
+   * 
+   * @memberof SignupForm
+   */
   render() {
     return (
       <div className="row">
         <form className="col s12 z-depth-2" style={{ padding: '50px' }} onSubmit={this.handleSignup}>
           <div className="row">
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="fname" name="firstname" value={this.state.firstname} type="text" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">account_circle</i>
+              <input
+                id="fname"
+                name="firstName"
+                value={this.state.firstName}
+                type="text"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="fname">First Name</label>
             </div>
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="lname" name="lastname" value={this.state.lastname} type="text" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">account_circle</i>
+              <input
+                id="lname"
+                name="lastName"
+                value={this.state.lastName}
+                type="text"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="lname">Last Name</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">email</i>
-              <input id="email" name="email" value={this.state.email} type="text" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">email</i>
+              <input
+                id="email"
+                name="email"
+                value={this.state.email}
+                type="text"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="email">Email</label>
             </div>
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">contact_phone</i>
-              <input id="phone" name="phone" value={this.state.phone} type="text" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">contact_phone</i>
+              <input
+                id="phone"
+                name="phone"
+                value={this.state.phone}
+                type="text"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="phone">Phone</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">vpn_key</i>
-              <input id="password" name="password" value={this.state.password} type="password" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">vpn_key</i>
+              <input
+                id="password"
+                name="password"
+                value={this.state.password}
+                type="password"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="password">Password</label>
             </div>
             <div className="input-field col s12 m6 l6">
-              <i class="material-icons prefix">vpn_key</i>
-              <input id="confirmPassword" name="confirmPassword" value={this.state.confirmPassword} type="password" className="validate" onChange={this.handleChange} />
+              <i className="material-icons prefix">vpn_key</i>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
+                type="password"
+                className="validate"
+                onChange={this.handleChange}
+              />
               <label htmlFor="confirmPassword">Confirm Password</label>
             </div>
           </div>
           <div className="row">
-            <a onClick={this.handleSignup} className="waves-effect waves-light btn" >Sign Up</a>
+            <a
+              role="button"
+              tabIndex="0"
+              onClick={this.handleSignup}
+              className="waves-effect waves-light btn"
+            >
+              Sign Up
+            </a>
           </div>
           <div className="row">
-            <p className="">Already have an account? <a href="/signin">Sign In</a></p>
+            <p className="">Already have an account?
+              {' '}<a href="/signin"> Sign In</a>
+            </p>
           </div>
         </form>
       </div>
@@ -104,16 +192,20 @@ class SignupForm extends React.Component {
   }
 }
 
-SignupForm.propTypes = {
-  loggedIn: PropTypes.bool,
-  error: PropTypes.object,
-  signin: PropTypes.func,
-};
+// SignupForm.propTypes = {
+//   error: PropTypes.shape({}),
+//   signup: PropTypes.func.isRequired,
+//   history: PropTypes.shape({
+//     push: PropTypes.func.isRequired
+//   }).isRequired
+// };
 
+// SignupForm.defaultProps = {
+//   error: {}
+// }
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.auth.loddedIn,
     error: state.auth.error,
   };
 }

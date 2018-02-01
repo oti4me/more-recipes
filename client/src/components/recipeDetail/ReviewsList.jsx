@@ -1,18 +1,68 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import shortId from 'shortid';
+import moment from 'moment';
 
-
+/**
+ * 
+ * 
+ * @class ReviewsList
+ * @extends {React.Component}
+ */
 class ReviewsList extends React.Component {
 
+  /**
+   * @description Creates an instance of ReviewsList.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof ReviewsList
+   */
   constructor(props) {
     super(props);
+    this.state = {
+      reviews: []
+    }
   }
 
+  /**
+   * @description
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof ReviewsList
+   */
+  componentWillMount() {
+    this.setState({
+      reviews: this.props.reviews
+    });
+  }
+
+  /**
+   * @description
+   * 
+   * @param {object} nextProps 
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof ReviewsList
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      reviews: nextProps.reviews
+    });
+  }
+
+  /**
+   * @description
+   * 
+   * @returns {object} jsx object to render review list
+   * 
+   * @memberof ReviewsList
+   */
   render() {
-    const { reviews } = this.props;
+    const reviews = this.state.reviews || [];
     if (reviews !== undefined && reviews.length > 0) {
       return (
         <ul>
@@ -20,13 +70,35 @@ class ReviewsList extends React.Component {
             return (
               <div className="row" key={shortId.generate()}>
                 <div className="col s12 m6 l6">
-                  <li key={shortId.generate()} className="collection-item avatar" style={{ backgorundColor: '#ccc', borderRadius: '5px' }}>
-                    <p style={{ fontWeight: 'bold', color: '#999' }}>{review.User ? review.User.firstname + ' ' + review.User.lastname : ''}, {review.createdAt.split('T')[0]}</p>
-                    <span style={{ wordWrap: 'break-word' }} className="title">{review.comment}</span>
+                  <li
+                    key={shortId.generate()}
+                    className="collection-item avatar"
+                    style={{ backgorundColor: '#ccc', borderRadius: '5px' }}
+                  >
+                    <p style={{ color: '#999' }}>
+                      <span style={{ fontWeight: 'bold' }}>
+                        {review.User
+                          ? review.User.firstName + ' ' + review.User.lastName
+                          : ''
+                        }
+                      </span>
+                      {' '}
+                      <span
+                        style={{ float: 'right' }}
+                      >
+                        {moment(review.createdAt).fromNow()}
+                      </span>
+                    </p>
+                    <span
+                      style={{ wordWrap: 'break-word' }}
+                      className="title"
+                    >
+                      {review.comment}
+                    </span>
                     <hr />
                   </li>
                 </div>
-                <div className="col s12 m6 l6"></div>
+                <div className="col s12 m6 l6" />
               </div>
             )
           })}
@@ -42,13 +114,10 @@ class ReviewsList extends React.Component {
   }
 }
 
-ReviewsList.propTypes = {
-  loggedIn: PropTypes.bool,
-};
-
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.auth.loggedIn,
+    reviews: state.recipes.reviews
   };
 }
 
