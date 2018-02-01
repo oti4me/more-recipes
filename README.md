@@ -1,97 +1,91 @@
-# More-Recipes
-
-A simple App that allows users create and manage recipes [Heroku hosted](http://more-recipes-otighe.heroku.com)
-
-It provides restful APIs for users to create recipes, review recipes and favourite a recipe based on userId and managing authentication of users with JsonWebToken.
+# More Recipes
 
 [![Build Status](https://travis-ci.org/oti4me/More-Recipes.svg?branch=development)](https://travis-ci.org/oti4me/More-Recipes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4dfcbf4bb224fdab4624/maintainability)](https://codeclimate.com/github/oti4me/More-Recipes/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/oti4me/More-Recipes/badge.svg?branch=staging)](https://coveralls.io/github/oti4me/More-Recipes?branch=staging)
+[![Coverage Status](https://coveralls.io/repos/github/oti4me/More-Recipes/badge.svg?branch=development)](https://coveralls.io/github/oti4me/More-Recipes?branch=development)
 
-##### Hosted App on Heroku 
+## Introduction
+**`More Recipes`** is a simple Application that allows users create and manage recipes. It has the following features; 
+* User  Signup
+* User Signin
+* Add recipe
+* Update recipe
+* Delete recipe
+* Add a recipe to my favourite collection
+* Remove a Recipe from my favourite collection
+* vote up a recipe (Like)
+* Vote down a recipe (Dislike)
+* Review a recipe
 
-[Heroku hosted](http://more-recipes-otighe.heroku.com)
+## Installation and Setup
+*  Install NodeJs
+*  Install Postgres
+*  Navigate to a directory of choice on `terminal`.
+*  Clone this repository on that directory.
 
-### Key Application Features
+    > git clone https://github.com/oti4me/More-Recipes.git
 
-A user can perform the following: 
-- Create an account 
-- Login to account 
-- User can create a recipe 
-- User can remove a recipe he added 
-- User can update a recipe he added
-- Users can search for recipes.
-- Users can vote up or down a recipe.
-- Users can review recipes.
-- Users can favourite a recipe.
-- Logout.
+*  Navigate to the repo's folder on your computer
+  *  `cd More-Recipes/`
+* Install the application's dependencies using `npm install`
 
+  #### Note
+  * In order to begin using, you need to have [NodeJs](https://nodejs.org) and **npm** installed on your system.
+  * For database you need to install __PostGres__ locally or setup with an online client eg. **ElephantSql**
+  * Setup Database according to setting in server/config/config.js and the env.example file.
+  * Migrate to database sequelize db:migrate
+  * Create two (2) databases one for __development__ and the other for **testing**
+  * Change database config variables in the config.json and .env file, based on your own db set-up
+  * In other to interact effectively with endpoints, install and use [Postman](https://www.getpostman.com/)
 
-##### Authentication: Users are authenticated and validated using JsonWebToken.
+* Run the app
+  *  `npm run start:dev`
+  *  Running the command above will run the app at `localhost://3001`.
 
-### Development
+## Dependencies
+* See Package.json for reference
 
-This application was developed using NodeJs with Express for routing. Postgres was used for persisting data.
+## Tests
+*  The tests have been written using **[Mocha](https://www.npmjs.com/package/mocha)** , **[Chai](https://www.npmjs.com/package/chai)** as it's assertion library and **[Supertest](https://www.npmjs.com/package/supertest)** class.
+*  To run the tests, navigate to the project's folder and open
+*  Issue the following command on terminal.
+  *  `npm test`
+*  If the tests are successful, they will complete without failures or errors.
 
-The frontend was built using HTML,CSS and JavaScript.
+## Technologies
+ * [ECMAScript 6](http://es6-features.org/): This is the newest version of JavsScript with new features such as arrow functions, spread and rest operators and many more.
+ * [REACT](https://facebook.github.io/react/): REACT is a JavaScript framework developed by Facebook and it is used for developing web application. REACT is the 'VIEW' in the MVC architecture.
+ * [REDUX](): Redux is a predictable state container for JavaScript apps
+ * [Babel:](https://babeljs.io/)  Babel is used to transpile es6 down to es5.
+ * [Webpack:](https://webpack.github.io/docs/what-is-webpack.html)  Webpack is used to bundle modules with dependencies and run mundane tasks.
+ * [Axios:](https://www.npmjs.com/package/axios)  Axios is an http client library used in making API calls.
 
-### Installation
+ 
+# Coding Style
+- Airbnb 
 
-- Clone the project repository.
-- Run git clone (https://github.com/oti4me/More-Recipes) 
-more info: (https://help.github.com/articles/cloning-a-repository/)
-- Run ``` npm install ``` to install the dependencies in the package.json file.
-- Create Postgresql database and run ```sequelize db:migrate npm undo and npm redo ```(https://www.postgresql.org/)
+# Language
+- Javascript
 
-<!-- ## API Documentation -->
+## Api Documentation
+*[Click here to see the api documentation](https://more-recipes-otighe.herokuapp.com/documentation)
 
-<!-- Navigate to `localhost:3001/api-docs` on your browser and select HTTP protocol to view/test Swagger API documentation -->
+## Limitations
++ Users cannot delete user account
 
+## Contributions
+ Contributions are always welcome. If you are interested in enhancing the features in the project, follow these steps below:
+ + Fork the project to your repository then clone it to your local machine.
+ + Create a new branch and make features that will enhance it.
+ + If the you wish to update an existing enhancement submit a pull request.
+ + If you find bugs in the application, create a `New Issue` and let me know about it.
+ + If you need clarification on what is not clear, contact me via mail [henry.otighe@andela.com](mailto:henry.otighe@andela.com)
+ + Comvention used in this project is found in this [Wiki](https://github.com/oti4me/More-Recipes/wiki)
 
-## API Routes
+## Author
+    Henry Otighe
 
-* [Signup] - POST http://localhost:3000/api/v1/users/signup
-* [Signin] - POST http://localhost:3000/api/v1/users/signin
-* [Create Recipe] - POST http://localhost:3000/api/v1/recipes
-* [Modify Recipe] - PUT http://localhost:3000/api/v1/recipes/:id
-* [Delete Recipe] - DELETE http://localhost:3000/api/v1/recipes/:id
-* [Fetch All Recipes] - GET http://localhost:3000/api/v1/recipes
-* [Fetch Recipes by Most Upvotes] - GET http://localhost:3000/api/v1/recipes?sort=upvotes&order=desc
-* [Fetch My Recipes] - GET http://localhost:3000/api/v1/users/recipes
-* [Post Recipe Review] - POST http://localhost:3000/api/v1/recipes/:id/reviews
-* [Fetch Recipe Reviews] - GET http://localhost:3000/api/v1/recipes/:id/reviews
-* [Add Recipe to Favorites] - POST http://localhost:3000/api/v1/users/:userId/recipes
-* [Remove Recipe from Favorites] - DELETE http://localhost:3000/api/v1/users/:id/recipes
-* [Get Favaorite Recipes] - GET http://localhost:3000/api/v1/users/:id/recipes
-* [Upvote Recipe] - POST http://localhost:3000/api/v1/recipes/:recipeId/upvotes
-* [Downvote Recipe] - POST http://localhost:3000/api/v1/recipes/:recipeId/downvotes
+## License & Copyright
+MIT © [Henry Otighe](https://github.com/oti4me)
 
-
-### Usage
-
- Sign Up, Login, and start creating recipes
-
-### Technologies Used
-
-- JavaScript (ES6) (http://es6-features.org/)
-- Node.js (https://nodejs.org/en/)
-- Express (https://www.npmjs.com/package/express-api)
-- Sequelize ORM (http://docs.sequelizejs.com/)
-- Material Design CSS Framework (http://materializecss.com/)
-- Postgres (https://www.postgresql.org/)
-
-### Contributing
-
-- Fork this repositry to your account.
-- Clone your repositry: ``` git clone ```
-https://github.com/oti4me/More-Recipes.git.
-- Create your feature branch: ``` git checkout -b new-feature ```
-- Commit your changes: ``` git commit -m "did something" ```
-- Push to the remote branch: ``` git push origin new-feature ```
-- Open a pull request.
-
-#### Licence
-
-ISC
-
-Copyright (c) 2017 Otighe Henry
+Licensed under the [MIT License](https://github.com/oti4me/More-Recipes/blob/development/LICENSE).

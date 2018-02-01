@@ -1,65 +1,93 @@
 import axios from 'axios';
 import { ADD_RECIPE, REQUEST_ADD_RECIPE } from '../actions/types';
 import header from '../helper/getHeader';
+import imageUpload from './common/imageUpload';
 
-const addRecipeAction = (data) => {
+/**
+ * @description A function to dispatch an action to add recipe action
+ * 
+ * @param {Oject} recipe
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+const addRecipeAction = (recipe) => {
   return {
     type: ADD_RECIPE,
-    payload: data
+    payload: recipe
   }
-}
+};
 
-const requestAddRecipe = (data) => {
+/**
+ * @description A function to dispatch request add recipe action
+ * 
+ * @param {Oject} isRequesting
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+const requestAddRecipe = (isRequesting) => {
   return {
     type: REQUEST_ADD_RECIPE,
-    payload: data
+    payload: isRequesting
   }
-}
+};
 
-const addRecipe = (data, callback) => {
+/**
+ * @description A function to add a recipe
+ * 
+ * @param {Oject} recipe
+ * @param {Oject} Materialize
+ * @param {fuction} history
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+const addRecipe = (recipe, Materialize, history) => {
   return dispatch => {
-    dispatch(addRecipeAction({ added: false, recipe: {}, message: '', error: {} }));
     dispatch(requestAddRecipe({ isRequesting: true }));
-    let formData = new FormData();
-    formData.append('file', data.image);
-    formData.append('upload_preset', 'y5ewfnvb');
-    return axios({
-      method: 'POST',
-      url: 'https://api.cloudinary.com/v1_1/oti4me/image/upload',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: formData
-    }).then((response) => {
-      const { title, description, direction, ingredients } = data;
-      const recipeData = {
-        title,
-        description,
-        direction,
-        ingredients,
-        image: response.data.url
-      }
-      return axios.post('/api/v1/recipes', recipeData, header())
-        .then(res => {
-          if (res) {
-            dispatch(requestAddRecipe({ isRequesting: false }));
-            dispatch(addRecipeAction({ added: true, recipe: res.data.recipe, message: res.data.message }));
-            callback();
-          }
-        })
-        .catch(error => {
-          dispatch(requestAddRecipe({ isRequesting: false }));
-          dispatch(addRecipeAction({ added: false, recipe: {}, message: '', error: { ...error.response } }));
-          callback();
-        })
 
-    })
+    imageUpload(recipe.imageUrl)
+      .then((image) => {
+        const { title, description, direction, ingredients } = recipe;
+        const { data: { url } } = image;
+        const recipeDetails = {
+          title,
+          description,
+          direction,
+          ingredients,
+          imageUrl: url
+        }
+        return axios.post('/api/v1/recipes', recipeDetails, header())
+          .then(response => {
+            if (response) {
+              const { data: { recipe, message } } = response;
+              dispatch(requestAddRecipe({ isRequesting: false }));
+              dispatch(addRecipeAction({
+                recipe,
+                message
+              }));
+              Materialize.toast(message, 3000, 'green');
+              return history.push('/myrecipes');
+            }
+          })
+          .catch(error => {
+            const { response: { status, data: { message } } } = error;
+            dispatch(requestAddRecipe({ isRequesting: false }));
+            if (status === 400) {
+              message.map(err => {
+                return Materialize.toast(err.msg, 5000, 'red');
+              });
+            }
+            if (status === 409) {
+              return Materialize.toast(message, 3000, 'red');
+            }
+            if (status === 401) {
+              return Materialize.toast(message, 3000, 'red');
+            }
+          });
+      })
       .catch((error) => {
-        dispatch(requestAddRecipe({ isRequesting: false }));
-        dispatch(addRecipeAction({ added: false, recipe: {}, message: '', error: { ...error.response } }));
-        callback();
+        return Materialize.toast(error, 5000, 'red');
       });
   }
-}
+};
 
 export default addRecipe;

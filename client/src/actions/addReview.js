@@ -3,25 +3,27 @@ import { ADD_REVIEW, ADD_REVIEW_ERRORS } from '../actions/types';
 import header from '../helper/getHeader';
 
 
-export const addReviewAction = (data) => {
+export const addReviewAction = (review) => {
   return {
     type: ADD_REVIEW,
-    payload: data
+    payload: review
   }
 };
 
-export const addReviewError = (data) => {
+export const addReviewError = (error) => {
   return {
     type: ADD_REVIEW_ERRORS,
-    payload: data
+    payload: error
   }
 };
 
-export const addReview = (data, callback) => {
+export const addReview = (review, callback) => {
+  const { id, comment } = review;
   return dispatch => {
     dispatch(addReviewError(null));
     dispatch(addReviewAction({}));
-    return axios.post(`/api/v1/recipes/${data.id}/reviews`, { comment: data.comment }, header())
+    return axios.post(`/api/v1/recipes/${id}/reviews`,
+      { comment }, header())
       .then(res => {
         if (res) {
           callback(true);
@@ -29,14 +31,14 @@ export const addReview = (data, callback) => {
 
       })
       .catch(error => {
+        const { response: { status, data: { message } } } = error;
         dispatch(addReviewError({
           errors: {
-            status: error.response.status,
-            message: error.response.data.message
+            status,
+            message
           }
         }));
         callback(false);
       })
   }
-}
-
+};

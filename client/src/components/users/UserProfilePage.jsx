@@ -1,29 +1,53 @@
-import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import {connect} from 'react-redux'
-import UseProfileDetails from './UserProfileDetails.jsx'
-import Footer from '../Footer.jsx'
-import Header from '../Header.jsx'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import UseProfileDetails from './UserProfileDetails'
+import Footer from '../Footer'
+import Header from '../Header'
 
-class UserProfilePage extends React.Component {
+/**
+ * @description A class to create UserProfilePage object
+ * 
+ * @class UserProfilePage
+ * 
+ * @extends {Component}
+ */
+class UserProfilePage extends Component {
 
+  /**
+   * @description Creates an instance of UserProfilePage.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof UserProfilePage
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+   * @description Displays the user profile
+   * 
+   * @returns {object} JSX object
+   * 
+   * @memberof UserProfilePage
+   */
   render() {
     return (
-      <div>
-        <Header { ...this.props } />
-        <UseProfileDetails/>
+      <div className="main">
+        <Header {...this.props} />
+        <div className="cont">
+          <UseProfileDetails {...this.props} />
+        </div>
         <Footer />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return { state };
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user
+  };
 }
 
 export default connect(mapStateToProps)(UserProfilePage);

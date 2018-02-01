@@ -1,47 +1,55 @@
 // import isAuthenticated from './isAth.js';
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import jwt from 'jsonwebtoken';
+import store from './createStore';
+import updateUserState from './updateUserState';
 
-export const notAuth = (ComposedClass) => {
-  class AuthenticationCheck extends Component {
-
-    componentWillMount() {
-      if (this.props.loggedIn) {
-        this.props.history.push('/profile');
-      }
-    }
-
-    render() {
-      return <ComposedClass {...this.props} />
-    }
-  }
-
-  function mapStateToProps(state) {
-    return { loggedIn: state.auth.loggedIn };
-  }
-
-  return connect(mapStateToProps)(AuthenticationCheck)
-}
-
+/**
+  * @description  A function that checks for user authentication
+  * 
+  * @param {object} ComposedClass object
+  *
+  * @returns {object} ComposedClass AuthenticationCheck object
+*/
 const Auth = (ComposedClass) => {
+
+  /**
+   * 
+   * @class AuthenticationCheck
+   * 
+   * @extends {Component}
+   */
   class AuthenticationCheck extends Component {
 
-    componentWillMount() {
+    /**
+      * @description A life cycle function that checks if the user is logged in
+      * 
+      * @returns {undefined}
+      * 
+      * @memberof AuthenticationCheck
+     */
+    componentDidMount() {
       if (!this.props.loggedIn) {
         this.props.history.push('/signin');
       }
     }
 
+    /**
+     * @description A method that returns jsx object to be displayed
+     * 
+     * @returns {object} JSX composed class object
+     * 
+     * @memberof AuthenticationCheck
+    */
     render() {
       return <ComposedClass {...this.props} />
     }
   }
 
-  function mapStateToProps(state) {
+  const mapStateToProps = (state) => {
     return { loggedIn: state.auth.loggedIn };
   }
-
   return connect(mapStateToProps)(AuthenticationCheck)
 }
 

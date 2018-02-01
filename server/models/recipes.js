@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Recipes = sequelize.define('Recipes', {
+  let Recipes = sequelize.define('Recipes', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,17 +11,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    upvotes: {
+    favouriteCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    upVotes: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0
     },
-    downvotes: {
+    downVotes: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0
     },
-    image: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
     description: DataTypes.STRING,
     userId: {
       type: DataTypes.INTEGER,

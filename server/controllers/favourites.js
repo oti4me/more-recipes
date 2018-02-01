@@ -10,84 +10,214 @@ import db from '../models';
 class Favourites {
 
   /**
-   * A method that allows the user to get his favourite recipe
+   * @description A method that allows the user to get his favourite recipe
+   * 
+   * @param {object} request object
+   * 
+   * @param {object} response object
    * 
    * @returns {object} insertion error messages object or success message object
-   * @param {object} request 
-   * @param {object} response
+   * 
    * @memberof Favourites
   */
   getFavourites(request, response) {
+    const id = Number(request.params.id);
+    let page = Number(request.params.page) || 1;
+    let offset = Number(request.params.offset) || 0;
+    const limit = Number(request.params.limit) || 8;
     const userId = validate.getUserId(request, response);
+
+    if (userId !== id) {
+      return response.status(400).json({
+        message: 'This user is not authenticated'
+      });
+    }
+
     if (!validate.validateId(userId)) {
-      response.status(400).json({
-        succes: false,
+      return response.status(400).json({
         message: 'The user ID supplied is not a valid integer'
       });
     }
+
     db.Favourites.findAll({
-      attributes: ['recipeId']
-    },
-      {
-        where: { userId }
-      })
+      attributes: ['recipeId'],
+      where: { userId }
+    })
       .then((favourites) => {
-        if (favourites) {
+        if (favourites.length < 1) {
+          return response.status(404).json({
+            message: 'No favourite found'
+          });
+        }
+        if (favourites.length > 0) {
           let ids = [];
           favourites.map(favourite => {
             ids.push(favourite.recipeId);
           });
-          db.Recipes.findAll({
-            where: { id: [...ids] }
-          })
-            .then(favouriteRecipes => {
-              if (favouriteRecipes) {
-                response.status(200).json({
-                  succes: true,
-                  favouriteRecipes
+          db.Recipes.findAndCountAll({ where: { id: [...ids] } })
+            .then((foundRcipe) => {
+              const { count } = foundRcipe;
+              let pages = Math.ceil(count / limit);
+              offset = limit * (Number(page) - 1);
+              const totalCount = count;
+              const pageCount = pages;
+              const pageSize = limit;
+              db.Recipes.findAll({
+                limit,
+                offset,
+                order: [
+                  ['id', 'DESC']
+                ],
+                where: { id: [...ids] },
+                include: [
+                  { model: db.Users, attributes: ['firstName', 'lastName'] },
+                  { model: db.Reviews }
+                ]
+              })
+                .then((favouriteRecipes) => {
+                  if (favouriteRecipes.length > 0) {
+                    response.status(200).json({
+                      favouriteRecipes,
+                      pagination: {
+                        pages,
+                        totalCount,
+                        pageCount,
+                        pageSize
+                      }
+                    });
+                  } else {
+                    response.status(404).json({
+                      message: 'No recipe found'
+                    });
+                  }
+                })
+                .catch(error => {
+                  response.status(500).json({
+                    message: error
+                  });
                 });
-              } else {
-                response.status(404).json({
-                  succes: false,
-                  message: 'No recipe found!!'
-                });
-              }
-            })
+            });
+        }
+      });
+  }
+
+  /**
+   * @description A method to get a single favourite recipe based on user ID and recipe ID
+   * 
+   * @param {object} request object
+   * 
+   * @param {object} response object
+   * 
+   * @returns {object} insertion error messages object or success message object
+   * 
+   * @memberof Favourites
+  */
+  getSingleFavourite(request, response) {
+    const { recipeId, id } = request.params;
+    const userId = validate.getUserId(request, response);
+
+    if (Number(userId) !== Number(id)) {
+      return response.status(400).json({
+        message: 'This user is not authenticated'
+      });
+    }
+
+    if (!validate.validateId(userId)) {
+      h
+      return response.status(400).json({
+        message: 'The user ID supplied is not a valid integer'
+      });
+    }
+
+    db.Favourites.findOne({
+      where: { userId, recipeId }
+    })
+      .then((favourites) => {
+        if (favourites) {
+          response.status(200).json({
+            favourites
+          });
         } else {
           response.status(404).json({
-            succes: false,
-            message: 'This User has no favourite recipes'
+            message: 'No favourite recipe found!!'
           });
         }
       })
-      .catch(err => {
+      .catch(error => {
+        const { message } = error
         response.status(500).json({
-          succes: false,
-          message: err.message
+          message
+        });
+      });
+  }
+
+
+  /**
+   * @description A method to get a single favourite recipe based on user ID and recipe ID
+   * 
+   * @param {object} request object
+   * 
+   * @param {object} response object
+   * 
+   * @returns {object} insertion error messages object or success message object
+   * 
+   * @memberof Favourites
+  */
+  getMostFavourited(request, response) {
+    db.Recipes.findAll({
+      limit: 8,
+      offset: 0,
+      where: {
+        favouriteCount: { $gt: 1 }
+      },
+      include: [
+        { model: db.Users, attributes: ['firstName', 'lastName'] },
+      ],
+      order: [
+        ['favouriteCount', 'DESC']
+      ]
+    })
+      .then(recipes => {
+        if (recipes.length > 0) {
+          response.status(200).json({
+            recipes
+          });
+        } else {
+          response.status(404).json({
+            message: 'No recipe returned'
+          });
+        }
+      })
+      .catch(error => {
+        const { message } = error;
+        response.status(500).json({
+          message
         });
       });
   }
 
   /**
-   * A method that allows the user to add a recipe to his favourite list recipes
+   * @description A method that allows the user to add a recipe to his favourite list recipes
+   * 
+   * @param {object} request object
+   * 
+   * @param {object} response object
    * 
    * @returns {object} insertion error messages object or success message object
-   * @param {object} request 
-   * @param {object} response 
+   * 
    * @memberof Favourites
   */
-  addFavourites(request, response) {
+  addFavourite(request, response) {
+
     const userId = validate.getUserId(request, response);
-    const recipeId = request.body.recipeId;
+    const { recipeId } = request.params;
+
     if (!(validate.validateId(userId) && validate.validateId(recipeId))) {
       return response.status(400).json({
-        succes: false,
         message: 'User ID and Recipe ID must be a valid integer'
       });
     }
-    const data = {
-      userId, recipeId
-    }
+
     db.Recipes.findById(recipeId)
       .then(recipe => {
         if (recipe) {
@@ -98,46 +228,68 @@ class Favourites {
           })
             .then(foundFavourite => {
               if (foundFavourite) {
-                return response.status(409).json({
-                  succes: false,
-                  message: `You already favourited this recipe`
-                });
-              } else {
-                db.Favourites.create(data)
-                  .then((favourite) => {
-                    if (favourite) {
-                      response.status(201).json({
-                        succes: true,
-                        favourite
+                const { id } = foundFavourite
+                db.Favourites.destroy({
+                  where: {
+                    id
+                  }
+                })
+                  .then((responseult) => {
+                    recipe.decrement('favouriteCount')
+                    if (responseult) {
+                      return response.status(200).json({
+                        message: 'Favourite recipe removed'
                       });
                     }
                   })
-                  .catch(err => {
+                  .catch(error => {
+                    const { message } = error;
+                    return response.status(500).json({
+                      message
+                    });
+                  });
+              } else {
+                db.Favourites.create({
+                  userId, recipeId
+                })
+                  .then((favourite) => {
+                    recipe.increment('favouriteCount')
+                    if (favourite) {
+                      response.status(201).json({
+                        favourite,
+                        message: 'Favourite recipe added'
+                      });
+                    }
+                  })
+                  .catch(error => {
+                    const { message } = error
                     response.status(500).json({
-                      succes: false,
-                      message: err.message
+                      message
                     });
                   });
               }
             })
-        } else {
-          return response.status(400).json({
-            succes: false,
-            message: `Recipe with ID ${recipeId} does not exist`
-          });
         }
-      })
+      }).catch(error => {
+        response.status(500).json({
+          message: error.response
+        });
+      });
   }
+
   /**
-   * A method that allows the user to remove a recipe from his favourite recipes
+   * @description A method that allows the user to remove a recipe from his favourite recipes
    * 
    * @returns {object} insertion error messages object or success message object
-   * @param {object} request 
-   * @param {object} response
+   * 
+   * @param {object} request request object
+   * 
+   * @param {object} response response object
+   * 
    * @memberof Favourites
   */
-  removeFavourites(request, response) {
-    const recipeId = request.params.favId;
+  removeFavourite(request, response) {
+    const recipeId = request.params.recipeId;
     const userId = validate.getUserId(request, response);
     if (validate.validateId(recipeId)) {
       db.Recipes.findById(recipeId)
@@ -153,15 +305,14 @@ class Favourites {
                   })
                     .then((responseult) => {
                       if (responseult) {
+                        foundRecipe.increment('favouriteCount')
                         response.status(200).json({
-                          succes: true,
                           message: 'Favourite recipe removed'
                         });
                       }
                     })
                     .catch(err => {
                       response.status(500).json({
-                        succes: false,
                         message: err.message
                       });
                     });
@@ -173,7 +324,6 @@ class Favourites {
               });
           } else {
             return response.status(404).json({
-              succes: false,
               message: `Recipe with ID ${recipeId} does not exist`
             });
           }

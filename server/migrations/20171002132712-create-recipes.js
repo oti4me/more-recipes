@@ -14,10 +14,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      image: {
+      imageUrl: {
         type: Sequelize.STRING
       },
-      downvotes: {
+      downVotes: {
         type: Sequelize.INTEGER,
         allowNull: true,
         defaultValue: 0
@@ -26,16 +26,21 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
-      upvotes: {
+      favouriteCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
+      upVotes: {
         type: Sequelize.INTEGER,
         allowNull: true,
         defaultValue: 0
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
-      ingredients: Sequelize.STRING,
-      direction: Sequelize.STRING,
+      ingredients: Sequelize.TEXT,
+      direction: Sequelize.TEXT,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

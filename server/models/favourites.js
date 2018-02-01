@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Favourites = sequelize.define('Favourites', {
+  let Favourites = sequelize.define('Favourites', {
     userId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
@@ -20,19 +20,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
-    classMethods: {
-      associate: (models) => {
-        Favourites.belongsTo(models.Users, {
-          foreignKey: 'userId',
-          onDelete: 'CASCADE'
-        });
+      classMethods: {
+        associate: (models) => {
+          Favourites.belongsTo(models.Users, {
+            foreignKey: 'userId',
+            onDelete: 'CASCADE'
+          });
 
-        Favourites.belongsTo(models.Recipes, {
-          foreignKey: 'recipesId',
-          onDelete: 'CASCADE'
-        });
+          Favourites.belongsTo(models.Recipes, {
+            foreignKey: 'recipesId',
+            onDelete: 'CASCADE'
+          });
+        }
       }
-    }
-  });
+    });
   return Favourites;
 };

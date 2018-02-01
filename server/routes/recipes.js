@@ -1,11 +1,10 @@
 import express from 'express';
-import recipes from '../controllers/recipes';
-import votes from '../controllers/votes';
-import review from '../controllers/reviews';
+import { recipes, reviews, votes, search, favourites } from '../controllers';
 import Auth from '../middleware/jwtMiddleware';
 
 
 const router = express.Router();
+router.get('/toprecipes', favourites.getMostFavourited);
 
 // get all recipes from database
 router.get('/', recipes.getAllRecipes);
@@ -24,23 +23,21 @@ router.delete('/:id', Auth.verifyToken, recipes.deleteRecipe);
 router.put('/:id', Auth.verifyToken, recipes.updateRecipe);
 
 // Add a review to a recipe 
-router.post('/:id/reviews', Auth.verifyToken, review.reviewRecipe);
+router.post('/:id/reviews', Auth.verifyToken, reviews.reviewRecipe);
 
-router.post('/search', Auth.verifyToken, recipes.search);
+router.post('/search', search.search);
 
 // Add a review to a recipe 
-router.get('/:id/reviews', review.getReviews);
+router.get('/:id/reviews', reviews.getReviews);
 
 // Vote up or down a recipe 
-router.post('/:id/votes', Auth.verifyToken, votes.votes);
-
-router.get('/:id/upvotes', Auth.verifyToken, votes.getUpVotes);
-
-router.get('/:id/downvotes', Auth.verifyToken, votes.getDownVotes);
+router.post('/:id/upvotes', Auth.verifyToken, votes.upVotes);
+router.post('/:id/downvotes', Auth.verifyToken, votes.downVotes);
 
 // Get top upvoted recipe 
 router.get('/?sort=upvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
 // Get top downvotes recipe 
 router.get('/?sort=downvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
+
 
 export default router;
