@@ -185,7 +185,7 @@ class UpdateRecipeForm extends Component {
                 value={this.state.title}
                 onChange={this.handleChange}
               />
-              <label htmlFor="title">Name of Recipe</label>
+              <label htmlFor="title" className="active">Name of Recipe</label>
             </div>
             <div className="input-field col s12" >
               <input
@@ -196,7 +196,7 @@ class UpdateRecipeForm extends Component {
                 value={this.state.description}
                 onChange={this.handleChange}
               />
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description" className="active">Description</label>
             </div>
             <div className="input-field col s12" >
               <textarea
@@ -206,7 +206,7 @@ class UpdateRecipeForm extends Component {
                 value={this.state.ingredients}
                 onChange={this.handleChange}
               />
-              <label htmlFor="ingridience" >Ingrdients</label>
+              <label htmlFor="ingridience" className="active">Ingrdients</label>
             </div>
             <div className="input-field col s12">
               <textarea
@@ -216,7 +216,7 @@ class UpdateRecipeForm extends Component {
                 value={this.state.direction}
                 onChange={this.handleChange}
               />
-              <label htmlFor="direction">Direction</label>
+              <label htmlFor="direction" className="active">Direction</label>
             </div>
             <div className="file-field input-field col s12" >
               <div className="btn color-dark-gray">
