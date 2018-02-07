@@ -1,22 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import shortId from 'shortid';
-import axios from 'axios';
 import ReviewList from './ReviewsList.jsx';
 import { addReview } from '../../actions/addReview';
 import { getReviews } from '../../actions/getReviews';
 
-const header = {
-  headers: {
-    'x-access-token': window.localStorage.userToken,
-    authorization: window.localStorage.userToken
-  }
-}
-
+/**
+ * @description 
+ * 
+ * @class ReviewCommentBox
+ * 
+ * @extends {React.Component}
+ */
 class ReviewCommentBox extends React.Component {
 
+  /**
+   * @description Creates an instance of ReviewCommentBox.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof ReviewCommentBox
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -27,14 +32,30 @@ class ReviewCommentBox extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  /**
+   * @description
+   * 
+   * @return {undefined}
+   * 
+   * @memberof ReviewCommentBox
+   */
   componentDidMount() {
     this.setState({
       reviews: this.props.reviews
     });
   }
 
-  submitComment(e) {
-    e.preventDefault()
+  /**
+   * @description
+   * 
+   * @param {object} event 
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof ReviewCommentBox
+   */
+  submitComment(event) {
+    event.preventDefault()
     const { id } = this.props.match.params;
     const { comment } = this.state;
     this.setState({
@@ -77,22 +98,43 @@ class ReviewCommentBox extends React.Component {
     });
   }
 
-  handleChange(e) {
-    e.preventDefault()
+  /**
+   * @description
+   * 
+   * @param {object} event
+   * 
+   * @returns {undefined}
+   * 
+   * @memberof ReviewCommentBox
+   */
+  handleChange(event) {
+    event.preventDefault()
     this.setState({
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
   }
 
+  /**
+   * @description
+   * 
+   * @returns {object} returns jsx object for review comment box 
+   * 
+   * @memberof ReviewCommentBox
+   */
   render() {
     return (
       <div id="reviewBox" className="modal">
         <div className="modal-content">
-          <h5 style={{ textAlign: 'center' }}>Add Comment</h5>
-          <p></p>
+          {this.props.loggedIn ? <h5 style={{ textAlign: 'center' }}>Add Comment</h5> : ''}
+          <p />
           <form>
-            <textarea rows={9} style={{ height: '150px' }} name="comment" placeholder="Enter your comment" onChange={this.handleChange} value={this.state.comment}>
-            </textarea>
+            <textarea
+              rows={9}
+              style={{ height: '150px' }}
+              name="comment"
+              placeholder="Enter your comment"
+              onChange={this.handleChange}
+              value={this.state.comment} />
           </form>
         </div>
         <div className="modal-footer">
@@ -102,10 +144,6 @@ class ReviewCommentBox extends React.Component {
     )
   }
 }
-
-ReviewCommentBox.propTypes = {
-  loggedIn: PropTypes.bool,
-};
 
 const mapStateToProps = (state) => {
   return {

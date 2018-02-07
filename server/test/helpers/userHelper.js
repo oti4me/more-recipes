@@ -6,61 +6,71 @@ import faker from 'faker';
 
 const fakerObj = {
   users: {
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
     password: 'henryotighe',
     confirmPassword: 'hernyotighe',
     phone: faker.phone.phoneNumber(),
-    image: 'image/img.jpg'
+    imageUrl: 'image/img.jpg'
+  },
+  usersInfo: {
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    email: faker.internet.email(),
+    password: 'Password4$',
+    confirmPassword: 'Password4$',
+    phone: '2344566788',
+    imageUrl: 'image/img.jpg'
   },
   firstUser: {
-    firstname: 'faker',
-    lastname: 'testmister',
+    firstName: 'faker',
+    lastName: 'testmister',
     email: 'factory@email.com',
     password: 'Password4$',
     confirmPassword: 'Password4$',
-    phone: '2344566777',
-    image: 'image/img.jpg'
+    phone: '23445667770',
+    imageUrl: 'image/img.jpg'
   },
   secondUser: {
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
     password: faker.internet.password(6),
-    phone: faker.phone.phoneNumber()
+    phone: faker.phone.phoneNumber(),
+    imageUrl: 'image/img.jpg'
   },
   thirdUser: {
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
     password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image: 'image/img.jpg'
+    imageUrl: 'image/img.jpg'
   },
   fourthUser: {
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: faker.internet.email(),
     password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image: 'image/img.jpg'
+    imageUrl: 'image/img.jpg'
   },
   wrongUser: {
-    firstname: 'testuserone',
-    lastname: 'testmister',
+    firstName: 'testuserone',
+    lastName: 'testmister',
     email: 'test@email.com',
     password: '',
     phone: '2344566777',
-    image: 'image/img.jpg'
+    imageUrl: 'image/img.jpg'
   },
   wrongUser2: {
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     email: '',
     password: faker.internet.password(6),
     phone: faker.phone.phoneNumber(),
-    image: 'image/img.jpg'
+    imageUrl: 'image/img.jpg'
   },
 };
 

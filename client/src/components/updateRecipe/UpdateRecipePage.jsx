@@ -1,24 +1,39 @@
-import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import {connect} from 'react-redux'
-import UpdateRecipeForm from './UpdateRecipeForm.jsx'
-import Footer from '../Footer.jsx'
-import Header from '../Header.jsx'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import UpdateRecipeForm from './UpdateRecipeForm'
+import Footer from '../Footer'
+import Header from '../Header'
 
-class UpdateRecipePage extends React.Component {
+/**
+ * 
+ * 
+ * @class UpdateRecipePage
+ * @extends {React.Component}
+ */
+class UpdateRecipePage extends Component {
 
+  /**
+   * Creates an instance of UpdateRecipePage.
+   * @param {undefined} props 
+   * @memberof UpdateRecipePage
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+   * 
+   * 
+   * @returns {JSX} JSX
+   * @memberof UpdateRecipePage
+   */
   render() {
-
     return (
-      <div>
-        <Header { ...this.props }/>
-        <div className="container">
-            <UpdateRecipeForm  { ...this.props } />
-         </div>
+      <div className="main">
+        <Header {...this.props} />
+        <div className="container cont">
+          <UpdateRecipeForm  {...this.props} />
+        </div>
         <Footer />
       </div>
     )

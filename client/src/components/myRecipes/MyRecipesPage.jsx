@@ -1,22 +1,44 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import MyRecipesList from './MyRecipesList.jsx'
-import Footer from '../Footer.jsx'
-import Header from '../Header.jsx'
+import { Link } from 'react-router-dom'
+import MyRecipesList from './MyRecipesList'
+import myRecipes from '../../actions/getMyRecipes'
+import Footer from '../Footer'
+import Header from '../Header'
+import Pagination from '../Pagination'
 
-class MyRecipesPage extends React.Component {
+/**
+ * 
+ * 
+ * @class MyRecipesPage
+ * 
+ * @extends {Component}
+ */
+class MyRecipesPage extends Component {
 
+  /**
+   * @description Creates an instance of MyRecipesPage.
+   * 
+   * @param {objevt} props 
+   * 
+   * @memberof MyRecipesPage
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+   * @description
+   * 
+   * @returns {object} returns jsx object my recipies page
+   * 
+   * @memberof MyRecipesPage
+   */
   render() {
-
     return (
-      <div>
-        <Header { ...this.props } />
-        <div className="container">
+      <div className="main">
+        <Header {...this.props} />
+        <div className="container cont">
           <div className="col s12 m12 l12">
             <div className="row">
               <div className="col s12 m5 l5">
@@ -30,30 +52,19 @@ class MyRecipesPage extends React.Component {
                 </div>
               </div>
               <div className="col s12 m3 l3 top-margin-50">
-                <a href="/addrecipe" className="waves-effect waves-light btn top-margin">Add Recipe</a>
+                <Link
+                  to="/addrecipe"
+                  className="waves-effect waves-light btn top-margin"
+                >
+                  Add Recipe
+                </Link>
               </div>
             </div>
             <hr style={{ borderTop: "1px solid #26a69a" }} />
             <MyRecipesList />
-            {/* pagination */}
-            <ul className="pagination" style={{ textAlign: "center" }}>
-              <li className="disabled">
-                <a href="#!">
-                  <i className="material-icons">chevron_left</i>
-                </a>
-              </li>
-              <li className="active">
-                <a href="#!" className="color-green">1</a>
-              </li>
-              <li className="waves-effect disabled">
-                <a href="#!">
-                  <i className="material-icons">chevron_right</i>
-                </a>
-              </li>
-            </ul>
-            {/* end of pagination */}
           </div>
         </div>
+        <Pagination />
         <Footer />
       </div>
     )
@@ -64,4 +75,4 @@ const mapStateToProps = (state) => {
   return { state };
 }
 
-export default connect(mapStateToProps)(MyRecipesPage);
+export default connect(mapStateToProps, { myRecipes })(MyRecipesPage);

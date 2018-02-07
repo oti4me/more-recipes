@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import shortId from 'shortid';
-import ReviewList from './ReviewsList.jsx';
+import ReviewList from './ReviewsList';
 import { getReviews } from '../../actions/getReviews';
 
-class ReviewModal extends React.Component {
+/**
+ * @description
+ * 
+ * @class ReviewModal
+ * 
+ * @extends {React.Component}
+ */
+class ReviewModal extends Component {
 
+  /**
+   * @description Creates an instance of ReviewModal.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof ReviewModal
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,43 +28,53 @@ class ReviewModal extends React.Component {
       this.updated = null
   }
 
+  /**
+   * @description
+   * 
+   * @return {undefined}
+   * 
+   * @memberof ReviewModal
+   */
   componentDidMount() {
-    this.props.getReviews(this.props.id, (status) => {
-      this.setState({
-        reviews: this.props.reviews
-      });
-    });
     $('.modal').modal();
   }
 
-  componentDidUpdate() {
-    if (this.props.reviews > this.state.reviews) {
-      this.setState({
-        reviews: this.props.reviews
-      });
-    }
-  }
-
+  /**
+   * @description
+   * 
+   * @returns {object} returns jsx object for review modal
+   * 
+   * @memberof ReviewModal
+   */
   render() {
     return (
       <div id="reviews" className="modal bottom-sheet">
         <div className="modal-content" style={{}}>
-          <div style={{ position: 'fixed', left: '0', right: '0', backgroundColor: '#fff', marginTop: '-30px', padding: '20px' }}>
+          <div style={{
+            position: 'fixed',
+            left: '0',
+            right: '0',
+            backgroundColor: '#fff',
+            marginTop: '-30px',
+            padding: '20px'
+          }}
+          >
             <h5 style={{ float: 'left' }}>Users Review</h5>
-            <a href="#reviewBox" className="waves-effect waves-light btn modal-trigger" style={{ float: 'right' }}>Add Review</a>
+            <a
+              href="#reviewBox"
+              className="waves-effect waves-light btn modal-trigger"
+              style={{ float: 'right' }}
+            >
+              Add Review
+            </a>
           </div>
-          <div style={{ clear: 'both', height: '50px' }}></div>
-          <ReviewList reviews={this.state.reviews} />
+          <div style={{ clear: 'both', height: '50px' }} />
+          <ReviewList />
         </div>
       </div>
     )
   }
 }
-
-ReviewModal.propTypes = {
-  loggedIn: PropTypes.bool,
-  reviews: PropTypes.array,
-};
 
 const mapStateToProps = (state) => {
   return {

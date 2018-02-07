@@ -1,24 +1,47 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Footer from '../Footer.jsx';
-import Header from '../Header.jsx';
-import RecipeDetail from './RecipeDetail.jsx';
-import TopRecipeList from './TopRecipeList.jsx';
+import Footer from '../Footer';
+import Header from '../Header';
+import RecipeDetail from './RecipeDetail';
+import TopRecipeList from './TopRecipeList';
 
+/**
+ * 
+ * 
+ * @class RecipeDetailPage
+ * 
+ * @extends {React.Component}
+ */
 class RecipeDetailPage extends React.Component {
 
+  /**
+   * @description Creates an instance of RecipeDetailPage.
+   * 
+   * @param {object} props 
+   * 
+   * @memberof RecipeDetailPage
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+   * @description renders recipe detail page
+   * 
+   * @returns {object} Jsx oject
+   * 
+   * @memberof RecipeDetailPage
+   */
   render() {
     return (
-      <div>
-        <Header { ...this.props } />
-        <div className="container top-margin-50">
+      <div className="main">
+        <Header {...this.props} />
+        <div
+          className="container cont top-margin-50"
+          style={{ width: '70%' }}
+        >
           <div className="row">
-            <RecipeDetail { ...this.props } />
+            <RecipeDetail {...this.props} />
             <TopRecipeList />
           </div>
         </div>
@@ -28,8 +51,10 @@ class RecipeDetailPage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { state };
+const mapStateToProps = (state) => {
+  return {
+    recipe: state.recipes.recipe
+  };
 }
 
 export default connect(mapStateToProps)(RecipeDetailPage);

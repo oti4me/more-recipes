@@ -7,62 +7,36 @@ import validator from 'express-validator';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
-
-import webpackConfig from '../webpack.config';
-import config from '../webpack.config.prod.babel';
-
 import api from './routes/api';
 
 // create express app
 const app = express();
 app.disable('x-powered-by');
 
-app.use(express.static(path.join(__dirname, '../client/public')));
-
-// app.use(express.static(path.join(__dirname, './../assets')));
-if (process.env.NODE_ENV !== 'development') {
-	app.use(express.static(path.join(__dirname, '../dist')));
-}
+app.use(express.static(path.join(__dirname, '../dist/client/public')));
 
 if (process.env.NODE_ENV === 'development') {
-	app.use(webpackMiddleware(webpack(webpackConfig), {
-		publicPath: webpackConfig.output.publicPath
+	app.use(webpackMiddleware(webpack(require('../webpack.config')), {
+		publicPath: require('../webpack.config').output.publicPath
 	}));
-	// app.use(require('webpack-hot-middleware')(config));
 }
-
-// app.use(webpackMiddleware(webpack(webpackConfig)));
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 
+app.use('/documentation', express.static('client/public/build'));
+
 app.use('/api/v1', api);
 
-app.use('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/index.html'));
-});
+if (process.env.NODE_ENV === 'development') {
+	app.use('/*', (req, res) => {
+		res.sendFile(path.join(__dirname, '../client/index.html'));
+	});
+}
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
-});
-
-// error handler
-app.use((err, req, res, next) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req
-		.app
-		.get('env') === 'development'
-		? err
-		: {};
-	// render the error page
-	res.status(err.status || 500).send({ status: err.status || 500, message: err.message });
-});
+app.use('/', express.static('dist/client'));
+app.use('*', express.static('dist/client'));
 
 export default app;
