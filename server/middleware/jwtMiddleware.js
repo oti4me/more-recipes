@@ -34,7 +34,7 @@ const Authenticate = {
       email,
       phone,
       imageUrl,
-      id
+      userId: id
     }
     return newUser;
   },
