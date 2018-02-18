@@ -6,6 +6,13 @@ import {
   USER_LOGGEDIN
 } from './types';
 
+/**
+ * @description A function to dispatch an action on user signup success
+ * 
+ * @param {object} user user object
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signupAction = (user) => {
   return {
     type: USER_SIGNUP,
@@ -13,6 +20,13 @@ export const signupAction = (user) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on requesting user signup
+ * 
+ * @param {boolean} isRequesting
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const requestSignup = (isRequesting) => {
   return {
     type: REQUEST_SIGNUP,
@@ -20,6 +34,13 @@ export const requestSignup = (isRequesting) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on user signup success
+ * 
+ * @param {object} isLoggedIn user object
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const loggedIn = (isLoggedIn) => {
   return {
     type: USER_LOGGEDIN,
@@ -27,6 +48,13 @@ export const loggedIn = (isLoggedIn) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on user sigup error
+ * 
+ * @param {object} errors
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signupError = (errors) => {
   return {
     type: SIGNUP_ERRORS,
@@ -34,6 +62,14 @@ export const signupError = (errors) => {
   }
 };
 
+/**
+ * @description A function to sigup a user
+ * 
+ * @param {object} userDetails
+ * @param {object} callback
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signup = (userDetails, callback) => {
   return dispatch => {
     dispatch(requestSignup({ isRequesting: true }));

@@ -91,7 +91,10 @@ const recipeReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
 
     case ADD_REVIEW:
-      return { ...state, ...action.payload };
+      return {
+        ...state,
+        reviews: [action.payload.review, ...state.reviews]
+      };
 
     case ADD_REVIEW_ERRORS:
       return { ...state, ...action.payload };

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import MDSpinner from "react-md-spinner";
 import ReviewModal from './ReviewModal';
 import ReviewCommentBox from './ReviewCommentBox';
-import { getRecipe } from '../../actions/recipeDetails';
+import recipeDetails from '../../actions/recipeDetails';
 import { getReviews } from '../../actions/getReviews';
 import { addFavourite, checkFavourite } from '../../actions/favouritesAction';
 import { upvoteRecipe, downVoteRecipe } from '../../actions/votesAction';
 import profileImage from '../../../public/images/profile-avata.png';
+import TopRecipeList from './TopRecipeList';
 
 /**
  * 
@@ -49,14 +51,15 @@ class RecipeDetail extends Component {
     const {
       getReviews,
       checkFavourite,
-      getRecipe
+      recipeDetails
     } = this.props;
-    getRecipe(id, this.props.history);
+    recipeDetails(id, this.props.history);
     checkFavourite(userId, id);
     getReviews(id);
 
     $('.modal').modal();
     $('.materialboxed').materialbox();
+    $('.tooltipped').tooltip({ delay: 5 });
   }
 
   /**
@@ -80,9 +83,9 @@ class RecipeDetail extends Component {
   /**
    * @description
    * 
-   * @return {undefined}
-   * 
    * @param {object} event
+   * 
+   * @return {undefined}
    * 
    * @memberof RecipeDetail
    */
@@ -96,9 +99,9 @@ class RecipeDetail extends Component {
   /**
    * @description
    * 
-   * @return {undefined}
-   * 
    * @param {object} event
+   * 
+   * @return {undefined}
    * 
    * @memberof RecipeDetail
    */
@@ -126,9 +129,7 @@ class RecipeDetail extends Component {
   /**
    * @description A mothed that return a jsx for recipe details
    * 
-   * @method
-   * 
-   * @return {JSX} jsx
+   * @return {object} jsx object
    * 
    * @memberof RecipeDetail
    */
@@ -142,187 +143,191 @@ class RecipeDetail extends Component {
     return (
       <div>
         {
+
           this.state.recipe === undefined
             ? <MDSpinner />
             :
-            <div className="col s12 m10 l10" >
-
-              <div className="row">
-                <div className="col s12 m5 l5">
-                  <h4 className="recipe-title">{title}</h4>
-                  <hr style={{ borderTop: "1px solid #26a69a" }} />
-                  <div className="row">
-                    <div
-                      className="col s3 m3 l3 colorTransparent"
-                      style={{
-                        borderRight: '1px solid #ccc'
-                      }}
-                    >
-                      <a href="#reviews" className="modal-trigger">
-                        <span
-                          className="tooltipped "
-                          data-position="bottom"
-                          data-delay="50"
-                          data-tooltip="Reviews"
-                          style={{ color: "#ff7e1a" }}
-                        >
-                          {this.state.reviews
-                            ? this.state.reviews.length
-                            : ''}
-                          {' '}
-                          <i
-                            className="material-icons"
+            <div>
+              <div className="col s12 m10 l10" >
+                <div className="row">
+                  <div className="col s12 m5 l5">
+                    <h4 className="recipe-title">{title}</h4>
+                    <hr style={{ borderTop: "1px solid #26a69a" }} />
+                    <div className="row">
+                      <div
+                        className="col s3 m3 l3 colorTransparent"
+                        style={{
+                          borderRight: '1px solid #ccc'
+                        }}
+                      >
+                        <Link to="#reviews" className="modal-trigger">
+                          <span
+                            className="tooltipped "
+                            data-position="bottom"
+                            data-delay="50"
+                            data-tooltip="Reviews"
+                            style={{ color: "#ff7e1a" }}
                           >
-                            rate_review
-                    </i>
-                        </span>
-                      </a>
-                    </div>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className="col s3 m3 l3 colorTransparent"
-                      style={{
-                        borderRight: '1px solid #ccc'
-                      }}
-                      onClick={this.handleUpvote}
-                    >
-                      <a href="#">
-                        <span
-                          className="tooltipped"
-                          data-position="bottom"
-                          data-delay="50"
-                          data-tooltip="Upvotes"
-                          style={{ color: "#ff7e1a" }}
-                        >
-                          {upVotes}{' '}
-                          <i
-                            data-id={id}
-                            className="material-icons"
+                            {this.state.reviews
+                              ? this.state.reviews.length
+                              : ''}
+                            {' '}
+                            <i
+                              className="material-icons"
+                            >
+                              rate_review
+                          </i>
+                          </span>
+                        </Link>
+                      </div>
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className="col s3 m3 l3 colorTransparent"
+                        style={{
+                          borderRight: '1px solid #ccc'
+                        }}
+                        onClick={this.handleUpvote}
+                      >
+                        <Link to="#">
+                          <span
+                            className="tooltipped"
+                            data-position="bottom"
+                            data-delay="50"
+                            data-tooltip="Upvotes"
+                            style={{ color: "#ff7e1a" }}
                           >
-                            thumb_up
-                    </i>
-                        </span>
-                      </a>
-                    </div>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className="col s3 m3 l3 colorTransparent"
-                      style={{
-                        borderRight: '1px solid #ccc'
-                      }}
-                      onClick={this.handleDonwvote}
-                    >
-                      <a href="#" >
-                        <span
-                          className="tooltipped"
-                          data-position="bottom"
-                          data-delay="50"
-                          data-tooltip="Downvotes"
-                          style={{ color: "#ff7e1a" }}
-                        >
-                          {downVotes}{' '}
-                          <i
-                            data-id={id}
-                            className="material-icons"
+                            {upVotes}{' '}
+                            <i
+                              data-id={id}
+                              className="material-icons"
+                            >
+                              thumb_up
+                          </i>
+                          </span>
+                        </Link>
+                      </div>
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className="col s3 m3 l3 colorTransparent"
+                        style={{
+                          borderRight: '1px solid #ccc'
+                        }}
+                        onClick={this.handleDonwvote}
+                      >
+                        <Link to="#" >
+                          <span
+                            className="tooltipped"
+                            data-position="bottom"
+                            data-delay="50"
+                            data-tooltip="Downvotes"
+                            style={{ color: "#ff7e1a" }}
                           >
-                            thumb_down
-                    </i>
-                        </span>
-                      </a>
-                    </div>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className="col s3 m3 l3 colorTransparent"
-                      onClick={this.handleAddFavourite}
-                    >
-                      <a href="#">
-                        <span
-                          className="tooltipped"
-                          data-position="bottom"
-                          data-delay="50"
-                          data-tooltip="Favourites"
-                          style={{ color: "#ff7e1a" }}
-                        >
-                          {
-                            this.state.isFavourite
-                              && this.state.isFavourite === true
-                              ? <i
-                                data-id={id}
-                                className="material-icons"
-                              >
-                                favorite
-                        </i>
-                              :
-                              <i
-                                data-id={id}
-                                className="material-icons"
-                              >
-                                favorite_border
-                        </i>
-                          }
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-                  <hr style={{ borderTop: "1px solid #26a69a" }} />
-                  <div className="row">
-                    <div className="col s12 m3 l3">
-                      <div className="" >
-                        <img
-                          className="profileImage"
-                          src={profileImage} //"/images/profile-avata.png"
-                          alt=""
-                        />
+                            {downVotes}{' '}
+                            <i
+                              data-id={id}
+                              className="material-icons"
+                            >
+                              thumb_down
+                          </i>
+                          </span>
+                        </Link>
+                      </div>
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className="col s3 m3 l3 colorTransparent"
+                        onClick={this.handleAddFavourite}
+                      >
+                        <Link to="#">
+                          <span
+                            className="tooltipped"
+                            data-position="bottom"
+                            data-delay="50"
+                            data-tooltip="Favourites"
+                            style={{ color: "#ff7e1a" }}
+                          >
+                            {
+                              this.state.isFavourite
+                                && this.state.isFavourite === true
+                                ?
+                                <i
+                                  data-id={id}
+                                  className="material-icons"
+                                >
+                                  favorite
+                                </i>
+                                :
+                                <i
+                                  data-id={id}
+                                  className="material-icons"
+                                >
+                                  favorite_border
+                                </i>
+                            }
+                          </span>
+                        </Link>
                       </div>
                     </div>
-                    <div className="col s12 m9 l9">
-                      <p className="colorTransparent">
-                        <span style={{ color: '#ccc' }}>
-                          Recipe By: {User ? User.firstName : ''} {' '}
-                          {User ? User.lastName : ''}
-                        </span>
-                      </p>
+                    <hr style={{ borderTop: "1px solid #26a69a" }} />
+                    <div className="row">
+                      <div className="col s12 m3 l3">
+                        <div className="" >
+                          <img
+                            className="profileImage"
+                            src={profileImage} //"/images/profile-avata.png"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div className="col s12 m9 l9">
+                        <p className="colorTransparent">
+                          <span style={{ color: '#ccc' }}>
+                            Recipe By: {User ? User.firstName : ''} {' '}
+                            {User ? User.lastName : ''}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col s12 m12 l12">
+                        <h5 className="bolder">Description</h5>
+                        <p className="colorTransparent wrap">{description}</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col s12 m12 l12">
-                      <h5 className="bolder">Description</h5>
-                      <p className="colorTransparent wrap">{description}</p>
+                  <div className="col s12 m7 l7">
+                    <div>
+                      <img
+                        className="materialboxed"
+                        data-caption={title}
+                        style={{ width: '100%', height: '300px' }}
+                        src={imageUrl}
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>
-                <div className="col s12 m7 l7">
-                  <div>
-                    <img
-                      className="materialboxed"
-                      data-caption={title}
-                      style={{ width: '100%', height: '300px' }}
-                      src={imageUrl}
-                      alt=""
-                    />
+                <div className="row">
+                  <div className="col s12 m6 l6">
+                    <h4>Ingredients</h4>
+                    <p className="colorTransparent wrap">
+                      {ingredients}
+                    </p>
                   </div>
+                  <div className="col s12 m6 l6">
+                    <h4>Direction</h4>
+                    <p className="colorTransparent wrap"> {direction}</p>
+                  </div>
+                  {id ? <ReviewModal id={id} /> : ''}
+                  <ReviewCommentBox {...this.props} />
                 </div>
-              </div>
-              <div className="row">
-                <div className="col s12 m6 l6">
-                  <h4>Ingredients</h4>
-                  <p className="colorTransparent wrap">
-                    {ingredients}
-                  </p>
-                </div>
-                <div className="col s12 m6 l6">
-                  <h4>Direction</h4>
-                  <p className="colorTransparent wrap"> {direction}</p>
-                </div>
-                {id ? <ReviewModal id={id} /> : ''}
+                {' '}{id ? <ReviewModal id={id} /> : ''}
                 <ReviewCommentBox {...this.props} />
-              </div>
-              {' '}{id ? <ReviewModal id={id} /> : ''}
-              <ReviewCommentBox {...this.props} />
-            </div >
+              </div >
+              <TopRecipeList />
+            </div>
         }
       </div>
     );
@@ -345,7 +350,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getRecipe,
+    recipeDetails,
     getReviews,
     addFavourite,
     upvoteRecipe,

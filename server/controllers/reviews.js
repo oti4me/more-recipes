@@ -13,7 +13,6 @@ class Reviews {
    * @description A method that allows a user to review recipes on the collection
    * 
    * @param {object} request HTTP request object
-	 *
 	 * @param {object} response HTTP response object
 	 *
 	 * @returns {object} error messages object or success message object
@@ -78,7 +77,6 @@ class Reviews {
    * @description A method that allows the user to get list of reviews for a particular recipe
    * 
    * @param {object} request 
-   * 
    * @param {object} response 
    * 
    * @returns {object} insertion error messages object or success message object

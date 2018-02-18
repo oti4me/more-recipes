@@ -6,15 +6,17 @@ import Header from '../Header'
 
 /**
  * 
- * 
  * @class UpdateRecipePage
- * @extends {React.Component}
+ * 
+ * @extends {Component}
  */
 class UpdateRecipePage extends Component {
 
   /**
-   * Creates an instance of UpdateRecipePage.
+   * @description Creates an instance of UpdateRecipePage.
+   * 
    * @param {undefined} props 
+   * 
    * @memberof UpdateRecipePage
    */
   constructor(props) {
@@ -22,9 +24,10 @@ class UpdateRecipePage extends Component {
   }
 
   /**
-   * 
+   * @description A method that renders the update recipe page
    * 
    * @returns {JSX} JSX
+   * 
    * @memberof UpdateRecipePage
    */
   render() {

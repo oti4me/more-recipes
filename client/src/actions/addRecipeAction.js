@@ -10,7 +10,7 @@ import imageUpload from './common/imageUpload';
  * 
  * @return {Object} action dispatch by the action creator
  */
-const addRecipeAction = (recipe) => {
+const addRecipe = (recipe) => {
   return {
     type: ADD_RECIPE,
     payload: recipe
@@ -40,10 +40,9 @@ const requestAddRecipe = (isRequesting) => {
  * 
  * @return {Object} action dispatch by the action creator
  */
-const addRecipe = (recipe, Materialize, history) => {
+const addRecipeAction = (recipe, Materialize, history) => {
   return dispatch => {
     dispatch(requestAddRecipe({ isRequesting: true }));
-
     imageUpload(recipe.imageUrl)
       .then((image) => {
         const { title, description, direction, ingredients } = recipe;
@@ -55,11 +54,12 @@ const addRecipe = (recipe, Materialize, history) => {
           ingredients,
           imageUrl: url
         }
-        return axios.post('/api/v1/recipes', recipeDetails, header())
+        axios.defaults.headers.common.authorization = window.localStorage.getItem('userToken');
+        return axios.post('/api/v1/recipes', recipeDetails)
           .then(response => {
             if (response) {
-              const { data: { recipe, message } } = response;
               dispatch(requestAddRecipe({ isRequesting: false }));
+              const { data: { recipe, message } } = response;
               dispatch(addRecipeAction({
                 recipe,
                 message
@@ -69,8 +69,8 @@ const addRecipe = (recipe, Materialize, history) => {
             }
           })
           .catch(error => {
-            const { response: { status, data: { message } } } = error;
             dispatch(requestAddRecipe({ isRequesting: false }));
+            const { response: { status, data: { message } } } = error;
             if (status === 400) {
               message.map(err => {
                 return Materialize.toast(err.msg, 5000, 'red');
@@ -85,9 +85,10 @@ const addRecipe = (recipe, Materialize, history) => {
           });
       })
       .catch((error) => {
+        dispatch(requestAddRecipe({ isRequesting: false }));
         return Materialize.toast(error, 5000, 'red');
       });
   }
 };
 
-export default addRecipe;
+export default addRecipeAction;

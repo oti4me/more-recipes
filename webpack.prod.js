@@ -16,23 +16,24 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   }
 });
 
-const webpackoptimizeUglifyJsPluginConfig = new webpack.optimize.UglifyJsPlugin({
-  compressor: {
-    warnings: false,
-    screw_ie8: true,
-    conditionals: true,
-    unused: true,
-    comparisons: true,
-    sequences: true,
-    dead_code: true,
-    evaluate: true,
-    if_return: true,
-    join_vars: true
-  },
-  output: {
-    comments: false
-  }
-});
+const webpackoptimizeUglifyJsPluginConfig = new webpack.optimize
+  .UglifyJsPlugin({
+    compressor: {
+      warnings: false,
+      screw_ie8: true,
+      conditionals: true,
+      unused: true,
+      comparisons: true,
+      sequences: true,
+      dead_code: true,
+      evaluate: true,
+      if_return: true,
+      join_vars: true
+    },
+    output: {
+      comments: false
+    }
+  });
 
 module.exports = {
   devtool: 'source-map',
@@ -53,7 +54,6 @@ module.exports = {
           CLOUDINARY_UPLOAD_PRESET:
             JSON.stringify(process.env.CLOUDINARY_UPLOAD_PRESET),
           CLOUDINARY_URL: JSON.stringify(process.env.CLOUDINARY_URL),
-          APP_LINK: JSON.stringify(process.env.APP_LINK),
           JWT_SECRET_KEY: JSON.stringify(process.env.JWT_SECRET_KEY),
         }
     }),

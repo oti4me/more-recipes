@@ -2,6 +2,14 @@ import axios from 'axios';
 import { GET_RECIPES, GET_RECIPES_ERRORS } from '../actions/types';
 import header from '../helper/getHeader';
 
+
+/**
+ * @description A function to dispatch an action to get recipes
+ * 
+ * @param {array} recipes
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getRecipesAction = (recipes) => {
   return {
     type: GET_RECIPES,
@@ -9,6 +17,13 @@ export const getRecipesAction = (recipes) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on recipe get recipes error
+ * 
+ * @param {array} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getRecipesError = (error) => {
   return {
     type: GET_RECIPES_ERRORS,
@@ -16,7 +31,14 @@ export const getRecipesError = (error) => {
   }
 };
 
-export const getRecipes = (limit = 1) => {
+/**
+ * @description A function to get recipes
+ * 
+ * @param {number} limit
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+const getAllRecipes = (limit = 1) => {
   return dispatch => {
     dispatch(getRecipesError(null));
     dispatch(getRecipesAction({}));
@@ -27,13 +49,19 @@ export const getRecipes = (limit = 1) => {
           allRecipes: recipes,
           pagination
         }));
-        return res;
       })
       .catch(error => {
-        const { response } = error;
+        const { response: { status, data } } = error;
+        if (status === 404) {
+          dispatch(getRecipesAction({
+            allRecipes: []
+          }));
+        }
         dispatch(getRecipesError({
-          error: { message: response }
+          error: { message: data }
         }));
       })
   }
 };
+
+export default getAllRecipes; 

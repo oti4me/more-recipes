@@ -5,6 +5,13 @@ import {
 } from '../actions/types';
 import header from '../helper/getHeader';
 
+/**
+ * @description A function to dispatch an action on get most favourited recipes success
+ * 
+ * @param {array} recipes
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getFavouritedAction = (recipes) => {
   return {
     type: GET_FAVOURITED_RECIPES,
@@ -12,6 +19,13 @@ export const getFavouritedAction = (recipes) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on get most favourited recipes success
+ * 
+ * @param {object} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getFavouritedError = (error) => {
   return {
     type: GET_FAVOURITED_RECIPES_ERRORS,
@@ -19,7 +33,12 @@ export const getFavouritedError = (error) => {
   }
 };
 
-export const getFavouritedRecipes = () => {
+/**
+ * @description A function to dispatch an action to get recipes
+ * 
+ * @return {Object} request promise object
+ */
+export const getMostFavouritedRecipes = () => {
   return dispatch => {
     return axios.get(`/api/v1/recipes/toprecipes`, header())
       .then(response => {
@@ -37,3 +56,5 @@ export const getFavouritedRecipes = () => {
       })
   }
 };
+
+export default getMostFavouritedRecipes;

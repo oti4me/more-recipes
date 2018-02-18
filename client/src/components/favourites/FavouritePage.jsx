@@ -43,7 +43,7 @@ class FavouritesPage extends Component {
   }
 
   /**
-   * @description
+   * @description renders favourites page
    * 
    * @returns {object} returns favourite recipe page jsx
    * 

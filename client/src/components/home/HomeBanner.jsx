@@ -2,7 +2,17 @@ import React from 'react';
 import cupcake from '../../../public/images/img.jpg';
 import vegetable from '../../../public/images/img2.jpg';
 
+/**
+ * @description returns jsx object to render home page banner 
+ * 
+ * @param {object} props event object
+ * 
+ * @returns {object} return error boject to display to the user or a succes message on successful completion
+ * 
+ * @memberof RecipeList
+ */
 const HomeBanner = (props) => {
+
   return (
     <div className="bannerWrapper">
       <div className="carouselContainer">

@@ -8,7 +8,9 @@ import recipes from './recipes';
 const router = express.Router();
 /* GET home page. */
 router.get('/', (req, res) => {
-	res.json({ message : "Please specify an appropriate route on your api document"});
+	res.json({
+		message: "Please specify an appropriate route on your api document"
+	});
 });
 
 /* GET user api. */

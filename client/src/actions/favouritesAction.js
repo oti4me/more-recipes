@@ -8,6 +8,14 @@ import {
   IS_FAVOURITE_RECIPE
 } from '../actions/types';
 
+
+/**
+ * @description A function to dispatch an action to add favourite
+ * 
+ * @param {object} favourite
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const addFavouriteAction = (favourite) => {
   return {
     type: ADD_FAVOURITE,
@@ -15,6 +23,14 @@ export const addFavouriteAction = (favourite) => {
   }
 };
 
+
+/**
+ * @description A function to dispatch an action on add favourite error
+ * 
+ * @param {object} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const addFavouriteError = (error) => {
   return {
     type: ADD_FAVOURITE_ERRORS,
@@ -22,13 +38,29 @@ export const addFavouriteError = (error) => {
   }
 };
 
-export const getFavouriteAction = (favourite) => {
+
+/**
+ * @description A function to dispatch an action to get favourite recipes
+ * 
+ * @param {array} favourites
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+export const getFavouriteAction = (favourites) => {
   return {
     type: ADD_FAVOURITE,
-    payload: favourite
+    payload: favourites
   }
 };
 
+
+/**
+ * @description A function to dispatch an action on get favourite error
+ * 
+ * @param {object} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getFavouriteError = (error) => {
   return {
     type: ADD_FAVOURITE_ERRORS,
@@ -36,6 +68,14 @@ export const getFavouriteError = (error) => {
   }
 };
 
+
+/**
+ * @description A function to dispatch an action on recipe delete
+ * 
+ * @param {number} id
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const removeFavouriteAction = (id) => {
   return {
     type: REMOVE_FAVOURITE,
@@ -43,13 +83,29 @@ export const removeFavouriteAction = (id) => {
   }
 };
 
-export const removeFavouriteError = (favourite) => {
+
+/**
+ * @description A function to dispatch an action on removal of recipe
+ * 
+ * @param {array} favourites
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
+export const removeFavouriteError = (favourites) => {
   return {
     type: REMOVE_FAVOURITE_ERRORS,
-    payload: favourite
+    payload: favourites
   }
 };
 
+
+/**
+ * @description A function to dispatch an action on favourite recipe comfirmation
+ * 
+ * @param {boolean} isFavourite
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const isFavouriteRecipe = (isFavourite) => {
   return {
     type: IS_FAVOURITE_RECIPE,
@@ -57,6 +113,15 @@ export const isFavouriteRecipe = (isFavourite) => {
   }
 };
 
+
+/**
+ * @description A function to add favourtite
+ * 
+ * @param {object} favouriteDetails
+ * @param {object} Materialize
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const addFavourite = ({ userId, recipeId }, Materialize) => {
   return dispatch => {
     dispatch(addFavouriteError(null));
@@ -98,6 +163,15 @@ export const addFavourite = ({ userId, recipeId }, Materialize) => {
   }
 };
 
+
+/**
+ * @description A function to get favourite recipes
+ * 
+ * @param {number} userId
+ * @param {number} page
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const getFavourites = (userId, page = 1) => {
   return dispatch => {
     return axios.get(`/api/v1/users/${userId}/favourites?page=${page}`, header())
@@ -128,6 +202,15 @@ export const getFavourites = (userId, page = 1) => {
   }
 };
 
+
+/**
+ * @description A function to check favourite recipe
+ * 
+ * @param {number} userId
+ * @param {number} recipeId
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const checkFavourite = (userId, recipeId) => {
   return dispatch => {
     dispatch(isFavouriteRecipe({
@@ -155,6 +238,14 @@ export const checkFavourite = (userId, recipeId) => {
   }
 };
 
+
+/**
+ * @description A function to remove favourite recipe
+ * 
+ * @param {object} favouriteDetail
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const removeFavourite = (favouriteDetail) => {
   const { userId, recipeId } = favouriteDetail;
   return dispatch => {
@@ -175,5 +266,4 @@ export const removeFavourite = (favouriteDetail) => {
         }));
       })
   }
-
 };

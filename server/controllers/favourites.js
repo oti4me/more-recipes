@@ -3,7 +3,7 @@ import validate from '../middleware/validate';
 import db from '../models';
 
 /**
- * 
+ * @description Creates an object of of favourites controller
  * 
  * @class Recipes
 */
@@ -12,9 +12,8 @@ class Favourites {
   /**
    * @description A method that allows the user to get his favourite recipe
    * 
-   * @param {object} request object
-   * 
-   * @param {object} response object
+   * @param {object} request request object
+   * @param {object} response response object
    * 
    * @returns {object} insertion error messages object or success message object
    * 
@@ -104,9 +103,8 @@ class Favourites {
   /**
    * @description A method to get a single favourite recipe based on user ID and recipe ID
    * 
-   * @param {object} request object
-   * 
-   * @param {object} response object
+   * @param {object} request reqeust object
+   * @param {object} response response object
    * 
    * @returns {object} insertion error messages object or success message object
    * 
@@ -155,9 +153,8 @@ class Favourites {
   /**
    * @description A method to get a single favourite recipe based on user ID and recipe ID
    * 
-   * @param {object} request object
-   * 
-   * @param {object} response object
+   * @param {object} request request object
+   * @param {object} response request object
    * 
    * @returns {object} insertion error messages object or success message object
    * 
@@ -168,7 +165,7 @@ class Favourites {
       limit: 8,
       offset: 0,
       where: {
-        favouriteCount: { $gt: 1 }
+        favouriteCount: { $gt: 0 }
       },
       include: [
         { model: db.Users, attributes: ['firstName', 'lastName'] },
@@ -199,9 +196,8 @@ class Favourites {
   /**
    * @description A method that allows the user to add a recipe to his favourite list recipes
    * 
-   * @param {object} request object
-   * 
-   * @param {object} response object
+   * @param {object} request request object
+   * @param {object} response request object
    * 
    * @returns {object} insertion error messages object or success message object
    * 
@@ -280,11 +276,10 @@ class Favourites {
   /**
    * @description A method that allows the user to remove a recipe from his favourite recipes
    * 
-   * @returns {object} insertion error messages object or success message object
-   * 
    * @param {object} request request object
-   * 
    * @param {object} response response object
+   * 
+   * @returns {object} insertion error messages object or success message object
    * 
    * @memberof Favourites
   */

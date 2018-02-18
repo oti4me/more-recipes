@@ -13,7 +13,6 @@ class Search {
    * @description A method that allows the user to search for recipes on the collection
    *  
    * @param {object} request 
-   * 
    * @param {object} response 
    * 
    * @returns {object} insertion error messages object or success message object
@@ -24,7 +23,7 @@ class Search {
     let { key, page, limit } = request.query;
     limit = limit || 8;   // number of records per page
 
-    if (key.length < 3) {
+    if (key.length < 2) {
       return response.status(404).json({
         recipes: []
       });

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import { getRecipes } from '../actions/getAllRecipes';
+import getAllRecipes from '../actions/getAllRecipes';
 import getMyRecipes from '../actions/getMyRecipes';
 import { getFavourites } from '../actions/favouritesAction';
 
@@ -71,7 +72,7 @@ class Pagination extends Component {
     const selected = ++page.selected;
     const {
       clickedFrom,
-      getRecipes,
+      getAllRecipes,
       getFavourites,
       getMyRecipes,
       user: {
@@ -80,7 +81,7 @@ class Pagination extends Component {
     } = this.props;
 
     if (clickedFrom === 'home') {
-      getRecipes(selected)
+      getAllRecipes(selected)
     } else if (clickedFrom === 'favourite') {
       getFavourites(userId, selected)
     } else {
@@ -103,7 +104,7 @@ class Pagination extends Component {
         <ReactPaginate
           previousLabel='previous'
           nextLabel='next'
-          breakLabel={<a href="!#">...</a>}
+          breakLabel={<Link to="!#">...</Link>}
           breakClassName='break-me'
           pageCount={this.state.pagination
             ? this.state.pagination.pageCount
@@ -123,7 +124,14 @@ class Pagination extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { recipes: { pagination }, auth: { user } } = state
+  const { recipes: {
+    pagination
+  },
+    auth: {
+      user
+    }
+  } = state
+
   return {
     pagination,
     user
@@ -131,5 +139,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  { getRecipes, getMyRecipes, getFavourites }
+  { getAllRecipes, getMyRecipes, getFavourites }
 )(Pagination);

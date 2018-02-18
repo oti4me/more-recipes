@@ -43,7 +43,11 @@ class Header extends Component {
       stopPropagation: false
     }
     );
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+      closeOnClick: true,
+      draggable: false,
+    });
+
   }
 
   /**
@@ -88,12 +92,16 @@ class Header extends Component {
               </Link>
             </li>
             <li>
-              <a className="dropdown-button" data-activates='dropdown2'>
+              <Link
+                to="!#"
+                className="dropdown-button"
+                data-activates='dropdown2'
+              >
                 <i className="fa fa-user-circle-o" aria-hidden="true">
                   {' '}User Account{' '}
                   <i className="fa fa-angle-down" aria-hidden="true" />
                 </i>
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="!#" onClick={this.handleSignOut} >
@@ -147,56 +155,45 @@ class Header extends Component {
                 </i>
               </Link>
             </li>
+            <li className="divider" />
             <li>
-              <a className="dropdown-button" data-activates='dropdown1'>
-                <i className="fa fa-user-circle-o" aria-hidden="true">
-                  {' '}User Account{' '}
-                  <i className="fa fa-angle-down" aria-hidden="true" />
-                </i>
-              </a>
+              <Link to="/profile">
+                <i className="fa fa-user-circle" aria-hidden="true">
+                  Profile
+                  </i>
+              </Link>
             </li>
+            <li className="divider" />
             <li>
-              <a href="!#" onClick={this.handleSignOut} >
+              <Link to="/addrecipe">
+                <i className="fa fa-plus-square" aria-hidden="true">
+                  Add Recipe
+                  </i>
+              </Link>
+            </li>
+            <li className="divider" />
+            <li>
+              <Link to="/myrecipes">
+                <i className="fa fa-cutlery" aria-hidden="true">
+                  My Recipes
+                  </i>
+              </Link>
+            </li>
+            <li className="divider" />
+            <li>
+              <Link to="/favourites">
+                <i className="fa fa-heart" aria-hidden="true">
+                  Favourites
+                  </i>
+              </Link>
+            </li>
+            <li className="divider" />
+            <li>
+              <Link to="!#" onClick={this.handleSignOut} >
                 <i className="fa fa-sign-out" aria-hidden="true"> Logout</i>
-              </a>
+              </Link>
             </li>
-            <ul
-              id='dropdown1'
-              className='dropdown-content'
-              style={{ backgroundColor: '#ccc' }}
-            >
-              <li>
-                <Link to="/profile">
-                  <i className="fa fa-user-circle" aria-hidden="true">
-                    Profile
-                  </i>
-                </Link>
-              </li>
-              <li className="divider" />
-              <li>
-                <Link to="/addrecipe">
-                  <i className="fa fa-plus-square" aria-hidden="true">
-                    Add Recipe
-                  </i>
-                </Link>
-              </li>
-              <li className="divider" />
-              <li>
-                <Link to="/myrecipes">
-                  <i className="fa fa-cutlery" aria-hidden="true">
-                    My Recipes
-                  </i>
-                </Link>
-              </li>
-              <li className="divider" />
-              <li>
-                <Link to="/favourites">
-                  <i className="fa fa-heart" aria-hidden="true">
-                    Favourites
-                  </i>
-                </Link>
-              </li>
-            </ul>
+            <li className="divider" />
           </ul>
 
         </div>
@@ -214,7 +211,9 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper color-green left-padding-20 header1">
-          <Link to="/home" className="brand-logo">More Recipes</Link>
+          <Link to="/home" className="brand-logo" style={{ fontSize: '22px' }}>
+            More-Recipes
+          </Link>
           <Link to="!#" data-activates="mobile1" className="button-collapse">
             <i className="material-icons">menu</i>
           </Link>

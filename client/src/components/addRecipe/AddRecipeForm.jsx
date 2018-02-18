@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import MDSpinner from "react-md-spinner";
-import addRecipe from '../../actions/addRecipeAction';
+import addRecipeAction from '../../actions/addRecipeAction';
 import validator from '../../helper/validator';
 import sampleImage from '../../../public/images/no-preview-available.png';
 
@@ -55,7 +56,7 @@ class AddRecipeForm extends Component {
       return;
     }
 
-    this.props.addRecipe(this.state, Materialize, this.props.history);
+    this.props.addRecipeAction(this.state, Materialize, this.props.history);
   }
 
   /**
@@ -175,14 +176,14 @@ class AddRecipeForm extends Component {
           </div>
           <br /><br />
           <div className="input-field col s12">
-            <a
-              href="!#"
+            <Link
+              to="!#"
               className="waves-effect waves-light btn"
               style={{ marginRight: '15px' }}
               onClick={this.handleAddRecipe}
             >
               Add Recipe
-            </a>
+            </Link>
             {this.props.isRequesting ? <MDSpinner size={40} /> : ''}
             <br /><br />
           </div>
@@ -218,8 +219,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    addRecipe,
+    addRecipeAction,
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddRecipeForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddRecipeForm);

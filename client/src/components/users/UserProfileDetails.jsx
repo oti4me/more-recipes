@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import avata from '../../../public/images/profile-avata.png';
 
+/**
+ * @description A class to create UserProfilePage object
+ * 
+ * @param {object} props
+ * 
+ * @returns {object} jsx object to render the user profile details
+ */
 const UserProfileDetails = (props) => {
   if (props.user) {
     const { firstName, lastName, email, userId, phone } = props.user;

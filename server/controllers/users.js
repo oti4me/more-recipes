@@ -20,7 +20,6 @@ class Users {
 	 * @description Create a user account on the application
 	 * 
 	 * @param {object} request HTTP request object
-	 * 
 	 * @param {object} response HTTP response object
 	 * 
 	 * @returns {object} error messages object or success message object
@@ -82,24 +81,29 @@ class Users {
 								id,
 							} = createdUser;
 
-							const createdUserDetails = {
+							const user = {
 								firstName: firstName.trim(),
 								lastName: lastName.trim(),
 								email: email.trim(),
 								phone: phone.trim(),
 								userId: id,
+								imageUrl: ''
 							};
 
-							const token = jwt.sign(createdUserDetails, secretKey, {
+							const token = jwt.sign(user, secretKey, {
 								expiresIn: 86400
 							});
-							const user = Auth.filterUser(createdUserDetails);
 							response.status(201).json({
 								token,
 								user
 							});
 						}
 					})
+						.catch((error) => {
+							response.status(500).json({
+								message: error
+							});
+						});
 				}
 			})
 				.catch((error) => {
@@ -114,7 +118,6 @@ class Users {
    * @description Registered user to login to his account
    * 
 	 * @param {object} request HTTP request object
-	 *
 	 * @param {object} response HTTP response object
 	 *
 	 * @returns {object} error messages object or success message object
