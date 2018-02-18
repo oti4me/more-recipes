@@ -31,7 +31,8 @@ module.exports = {
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
 
       {
-        test: /\.(css|scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader'], include: [
+        test: /\.(css|scss)$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader'], include: [
           path.join(__dirname, 'client')
         ]
       },
@@ -43,10 +44,14 @@ module.exports = {
   },
 
   plugins: [
-    new Dotenv({
-      path: path.resolve('./.env'),
-      safe: false,
-      systemvars: true,
+    new webpack.DefinePlugin({
+      'process.env':
+        {
+          NODE_ENV: JSON.stringify('development'),
+          CLOUDINARY_UPLOAD_PRESET: JSON.stringify(process.env.CLOUDINARY_UPLOAD_PRESET),
+          CLOUDINARY_URL: JSON.stringify(process.env.CLOUDINARY_URL),
+          JWT_SECRET_KEY: JSON.stringify(process.env.JWT_SECRET_KEY),
+        }
     }),
     extractPlugin,
   ]

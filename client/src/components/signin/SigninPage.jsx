@@ -6,15 +6,17 @@ import Header from '../Header.jsx'
 
 /**
  * 
- * 
  * @class SigninPage
+ * 
  * @extends {React.Component}
  */
 class SigninPage extends React.Component {
 
   /**
-   * Creates an instance of SigninPage.
+   *@description Creates an instance of SigninPage.
+   * 
    * @param {undefined} props 
+   * 
    * @memberof SigninPage
    */
   constructor(props) {
@@ -22,9 +24,10 @@ class SigninPage extends React.Component {
   }
 
   /**
-   * 
+   * @description renders the singin page components
    * 
    * @returns {JSX} returns the signin page
+   * 
    * @memberof SigninPage
    */
   render() {

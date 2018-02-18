@@ -6,8 +6,8 @@ import moment from 'moment';
 
 /**
  * 
- * 
  * @class ReviewsList
+ * 
  * @extends {React.Component}
  */
 class ReviewsList extends React.Component {
@@ -28,7 +28,7 @@ class ReviewsList extends React.Component {
 
   /**
    * @description
-   * 
+   *  
    * @returns {undefined}
    * 
    * @memberof ReviewsList
@@ -39,9 +39,7 @@ class ReviewsList extends React.Component {
     });
   }
 
-  /**
-   * @description
-   * 
+  /** 
    * @param {object} nextProps 
    * 
    * @returns {undefined}
@@ -62,7 +60,7 @@ class ReviewsList extends React.Component {
    * @memberof ReviewsList
    */
   render() {
-    const reviews = this.state.reviews || [];
+    const { reviews } = this.state;
     if (reviews !== undefined && reviews.length > 0) {
       return (
         <ul>

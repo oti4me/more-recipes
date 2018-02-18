@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { signup } from '../../actions/signupAction';
+import vailidator from '../../helper/validator';
 
 /**
  * 
@@ -13,7 +15,7 @@ import { signup } from '../../actions/signupAction';
 class SignupForm extends Component {
 
   /**
-   * Creates an instance of SignupForm.
+   * @description Creates an instance of SignupForm.
    * 
    * @param {object} props 
    * 
@@ -34,7 +36,7 @@ class SignupForm extends Component {
   }
 
   /**
-   * Handles signup action
+   * @description Handles signup action
    * 
    * @param {object} event 
    * 
@@ -44,6 +46,14 @@ class SignupForm extends Component {
    */
   handleSignup(event) {
     event.preventDefault()
+    const errors = vailidator.validateSignup(this.state);
+    if (errors.length > 0) {
+      errors.map(error => {
+        Materialize.toast(error.message, 3000, 'red');
+      });
+      return;
+    }
+
     this.props.signup(this.state, (isError) => {
       const { error } = this.props;
       if (isError) {
@@ -56,7 +66,8 @@ class SignupForm extends Component {
         } else if (error.status === 409) {
           return Materialize.toast(error.message, 5000, 'red');
         } else {
-          return Materialize.toast("Error Sigin up, please try again later", 5000, 'red');
+          return Materialize
+            .toast("Error Sigin up, please try again later", 5000, 'red');
         }
       }
       else {
@@ -67,7 +78,7 @@ class SignupForm extends Component {
   }
 
   /**
-   * Handles form field change 
+   * @description Handles form field change 
    * 
    * @param {Object} event 
    * 
@@ -83,7 +94,7 @@ class SignupForm extends Component {
   }
 
   /**
-   * Renders the form to the page
+   * @description Renders the form to the page
    * 
    * @returns {object} Signup form jsx object
    * 
@@ -92,7 +103,11 @@ class SignupForm extends Component {
   render() {
     return (
       <div className="row">
-        <form className="col s12 z-depth-2" style={{ padding: '50px' }} onSubmit={this.handleSignup}>
+        <form
+          className="col s12 z-depth-2"
+          style={{ padding: '50px' }}
+          onSubmit={this.handleSignup}
+        >
           <div className="row">
             <div className="input-field col s12 m6 l6">
               <i className="material-icons prefix">account_circle</i>
@@ -172,18 +187,19 @@ class SignupForm extends Component {
             </div>
           </div>
           <div className="row">
-            <a
+            <Link
+              to="!#"
               role="button"
               tabIndex="0"
               onClick={this.handleSignup}
               className="waves-effect waves-light btn"
             >
               Sign Up
-            </a>
+            </Link>
           </div>
           <div className="row">
             <p className="">Already have an account?
-              {' '}<a href="/signin"> Sign In</a>
+              {' '}<Link to="/signin"> Sign In</Link>
             </p>
           </div>
         </form>
@@ -192,17 +208,17 @@ class SignupForm extends Component {
   }
 }
 
-// SignupForm.propTypes = {
-//   error: PropTypes.shape({}),
-//   signup: PropTypes.func.isRequired,
-//   history: PropTypes.shape({
-//     push: PropTypes.func.isRequired
-//   }).isRequired
-// };
+SignupForm.propTypes = {
+  error: PropTypes.shape({}),
+  signup: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+};
 
-// SignupForm.defaultProps = {
-//   error: {}
-// }
+SignupForm.defaultProps = {
+  error: {}
+}
 
 const mapStateToProps = (state) => {
   return {

@@ -13,7 +13,6 @@ class Votes {
    * @description A method that allows the user to upvote a recipe
    * 
    * @param {undefined} request
-   * 
    * @param {undefined} response
    * 
    * @returns {object} success message on success and error message on failure
@@ -35,7 +34,12 @@ class Votes {
         if (created) {
           vote.update({ voted: 'upVote' });
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.increment('upVotes').then(() => {
                 response.status(201).json({
@@ -47,7 +51,12 @@ class Votes {
         } else if (!created && vote.voted === 'upVote') {
           vote.destroy()
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.decrement('upVotes').then(() => {
                 response.status(200).send({
@@ -59,7 +68,12 @@ class Votes {
         } else if (!created && vote.voted === 'downVote') {
           vote.update({ voted: 'upVote' });
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.increment('upVotes')
               recipe.decrement('downVotes').then(() => {
@@ -78,7 +92,6 @@ class Votes {
    * @description A method that allows the user to vote down a recipe
    * 
    * @param {object} request
-   *  
    * @param {object} response 
    * 
    * @returns {object} insertion error messages object or success message object
@@ -100,7 +113,12 @@ class Votes {
         if (created) {
           vote.update({ voted: 'downVote' });
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.increment('downVotes').then(() => {
                 response.status(201).json({
@@ -112,7 +130,12 @@ class Votes {
         } else if (!created && vote.voted === 'downVote') {
           vote.destroy()
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.decrement('downVotes').then(() => {
                 response.status(200).send({
@@ -124,7 +147,12 @@ class Votes {
         } else if (!created && vote.voted === 'upVote') {
           vote.update({ voted: 'downVote' });
           return db.Recipes
-            .findOne({ where: { id } })
+            .findOne({
+              where: { id },
+              include: [
+                { model: db.Users, attributes: ['firstName', 'lastName'] },
+              ]
+            })
             .then((recipe) => {
               recipe.increment('downVotes')
               recipe.decrement('upVotes').then(() => {

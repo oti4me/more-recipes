@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { signin } from '../../actions/signinAction';
 
@@ -34,7 +35,6 @@ class SigninForm extends Component {
    * @description Handles signin action
    * 
    * @param {object} event event object
-   * 
    * @return {undefined} No retruned type
    * 
    * @memberof SigninForm
@@ -64,7 +64,6 @@ class SigninForm extends Component {
    * @description Handles field change event
    * 
    * @param {object} event event object
-   * 
    * @return {undefined} No returned type
    * 
    * @memberof SigninForm
@@ -114,21 +113,20 @@ class SigninForm extends Component {
             </div>
           </div>
           <div className="row">
-            <a
+            <Link
+              to="#!"
               role="button"
               tabIndex="0"
               className="waves-effect waves-light btn"
               onClick={this.handleSignin}
             >
               Sign In
-            </a>
+            </Link>
           </div>
           <div className="row">
             <p className="">
               Dont have an account?
-              <a href="/signup"> Sign Up</a>
-              <br />Forget Password? click
-              <a href="forget_password.html">Here</a>
+              <Link to="/signup"> Sign Up</Link>
             </p>
           </div>
         </form>

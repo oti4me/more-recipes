@@ -41,15 +41,8 @@ class MyRecipesPage extends Component {
         <div className="container cont">
           <div className="col s12 m12 l12">
             <div className="row">
-              <div className="col s12 m5 l5">
+              <div className="col s12 m9 l9">
                 <h3 className="h-title">My Recipes</h3>
-              </div>
-              <div className="col s12 m4 l4 top-margin-30">
-                <div className="input-field col s12">
-                  <i className="material-icons prefix">search</i>
-                  <input id="search" type="text" />
-                  <label htmlFor="search">Enter Keyword</label>
-                </div>
               </div>
               <div className="col s12 m3 l3 top-margin-50">
                 <Link

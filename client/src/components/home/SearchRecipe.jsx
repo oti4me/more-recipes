@@ -22,7 +22,7 @@ class SearchRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: [],
+      recipes: undefined,
     };
   }
 
@@ -42,7 +42,7 @@ class SearchRecipe extends Component {
   }
 
   /**
-   * @description
+   * @description returns search results
    * 
    * @returns {object} JSX object
    * 
@@ -163,15 +163,15 @@ class SearchRecipe extends Component {
   noRecipe() {
     return (
       <div>
-        <h5 className="top-margin-50" style={{ textAlign: 'center' }}>
-          No reicpe found!!!
-        </h5>
+        <h4 className="top-margin-50" style={{ textAlign: 'center' }}>
+          No recipe found :)
+        </h4>
       </div>
     );
   }
 
   /**
-   * @description Renders the component to the dom
+   * @description Renders search component
    * 
    * @returns {object} JSX object
    * 
@@ -181,9 +181,22 @@ class SearchRecipe extends Component {
     return (
       <div id="test-swipe-1" className="col s12 top-margin-20">
         {
-          this.state.recipes && this.state.recipes.length > 0
-            ? this.recipeList()
-            : this.noRecipe()
+          this.state.recipes
+            ?
+            this.state.recipes && this.state.recipes.length > 0
+              ? this.recipeList()
+              : this.noRecipe()
+            :
+            <div>
+              <h5
+                className="top-margin-50"
+                style={{
+                  textAlign: 'center',
+                }}
+              >
+                Enter at least three letters to search :)
+              </h5>
+            </div>
         }
       </div>
     );

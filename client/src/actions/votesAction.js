@@ -2,6 +2,13 @@ import axios from 'axios';
 import { UPVOTE_RECIPE, UPVOTE_RECIPE_ERRORS, DOWNVOTE_RECIPE_ERRORS, DOWNVOTE_RECIPE } from '../actions/types';
 import header from '../helper/getHeader';
 
+/**
+ * @description A function to dispatch an action on upvote recipe error
+ * 
+ * @param {object} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const upvoteRecipeError = (error) => {
   return {
     type: UPVOTE_RECIPE_ERRORS,
@@ -9,6 +16,13 @@ export const upvoteRecipeError = (error) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on upvote recipe success
+ * 
+ * @param {object} recipe
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const upvoteRecipeAction = (recipe) => {
   return {
     type: UPVOTE_RECIPE,
@@ -16,6 +30,13 @@ export const upvoteRecipeAction = (recipe) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on downvote recipe error
+ * 
+ * @param {object} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const downvoteRecipeError = (error) => {
   return {
     type: DOWNVOTE_RECIPE_ERRORS,
@@ -23,6 +44,13 @@ export const downvoteRecipeError = (error) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on downvote recipe success
+ * 
+ * @param {object} recipe
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const downvoteRecipeAction = (recipe) => {
   return {
     type: DOWNVOTE_RECIPE,
@@ -30,6 +58,13 @@ export const downvoteRecipeAction = (recipe) => {
   }
 };
 
+/**
+ * @description A function to upvote a recipe
+ * 
+ * @param {number} id
+ * 
+ * @return {Object} request promise object
+ */
 export const upvoteRecipe = (id) => {
   return dispatch => {
     dispatch(upvoteRecipeError(null));
@@ -56,6 +91,13 @@ export const upvoteRecipe = (id) => {
   }
 };
 
+/**
+ * @description A function to downvote a recipe
+ * 
+ * @param {number} id
+ * 
+ * @return {Object} request promise object
+ */
 export const downVoteRecipe = (id) => {
   return dispatch => {
     dispatch(downvoteRecipeError(null));

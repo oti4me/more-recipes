@@ -5,7 +5,7 @@ import ReviewList from './ReviewsList';
 import { getReviews } from '../../actions/getReviews';
 
 /**
- * @description
+ * @description Creates an object of review modal
  * 
  * @class ReviewModal
  * 
@@ -31,7 +31,7 @@ class ReviewModal extends Component {
   /**
    * @description
    * 
-   * @return {undefined}
+   * @return {undefined} No returned value
    * 
    * @memberof ReviewModal
    */
@@ -40,7 +40,7 @@ class ReviewModal extends Component {
   }
 
   /**
-   * @description
+   * @description renders review modal
    * 
    * @returns {object} returns jsx object for review modal
    * 

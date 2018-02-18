@@ -5,7 +5,7 @@ import HomeBanner from './HomeBanner';
 import Footer from '../Footer';
 import Header from '../Header';
 import search from '../../actions/search';
-import { getRecipes } from '../../actions/getAllRecipes';
+import getAllRecipes from '../../actions/getAllRecipes';
 import Tabs from './Tabs';
 
 /**
@@ -33,7 +33,6 @@ class HomePage extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
@@ -45,13 +44,15 @@ class HomePage extends Component {
    * @memberof HomePage
    */
   componentDidMount() {
-    this.props.getRecipes()
+    this.props.getAllRecipes()
       .then(() => {
         const { allRecipes } = this.props;
         this.setState({
           recipes: allRecipes
         });
       });
+
+    $('ul.tabs').tabs();
 
     $('.carousel.carousel-slider').carousel({ fullWidth: true });
     $('.carousel').carousel();
@@ -72,7 +73,7 @@ class HomePage extends Component {
   handlePageClick(page) {
     let selected = ++page.selected;
     this.setState({ selected }, () => {
-      this.props.getRecipes(this.state.selected);
+      this.props.getAllRecipes(this.state.selected);
     });
   }
 
@@ -85,33 +86,12 @@ class HomePage extends Component {
    * 
    * @memberof HomePage
    */
-  handleSearch() {
+  handleSearch(event) {
+    event.preventDefault();
     const query = this.state.query
       ? this.state.query
-      : event.target.value;
-    if (query && query.length > 1) {
-      this.props.search(query)
-        .then(() => {
-          const { searchedRecipes } = this.state;
-          this.setState({
-            searchedRecipes
-          });
-        });
-    }
-  }
-
-  /**
-   * @description handles search form submit action
-   * 
-   * @param {object} event event object
-   * 
-   * @returns {void} No returned value
-   * 
-   * @memberof HomePage
-   */
-  handleSubmit(event) {
-    event.preventDefault();
-    this.handleSearch();
+      : '';
+    this.props.search(query);
   }
 
   /**
@@ -151,7 +131,7 @@ class HomePage extends Component {
                 }
                 value={this.state.query}
                 handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
+                handleSubmit={this.handleSearch}
                 handlePageClick={this.handlePageClick}
               />
             </div>
@@ -164,10 +144,11 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const { recipes: { allRecipes, pagination } } = state;
   return {
-    allRecipes: state.recipes.allRecipes,
-    paginatation: state.recipes.pagination
+    allRecipes,
+    pagination
   };
 }
 
-export default connect(mapStateToProps, { search, getRecipes })(HomePage);
+export default connect(mapStateToProps, { search, getAllRecipes })(HomePage);

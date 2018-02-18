@@ -13,7 +13,6 @@ class Recipes {
    * @description Get all recipes in the collection
    * 
    * @param {object} request HTTP request object
-   * 
    * @param {object} response HTTP response object
    * 
    * @returns {object} error object on failure or returns recipes object on seccessful
@@ -105,7 +104,6 @@ class Recipes {
    * @description Get a recipe from the collection
    * 
    * @param {object} request HTTP request object
-   * 
    * @param {object} response HTTP response object
    * 
    * @returns {object} error object on failure or returns recipes object on seccessful
@@ -164,7 +162,6 @@ class Recipes {
     * @description Get all recipes added by a perticular user
     * 
     * @param {object} request HTTP request object
-    * 
     * @param {object} response HTTP response object
     * 
     * @returns {object} error object on failure or returns recipes object on seccessful
@@ -248,7 +245,6 @@ class Recipes {
     * @description Add a recipe to the recipe collection
     * 
     * @param {object} request HTTP request object
-    * 
     * @param {object} response HTTP response object
     * 
     * @returns {object} error object on failure or returns recipes object on seccessful
@@ -319,7 +315,6 @@ class Recipes {
     * @description Delete a recipe from the collection
     * 
     * @param {object} request HTTP request object
-    * 
     * @param {object} response HTTP response object
     * 
     * @returns {object} error object on failure or returns recipes object on seccessful
@@ -368,7 +363,6 @@ class Recipes {
    * @description Update a recipe in the collection
    * 
    * @param {object} request HTTP request object
-   * 
    * @param {object} response HTTP response object
    * 
    * @returns {object} error object on failure or returns recipes object on seccessful

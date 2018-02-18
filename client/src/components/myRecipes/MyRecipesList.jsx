@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import shortId from 'shortid';
 import MDSpinner from "react-md-spinner";
 import getMyRecipes from '../../actions/getMyRecipes';
-import { deleteRecipe } from '../../actions/deleteRecipe';
+import deleteRecipe from '../../actions/deleteRecipe';
 
 /**
  * 
@@ -81,7 +81,7 @@ class MyRecipesList extends React.Component {
   }
 
   /**
-    * @description Render my recipe list
+    * @description return my recipe list
     *    
     * @returns {obect} jsx object to render my recipe list
     * 
@@ -140,7 +140,8 @@ class MyRecipesList extends React.Component {
                     </div>
                     <div className="card-action">
                       <div className="col s4 m4 l4">
-                        <a
+                        <Link
+                          to="!#"
                           className="tooltipped text-green"
                           style={{ cursor: 'pointer', color: '#999' }}
                           data-position="bottom"
@@ -150,7 +151,7 @@ class MyRecipesList extends React.Component {
                           <i className="fa fa-eye" aria-hidden="true">
                             {' '}{recipe.viewCount}
                           </i>
-                        </a>
+                        </Link>
                       </div>
                       <div className="col s4 m4 l4">
                         <Link
@@ -168,8 +169,8 @@ class MyRecipesList extends React.Component {
                         </Link>
                       </div>
                       <div className="col s4 m4 l4">
-                        <a
-                          href="#delete"
+                        <Link
+                          to="#delete"
                           onClick={event => {
                             event.preventDefault();
                             this.setState({
@@ -183,7 +184,7 @@ class MyRecipesList extends React.Component {
                           data-tooltip="Delete"
                         >
                           <i className="fa fa-trash-o" aria-hidden="true" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -198,7 +199,7 @@ class MyRecipesList extends React.Component {
   }
 
   /**
-   * @description
+   * @description Render my recipe list
    * 
    * @returns {JSX} JSX
    * 
@@ -233,19 +234,23 @@ class MyRecipesList extends React.Component {
             <p>Are you sure you want to delete this recipe?</p>
           </div>
           <div className="modal-footer">
-            <a
-              href="!#"
+            <Link
+              to="!#"
               data-id={this.state.recipeId}
               onClick={this.handleDelete}
               className="modal-action modal-close waves-effect waves-green btn-flat"
             >
               Delete
-            </a>
-            <a
+            </Link>
+            <Link
+              onClick={event => {
+                event.preventDefault();
+              }}
+              to="!#"
               className="modal-action modal-close waves-effect waves-green btn-flat"
             >
               Cancil
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import express from 'express';
 import { recipes, reviews, votes, search, favourites } from '../controllers';
 import Auth from '../middleware/jwtMiddleware';
 
-
 const router = express.Router();
 router.get('/toprecipes', favourites.getMostFavourited);
 
@@ -11,7 +10,6 @@ router.get('/', recipes.getAllRecipes);
 
 // get single recipe from database
 router.get('/:id', recipes.getSingleRecipe);
-
 
 // Add recipe to database 
 router.post('/', Auth.verifyToken, recipes.addRecipe);
@@ -24,20 +22,14 @@ router.put('/:id', Auth.verifyToken, recipes.updateRecipe);
 
 // Add a review to a recipe 
 router.post('/:id/reviews', Auth.verifyToken, reviews.reviewRecipe);
-
-router.post('/search', search.search);
-
-// Add a review to a recipe 
+// get all reviews for a recipe 
 router.get('/:id/reviews', reviews.getReviews);
+
+// search for a recipe on the database
+router.post('/search', search.search);
 
 // Vote up or down a recipe 
 router.post('/:id/upvotes', Auth.verifyToken, votes.upVotes);
 router.post('/:id/downvotes', Auth.verifyToken, votes.downVotes);
-
-// Get top upvoted recipe 
-router.get('/?sort=upvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
-// Get top downvotes recipe 
-router.get('/?sort=downvotes&order=desc', Auth.verifyToken, recipes.getAllRecipes);
-
 
 export default router;

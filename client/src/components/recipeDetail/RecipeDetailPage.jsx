@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import Footer from '../Footer';
 import Header from '../Header';
 import RecipeDetail from './RecipeDetail';
-import TopRecipeList from './TopRecipeList';
 
 /**
- * 
  * 
  * @class RecipeDetailPage
  * 
@@ -42,7 +40,7 @@ class RecipeDetailPage extends React.Component {
         >
           <div className="row">
             <RecipeDetail {...this.props} />
-            <TopRecipeList />
+            {/* <TopRecipeList /> */}
           </div>
         </div>
         <Footer />

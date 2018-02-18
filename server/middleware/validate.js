@@ -30,22 +30,32 @@ const validator = {
 
   validateSignup(request, response) {
     request
-      .checkBody("firstName", "First name can't be less than 3 or more than 25 characters and must not contain numbers or spaces.")
+      .checkBody("firstName",
+      "First name can't be less than 3 or more than 25 characters and must not contain numbers or spaces."
+      )
       .matches(/^[a-zA-Z.]{3,25}$/);
     request
-      .checkBody("lastName", "Last name can't be less than 3 or more than 25 characters and must not contain numbers or spaces.")
+      .checkBody("lastName",
+      "Last name can't be less than 3 or more than 25 characters and must not contain numbers or spaces."
+      )
       .matches(/^[a-zA-Z.]{3,25}$/);
     request
       .checkBody("email", "Enter a valid email address.")
       .isEmail();
     request
-      .checkBody("phone", "Phone number must be a valid phone number and must not contain spaces.")
+      .checkBody("phone",
+      "Phone number must be a valid phone number and must not contain spaces."
+      )
       .matches(/^[0-9\-.]{8,15}$/);
     request
-      .checkBody("password", "Password can't be less than 8 characters and must not contain spaces.")
+      .checkBody("password",
+      "Password can't be less than 8 characters and must not contain spaces."
+      )
       .matches(/^[a-zA-Z0-9!@#$%^&*()_\-.]{8,32}$/);
     request
-      .checkBody("confirmPassword", "Password confirmation field can't be empty.")
+      .checkBody("confirmPassword",
+      "Password confirmation field can't be empty."
+      )
       .notEmpty();
     request
       .checkBody("password", "Password didn't match")
@@ -88,15 +98,6 @@ const validator = {
       .notEmpty();
   },
 
-  validatevaVotes(request, response) {
-    request
-      .checkBody("voteType", "Vote type is required.")
-      .notEmpty();
-    request
-      .checkBody("voteType", "Vote type must either be upvotes or downvotes.")
-      .matches(/upvotes|downvotes/);
-  },
-
   validateReviewRecipe(request, response) {
     request
       .checkBody("comment", "Comment can't be empty.")
@@ -119,7 +120,8 @@ const validator = {
   },
 
   getUserId(request, response) {
-    const token = request.headers.authorization || request.headers['x-access-token'];
+    const token = request.headers.authorization
+      || request.headers['x-access-token'];
     if (!token) {
       return response.status(401).send({ message: 'Unauthorized Access' });
     }

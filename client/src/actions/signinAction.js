@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { USER_LOGIN, USER_LOGGEDIN, LOGIN_ERRORS } from '../actions/types';
 
+/**
+ * @description A function to dispatch an action on user sigin success
+ * 
+ * @param {object} user user object
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const userSignin = (user) => {
   return {
     type: USER_LOGIN,
@@ -8,6 +15,13 @@ export const userSignin = (user) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on user loggedIn
+ * 
+ * @param {boolean} isLoggedIn
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const userLogged = (isLoggedIn) => {
   return {
     type: USER_LOGGEDIN,
@@ -15,6 +29,13 @@ export const userLogged = (isLoggedIn) => {
   }
 };
 
+/**
+ * @description A function to dispatch an action on user signin error
+ * 
+ * @param {array} error
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signinError = (error) => {
   return {
     type: LOGIN_ERRORS,
@@ -22,7 +43,14 @@ export const signinError = (error) => {
   }
 };
 
-
+/**
+ * @description A function to signin a user
+ * 
+ * @param {object} user
+ * @param {object} callback
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signin = (user, callback) => {
   window.localStorage.removeItem('userToken');
   return dispatch => {
@@ -67,6 +95,13 @@ export const signin = (user, callback) => {
   }
 }
 
+/**
+ * @description A function to logout a user
+ * 
+ * @param {object} history
+ * 
+ * @return {Object} action dispatch by the action creator
+ */
 export const signOut = (history) => {
   return dispatch => {
     window.localStorage.removeItem('userToken');

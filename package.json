@@ -8,7 +8,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
     "start:dev": "NODE_ENV=development nodemon  ./server/server --watch ./server --exec babel-node",
-    "test": "npm run test:nyc",
+    "test": "npm run migrate:test",
     "test:dev": "npm run migrate:test",
     "jest": "jest --coverage --collectCoverageFrom=client/**/**/*.{js,jsx}",
     "webpack": "webpack -p",

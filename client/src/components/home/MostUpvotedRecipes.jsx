@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import shortId from 'shortid';
 import PropTypes, { number } from 'prop-types';
-import { getUpvotedRecipes } from '../../actions/getMostVotedRecipes';
+import getUpvotedRecipes from '../../actions/getMostVotedRecipes';
 
 /**
  * 

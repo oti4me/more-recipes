@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import shortId from 'shortid';
 import MDSpinner from "react-md-spinner";
-import { getFavourites, removeFavourite } from '../../actions/favouritesAction';
+import {
+  getFavourites,
+  removeFavourite
+} from '../../actions/favouritesAction';
 
 /**
- * 
+ * @description creates an object of favourites recipes list
  * 
  * @class MyRecipesList
  * 
- * @extends {React.Component}
+ * @extends {Component}
 */
-class MyRecipesList extends React.Component {
+class FavouriteRecipesList extends Component {
 
   /**
    * @description Creates an instance of MyRecipesList.
    * 
    * @param {object} props 
    * 
-   * @memberof MyRecipesList
+   * @memberof FavouriteRecipesList
   */
   constructor(props) {
     super(props);
@@ -40,7 +43,7 @@ class MyRecipesList extends React.Component {
     * 
     * @return {undefined}
     * 
-    * @memberof MyRecipesList
+    * @memberof FavouriteRecipesList
   */
   componentDidMount() {
     const { userId } = this.props.user;
@@ -60,7 +63,7 @@ class MyRecipesList extends React.Component {
    * 
    * @return {undefined}
    * 
-   * @memberof MyRecipesList
+   * @memberof FavouriteRecipesList
   */
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -75,7 +78,7 @@ class MyRecipesList extends React.Component {
    * 
    * @return {undefined}
    * 
-   * @memberof MyRecipesList
+   * @memberof FavouriteRecipesList
   */
   handleRemoveFavourite(event) {
     event.preventDefault();
@@ -89,11 +92,11 @@ class MyRecipesList extends React.Component {
   }
 
   /**
-   * @description display recipes list
+   * @description return recipes list
    * 
    * @returns {undefined}
    * 
-   * @memberof MyRecipesList
+   * @memberof FavouriteRecipesList
   */
   favouritesList() {
     let favouritesChunk = [];
@@ -141,7 +144,8 @@ class MyRecipesList extends React.Component {
                   </div>
                   <div className="card-action">
                     <div className="col s4 m8 l8">
-                      <a
+                      <Link
+                        to="!#"
                         className="tooltipped text-green"
                         style={{ cursor: 'pointer', color: '#999' }}
                         data-position="bottom"
@@ -151,11 +155,11 @@ class MyRecipesList extends React.Component {
                         <i className="fa fa-user-circle-o" aria-hidden="true">
                           {' By: '} {recipe.User ? recipe.User.firstName : 0}
                         </i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="col s4 m4 l4">
-                      <a
-                        href="#removeFavourite"
+                      <Link
+                        to="#removeFavourite"
                         onClick={event => {
                           event.preventDefault();
                           this.setState({ recipeId: recipe.id })
@@ -167,7 +171,7 @@ class MyRecipesList extends React.Component {
                         data-tooltip="Delete"
                       >
                         <i className="fa fa-trash-o" aria-hidden="true" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -181,11 +185,11 @@ class MyRecipesList extends React.Component {
   }
 
   /**
-    * @description
+    * @description renders recipes list
     * 
     * @return {undefined}
     * 
-    * @memberof MyRecipesList
+    * @memberof FavouriteRecipesList
   */
   render() {
     return (
@@ -215,20 +219,23 @@ class MyRecipesList extends React.Component {
             <p>Are you sure you want to remove this recipe as favourite?</p>
           </div>
           <div className="modal-footer">
-            <a
-              href="!#"
+            <Link
+              to="!#"
               data-id={this.state.recipeId}
               onClick={this.handleRemoveFavourite}
               className="modal-action modal-close waves-effect waves-green btn-flat"
             >
               Remove
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="!#"
+              onClick={event => {
+                event.preventDefault();
+              }}
               className="modal-action modal-close waves-effect waves-green btn-flat"
             >
               Cancil
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -252,4 +259,6 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyRecipesList);
+export default connect(mapStateToProps,
+  mapDispatchToProps
+)(FavouriteRecipesList);
