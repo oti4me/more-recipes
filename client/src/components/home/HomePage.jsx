@@ -14,7 +14,7 @@ import Tabs from './Tabs';
  * 
  * @extends {Component}
  */
-class HomePage extends Component {
+export class HomePage extends Component {
 
   /**
    * @description Creates an instance of HomePage.
@@ -151,4 +151,8 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { search, getAllRecipes })(HomePage);
+export default connect(mapStateToProps,
+  {
+    search,
+    getAllRecipes
+  })(HomePage);

@@ -12,7 +12,7 @@ import vailidator from '../../helper/validator';
  * 
  * @extends {Component}
  */
-class SignupForm extends Component {
+export class SignupForm extends Component {
 
   /**
    * @description Creates an instance of SignupForm.
@@ -54,27 +54,7 @@ class SignupForm extends Component {
       return;
     }
 
-    this.props.signup(this.state, (isError) => {
-      const { error } = this.props;
-      if (isError) {
-        if (error.status === 400) {
-          error.message.map(err => {
-            return Materialize.toast(err.msg, 5000, 'red');
-          });
-        } else if (error.status === 401) {
-          return Materialize.toast(error.message, 5000, 'red');
-        } else if (error.status === 409) {
-          return Materialize.toast(error.message, 5000, 'red');
-        } else {
-          return Materialize
-            .toast("Error Sigin up, please try again later", 5000, 'red');
-        }
-      }
-      else {
-        Materialize.toast('Account created successfully', 5000, 'green');
-        this.props.history.push('/profile');
-      }
-    })
+    this.props.signup(this.state, Materialize, this.props.history);
   }
 
   /**
@@ -104,6 +84,7 @@ class SignupForm extends Component {
     return (
       <div className="row">
         <form
+          id="signup"
           className="col s12 z-depth-2"
           style={{ padding: '50px' }}
           onSubmit={this.handleSignup}
@@ -189,6 +170,7 @@ class SignupForm extends Component {
           <div className="row">
             <Link
               to="!#"
+              id="signupBtn"
               role="button"
               tabIndex="0"
               onClick={this.handleSignup}

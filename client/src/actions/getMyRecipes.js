@@ -49,6 +49,7 @@ const getMyRecipes = (id, page) => {
         }));
       })
       .catch(error => {
+        const { response: { data: { message } } } = error;
         if (error.response.status === 404) {
           dispatch(getMyRecipesAction({
             succes: false,
@@ -57,7 +58,7 @@ const getMyRecipes = (id, page) => {
         }
         dispatch(getMyRecipesErrors({
           succes: false,
-          error: error
+          error: message
         }));
       })
   }

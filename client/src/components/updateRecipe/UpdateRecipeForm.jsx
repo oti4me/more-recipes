@@ -11,7 +11,7 @@ import recipeDetails from '../../actions/recipeDetails';
  * 
  * @extends {Component}
  */
-class UpdateRecipeForm extends Component {
+export class UpdateRecipeForm extends Component {
 
   /**
    * Creates an instance of UpdateRecipeForm.
@@ -172,7 +172,10 @@ class UpdateRecipeForm extends Component {
       <div className="row" >
         <h4 className="top-margin-40">Edit Recipe</h4>
         <hr />
-        <form onSubmit={this.handleUpdateRecipe}>
+        <form
+          id="update"
+          onSubmit={this.handleUpdateRecipe}
+        >
           <div className="col s12 m4 l4 ">
             <div className="input-field col s12">
               <input

@@ -12,9 +12,15 @@ const config = {
     "logging": false
   },
   test: {
-    use_env_variable: 'ELEPHANT_TEST',
+    "username": process.env.DEV_DB_USERNAME,
+    "password": process.env.DEV_DB_PASSWORD,
+    "database": process.env.DEV_DB_NAME,
+    "host": process.env.DEV_DB_HOST,
     "dialect": 'postgres',
-    "logging": false,
+    "logging": false
+    // use_env_variable: 'ELEPHANT_TEST',
+    // "dialect": 'postgres',
+    // "logging": false,
   },
   production: {
     use_env_variable: 'ELEPHANT',

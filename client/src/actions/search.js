@@ -55,10 +55,12 @@ const search = (query) => {
         }));
       })
       .catch(error => {
-        dispatch(searchError({
-          error: { ...error.response },
-          searchedRecipes: []
-        }));
+        if (error) {
+          dispatch(searchError({
+            searchedRecipes: []
+          }));
+        }
+
       })
   }
 }

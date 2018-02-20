@@ -66,11 +66,12 @@ export const signupError = (errors) => {
  * @description A function to sigup a user
  * 
  * @param {object} userDetails
- * @param {object} callback
+ * @param {object} Materialize
+ * @param {object} history
  * 
  * @return {Object} action dispatch by the action creator
  */
-export const signup = (userDetails, callback) => {
+export const signup = (userDetails, Materialize, history) => {
   return dispatch => {
     dispatch(requestSignup({ isRequesting: true }));
     dispatch(signupAction({ user: {} }));
@@ -103,7 +104,8 @@ export const signup = (userDetails, callback) => {
           window.localStorage.setItem('userToken', token);
           dispatch(loggedIn({ loggedIn: true }));
           dispatch(signupAction(user));
-          callback(false);
+          Materialize.toast('Account created successfully', 5000, 'green');
+          history.push('/profile');
         }
       })
       .catch(error => {
@@ -115,7 +117,17 @@ export const signup = (userDetails, callback) => {
             message
           }
         }));
-        callback(true);
+        if (status === 400) {
+          message.map(err => {
+            return Materialize.toast(err.msg, 5000, 'red');
+          });
+        } else if (status === 401) {
+          return Materialize.toast(message, 5000, 'red');
+        } else if (status === 409) {
+          return Materialize.toast(message, 5000, 'red');
+        } else {
+          return Materialize.toast("Error Sigin up, please try again later", 5000, 'red');
+        }
       });
   }
 };

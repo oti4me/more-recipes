@@ -11,7 +11,7 @@ import Header from '../Header'
  * 
  * @extends {Component}
  */
-class UserProfilePage extends Component {
+export class UserProfilePage extends Component {
 
   /**
    * @description Creates an instance of UserProfilePage.

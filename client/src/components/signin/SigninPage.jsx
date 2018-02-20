@@ -10,7 +10,7 @@ import Header from '../Header.jsx'
  * 
  * @extends {React.Component}
  */
-class SigninPage extends React.Component {
+export class SigninPage extends React.Component {
 
   /**
    *@description Creates an instance of SigninPage.

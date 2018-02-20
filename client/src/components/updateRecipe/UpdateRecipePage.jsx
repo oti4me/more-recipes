@@ -10,7 +10,7 @@ import Header from '../Header'
  * 
  * @extends {Component}
  */
-class UpdateRecipePage extends Component {
+export class UpdateRecipePage extends Component {
 
   /**
    * @description Creates an instance of UpdateRecipePage.

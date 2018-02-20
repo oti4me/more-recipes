@@ -11,7 +11,7 @@ import { signOut } from '../actions/signinAction';
  * 
  * @extends {Component}
  */
-class Header extends Component {
+export class Header extends Component {
 
   /**
    * 
@@ -189,7 +189,7 @@ class Header extends Component {
             </li>
             <li className="divider" />
             <li>
-              <Link to="!#" onClick={this.handleSignOut} >
+              <Link to="!#" onClick={this.handleSignOut} id="signOut">
                 <i className="fa fa-sign-out" aria-hidden="true"> Logout</i>
               </Link>
             </li>

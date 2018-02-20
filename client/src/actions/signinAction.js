@@ -47,17 +47,18 @@ export const signinError = (error) => {
  * @description A function to signin a user
  * 
  * @param {object} user
- * @param {object} callback
+ * @param {object} Materialize
+ * @param {object} history
  * 
  * @return {Object} action dispatch by the action creator
  */
-export const signin = (user, callback) => {
+export const signin = (userInfo, Materialize, history) => {
   window.localStorage.removeItem('userToken');
   return dispatch => {
     dispatch(signinError(null));
     dispatch(userLogged({ loggedIn: false }));
     dispatch(userSignin({}));
-    const { email, password } = user;
+    const { email, password } = userInfo;
     return axios.post('/api/v1/users/signin', {
       email,
       password
@@ -68,28 +69,18 @@ export const signin = (user, callback) => {
           dispatch(userLogged({ loggedIn: true }));
           dispatch(userSignin(user));
           window.localStorage.setItem('userToken', token);
-          callback();
+          history.push('/profile');
         }
       }).catch(error => {
         const { response: { status, data: { message } } } = error;
-        if (error.response.status === 400) {
-          dispatch(signinError({
-            status,
-            message
-          }));
-          callback();
-        } else if (error.response.status === 401) {
-          dispatch(signinError({
-            status,
-            message
-          }));
-          callback();
+        if (status === 400) {
+          message.map(err => {
+            Materialize.toast(err.msg, 4000, 'red');
+          });
+        } else if (status === 401) {
+          Materialize.toast('Email or password incorrect', 4000, 'red');
         } else {
-          dispatch(signinError({
-            status: 500,
-            message: 'There seemed to be a problem signing you in, please try again later'
-          }));
-          callback();
+          Materialize.toast(error, 4000);
         }
       });
   }

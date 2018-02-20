@@ -40,7 +40,7 @@ export const getUpvotedError = (error) => {
  * 
  * @return {Object} action dispatch by the action creator
  */
-export const getMostUpvotedRecipes = (limit = 1) => {
+const getMostUpvotedRecipes = (limit = 1) => {
   return dispatch => {
     dispatch(getUpvotedError(null));
     dispatch(getUpvotedAction({}));
