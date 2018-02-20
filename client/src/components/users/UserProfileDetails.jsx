@@ -35,29 +35,29 @@ const UserProfileDetails = (props) => {
           </div>
           <div className="col s12 m5 l5 text-gray top-margin-50">
             <h4 className="bold " style={{ fontSize: "18px" }}>USER BIO</h4>
-            <p><span className="bold">Name:</span> {firstName} {lastName}</p>
-            <p><span className="bold">Email:</span> {email}</p>
-            <p><span className="bold">Phone:</span> {phone}</p>
+            <p><span className="bold name">Name:</span> {firstName} {lastName}</p>
+            <p><span className="bold email">Email:</span> {email}</p>
+            <p><span className="bold phone">Phone:</span> {phone}</p>
           </div>
           <div className="col s12 m4 l4">
             <div className="top-margin-50">
               <Link
                 to="/addrecipe"
-                className="waves-effect waves-light btn"
+                className="waves-effect waves-light btn add"
                 style={{ width: "200px", marginBottom: "5px" }}
               >
                 Add Recipe
               </Link>
               <Link
                 to="/myrecipes"
-                className="waves-effect waves-light btn"
+                className="waves-effect waves-light btn favourite"
                 style={{ width: "200px", marginBottom: "5px" }}
               >
                 My Recipes
               </Link>
               <Link
                 to="/favourites"
-                className="waves-effect waves-light btn"
+                className="waves-effect waves-light btn myrecipes"
                 style={{ width: "200px", marginBottom: "5px" }}
               >
                 Favourites

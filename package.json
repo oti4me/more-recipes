@@ -40,6 +40,7 @@
     "migration:dev": "sequelize db:migrate",
     "migrate:test": "NODE_ENV=test npm run migration:undo:test && npm run migration:test && npm run test:nyc",
     "migration:undo:test": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "nightwatch": "nightwatch",
     "start": "node ./dist/server/server.js",
     "prod:server": "babel -d ./dist/server ./server -s",
     "prod:client": "webpack --config webpack.prod.js",

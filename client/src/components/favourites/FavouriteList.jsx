@@ -221,6 +221,7 @@ export class FavouriteRecipesList extends Component {
           <div className="modal-footer">
             <Link
               to="!#"
+              id="remove-favourite"
               data-id={this.state.recipeId}
               onClick={this.handleRemoveFavourite}
               className="modal-action modal-close waves-effect waves-green btn-flat"

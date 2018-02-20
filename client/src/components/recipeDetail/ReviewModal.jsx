@@ -62,6 +62,7 @@ export class ReviewModal extends Component {
             <h5 style={{ float: 'left' }}>Users Review</h5>
             <a
               href="#reviewBox"
+              id="add-review"
               className="waves-effect waves-light btn modal-trigger"
               style={{ float: 'right' }}
             >

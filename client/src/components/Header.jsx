@@ -230,9 +230,7 @@ export class Header extends Component {
             </li>
             <li>
               <Link to="/signup">
-                <i className="fa fa-sign-in" aria-hidden="true">
-                  Sign Up
-                </i>
+                <i className="fa fa-user-plus"> Sign Up</i>
               </Link>
             </li>
           </ul>
@@ -253,9 +251,7 @@ export class Header extends Component {
             </li>
             <li>
               <Link to="/signup">
-                <i className="fa fa-sign-in" aria-hidden="true">
-                  Sign Up
-                </i>
+                <i className="fa fa-user-plus"> Sign Up</i>
               </Link>
             </li>
           </ul>

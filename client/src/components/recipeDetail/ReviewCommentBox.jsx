@@ -77,7 +77,7 @@ export class ReviewCommentBox extends React.Component {
   render() {
     return (
       <div id="reviewBox" className="modal">
-        <form>
+        <form id="form">
           <div className="modal-content">
             {this.props.loggedIn
               ? <h5 style={{ textAlign: 'center' }}>Add Comment</h5>
@@ -98,7 +98,7 @@ export class ReviewCommentBox extends React.Component {
           <div className="modal-footer">
             <a
               className="modal-trigger waves-effect waves-green btn modal-close"
-              id="#form"
+              id="commentBtn"
               onClick={this.submitComment}
               href="#reviews"
             >

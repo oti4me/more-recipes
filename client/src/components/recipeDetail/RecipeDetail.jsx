@@ -160,7 +160,10 @@ export class RecipeDetail extends Component {
                           borderRight: '1px solid #ccc'
                         }}
                       >
-                        <Link to="#reviews" className="modal-trigger">
+                        <Link
+                          to="#reviews"
+                          className="modal-trigger"
+                        >
                           <span
                             className="tooltipped "
                             data-position="bottom"
@@ -174,6 +177,7 @@ export class RecipeDetail extends Component {
                             {' '}
                             <i
                               className="material-icons"
+                              id="review"
                             >
                               rate_review
                           </i>
@@ -199,6 +203,7 @@ export class RecipeDetail extends Component {
                           >
                             {upVotes}{' '}
                             <i
+                              id="upvote"
                               data-id={id}
                               className="material-icons"
                             >
@@ -226,6 +231,7 @@ export class RecipeDetail extends Component {
                           >
                             {downVotes}{' '}
                             <i
+                              id="downvote"
                               data-id={id}
                               className="material-icons"
                             >
@@ -240,7 +246,10 @@ export class RecipeDetail extends Component {
                         className="col s3 m3 l3 colorTransparent"
                         onClick={this.handleAddFavourite}
                       >
-                        <Link to="#">
+                        <Link
+                          to="#"
+                          id="favourite"
+                        >
                           <span
                             className="tooltipped"
                             data-position="bottom"

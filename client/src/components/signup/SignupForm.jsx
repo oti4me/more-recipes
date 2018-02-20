@@ -93,19 +93,19 @@ export class SignupForm extends Component {
             <div className="input-field col s12 m6 l6">
               <i className="material-icons prefix">account_circle</i>
               <input
-                id="fname"
+                id="#firstName"
                 name="firstName"
                 value={this.state.firstName}
                 type="text"
                 className="validate"
                 onChange={this.handleChange}
               />
-              <label htmlFor="fname">First Name</label>
+              <label htmlFor="#firstName">First Name</label>
             </div>
             <div className="input-field col s12 m6 l6">
               <i className="material-icons prefix">account_circle</i>
               <input
-                id="lname"
+                id="lastName"
                 name="lastName"
                 value={this.state.lastName}
                 type="text"

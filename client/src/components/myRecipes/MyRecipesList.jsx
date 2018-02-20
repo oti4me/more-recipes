@@ -236,6 +236,7 @@ export class MyRecipesList extends React.Component {
           <div className="modal-footer">
             <Link
               to="!#"
+              id="deleteBtn"
               data-id={this.state.recipeId}
               onClick={this.handleDelete}
               className="modal-action modal-close waves-effect waves-green btn-flat"

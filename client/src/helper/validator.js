@@ -46,7 +46,9 @@ const vailidator = {
     if (userDetails.password === '') {
       error.push({ message: 'Password can\'t be empty!!' });
     } else if (!this.validatePassword(userDetails.password)) {
-      error.push({ message: 'Password can\'t be less than 8 characters, must contain Upper case, a number and a special character!!' });
+      error.push({
+        message: 'Password can\'t be less than 8 characters, must contain Upper case, a number and a special character!!'
+      });
     } else if (userDetails.password !== userDetails.confirmPassword) {
       error.push({ message: 'Passwords didnt match!!' });
     }
