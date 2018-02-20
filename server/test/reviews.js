@@ -93,9 +93,9 @@ describe('Reviews Controller', () => {
           .expect(200)
           .end((err, res) => {
             if (err) return done(err);
-            expect(res.body.reviews[0]).to.have.property('id');
-            expect(res.body.reviews[0]).to.have.property('recipeId');
-            expect(res.body.reviews[0]).to.have.property('userId');
+            expect(res.body.reviews[0].id).to.equal(1);
+            expect(res.body.reviews[0].recipeId).to.equal(1);
+            expect(res.body.reviews[0].userId).to.equal(1);
             done();
           });
       });
@@ -111,7 +111,6 @@ describe('Reviews Controller', () => {
               done();
             });
         });
-
     });
   });
 });

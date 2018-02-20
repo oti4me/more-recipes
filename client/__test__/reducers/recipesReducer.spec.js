@@ -298,14 +298,6 @@ describe('Recipe reducer test', () => {
     });
   });
 
-  // it('should flag favourites recipes error', () => {
-  //   const returnedState = recipeReducer({ ...recipeMock.recipe }, removeFavouriteRecipe);
-  //   console.log(returnedState);
-  //   expect(returnedState).toEqual({
-  //     id: 1
-  //   });
-  // });
-
   it('should flag favourites recipes error', () => {
     const returnedState = recipeReducer({}, isFavouriteRecipes);
     expect(returnedState).toEqual({

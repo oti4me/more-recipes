@@ -46,7 +46,7 @@ export const signinError = (error) => {
 /**
  * @description A function to signin a user
  * 
- * @param {object} user
+ * @param {object} userInfo
  * @param {object} Materialize
  * @param {object} history
  * 

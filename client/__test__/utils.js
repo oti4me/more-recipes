@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
-import store from '../src/helper/createStore';
+import store from '../src/helper/store';
 
 export const mountWrapper = (Component, store, props) => mount(
   <Provider store={store} >

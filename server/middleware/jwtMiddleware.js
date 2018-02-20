@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt-nodejs';
 
 dotenv.config();
 const secretKey = process.env.JWT_SECRET_KEY;
-const Authenticate = {
+const jwtMiddleware = {
 
   verifyToken(req, res, next) {
     const token = req.headers.authorization || req.headers['x-access-token'];
@@ -46,4 +46,4 @@ const Authenticate = {
     return false;
   }
 }
-export default Authenticate;
+export default jwtMiddleware;

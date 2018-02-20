@@ -135,7 +135,7 @@ class Recipes {
 
         if (recipe === null) {
           return response.status(404).json({
-            message: `No recipe with ID ${recipeId}`
+            message: `No recipe with id ${recipeId}`
           });
         }
 
@@ -175,13 +175,13 @@ class Recipes {
 
     if (!(validate.validateId(id) && validate.validateId(userId))) {
       return response.status(400).json({
-        message: `User ID must be a valid integer`
+        message: `User id must be a valid integer`
       });
     }
 
     if (userId !== id) {
       return response.status(401).json({
-        message: `User ID supplied is not authenticated`
+        message: `User id supplied is not authenticated`
       });
     }
 
@@ -342,8 +342,8 @@ class Recipes {
                 });
               });
           } else {
-            return response.status(401).json({
-              message: 'You are not authorized to delete this recipe'
+            return response.status(403).json({
+              message: 'You don\'t have permision to delete this recipe'
             });
           }
         } else {
@@ -375,7 +375,7 @@ class Recipes {
 
     if (!(validate.validateId(id) && validate.validateId(userId))) {
       response.status(500).json({
-        message: 'user ID and recipe ID must be a valid integer'
+        message: 'user id and recipe id must be a valid integer'
       });
     }
 
@@ -400,8 +400,8 @@ class Recipes {
                 });
               });
           } else {
-            return response.status(401).json({
-              message: 'Your are not authorized to perform this operation'
+            return response.status(403).json({
+              message: 'Your have permision to perform this operation'
             });
           }
         }

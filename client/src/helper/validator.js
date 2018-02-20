@@ -21,14 +21,14 @@ const vailidator = {
     const error = [];
     if (userDetails.firstName === '') {
       error.push({ message: 'First Name can\'t be empty!!' });
-    } else if (userDetails.firstName && userDetails.firstName.length < 5) {
-      error.push({ message: 'First Name can\'t be less than 2 characters!!' });
+    } else if (userDetails.firstName && userDetails.firstName.length < 3) {
+      error.push({ message: 'First Name can\'t be less than 3 characters!!' });
     }
 
     if (userDetails.lastName === '') {
       error.push({ message: 'Last Name can\'t be empty!!' });
-    } else if (userDetails.lastName && userDetails.lastName.length < 5) {
-      error.push({ message: 'Last Name can\'t be less than 2 characters!!' });
+    } else if (userDetails.lastName && userDetails.lastName.length < 3) {
+      error.push({ message: 'Last Name can\'t be less than 3 characters!!' });
     }
 
     if (userDetails.email === '') {

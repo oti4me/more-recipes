@@ -60,8 +60,8 @@ describe('Favourites Controller', () => {
           .expect(200)
           .end((err, res) => {
             if (err) return done(err);
-            expect(res.body.favouriteRecipes[0]).to.have.property('id');
-            expect(res.body.favouriteRecipes[0]).to.have.property('title');
+            expect(res.body.favouriteRecipes[0].id).to.equal(2);
+            expect(res.body.favouriteRecipes[0].title).to.equal('Jollof Rice');
             done();
           });
       });
@@ -72,9 +72,9 @@ describe('Favourites Controller', () => {
           .expect(200)
           .end((err, res) => {
             if (err) return done(err);
-            expect(res.body.favourites).to.have.property('id');
-            expect(res.body.favourites).to.have.property('userId');
-            expect(res.body.favourites).to.have.property('recipeId');
+            expect(res.body.favourites.id).to.equal(1);
+            expect(res.body.favourites.userId).to.equal(1);
+            expect(res.body.favourites.recipeId).to.equal(2);
             done();
           });
       });

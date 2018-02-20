@@ -14,8 +14,8 @@
       "/client/src/index",
       "/client/src/actions/recipes",
       "/client/src/actions/index",
-      "/client/src/helper/AuthComponent",
-      "/client/src/helper/NotAuthComponent",
+      "/client/src/helper/notAuth",
+      "/client/src/helper/auth",
       "/client/src/helper/updateUserState"
     ],
     "moduleNameMapper": {

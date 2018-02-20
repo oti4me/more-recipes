@@ -11,8 +11,8 @@ import MyRecipesPage from './components/myRecipes/MyRecipesPage';
 import FavouritesPage from './components/favourites/FavouritePage';
 import RecipeDetailPage from './components/recipeDetail/RecipeDetailPage';
 import NotFound from './components/NotFound';
-import AuthComponent from './helper/AuthComponent';
-import NotAuth from './helper/NotAuthComponent';
+import auth from './helper/auth';
+import notAuth from './helper/notAuth';
 
 
 const Routes = () => (
@@ -20,17 +20,17 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/home" component={Home} />
-      <Route path="/signin" component={NotAuth(SigninPage)} />
-      <Route path="/signup" component={NotAuth(SignupPage)} />
-      <Route path="/addrecipe" component={AuthComponent(AddRecipePage)} />
+      <Route path="/signin" component={notAuth(SigninPage)} />
+      <Route path="/signup" component={notAuth(SignupPage)} />
+      <Route path="/addrecipe" component={auth(AddRecipePage)} />
       <Route
         path="/updaterecipe/:id"
-        component={AuthComponent(UpdateRecipePage)}
+        component={auth(UpdateRecipePage)}
       />
-      <Route path="/profile" component={AuthComponent(UserProfilePage)} />
-      <Route path="/myrecipes" component={AuthComponent(MyRecipesPage)} />
-      <Route path="/recipe/:id" component={AuthComponent(RecipeDetailPage)} />
-      <Route path="/favourites" component={AuthComponent(FavouritesPage)} />
+      <Route path="/profile" component={auth(UserProfilePage)} />
+      <Route path="/myrecipes" component={auth(MyRecipesPage)} />
+      <Route path="/recipe/:id" component={auth(RecipeDetailPage)} />
+      <Route path="/favourites" component={auth(FavouritesPage)} />
       <Route path="/not-found" component={NotFound} />
       <Redirect to="/" />
     </Switch>

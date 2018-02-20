@@ -30,9 +30,4 @@ describe('User profile details suit', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // it('Should render component without exploding', () => {
-  //   const wrapper = shallow(<ConnectedUpdateRecipePage store={store} {...props} />);
-  //   expect(wrapper.length).toBe(1);
-  // });
-
 });

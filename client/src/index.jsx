@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import updateUserState from './helper/updateUserState';
 import Routes from './Routes';
-import store from './helper/createStore';
+import store from './helper/store';
 import '../public/css/style.scss';
 
 // update current user to true if logged in or false if user is not logged in

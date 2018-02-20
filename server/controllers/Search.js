@@ -1,5 +1,4 @@
 "use strict"
-// import validate from '../middleware/validate';
 import db from '../models';
 
 /**

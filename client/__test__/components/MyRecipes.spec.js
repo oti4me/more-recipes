@@ -1,6 +1,10 @@
 import React from 'react';
-import ConnectedMyRecipesPage, { MyRecipesPage } from '../../src/components/myRecipes/MyRecipesPage';
-import ConnectedMyRecipesList, { MyRecipesList } from '../../src/components/myRecipes/MyRecipesList';
+import ConnectedMyRecipesPage, {
+  MyRecipesPage
+} from '../../src/components/myRecipes/MyRecipesPage';
+import ConnectedMyRecipesList, {
+  MyRecipesList
+} from '../../src/components/myRecipes/MyRecipesList';
 
 const state = {
   auth: {

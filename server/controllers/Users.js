@@ -82,9 +82,9 @@ class Users {
 							} = createdUser;
 
 							const user = {
-								firstName: firstName.trim(),
-								lastName: lastName.trim(),
-								email: email.trim(),
+								firstName: validate.capitalizeFirst(firstName.trim()),
+								lastName: validate.capitalizeFirst(lastName.trim()),
+								email: email.trim().toLowerCase(),
 								phone: phone.trim(),
 								userId: id,
 								imageUrl: ''
@@ -133,7 +133,9 @@ class Users {
 			});
 		} else {
 			const { email, password } = request.body;
-			db.Users.findOne({ where: { email } })
+			const LowerCaseEmail = email.toLowerCase();
+			console.log(LowerCaseEmail);
+			db.Users.findOne({ where: { email: LowerCaseEmail } })
 				.then((user) => {
 					if (user && password
 						&& Auth.comparePassword(password, user.password)
