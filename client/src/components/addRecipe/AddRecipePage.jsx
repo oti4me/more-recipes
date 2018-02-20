@@ -10,7 +10,7 @@ import Header from '../Header'
  * 
  * @extends {React.Component}
  */
-class AddRecipePage extends React.Component {
+export class AddRecipePage extends React.Component {
 
   /**
    * @description Creates an instance of AddRecipePage.

@@ -14,7 +14,7 @@ import Pagination from '../Pagination'
  * 
  * @extends {Component}
  */
-class MyRecipesPage extends Component {
+export class MyRecipesPage extends Component {
 
   /**
    * @description Creates an instance of MyRecipesPage.

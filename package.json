@@ -5,16 +5,36 @@
   "nyc": {
     "exclude": ""
   },
+  "jest": {
+    "setupFiles": [
+      "./client/__test__/jestSetup.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/client/public",
+      "/client/src/index",
+      "/client/src/actions/recipes",
+      "/client/src/actions/index",
+      "/client/src/helper/AuthComponent",
+      "/client/src/helper/NotAuthComponent",
+      "/client/src/helper/updateUserState"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/__test__/mockData/fileMock.js",
+      "\\.(css|less|sass)$": "<rootDir>/client/__test__/mockData/styleMock.js"
+    }
+  },
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.babel.js",
     "start:dev": "NODE_ENV=development nodemon  ./server/server --watch ./server --exec babel-node",
     "test": "npm run migrate:test",
     "test:dev": "npm run migrate:test",
-    "jest": "jest --coverage --collectCoverageFrom=client/**/**/*.{js,jsx}",
+    "start:test": "npm run migrate && nightwatch",
+    "jest": "jest --coverage -u --collectCoverageFrom=client/**/**/*.{js,jsx}",
     "webpack": "webpack -p",
     "test-dev": "cross-env NODE_ENV=test mocha ./server/test/* --compilers js:babel-register",
     "test:nyc": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 500000 --compilers js:babel-core/register server/test/*",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "migration:test": "NODE_ENV=test sequelize db:migrate",
     "migration": "NODE_ENV=production sequelize db:migrate",
     "migration:dev": "sequelize db:migrate",
@@ -102,6 +122,9 @@
     "babel-jest": "^22.1.0",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -109,9 +132,13 @@
     "eslint-plugin-react": "^7.5.1",
     "faker": "^4.1.0",
     "favicons-webpack-plugin": "0.0.7",
+    "fetch-mock": "^6.0.0",
     "jest": "^22.1.4",
     "jsdoc": "^3.5.5",
+    "moxios": "^0.4.0",
     "nodemon": "^1.12.1",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.5.1",
+    "selenium-standalone": "^6.12.0"
   }
 }

@@ -18,7 +18,7 @@ import TopRecipeList from './TopRecipeList';
  * 
  * @extends {Component}
 */
-class RecipeDetail extends Component {
+export class RecipeDetail extends Component {
 
   /**
    * @description Creates an instance of RecipeDetail.

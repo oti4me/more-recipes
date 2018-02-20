@@ -12,7 +12,7 @@ import getFavouritedRecipes from '../../actions/getMostFavouritedRecipes';
  * 
  * @extends {Component}
  */
-class MostFavouritedRecipes extends Component {
+export class MostFavouritedRecipes extends Component {
   /**
    * @description Creates an instance of MostVotedRecipes.
    * 

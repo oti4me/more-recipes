@@ -1,0 +1,732 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign-Up Component Suite should render SignupPage correctly without exploding 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "blank",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <Connect(SignupPage)
+        history={
+          Object {
+            "push": [Function],
+          }
+        }
+      >
+        <SignupPage
+          dispatch={[Function]}
+          history={
+            Object {
+              "push": [Function],
+            }
+          }
+          state={
+            Object {
+              "auth": Object {
+                "loggedIn": true,
+                "user": Object {
+                  "userId": 3,
+                },
+              },
+              "getFavourites": [MockFunction],
+              "recipes": Object {},
+            }
+          }
+        >
+          <div
+            className="main"
+          >
+            <Connect(Header)
+              dispatch={[Function]}
+              history={
+                Object {
+                  "push": [Function],
+                }
+              }
+              state={
+                Object {
+                  "auth": Object {
+                    "loggedIn": true,
+                    "user": Object {
+                      "userId": 3,
+                    },
+                  },
+                  "getFavourites": [MockFunction],
+                  "recipes": Object {},
+                }
+              }
+            >
+              <Header
+                dispatch={[Function]}
+                history={
+                  Object {
+                    "push": [Function],
+                  }
+                }
+                loggedIn={true}
+                signOut={[Function]}
+                state={
+                  Object {
+                    "auth": Object {
+                      "loggedIn": true,
+                      "user": Object {
+                        "userId": 3,
+                      },
+                    },
+                    "getFavourites": [MockFunction],
+                    "recipes": Object {},
+                  }
+                }
+                user={
+                  Object {
+                    "userId": 3,
+                  }
+                }
+              >
+                <div>
+                  <nav>
+                    <div
+                      className="nav-wrapper color-green header1"
+                    >
+                      <Link
+                        className="brand-logo"
+                        replace={false}
+                        style={
+                          Object {
+                            "fontSize": "22px",
+                          }
+                        }
+                        to="/home"
+                      >
+                        <a
+                          className="brand-logo"
+                          href="/home"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "fontSize": "22px",
+                            }
+                          }
+                        >
+                          More-Recipes
+                        </a>
+                      </Link>
+                      <Link
+                        className="button-collapse"
+                        data-activates="mobile2"
+                        replace={false}
+                        to="!#"
+                      >
+                        <a
+                          className="button-collapse"
+                          data-activates="mobile2"
+                          href="!#"
+                          onClick={[Function]}
+                        >
+                          <i
+                            className="material-icons"
+                          >
+                            menu
+                          </i>
+                        </a>
+                      </Link>
+                      <ul
+                        className="right hide-on-med-and-down"
+                        id="nav-mobile"
+                        style={
+                          Object {
+                            "width": "330px",
+                          }
+                        }
+                      >
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/home"
+                          >
+                            <a
+                              href="/home"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-home"
+                              >
+                                 Home
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            className="dropdown-button"
+                            data-activates="dropdown2"
+                            replace={false}
+                            to="!#"
+                          >
+                            <a
+                              className="dropdown-button"
+                              data-activates="dropdown2"
+                              href="!#"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-user-circle-o"
+                              >
+                                 
+                                User Account
+                                 
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-angle-down"
+                                />
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            onClick={[Function]}
+                            replace={false}
+                            to="!#"
+                          >
+                            <a
+                              href="!#"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-sign-out"
+                              >
+                                 Logout
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <ul
+                          className="dropdown-content"
+                          id="dropdown2"
+                          style={
+                            Object {
+                              "marginTop": "50px",
+                            }
+                          }
+                        >
+                          <li>
+                            <Link
+                              replace={false}
+                              to="/profile"
+                            >
+                              <a
+                                href="/profile"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-user-circle"
+                                >
+                                   
+                                   Profile
+                                </i>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="divider"
+                          />
+                          <li>
+                            <Link
+                              replace={false}
+                              to="/addrecipe"
+                            >
+                              <a
+                                href="/addrecipe"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-plus-square"
+                                >
+                                   
+                                   Add Recipe
+                                </i>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="divider"
+                          />
+                          <li>
+                            <Link
+                              replace={false}
+                              to="/myrecipes"
+                            >
+                              <a
+                                href="/myrecipes"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-cutlery"
+                                >
+                                   
+                                   My Recipes
+                                </i>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="divider"
+                          />
+                          <li>
+                            <Link
+                              replace={false}
+                              to="/favourites"
+                            >
+                              <a
+                                href="/favourites"
+                                onClick={[Function]}
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-heart"
+                                >
+                                   
+                                   Favourites
+                                </i>
+                              </a>
+                            </Link>
+                          </li>
+                        </ul>
+                      </ul>
+                      <ul
+                        className="side-nav"
+                        id="mobile2"
+                      >
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/home"
+                          >
+                            <a
+                              href="/home"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-home"
+                              >
+                                Home
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/profile"
+                          >
+                            <a
+                              href="/profile"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-user-circle"
+                              >
+                                Profile
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/addrecipe"
+                          >
+                            <a
+                              href="/addrecipe"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-plus-square"
+                              >
+                                Add Recipe
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/myrecipes"
+                          >
+                            <a
+                              href="/myrecipes"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-cutlery"
+                              >
+                                My Recipes
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                        <li>
+                          <Link
+                            replace={false}
+                            to="/favourites"
+                          >
+                            <a
+                              href="/favourites"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-heart"
+                              >
+                                Favourites
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                        <li>
+                          <Link
+                            id="signOut"
+                            onClick={[Function]}
+                            replace={false}
+                            to="!#"
+                          >
+                            <a
+                              href="!#"
+                              id="signOut"
+                              onClick={[Function]}
+                            >
+                              <i
+                                aria-hidden="true"
+                                className="fa fa-sign-out"
+                              >
+                                 Logout
+                              </i>
+                            </a>
+                          </Link>
+                        </li>
+                        <li
+                          className="divider"
+                        />
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </Header>
+            </Connect(Header)>
+            <div
+              className="container cont"
+            >
+              <div
+                className="row"
+              >
+                <div
+                  className="col s12  s2 m8 l8 offset-m2 offset-l2"
+                >
+                  <h2
+                    style={
+                      Object {
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Sign Up
+                  </h2>
+                  <Connect(SignupForm)
+                    history={
+                      Object {
+                        "push": [Function],
+                      }
+                    }
+                  >
+                    <SignupForm
+                      error={Object {}}
+                      history={
+                        Object {
+                          "push": [Function],
+                        }
+                      }
+                      signup={[Function]}
+                    >
+                      <div
+                        className="row"
+                      >
+                        <form
+                          className="col s12 z-depth-2"
+                          id="signup"
+                          onSubmit={[Function]}
+                          style={
+                            Object {
+                              "padding": "50px",
+                            }
+                          }
+                        >
+                          <div
+                            className="row"
+                          >
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                account_circle
+                              </i>
+                              <input
+                                className="validate"
+                                id="fname"
+                                name="firstName"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                              />
+                              <label
+                                htmlFor="fname"
+                              >
+                                First Name
+                              </label>
+                            </div>
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                account_circle
+                              </i>
+                              <input
+                                className="validate"
+                                id="lname"
+                                name="lastName"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                              />
+                              <label
+                                htmlFor="lname"
+                              >
+                                Last Name
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="row"
+                          >
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                email
+                              </i>
+                              <input
+                                className="validate"
+                                id="email"
+                                name="email"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                              />
+                              <label
+                                htmlFor="email"
+                              >
+                                Email
+                              </label>
+                            </div>
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                contact_phone
+                              </i>
+                              <input
+                                className="validate"
+                                id="phone"
+                                name="phone"
+                                onChange={[Function]}
+                                type="text"
+                                value=""
+                              />
+                              <label
+                                htmlFor="phone"
+                              >
+                                Phone
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="row"
+                          >
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                vpn_key
+                              </i>
+                              <input
+                                className="validate"
+                                id="password"
+                                name="password"
+                                onChange={[Function]}
+                                type="password"
+                                value=""
+                              />
+                              <label
+                                htmlFor="password"
+                              >
+                                Password
+                              </label>
+                            </div>
+                            <div
+                              className="input-field col s12 m6 l6"
+                            >
+                              <i
+                                className="material-icons prefix"
+                              >
+                                vpn_key
+                              </i>
+                              <input
+                                className="validate"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                onChange={[Function]}
+                                type="password"
+                                value=""
+                              />
+                              <label
+                                htmlFor="confirmPassword"
+                              >
+                                Confirm Password
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="row"
+                          >
+                            <Link
+                              className="waves-effect waves-light btn"
+                              id="signupBtn"
+                              onClick={[Function]}
+                              replace={false}
+                              role="button"
+                              tabIndex="0"
+                              to="!#"
+                            >
+                              <a
+                                className="waves-effect waves-light btn"
+                                href="!#"
+                                id="signupBtn"
+                                onClick={[Function]}
+                                role="button"
+                                tabIndex="0"
+                              >
+                                Sign Up
+                              </a>
+                            </Link>
+                          </div>
+                          <div
+                            className="row"
+                          >
+                            <p
+                              className=""
+                            >
+                              Already have an account?
+                               
+                              <Link
+                                replace={false}
+                                to="/signin"
+                              >
+                                <a
+                                  href="/signin"
+                                  onClick={[Function]}
+                                >
+                                   Sign In
+                                </a>
+                              </Link>
+                            </p>
+                          </div>
+                        </form>
+                      </div>
+                    </SignupForm>
+                  </Connect(SignupForm)>
+                </div>
+              </div>
+            </div>
+            <Footer>
+              <footer
+                className="foot"
+              >
+                <p
+                  className="foo"
+                >
+                  Copyright © 2017, More Recipes, All rights reserved
+                </p>
+              </footer>
+            </Footer>
+          </div>
+        </SignupPage>
+      </Connect(SignupPage)>
+    </Router>
+  </BrowserRouter>
+</Provider>
+`;

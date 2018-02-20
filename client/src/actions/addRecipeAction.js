@@ -54,13 +54,12 @@ const addRecipeAction = (recipe, Materialize, history) => {
           ingredients,
           imageUrl: url
         }
-        axios.defaults.headers.common.authorization = window.localStorage.getItem('userToken');
-        return axios.post('/api/v1/recipes', recipeDetails)
+        return axios.post('/api/v1/recipes', recipeDetails, header())
           .then(response => {
             if (response) {
               dispatch(requestAddRecipe({ isRequesting: false }));
               const { data: { recipe, message } } = response;
-              dispatch(addRecipeAction({
+              dispatch(addRecipe({
                 recipe,
                 message
               }));

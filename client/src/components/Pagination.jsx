@@ -12,7 +12,7 @@ import { getFavourites } from '../actions/favouritesAction';
  * 
  * @extends {Component}
  */
-class Pagination extends Component {
+export class Pagination extends Component {
 
   /**
    * @description Creates an instance of Pagination.

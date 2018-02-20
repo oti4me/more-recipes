@@ -12,7 +12,7 @@ import Header from '../Header';
  * 
  * @extends {Component}
  */
-class SignupPage extends Component {
+export class SignupPage extends Component {
 
   /**
    * Creates an instance of SignupPage.

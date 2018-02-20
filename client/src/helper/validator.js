@@ -60,7 +60,7 @@ const vailidator = {
       error.push({ message: 'Email can\'t be empty!!' });
     }
     if (userDetails.password === '') {
-      error.push({ message: 'Phone number can\'t be empty!!' });
+      error.push({ message: 'Passwords can\'t be empty!!' });
     }
     return error;
   },

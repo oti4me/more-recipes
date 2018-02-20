@@ -13,7 +13,7 @@ import deleteRecipe from '../../actions/deleteRecipe';
  * 
  * @extends {React.Component}
  */
-class MyRecipesList extends React.Component {
+export class MyRecipesList extends React.Component {
 
   /**
    * @description Creates an instance of MyRecipesList.

@@ -13,7 +13,7 @@ import { addFavourite, checkFavourite } from '../../actions/favouritesAction';
  * 
  * @extends {Component}
  */
-class RecipeList extends Component {
+export class RecipeList extends Component {
   /**
    * @description Creates an instance of RecipeList.
    * 

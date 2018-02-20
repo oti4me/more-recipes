@@ -15,7 +15,7 @@ import sampleImage from '../../../public/images/no-preview-available.png';
  * 
  * @extends {Component}
  */
-class AddRecipeForm extends Component {
+export class AddRecipeForm extends Component {
 
   /**
    * @description Creates an instance of AddRecipeForm.
@@ -178,6 +178,7 @@ class AddRecipeForm extends Component {
           <div className="input-field col s12">
             <Link
               to="!#"
+              id="formBtn"
               className="waves-effect waves-light btn"
               style={{ marginRight: '15px' }}
               onClick={this.handleAddRecipe}

@@ -10,7 +10,7 @@ import moment from 'moment';
  * 
  * @extends {React.Component}
  */
-class ReviewsList extends React.Component {
+export class ReviewsList extends React.Component {
 
   /**
    * @description Creates an instance of ReviewsList.

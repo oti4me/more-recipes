@@ -17,7 +17,7 @@ import {
  * 
  * @extends {Component}
 */
-class FavouriteRecipesList extends Component {
+export class FavouriteRecipesList extends Component {
 
   /**
    * @description Creates an instance of MyRecipesList.
@@ -234,7 +234,7 @@ class FavouriteRecipesList extends Component {
               }}
               className="modal-action modal-close waves-effect waves-green btn-flat"
             >
-              Cancil
+              Cancel
             </Link>
           </div>
         </div>

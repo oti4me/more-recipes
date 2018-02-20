@@ -11,7 +11,7 @@ import PropTypes, { number } from 'prop-types';
  * 
  * @extends {Component}
  */
-class SearchRecipe extends Component {
+export class SearchRecipe extends Component {
   /**
    * @description Creates an instance of Search.
    * 

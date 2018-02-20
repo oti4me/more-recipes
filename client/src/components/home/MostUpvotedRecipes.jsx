@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import shortId from 'shortid';
 import PropTypes, { number } from 'prop-types';
-import getUpvotedRecipes from '../../actions/getMostVotedRecipes';
+import getMostUpvotedRecipes from '../../actions/getMostVotedRecipes';
 
 /**
  * 
@@ -12,7 +12,7 @@ import getUpvotedRecipes from '../../actions/getMostVotedRecipes';
  * 
  * @extends {Component}
  */
-class MostVotedRecipes extends Component {
+export class MostVotedRecipes extends Component {
   /**
    * @description Creates an instance of MostVotedRecipes.
    * 
@@ -35,7 +35,7 @@ class MostVotedRecipes extends Component {
    * @memberof MostVotedRecipes
    */
   componentDidMount() {
-    this.props.getUpvotedRecipes()
+    this.props.getMostUpvotedRecipes()
       .then(() => {
         this.setState({
           recipes: this.props.recipes
@@ -219,7 +219,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getUpvotedRecipes,
+    getMostUpvotedRecipes,
   }, dispatch);
 }
 

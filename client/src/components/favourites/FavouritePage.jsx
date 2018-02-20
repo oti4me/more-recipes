@@ -14,7 +14,7 @@ import Header from '../Header';
  * 
  * @extends {React.Component}
  */
-class FavouritesPage extends Component {
+export class FavouritesPage extends Component {
 
   /**
    * @description Creates an instance of FavouritesPage.
@@ -25,21 +25,6 @@ class FavouritesPage extends Component {
    */
   constructor(props) {
     super(props);
-    this.handlePageClick = this.handlePageClick.bind(this);
-  }
-
-  /**
-   * @description A method that allows a user to create an app in the application
-   * 
-   * @param {object} page
-   * 
-   * @returns {undefined} No returned value
-   * 
-   * @memberof FavouritesPage
-  */
-  handlePageClick(page) {
-    let selected = ++page.selected;
-    this.props.getFavourites(selected);
   }
 
   /**

@@ -11,7 +11,7 @@ import { getReviews } from '../../actions/getReviews';
  * 
  * @extends {React.Component}
  */
-class ReviewModal extends Component {
+export class ReviewModal extends Component {
 
   /**
    * @description Creates an instance of ReviewModal.

@@ -1,0 +1,7485 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecipeDetail> should render connected component correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(RecipeDetail)
+    addFavourite={[MockFunction]}
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={[MockFunction]}
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={[MockFunction]}
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [Function],
+      "addReview": [MockFunction],
+      "checkFavourite": [Function],
+      "downVoteRecipe": [Function],
+      "downVotes": undefined,
+      "errors": undefined,
+      "favourites": undefined,
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [Function],
+      "isFavourite": undefined,
+      "match": Object {
+        "params": Object {},
+      },
+      "recipe": undefined,
+      "recipeDetails": [Function],
+      "reviews": undefined,
+      "state": Object {
+        "auth": Object {
+          "user": Object {},
+        },
+        "recipes": Object {},
+      },
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upVotes": undefined,
+      "upvoteRecipe": [Function],
+      "user": Object {},
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [Function],
+        "addReview": [MockFunction],
+        "checkFavourite": [Function],
+        "downVoteRecipe": [Function],
+        "downVotes": undefined,
+        "errors": undefined,
+        "favourites": undefined,
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [Function],
+        "isFavourite": undefined,
+        "match": Object {
+          "params": Object {},
+        },
+        "recipe": undefined,
+        "recipeDetails": [Function],
+        "reviews": undefined,
+        "state": Object {
+          "auth": Object {
+            "user": Object {},
+          },
+          "recipes": Object {},
+        },
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upVotes": undefined,
+        "upvoteRecipe": [Function],
+        "user": Object {},
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<RecipeDetail> should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RecipeDetail
+    addFavourite={[MockFunction]}
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={[MockFunction]}
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={[MockFunction]}
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <MDSpinner
+        color1="rgb(66, 165, 245)"
+        color2="rgb(239, 83, 80)"
+        color3="rgb(253, 216, 53)"
+        color4="rgb(76, 175, 80)"
+        duration={1333}
+        size={28}
+      />,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "color1": "rgb(66, 165, 245)",
+        "color2": "rgb(239, 83, 80)",
+        "color3": "rgb(253, 216, 53)",
+        "color4": "rgb(76, 175, 80)",
+        "duration": 1333,
+        "size": 28,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <MDSpinner
+          color1="rgb(66, 165, 245)"
+          color2="rgb(239, 83, 80)"
+          color3="rgb(253, 216, 53)"
+          color4="rgb(76, 175, 80)"
+          duration={1333}
+          size={28}
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "color1": "rgb(66, 165, 245)",
+          "color2": "rgb(239, 83, 80)",
+          "color3": "rgb(253, 216, 53)",
+          "color4": "rgb(76, 175, 80)",
+          "duration": 1333,
+          "size": 28,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<RecipeDetailPage> should render connected component correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(RecipeDetailPage)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [MockFunction],
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "dispatch": [Function],
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      },
+      "match": Object {
+        "params": Object {},
+      },
+      "recipe": undefined,
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ],
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [MockFunction],
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "dispatch": [Function],
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+          ],
+        },
+        "match": Object {
+          "params": Object {},
+        },
+        "recipe": undefined,
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": Array [
+          Object {
+            "User": Object {
+              "firstName": "Henry",
+              "lastNamr": "Otighe",
+            },
+            "comment": "this is a review comment",
+            "recipeId": 1,
+            "userId": 1,
+          },
+        ],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<RecipeDetailPage> should render correctly wihtout exploding 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RecipeDetailPage
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Connect(Header)
+          addFavourite={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "recipeId": NaN,
+                    "userId": 1,
+                  },
+                  Object {
+                    "toast": [MockFunction],
+                  },
+                ],
+              ],
+            }
+          }
+          addReview={[MockFunction]}
+          checkFavourite={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+              ],
+            }
+          }
+          downVoteRecipe={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  NaN,
+                ],
+              ],
+            }
+          }
+          getMostUpvotedRecipes={[MockFunction]}
+          getRecipe={[MockFunction]}
+          getReviews={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+              ],
+            }
+          }
+          match={
+            Object {
+              "params": Object {},
+            }
+          }
+          recipeDetails={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+              ],
+            }
+          }
+          reviews={
+            Array [
+              Object {
+                "User": Object {
+                  "firstName": "Henry",
+                  "lastNamr": "Otighe",
+                },
+                "comment": "this is a review comment",
+                "recipeId": 1,
+                "userId": 1,
+              },
+            ]
+          }
+          upvoteRecipe={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  NaN,
+                ],
+              ],
+            }
+          }
+          user={
+            Object {
+              "userId": 1,
+            }
+          }
+        />,
+        <div
+          className="container cont top-margin-50"
+          style={
+            Object {
+              "width": "70%",
+            }
+          }
+        >
+          <div
+            className="row"
+          >
+            <Connect(RecipeDetail)
+              addFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "recipeId": NaN,
+                        "userId": 1,
+                      },
+                      Object {
+                        "toast": [MockFunction],
+                      },
+                    ],
+                  ],
+                }
+              }
+              addReview={[MockFunction]}
+              checkFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              downVoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              getMostUpvotedRecipes={[MockFunction]}
+              getRecipe={[MockFunction]}
+              getReviews={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              match={
+                Object {
+                  "params": Object {},
+                }
+              }
+              recipeDetails={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              reviews={
+                Array [
+                  Object {
+                    "User": Object {
+                      "firstName": "Henry",
+                      "lastNamr": "Otighe",
+                    },
+                    "comment": "this is a review comment",
+                    "recipeId": 1,
+                    "userId": 1,
+                  },
+                ]
+              }
+              upvoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              user={
+                Object {
+                  "userId": 1,
+                }
+              }
+            />
+          </div>
+        </div>,
+        <Footer />,
+      ],
+      "className": "main",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "addFavourite": [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "recipeId": NaN,
+                  "userId": 1,
+                },
+                Object {
+                  "toast": [MockFunction],
+                },
+              ],
+            ],
+          },
+          "addReview": [MockFunction],
+          "checkFavourite": [MockFunction] {
+            "calls": Array [
+              Array [
+                1,
+                undefined,
+              ],
+              Array [
+                1,
+                undefined,
+              ],
+              Array [
+                1,
+                undefined,
+              ],
+              Array [
+                1,
+                undefined,
+              ],
+            ],
+          },
+          "downVoteRecipe": [MockFunction] {
+            "calls": Array [
+              Array [
+                NaN,
+              ],
+            ],
+          },
+          "getMostUpvotedRecipes": [MockFunction],
+          "getRecipe": [MockFunction],
+          "getReviews": [MockFunction] {
+            "calls": Array [
+              Array [
+                undefined,
+              ],
+              Array [
+                undefined,
+              ],
+              Array [
+                undefined,
+              ],
+              Array [
+                undefined,
+              ],
+            ],
+          },
+          "match": Object {
+            "params": Object {},
+          },
+          "recipeDetails": [MockFunction] {
+            "calls": Array [
+              Array [
+                undefined,
+                undefined,
+              ],
+              Array [
+                undefined,
+                undefined,
+              ],
+              Array [
+                undefined,
+                undefined,
+              ],
+              Array [
+                undefined,
+                undefined,
+              ],
+            ],
+          },
+          "reviews": Array [
+            Object {
+              "User": Object {
+                "firstName": "Henry",
+                "lastNamr": "Otighe",
+              },
+              "comment": "this is a review comment",
+              "recipeId": 1,
+              "userId": 1,
+            },
+          ],
+          "upvoteRecipe": [MockFunction] {
+            "calls": Array [
+              Array [
+                NaN,
+              ],
+            ],
+          },
+          "user": Object {
+            "userId": 1,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <div
+            className="row"
+          >
+            <Connect(RecipeDetail)
+              addFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "recipeId": NaN,
+                        "userId": 1,
+                      },
+                      Object {
+                        "toast": [MockFunction],
+                      },
+                    ],
+                  ],
+                }
+              }
+              addReview={[MockFunction]}
+              checkFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              downVoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              getMostUpvotedRecipes={[MockFunction]}
+              getRecipe={[MockFunction]}
+              getReviews={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              match={
+                Object {
+                  "params": Object {},
+                }
+              }
+              recipeDetails={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              reviews={
+                Array [
+                  Object {
+                    "User": Object {
+                      "firstName": "Henry",
+                      "lastNamr": "Otighe",
+                    },
+                    "comment": "this is a review comment",
+                    "recipeId": 1,
+                    "userId": 1,
+                  },
+                ]
+              }
+              upvoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              user={
+                Object {
+                  "userId": 1,
+                }
+              }
+            />
+          </div>,
+          "className": "container cont top-margin-50",
+          "style": Object {
+            "width": "70%",
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Connect(RecipeDetail)
+              addFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "recipeId": NaN,
+                        "userId": 1,
+                      },
+                      Object {
+                        "toast": [MockFunction],
+                      },
+                    ],
+                  ],
+                }
+              }
+              addReview={[MockFunction]}
+              checkFavourite={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              downVoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              getMostUpvotedRecipes={[MockFunction]}
+              getRecipe={[MockFunction]}
+              getReviews={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              match={
+                Object {
+                  "params": Object {},
+                }
+              }
+              recipeDetails={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                  ],
+                }
+              }
+              reviews={
+                Array [
+                  Object {
+                    "User": Object {
+                      "firstName": "Henry",
+                      "lastNamr": "Otighe",
+                    },
+                    "comment": "this is a review comment",
+                    "recipeId": 1,
+                    "userId": 1,
+                  },
+                ]
+              }
+              upvoteRecipe={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                }
+              }
+              user={
+                Object {
+                  "userId": 1,
+                }
+              }
+            />,
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "addFavourite": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "recipeId": NaN,
+                      "userId": 1,
+                    },
+                    Object {
+                      "toast": [MockFunction],
+                    },
+                  ],
+                ],
+              },
+              "addReview": [MockFunction],
+              "checkFavourite": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                ],
+              },
+              "downVoteRecipe": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    NaN,
+                  ],
+                ],
+              },
+              "getMostUpvotedRecipes": [MockFunction],
+              "getRecipe": [MockFunction],
+              "getReviews": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                ],
+              },
+              "match": Object {
+                "params": Object {},
+              },
+              "recipeDetails": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                ],
+              },
+              "reviews": Array [
+                Object {
+                  "User": Object {
+                    "firstName": "Henry",
+                    "lastNamr": "Otighe",
+                  },
+                  "comment": "this is a review comment",
+                  "recipeId": 1,
+                  "userId": 1,
+                },
+              ],
+              "upvoteRecipe": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    NaN,
+                  ],
+                ],
+              },
+              "user": Object {
+                "userId": 1,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Connect(Header)
+            addFavourite={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "recipeId": NaN,
+                      "userId": 1,
+                    },
+                    Object {
+                      "toast": [MockFunction],
+                    },
+                  ],
+                ],
+              }
+            }
+            addReview={[MockFunction]}
+            checkFavourite={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                  Array [
+                    1,
+                    undefined,
+                  ],
+                ],
+              }
+            }
+            downVoteRecipe={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    NaN,
+                  ],
+                ],
+              }
+            }
+            getMostUpvotedRecipes={[MockFunction]}
+            getRecipe={[MockFunction]}
+            getReviews={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                  ],
+                ],
+              }
+            }
+            match={
+              Object {
+                "params": Object {},
+              }
+            }
+            recipeDetails={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                  Array [
+                    undefined,
+                    undefined,
+                  ],
+                ],
+              }
+            }
+            reviews={
+              Array [
+                Object {
+                  "User": Object {
+                    "firstName": "Henry",
+                    "lastNamr": "Otighe",
+                  },
+                  "comment": "this is a review comment",
+                  "recipeId": 1,
+                  "userId": 1,
+                },
+              ]
+            }
+            upvoteRecipe={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    NaN,
+                  ],
+                ],
+              }
+            }
+            user={
+              Object {
+                "userId": 1,
+              }
+            }
+          />,
+          <div
+            className="container cont top-margin-50"
+            style={
+              Object {
+                "width": "70%",
+              }
+            }
+          >
+            <div
+              className="row"
+            >
+              <Connect(RecipeDetail)
+                addFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "recipeId": NaN,
+                          "userId": 1,
+                        },
+                        Object {
+                          "toast": [MockFunction],
+                        },
+                      ],
+                    ],
+                  }
+                }
+                addReview={[MockFunction]}
+                checkFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                downVoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                getMostUpvotedRecipes={[MockFunction]}
+                getRecipe={[MockFunction]}
+                getReviews={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                match={
+                  Object {
+                    "params": Object {},
+                  }
+                }
+                recipeDetails={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                reviews={
+                  Array [
+                    Object {
+                      "User": Object {
+                        "firstName": "Henry",
+                        "lastNamr": "Otighe",
+                      },
+                      "comment": "this is a review comment",
+                      "recipeId": 1,
+                      "userId": 1,
+                    },
+                  ]
+                }
+                upvoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                user={
+                  Object {
+                    "userId": 1,
+                  }
+                }
+              />
+            </div>
+          </div>,
+          <Footer />,
+        ],
+        "className": "main",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "addFavourite": [MockFunction] {
+              "calls": Array [
+                Array [
+                  Object {
+                    "recipeId": NaN,
+                    "userId": 1,
+                  },
+                  Object {
+                    "toast": [MockFunction],
+                  },
+                ],
+              ],
+            },
+            "addReview": [MockFunction],
+            "checkFavourite": [MockFunction] {
+              "calls": Array [
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+                Array [
+                  1,
+                  undefined,
+                ],
+              ],
+            },
+            "downVoteRecipe": [MockFunction] {
+              "calls": Array [
+                Array [
+                  NaN,
+                ],
+              ],
+            },
+            "getMostUpvotedRecipes": [MockFunction],
+            "getRecipe": [MockFunction],
+            "getReviews": [MockFunction] {
+              "calls": Array [
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                ],
+              ],
+            },
+            "match": Object {
+              "params": Object {},
+            },
+            "recipeDetails": [MockFunction] {
+              "calls": Array [
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+                Array [
+                  undefined,
+                  undefined,
+                ],
+              ],
+            },
+            "reviews": Array [
+              Object {
+                "User": Object {
+                  "firstName": "Henry",
+                  "lastNamr": "Otighe",
+                },
+                "comment": "this is a review comment",
+                "recipeId": 1,
+                "userId": 1,
+              },
+            ],
+            "upvoteRecipe": [MockFunction] {
+              "calls": Array [
+                Array [
+                  NaN,
+                ],
+              ],
+            },
+            "user": Object {
+              "userId": 1,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <div
+              className="row"
+            >
+              <Connect(RecipeDetail)
+                addFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "recipeId": NaN,
+                          "userId": 1,
+                        },
+                        Object {
+                          "toast": [MockFunction],
+                        },
+                      ],
+                    ],
+                  }
+                }
+                addReview={[MockFunction]}
+                checkFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                downVoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                getMostUpvotedRecipes={[MockFunction]}
+                getRecipe={[MockFunction]}
+                getReviews={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                match={
+                  Object {
+                    "params": Object {},
+                  }
+                }
+                recipeDetails={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                reviews={
+                  Array [
+                    Object {
+                      "User": Object {
+                        "firstName": "Henry",
+                        "lastNamr": "Otighe",
+                      },
+                      "comment": "this is a review comment",
+                      "recipeId": 1,
+                      "userId": 1,
+                    },
+                  ]
+                }
+                upvoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                user={
+                  Object {
+                    "userId": 1,
+                  }
+                }
+              />
+            </div>,
+            "className": "container cont top-margin-50",
+            "style": Object {
+              "width": "70%",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Connect(RecipeDetail)
+                addFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "recipeId": NaN,
+                          "userId": 1,
+                        },
+                        Object {
+                          "toast": [MockFunction],
+                        },
+                      ],
+                    ],
+                  }
+                }
+                addReview={[MockFunction]}
+                checkFavourite={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                      Array [
+                        1,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                downVoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                getMostUpvotedRecipes={[MockFunction]}
+                getRecipe={[MockFunction]}
+                getReviews={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                match={
+                  Object {
+                    "params": Object {},
+                  }
+                }
+                recipeDetails={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                      Array [
+                        undefined,
+                        undefined,
+                      ],
+                    ],
+                  }
+                }
+                reviews={
+                  Array [
+                    Object {
+                      "User": Object {
+                        "firstName": "Henry",
+                        "lastNamr": "Otighe",
+                      },
+                      "comment": "this is a review comment",
+                      "recipeId": 1,
+                      "userId": 1,
+                    },
+                  ]
+                }
+                upvoteRecipe={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        NaN,
+                      ],
+                    ],
+                  }
+                }
+                user={
+                  Object {
+                    "userId": 1,
+                  }
+                }
+              />,
+              "className": "row",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "addFavourite": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "recipeId": NaN,
+                        "userId": 1,
+                      },
+                      Object {
+                        "toast": [MockFunction],
+                      },
+                    ],
+                  ],
+                },
+                "addReview": [MockFunction],
+                "checkFavourite": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                    Array [
+                      1,
+                      undefined,
+                    ],
+                  ],
+                },
+                "downVoteRecipe": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                },
+                "getMostUpvotedRecipes": [MockFunction],
+                "getRecipe": [MockFunction],
+                "getReviews": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                    ],
+                  ],
+                },
+                "match": Object {
+                  "params": Object {},
+                },
+                "recipeDetails": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                    Array [
+                      undefined,
+                      undefined,
+                    ],
+                  ],
+                },
+                "reviews": Array [
+                  Object {
+                    "User": Object {
+                      "firstName": "Henry",
+                      "lastNamr": "Otighe",
+                    },
+                    "comment": "this is a review comment",
+                    "recipeId": 1,
+                    "userId": 1,
+                  },
+                ],
+                "upvoteRecipe": [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      NaN,
+                    ],
+                  ],
+                },
+                "user": Object {
+                  "userId": 1,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewCommentBox> should render connected correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(ReviewCommentBox)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [Function],
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "errors": undefined,
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      },
+      "loggedIn": undefined,
+      "match": Object {
+        "params": Object {},
+      },
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [Function],
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "errors": undefined,
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+          ],
+        },
+        "loggedIn": undefined,
+        "match": Object {
+          "params": Object {},
+        },
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewCommentBox> should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ReviewCommentBox
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={[MockFunction]}
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <form>
+        <div
+          className="modal-content"
+        >
+          
+          <p />
+          <textarea
+            name="comment"
+            onChange={[Function]}
+            placeholder="Enter your comment"
+            rows={9}
+            style={
+              Object {
+                "height": "150px",
+              }
+            }
+            value=""
+          />
+        </div>
+        <div
+          className="modal-footer"
+        >
+          <a
+            className="modal-trigger waves-effect waves-green btn modal-close"
+            href="#reviews"
+            id="#form"
+            onClick={[Function]}
+          >
+            Submit
+          </a>
+        </div>
+      </form>,
+      "className": "modal",
+      "id": "reviewBox",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="modal-content"
+          >
+            
+            <p />
+            <textarea
+              name="comment"
+              onChange={[Function]}
+              placeholder="Enter your comment"
+              rows={9}
+              style={
+                Object {
+                  "height": "150px",
+                }
+              }
+              value=""
+            />
+          </div>,
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              <p />,
+              <textarea
+                name="comment"
+                onChange={[Function]}
+                placeholder="Enter your comment"
+                rows={9}
+                style={
+                  Object {
+                    "height": "150px",
+                  }
+                }
+                value=""
+              />,
+            ],
+            "className": "modal-content",
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "comment",
+                "onChange": [Function],
+                "placeholder": "Enter your comment",
+                "rows": 9,
+                "style": Object {
+                  "height": "150px",
+                },
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "textarea",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>,
+            "className": "modal-footer",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Submit",
+              "className": "modal-trigger waves-effect waves-green btn modal-close",
+              "href": "#reviews",
+              "id": "#form",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Submit",
+            "type": "a",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "form",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <form>
+          <div
+            className="modal-content"
+          >
+            
+            <p />
+            <textarea
+              name="comment"
+              onChange={[Function]}
+              placeholder="Enter your comment"
+              rows={9}
+              style={
+                Object {
+                  "height": "150px",
+                }
+              }
+              value=""
+            />
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>
+          </div>
+        </form>,
+        "className": "modal",
+        "id": "reviewBox",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="modal-content"
+            >
+              
+              <p />
+              <textarea
+                name="comment"
+                onChange={[Function]}
+                placeholder="Enter your comment"
+                rows={9}
+                style={
+                  Object {
+                    "height": "150px",
+                  }
+                }
+                value=""
+              />
+            </div>,
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-trigger waves-effect waves-green btn modal-close"
+                href="#reviews"
+                id="#form"
+                onClick={[Function]}
+              >
+                Submit
+              </a>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                <p />,
+                <textarea
+                  name="comment"
+                  onChange={[Function]}
+                  placeholder="Enter your comment"
+                  rows={9}
+                  style={
+                    Object {
+                      "height": "150px",
+                    }
+                  }
+                  value=""
+                />,
+              ],
+              "className": "modal-content",
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "name": "comment",
+                  "onChange": [Function],
+                  "placeholder": "Enter your comment",
+                  "rows": 9,
+                  "style": Object {
+                    "height": "150px",
+                  },
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "textarea",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <a
+                className="modal-trigger waves-effect waves-green btn modal-close"
+                href="#reviews"
+                id="#form"
+                onClick={[Function]}
+              >
+                Submit
+              </a>,
+              "className": "modal-footer",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Submit",
+                "className": "modal-trigger waves-effect waves-green btn modal-close",
+                "href": "#reviews",
+                "id": "#form",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Submit",
+              "type": "a",
+            },
+            "type": "div",
+          },
+        ],
+        "type": "form",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewCommentBox> should render correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(ReviewCommentBox)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [Function],
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "errors": undefined,
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      },
+      "loggedIn": undefined,
+      "match": Object {
+        "params": Object {},
+      },
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [Function],
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "errors": undefined,
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+          ],
+        },
+        "loggedIn": undefined,
+        "match": Object {
+          "params": Object {},
+        },
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewCommentBox> should render correctly 3`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ReviewCommentBox
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <form>
+        <div
+          className="modal-content"
+        >
+          
+          <p />
+          <textarea
+            name="comment"
+            onChange={[Function]}
+            placeholder="Enter your comment"
+            rows={9}
+            style={
+              Object {
+                "height": "150px",
+              }
+            }
+            value=""
+          />
+        </div>
+        <div
+          className="modal-footer"
+        >
+          <a
+            className="modal-trigger waves-effect waves-green btn modal-close"
+            href="#reviews"
+            id="#form"
+            onClick={[Function]}
+          >
+            Submit
+          </a>
+        </div>
+      </form>,
+      "className": "modal",
+      "id": "reviewBox",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="modal-content"
+          >
+            
+            <p />
+            <textarea
+              name="comment"
+              onChange={[Function]}
+              placeholder="Enter your comment"
+              rows={9}
+              style={
+                Object {
+                  "height": "150px",
+                }
+              }
+              value=""
+            />
+          </div>,
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              <p />,
+              <textarea
+                name="comment"
+                onChange={[Function]}
+                placeholder="Enter your comment"
+                rows={9}
+                style={
+                  Object {
+                    "height": "150px",
+                  }
+                }
+                value=""
+              />,
+            ],
+            "className": "modal-content",
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "name": "comment",
+                "onChange": [Function],
+                "placeholder": "Enter your comment",
+                "rows": 9,
+                "style": Object {
+                  "height": "150px",
+                },
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "textarea",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>,
+            "className": "modal-footer",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Submit",
+              "className": "modal-trigger waves-effect waves-green btn modal-close",
+              "href": "#reviews",
+              "id": "#form",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Submit",
+            "type": "a",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "form",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <form>
+          <div
+            className="modal-content"
+          >
+            
+            <p />
+            <textarea
+              name="comment"
+              onChange={[Function]}
+              placeholder="Enter your comment"
+              rows={9}
+              style={
+                Object {
+                  "height": "150px",
+                }
+              }
+              value=""
+            />
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              href="#reviews"
+              id="#form"
+              onClick={[Function]}
+            >
+              Submit
+            </a>
+          </div>
+        </form>,
+        "className": "modal",
+        "id": "reviewBox",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="modal-content"
+            >
+              
+              <p />
+              <textarea
+                name="comment"
+                onChange={[Function]}
+                placeholder="Enter your comment"
+                rows={9}
+                style={
+                  Object {
+                    "height": "150px",
+                  }
+                }
+                value=""
+              />
+            </div>,
+            <div
+              className="modal-footer"
+            >
+              <a
+                className="modal-trigger waves-effect waves-green btn modal-close"
+                href="#reviews"
+                id="#form"
+                onClick={[Function]}
+              >
+                Submit
+              </a>
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                <p />,
+                <textarea
+                  name="comment"
+                  onChange={[Function]}
+                  placeholder="Enter your comment"
+                  rows={9}
+                  style={
+                    Object {
+                      "height": "150px",
+                    }
+                  }
+                  value=""
+                />,
+              ],
+              "className": "modal-content",
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "name": "comment",
+                  "onChange": [Function],
+                  "placeholder": "Enter your comment",
+                  "rows": 9,
+                  "style": Object {
+                    "height": "150px",
+                  },
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": "textarea",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <a
+                className="modal-trigger waves-effect waves-green btn modal-close"
+                href="#reviews"
+                id="#form"
+                onClick={[Function]}
+              >
+                Submit
+              </a>,
+              "className": "modal-footer",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Submit",
+                "className": "modal-trigger waves-effect waves-green btn modal-close",
+                "href": "#reviews",
+                "id": "#form",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Submit",
+              "type": "a",
+            },
+            "type": "div",
+          },
+        ],
+        "type": "form",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewModal> should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(ReviewModal)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [Function],
+      "loggedIn": undefined,
+      "match": Object {
+        "params": Object {},
+      },
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": undefined,
+      "state": Object {
+        "auth": Object {
+          "user": Object {},
+        },
+        "recipes": Object {},
+      },
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "comment": "nice one",
+                "id": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [Function],
+        "loggedIn": undefined,
+        "match": Object {
+          "params": Object {},
+        },
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": undefined,
+        "state": Object {
+          "auth": Object {
+            "user": Object {},
+          },
+          "recipes": Object {},
+        },
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewModal> should render correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ReviewModal
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="modal-content"
+        style={Object {}}
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "left": "0",
+              "marginTop": "-30px",
+              "padding": "20px",
+              "position": "fixed",
+              "right": "0",
+            }
+          }
+        >
+          <h5
+            style={
+              Object {
+                "float": "left",
+              }
+            }
+          >
+            Users Review
+          </h5>
+          <a
+            className="waves-effect waves-light btn modal-trigger"
+            href="#reviewBox"
+            style={
+              Object {
+                "float": "right",
+              }
+            }
+          >
+            Add Review
+          </a>
+        </div>
+        <div
+          style={
+            Object {
+              "clear": "both",
+              "height": "50px",
+            }
+          }
+        />
+        <Connect(ReviewsList) />
+      </div>,
+      "className": "modal bottom-sheet",
+      "id": "reviews",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "left": "0",
+                "marginTop": "-30px",
+                "padding": "20px",
+                "position": "fixed",
+                "right": "0",
+              }
+            }
+          >
+            <h5
+              style={
+                Object {
+                  "float": "left",
+                }
+              }
+            >
+              Users Review
+            </h5>
+            <a
+              className="waves-effect waves-light btn modal-trigger"
+              href="#reviewBox"
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              Add Review
+            </a>
+          </div>,
+          <div
+            style={
+              Object {
+                "clear": "both",
+                "height": "50px",
+              }
+            }
+          />,
+          <Connect(ReviewsList) />,
+        ],
+        "className": "modal-content",
+        "style": Object {},
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h5
+                style={
+                  Object {
+                    "float": "left",
+                  }
+                }
+              >
+                Users Review
+              </h5>,
+              <a
+                className="waves-effect waves-light btn modal-trigger"
+                href="#reviewBox"
+                style={
+                  Object {
+                    "float": "right",
+                  }
+                }
+              >
+                Add Review
+              </a>,
+            ],
+            "style": Object {
+              "backgroundColor": "#fff",
+              "left": "0",
+              "marginTop": "-30px",
+              "padding": "20px",
+              "position": "fixed",
+              "right": "0",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Users Review",
+                "style": Object {
+                  "float": "left",
+                },
+              },
+              "ref": null,
+              "rendered": "Users Review",
+              "type": "h5",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Add Review",
+                "className": "waves-effect waves-light btn modal-trigger",
+                "href": "#reviewBox",
+                "style": Object {
+                  "float": "right",
+                },
+              },
+              "ref": null,
+              "rendered": "Add Review",
+              "type": "a",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "style": Object {
+              "clear": "both",
+              "height": "50px",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="modal-content"
+          style={Object {}}
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "left": "0",
+                "marginTop": "-30px",
+                "padding": "20px",
+                "position": "fixed",
+                "right": "0",
+              }
+            }
+          >
+            <h5
+              style={
+                Object {
+                  "float": "left",
+                }
+              }
+            >
+              Users Review
+            </h5>
+            <a
+              className="waves-effect waves-light btn modal-trigger"
+              href="#reviewBox"
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              Add Review
+            </a>
+          </div>
+          <div
+            style={
+              Object {
+                "clear": "both",
+                "height": "50px",
+              }
+            }
+          />
+          <Connect(ReviewsList) />
+        </div>,
+        "className": "modal bottom-sheet",
+        "id": "reviews",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "left": "0",
+                  "marginTop": "-30px",
+                  "padding": "20px",
+                  "position": "fixed",
+                  "right": "0",
+                }
+              }
+            >
+              <h5
+                style={
+                  Object {
+                    "float": "left",
+                  }
+                }
+              >
+                Users Review
+              </h5>
+              <a
+                className="waves-effect waves-light btn modal-trigger"
+                href="#reviewBox"
+                style={
+                  Object {
+                    "float": "right",
+                  }
+                }
+              >
+                Add Review
+              </a>
+            </div>,
+            <div
+              style={
+                Object {
+                  "clear": "both",
+                  "height": "50px",
+                }
+              }
+            />,
+            <Connect(ReviewsList) />,
+          ],
+          "className": "modal-content",
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h5
+                  style={
+                    Object {
+                      "float": "left",
+                    }
+                  }
+                >
+                  Users Review
+                </h5>,
+                <a
+                  className="waves-effect waves-light btn modal-trigger"
+                  href="#reviewBox"
+                  style={
+                    Object {
+                      "float": "right",
+                    }
+                  }
+                >
+                  Add Review
+                </a>,
+              ],
+              "style": Object {
+                "backgroundColor": "#fff",
+                "left": "0",
+                "marginTop": "-30px",
+                "padding": "20px",
+                "position": "fixed",
+                "right": "0",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Users Review",
+                  "style": Object {
+                    "float": "left",
+                  },
+                },
+                "ref": null,
+                "rendered": "Users Review",
+                "type": "h5",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Add Review",
+                  "className": "waves-effect waves-light btn modal-trigger",
+                  "href": "#reviewBox",
+                  "style": Object {
+                    "float": "right",
+                  },
+                },
+                "ref": null,
+                "rendered": "Add Review",
+                "type": "a",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "style": Object {
+                "clear": "both",
+                "height": "50px",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewsList> should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(ReviewsList)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "dispatch": [Function],
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "getMostUpvotedRecipes": [MockFunction],
+      "getRecipe": [MockFunction],
+      "getReviews": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      },
+      "loggedIn": undefined,
+      "match": Object {
+        "params": Object {},
+      },
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "comment": "nice one",
+                "id": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "dispatch": [Function],
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "getMostUpvotedRecipes": [MockFunction],
+        "getRecipe": [MockFunction],
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+          ],
+        },
+        "loggedIn": undefined,
+        "match": Object {
+          "params": Object {},
+        },
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<ReviewsList> should render correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ReviewsList
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={[MockFunction]}
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div
+          className="row"
+        >
+          <div
+            className="col s12 m6 l6"
+          >
+            <li
+              className="collection-item avatar"
+              style={
+                Object {
+                  "backgorundColor": "#ccc",
+                  "borderRadius": "5px",
+                }
+              }
+            >
+              <p
+                style={
+                  Object {
+                    "color": "#999",
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Henry undefined
+                </span>
+                 
+                <span
+                  style={
+                    Object {
+                      "float": "right",
+                    }
+                  }
+                >
+                  a few seconds ago
+                </span>
+              </p>
+              <span
+                className="title"
+                style={
+                  Object {
+                    "wordWrap": "break-word",
+                  }
+                }
+              >
+                this is a review comment
+              </span>
+              <hr />
+            </li>
+          </div>
+          <div
+            className="col s12 m6 l6"
+          />
+        </div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "SkZiGtYwG",
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="col s12 m6 l6"
+            >
+              <li
+                className="collection-item avatar"
+                style={
+                  Object {
+                    "backgorundColor": "#ccc",
+                    "borderRadius": "5px",
+                  }
+                }
+              >
+                <p
+                  style={
+                    Object {
+                      "color": "#999",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    Henry undefined
+                  </span>
+                   
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                      }
+                    }
+                  >
+                    a few seconds ago
+                  </span>
+                </p>
+                <span
+                  className="title"
+                  style={
+                    Object {
+                      "wordWrap": "break-word",
+                    }
+                  }
+                >
+                  this is a review comment
+                </span>
+                <hr />
+              </li>
+            </div>,
+            <div
+              className="col s12 m6 l6"
+            />,
+          ],
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <li
+                className="collection-item avatar"
+                style={
+                  Object {
+                    "backgorundColor": "#ccc",
+                    "borderRadius": "5px",
+                  }
+                }
+              >
+                <p
+                  style={
+                    Object {
+                      "color": "#999",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    Henry undefined
+                  </span>
+                   
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                      }
+                    }
+                  >
+                    a few seconds ago
+                  </span>
+                </p>
+                <span
+                  className="title"
+                  style={
+                    Object {
+                      "wordWrap": "break-word",
+                    }
+                  }
+                >
+                  this is a review comment
+                </span>
+                <hr />
+              </li>,
+              "className": "col s12 m6 l6",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": "H1xWjGFtwf",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <p
+                    style={
+                      Object {
+                        "color": "#999",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "fontWeight": "bold",
+                        }
+                      }
+                    >
+                      Henry undefined
+                    </span>
+                     
+                    <span
+                      style={
+                        Object {
+                          "float": "right",
+                        }
+                      }
+                    >
+                      a few seconds ago
+                    </span>
+                  </p>,
+                  <span
+                    className="title"
+                    style={
+                      Object {
+                        "wordWrap": "break-word",
+                      }
+                    }
+                  >
+                    this is a review comment
+                  </span>,
+                  <hr />,
+                ],
+                "className": "collection-item avatar",
+                "style": Object {
+                  "backgorundColor": "#ccc",
+                  "borderRadius": "5px",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <span
+                        style={
+                          Object {
+                            "fontWeight": "bold",
+                          }
+                        }
+                      >
+                        Henry undefined
+                      </span>,
+                      " ",
+                      <span
+                        style={
+                          Object {
+                            "float": "right",
+                          }
+                        }
+                      >
+                        a few seconds ago
+                      </span>,
+                    ],
+                    "style": Object {
+                      "color": "#999",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Henry undefined",
+                        "style": Object {
+                          "fontWeight": "bold",
+                        },
+                      },
+                      "ref": null,
+                      "rendered": "Henry undefined",
+                      "type": "span",
+                    },
+                    " ",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "a few seconds ago",
+                        "style": Object {
+                          "float": "right",
+                        },
+                      },
+                      "ref": null,
+                      "rendered": "a few seconds ago",
+                      "type": "span",
+                    },
+                  ],
+                  "type": "p",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "this is a review comment",
+                    "className": "title",
+                    "style": Object {
+                      "wordWrap": "break-word",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": "this is a review comment",
+                  "type": "span",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "hr",
+                },
+              ],
+              "type": "li",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "col s12 m6 l6",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "ul",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div
+            className="row"
+          >
+            <div
+              className="col s12 m6 l6"
+            >
+              <li
+                className="collection-item avatar"
+                style={
+                  Object {
+                    "backgorundColor": "#ccc",
+                    "borderRadius": "5px",
+                  }
+                }
+              >
+                <p
+                  style={
+                    Object {
+                      "color": "#999",
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    Henry undefined
+                  </span>
+                   
+                  <span
+                    style={
+                      Object {
+                        "float": "right",
+                      }
+                    }
+                  >
+                    a few seconds ago
+                  </span>
+                </p>
+                <span
+                  className="title"
+                  style={
+                    Object {
+                      "wordWrap": "break-word",
+                    }
+                  }
+                >
+                  this is a review comment
+                </span>
+                <hr />
+              </li>
+            </div>
+            <div
+              className="col s12 m6 l6"
+            />
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "SkZiGtYwG",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="col s12 m6 l6"
+              >
+                <li
+                  className="collection-item avatar"
+                  style={
+                    Object {
+                      "backgorundColor": "#ccc",
+                      "borderRadius": "5px",
+                    }
+                  }
+                >
+                  <p
+                    style={
+                      Object {
+                        "color": "#999",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "fontWeight": "bold",
+                        }
+                      }
+                    >
+                      Henry undefined
+                    </span>
+                     
+                    <span
+                      style={
+                        Object {
+                          "float": "right",
+                        }
+                      }
+                    >
+                      a few seconds ago
+                    </span>
+                  </p>
+                  <span
+                    className="title"
+                    style={
+                      Object {
+                        "wordWrap": "break-word",
+                      }
+                    }
+                  >
+                    this is a review comment
+                  </span>
+                  <hr />
+                </li>
+              </div>,
+              <div
+                className="col s12 m6 l6"
+              />,
+            ],
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <li
+                  className="collection-item avatar"
+                  style={
+                    Object {
+                      "backgorundColor": "#ccc",
+                      "borderRadius": "5px",
+                    }
+                  }
+                >
+                  <p
+                    style={
+                      Object {
+                        "color": "#999",
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "fontWeight": "bold",
+                        }
+                      }
+                    >
+                      Henry undefined
+                    </span>
+                     
+                    <span
+                      style={
+                        Object {
+                          "float": "right",
+                        }
+                      }
+                    >
+                      a few seconds ago
+                    </span>
+                  </p>
+                  <span
+                    className="title"
+                    style={
+                      Object {
+                        "wordWrap": "break-word",
+                      }
+                    }
+                  >
+                    this is a review comment
+                  </span>
+                  <hr />
+                </li>,
+                "className": "col s12 m6 l6",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": "H1xWjGFtwf",
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <p
+                      style={
+                        Object {
+                          "color": "#999",
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "fontWeight": "bold",
+                          }
+                        }
+                      >
+                        Henry undefined
+                      </span>
+                       
+                      <span
+                        style={
+                          Object {
+                            "float": "right",
+                          }
+                        }
+                      >
+                        a few seconds ago
+                      </span>
+                    </p>,
+                    <span
+                      className="title"
+                      style={
+                        Object {
+                          "wordWrap": "break-word",
+                        }
+                      }
+                    >
+                      this is a review comment
+                    </span>,
+                    <hr />,
+                  ],
+                  "className": "collection-item avatar",
+                  "style": Object {
+                    "backgorundColor": "#ccc",
+                    "borderRadius": "5px",
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        <span
+                          style={
+                            Object {
+                              "fontWeight": "bold",
+                            }
+                          }
+                        >
+                          Henry undefined
+                        </span>,
+                        " ",
+                        <span
+                          style={
+                            Object {
+                              "float": "right",
+                            }
+                          }
+                        >
+                          a few seconds ago
+                        </span>,
+                      ],
+                      "style": Object {
+                        "color": "#999",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "Henry undefined",
+                          "style": Object {
+                            "fontWeight": "bold",
+                          },
+                        },
+                        "ref": null,
+                        "rendered": "Henry undefined",
+                        "type": "span",
+                      },
+                      " ",
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {
+                          "children": "a few seconds ago",
+                          "style": Object {
+                            "float": "right",
+                          },
+                        },
+                        "ref": null,
+                        "rendered": "a few seconds ago",
+                        "type": "span",
+                      },
+                    ],
+                    "type": "p",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "this is a review comment",
+                      "className": "title",
+                      "style": Object {
+                        "wordWrap": "break-word",
+                      },
+                    },
+                    "ref": null,
+                    "rendered": "this is a review comment",
+                    "type": "span",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "hr",
+                  },
+                ],
+                "type": "li",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "col s12 m6 l6",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "ul",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<TopRecipeList> should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <TopRecipeList
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h6
+          style={
+            Object {
+              "color": "#999",
+              "fontSize": "18px",
+              "fontWeight": "bold",
+            }
+          }
+        >
+          You may also like
+        </h6>,
+        <div
+          className="row"
+        >
+          
+        </div>,
+      ],
+      "className": "col s12 m2 l2 top-margin",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "You may also like",
+          "style": Object {
+            "color": "#999",
+            "fontSize": "18px",
+            "fontWeight": "bold",
+          },
+        },
+        "ref": null,
+        "rendered": "You may also like",
+        "type": "h6",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+          "className": "row",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h6
+            style={
+              Object {
+                "color": "#999",
+                "fontSize": "18px",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            You may also like
+          </h6>,
+          <div
+            className="row"
+          >
+            
+          </div>,
+        ],
+        "className": "col s12 m2 l2 top-margin",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "You may also like",
+            "style": Object {
+              "color": "#999",
+              "fontSize": "18px",
+              "fontWeight": "bold",
+            },
+          },
+          "ref": null,
+          "rendered": "You may also like",
+          "type": "h6",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+            "className": "row",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`<TopRecipeList> should render correctly 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(TopRecipeList)
+    addFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    addReview={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      }
+    }
+    checkFavourite={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      }
+    }
+    downVoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    getMostUpvotedRecipes={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
+    getRecipe={[MockFunction]}
+    getReviews={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
+    match={
+      Object {
+        "params": Object {},
+      }
+    }
+    recipeDetails={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      }
+    }
+    reviews={
+      Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ]
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    upvoteRecipe={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      }
+    }
+    user={
+      Object {
+        "userId": 1,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "recipeId": NaN,
+              "userId": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "addReview": [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "comment": "nice one",
+              "id": 1,
+            },
+            Object {
+              "toast": [MockFunction],
+            },
+          ],
+        ],
+      },
+      "checkFavourite": [MockFunction] {
+        "calls": Array [
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+          Array [
+            1,
+            undefined,
+          ],
+        ],
+      },
+      "downVoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "getMostUpvotedRecipes": [Function],
+      "getRecipe": [MockFunction],
+      "getReviews": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+          Array [
+            undefined,
+          ],
+        ],
+      },
+      "match": Object {
+        "params": Object {},
+      },
+      "recipeDetails": [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+          Array [
+            undefined,
+            undefined,
+          ],
+        ],
+      },
+      "reviews": Array [
+        Object {
+          "User": Object {
+            "firstName": "Henry",
+            "lastNamr": "Otighe",
+          },
+          "comment": "this is a review comment",
+          "recipeId": 1,
+          "userId": 1,
+        },
+      ],
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "upvoteRecipe": [MockFunction] {
+        "calls": Array [
+          Array [
+            NaN,
+          ],
+        ],
+      },
+      "upvotedRecipes": undefined,
+      "user": Object {
+        "userId": 1,
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "recipeId": NaN,
+                "userId": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "addReview": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "comment": "nice one",
+                "id": 1,
+              },
+              Object {
+                "toast": [MockFunction],
+              },
+            ],
+          ],
+        },
+        "checkFavourite": [MockFunction] {
+          "calls": Array [
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+            Array [
+              1,
+              undefined,
+            ],
+          ],
+        },
+        "downVoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "getMostUpvotedRecipes": [Function],
+        "getRecipe": [MockFunction],
+        "getReviews": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+            Array [
+              undefined,
+            ],
+          ],
+        },
+        "match": Object {
+          "params": Object {},
+        },
+        "recipeDetails": [MockFunction] {
+          "calls": Array [
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+            Array [
+              undefined,
+              undefined,
+            ],
+          ],
+        },
+        "reviews": Array [
+          Object {
+            "User": Object {
+              "firstName": "Henry",
+              "lastNamr": "Otighe",
+            },
+            "comment": "this is a review comment",
+            "recipeId": 1,
+            "userId": 1,
+          },
+        ],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "upvoteRecipe": [MockFunction] {
+          "calls": Array [
+            Array [
+              NaN,
+            ],
+          ],
+        },
+        "upvotedRecipes": undefined,
+        "user": Object {
+          "userId": 1,
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -10,7 +10,7 @@ import RecipeDetail from './RecipeDetail';
  * 
  * @extends {React.Component}
  */
-class RecipeDetailPage extends React.Component {
+export class RecipeDetailPage extends React.Component {
 
   /**
    * @description Creates an instance of RecipeDetailPage.

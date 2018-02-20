@@ -9,7 +9,7 @@ import Footer from './Footer'
  * 
  * @returns {object} jsx object that renders the not found page 
  */
-const NotFound = (props) => (
+export const NotFound = (props) => (
   <div className="notFoundDiv main">
     <Header />
     <div className="cont">

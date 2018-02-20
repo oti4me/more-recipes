@@ -11,7 +11,7 @@ import vegetable from '../../../public/images/img2.jpg';
  * 
  * @memberof RecipeList
  */
-const HomeBanner = (props) => {
+export const HomeBanner = (props) => {
 
   return (
     <div className="bannerWrapper">

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes should render correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Footer />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <p
+        className="foo"
+      >
+        Copyright © 2017, More Recipes, All rights reserved
+      </p>,
+      "className": "foot",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": "Copyright © 2017, More Recipes, All rights reserved",
+        "className": "foo",
+      },
+      "ref": null,
+      "rendered": "Copyright © 2017, More Recipes, All rights reserved",
+      "type": "p",
+    },
+    "type": "footer",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <p
+          className="foo"
+        >
+          Copyright © 2017, More Recipes, All rights reserved
+        </p>,
+        "className": "foot",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Copyright © 2017, More Recipes, All rights reserved",
+          "className": "foo",
+        },
+        "ref": null,
+        "rendered": "Copyright © 2017, More Recipes, All rights reserved",
+        "type": "p",
+      },
+      "type": "footer",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

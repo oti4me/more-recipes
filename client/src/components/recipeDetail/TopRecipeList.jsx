@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import getMostVotedRecipes from '../../actions/getMostVotedRecipes'
+import getMostUpvotedRecipes from '../../actions/getMostVotedRecipes'
 
 /**
  * 
@@ -9,7 +9,7 @@ import getMostVotedRecipes from '../../actions/getMostVotedRecipes'
  * 
  * @extends {Component}
  */
-class TopRecipeList extends Component {
+export class TopRecipeList extends Component {
 
   /**
    * @description Creates an instance of TopRecipeList.
@@ -33,7 +33,7 @@ class TopRecipeList extends Component {
    * @memberof TopRecipeList
    */
   componentDidMount() {
-    this.props.getMostVotedRecipes();
+    this.props.getMostUpvotedRecipes();
   }
 
   /**
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getMostVotedRecipes
+    getMostUpvotedRecipes
   }, dispatch);
 }
 

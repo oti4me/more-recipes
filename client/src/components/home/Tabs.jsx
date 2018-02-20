@@ -13,7 +13,7 @@ import Pagination from '../Pagination';
  * 
  * @returns {object} return jsx object that displays the top banner
  */
-const Tab = (props) => {
+export const Tab = (props) => {
   return (
     <div className="top-margin-30">
       <ul id="tabs-swipe-demo" className="tabs row">

@@ -10,7 +10,7 @@ import addReview from '../../actions/addReview';
  * 
  * @extends {React.Component}
  */
-class ReviewCommentBox extends React.Component {
+export class ReviewCommentBox extends React.Component {
 
   /**
    * @description Creates an instance of ReviewCommentBox.
@@ -77,13 +77,14 @@ class ReviewCommentBox extends React.Component {
   render() {
     return (
       <div id="reviewBox" className="modal">
-        <div className="modal-content">
-          {this.props.loggedIn
-            ? <h5 style={{ textAlign: 'center' }}>Add Comment</h5>
-            : ''
-          }
-          <p />
-          <form>
+        <form>
+          <div className="modal-content">
+            {this.props.loggedIn
+              ? <h5 style={{ textAlign: 'center' }}>Add Comment</h5>
+              : ''
+            }
+            <p />
+
             <textarea
               rows={9}
               style={{ height: '150px' }}
@@ -92,16 +93,19 @@ class ReviewCommentBox extends React.Component {
               onChange={this.handleChange}
               value={this.state.comment}
             />
-          </form>
-        </div>
-        <div className="modal-footer">
-          <a
-            className="modal-trigger waves-effect waves-green btn modal-close"
-            onClick={this.submitComment}
-            href="#reviews"
-          >Submit
-          </a>
-        </div>
+
+          </div>
+          <div className="modal-footer">
+            <a
+              className="modal-trigger waves-effect waves-green btn modal-close"
+              id="#form"
+              onClick={this.submitComment}
+              href="#reviews"
+            >
+              Submit
+            </a>
+          </div>
+        </form>
       </div>
     )
   }
