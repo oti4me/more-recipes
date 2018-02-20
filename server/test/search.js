@@ -43,9 +43,10 @@ describe('Search Controller', () => {
           .set({ authorization: token })
           .expect(200)
           .end((err, res) => {
+            console.log(res.body);
             if (err) return done(err);
-            expect(res.body.recipes[0]).to.have.property('id');
-            expect(res.body.recipes[0]).to.have.property('title');
+            expect(res.body.recipes[0].id).to.equal(1);
+            expect(res.body.recipes[0].title).to.equal('Fried Rice');
             done();
           });
       });

@@ -88,7 +88,7 @@ class Reviews {
     const id = request.params.id;
     if (!validate.validateId(id)) {
       request.status(400).json({
-        message: 'ID is not a valid integer'
+        message: '\'id\' is not a valid integer'
       });
     }
 

@@ -4,7 +4,7 @@ import FavouritePage
   from '../../src/components/favourites/FavouritePage';
 import { mountWrapper } from '../utils';
 import mockStore from '../mockData/mockStore';
-import store from '../../src/helper/createStore';
+import store from '../../src/helper/store';
 import recipeMock from '../mockData/recipeMock';
 
 const mainState = store.getState();

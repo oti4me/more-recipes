@@ -1,10 +1,10 @@
-import recipes from './recipes';
-import users from './users';
-import search from './search';
-import reviews from './reviews';
-import votes from './votes';
-import favourites from './favourites';
+import Recipes from './Recipes';
+import Users from './Users';
+import Search from './Search';
+import Reviews from './Reviews';
+import Votes from './Votes';
+import Favourites from './Favourites';
 
 export {
-  recipes, users, search, reviews, votes, favourites
+  Recipes, Users, Search, Reviews, Votes, Favourites
 }

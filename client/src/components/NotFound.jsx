@@ -13,7 +13,13 @@ export const NotFound = (props) => (
   <div className="notFoundDiv main">
     <Header />
     <div className="cont">
-      <h1 className="notFoundText" style={{ textAlign: "center", paddingTop: "50px" }}>Not found</h1>
+      <h1
+        className="notFoundText"
+        style={{
+          textAlign: "center",
+          paddingTop: "50px"
+        }}
+      >Not found</h1>
     </div>
     <Footer />
   </div>

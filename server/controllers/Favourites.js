@@ -121,9 +121,8 @@ class Favourites {
     }
 
     if (!validate.validateId(userId)) {
-      h
       return response.status(400).json({
-        message: 'The user ID supplied is not a valid integer'
+        message: 'The user id supplied is not a valid integer'
       });
     }
 
@@ -312,20 +311,20 @@ class Favourites {
                       });
                     });
                 } else {
-                  response.status(401).json({
+                  response.status(403).json({
                     message: `You dont have this recipe as a favourite`
                   });
                 }
               });
           } else {
             return response.status(404).json({
-              message: `Recipe with ID ${recipeId} does not exist`
+              message: `Recipe with id ${recipeId} does not exist`
             });
           }
         })
     } else {
       response.status(400).json({
-        message: `Id "${recipeId}" is not a valid integer`
+        message: `id "${recipeId}" is not a valid integer`
       });
     }
   }

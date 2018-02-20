@@ -1,6 +1,6 @@
 import React from 'react';
 import ConnectedHeader, { Header } from '../../src/components/Header';
-import store from '../../src/helper/createStore';
+import store from '../../src/helper/store';
 import mockStore from '../mockData/mockStore';
 
 const mainState = store.getState();

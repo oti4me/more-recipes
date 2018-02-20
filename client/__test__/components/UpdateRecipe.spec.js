@@ -1,6 +1,10 @@
 import React from 'react';
-import ConnectedUpdateRecipeForm, { UpdateRecipeForm } from '../../src/components/updateRecipe/UpdateRecipeForm';
-import ConnectedUpdateRecipePage, { UpdateRecipePage } from '../../src/components/updateRecipe/UpdateRecipePage';
+import ConnectedUpdateRecipeForm, {
+  UpdateRecipeForm
+} from '../../src/components/updateRecipe/UpdateRecipeForm';
+import ConnectedUpdateRecipePage, {
+  UpdateRecipePage
+} from '../../src/components/updateRecipe/UpdateRecipePage';
 
 const props = {
   loggedIn: true,

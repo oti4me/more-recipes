@@ -5,7 +5,7 @@ import SignupPage from '../../src/components/signup/SignupPage';
 // import SignupPage from '../../src/components/signup/SignupPage';
 import { mountWrapper } from '../utils';
 import mockStore from '../mockData/mockStore';
-import store from '../../src/helper/createStore';
+import store from '../../src/helper/store';
 
 const mainState = store.getState();
 const props = {

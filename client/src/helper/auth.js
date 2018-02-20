@@ -1,8 +1,7 @@
-// import isAuthenticated from './isAth.js';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
-import store from './createStore';
+import store from './store';
 import updateUserState from './updateUserState';
 
 /**
@@ -12,7 +11,7 @@ import updateUserState from './updateUserState';
   *
   * @returns {object} ComposedClass AuthenticationCheck object
 */
-const Auth = (ComposedClass) => {
+const auth = (ComposedClass) => {
 
   /**
    * 
@@ -53,4 +52,4 @@ const Auth = (ComposedClass) => {
   return connect(mapStateToProps)(AuthenticationCheck)
 }
 
-export default Auth;
+export default auth;

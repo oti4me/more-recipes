@@ -1,5 +1,7 @@
 import React from 'react';
-import ConnectedPagination, { Pagination } from '../../src/components/Pagination';
+import ConnectedPagination, {
+  Pagination
+} from '../../src/components/Pagination';
 
 describe('Routes', () => {
   it('should render correctly', () => {

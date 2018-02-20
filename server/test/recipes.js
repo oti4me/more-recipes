@@ -159,7 +159,7 @@ describe('Recipes Controller', () => {
           .expect(404)
           .end((err, res) => {
             if (err) return done(err);
-            expect(res.body.message).to.equal('No recipe with ID 55');
+            expect(res.body.message).to.equal('No recipe with id 55');
             done();
           });
       });
@@ -190,7 +190,7 @@ describe('Recipes Controller', () => {
               done();
             });
         });
-      it('should retuen an error if the there is no recipe with the ID supplied', (done) => {
+      it('should retuen an error if the there is no recipe with the id supplied', (done) => {
         request
           .put(`/api/v1/recipes/${99}`)
           .set({ authorization: token })
@@ -234,7 +234,7 @@ describe('Recipes Controller', () => {
               if (err) return done(err);
               expect(res.body.message)
                 .to
-                .equal('User ID supplied is not authenticated');
+                .equal('User id supplied is not authenticated');
               done();
             });
         });
@@ -248,7 +248,7 @@ describe('Recipes Controller', () => {
               if (err) return done(err);
               expect(res.body.message)
                 .to
-                .equal('User ID must be a valid integer');
+                .equal('User id must be a valid integer');
               done();
             });
         });
@@ -273,18 +273,18 @@ describe('Recipes Controller', () => {
     });
     describe('Delete User Recipe Validation DELETE: /api/v1/recipes/:id',
       () => {
-        it(`should return a 401 error on 
+        it(`should return a 403 error on 
         deleting a recipe added by another user`,
           (done) => {
             request
               .delete(`/api/v1/recipes/3`)
               .set({ authorization: token })
-              .expect(401)
+              .expect(403)
               .end((err, res) => {
                 if (err) return done(err);
                 expect(res.body.message)
                   .to
-                  .equal('You are not authorized to delete this recipe');
+                  .equal('You don\'t have permision to delete this recipe');
                 done();
               });
           });
@@ -296,10 +296,10 @@ describe('Recipes Controller', () => {
           .set({ authorization: token })
           .expect(404)
           .end((err, res) => {
+            if (res) return done(err);
             expect(res.body.message)
               .to
               .equal('Not found');
-            if (res) return done(err);
             done();
           });
       });
